@@ -11,12 +11,17 @@ horizontal: false
 
 We are interested in general robotic problems, but particularly in physical interaction problems with robot mobilities (fixed, wheeled, aerial, semi-aerial, etc.). When attempting to combine physical interaction problems with mobility, a number of challenges arise in wide areas of robotics research including design, modeling, control, state estimation, perception, cognition, and planning. We develop intelligent robots with practically appealing scenarios in mind.  
 
-<iframe
+<style>
+.research-main-img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+</style>
+
+<img
   src="{{ '/assets/research/research_main.jpg' | relative_url }}"
-  width="100%"
-  height="700px"
-  style="border: none;">
-</iframe>
-
-
-
+  alt="Research overview"
+  class="research-main-img"
+/>
