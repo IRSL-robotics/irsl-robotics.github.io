@@ -1,10 +1,10 @@
 ---
 layout: page
-title: Drone
+title: Example
 description: with background image
-img: assets/img/4.jpg
-importance: 3
-category: work
+img: assets/img/12.jpg
+importance: 4
+category: research
 related_publications: true
 ---
 
