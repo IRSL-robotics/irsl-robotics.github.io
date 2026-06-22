@@ -230,10 +230,10 @@ nav_order: 1
       CV
     </a>
   </div>
-  <div class="member-section">
+  <!-- <div class="member-section">
     <div class="member-section-title">Research Interests</div>
     <p>Robot learning, manipulation, control</p>
-  </div>
+  </div> -->
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
 
@@ -270,10 +270,10 @@ nav_order: 1
       CV
     </a>
   </div>
-  <div class="member-section">
+  <!-- <div class="member-section">
     <div class="member-section-title">Research Interests</div>
     <p>Motion planning, reinforcement learning</p>
-  </div>
+  </div> -->
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
 
@@ -314,10 +314,10 @@ nav_order: 1
     </a>
   </div>
 
-  <div class="member-section">
+  <!-- <div class="member-section">
     <div class="member-section-title">Research Interests</div>
     <p>Robotics, AI, control</p>
-  </div>
+  </div> -->
 
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
@@ -357,10 +357,10 @@ nav_order: 1
     </a>
   </div>
 
-  <div class="member-section">
+  <!-- <div class="member-section">
     <div class="member-section-title">Research Interests</div>
     <p>Robotics, AI, control</p>
-  </div>
+  </div> -->
 
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
@@ -411,10 +411,10 @@ nav_order: 1
     </a>
   </div>
 
-  <div class="member-section">
+  <!-- <div class="member-section">
     <div class="member-section-title">Research Interests</div>
     <p>Robotics, AI, control</p>
-  </div>
+  </div> -->
 
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
@@ -448,10 +448,10 @@ nav_order: 1
     </a>
   </div>
 
-  <div class="member-section">
+  <!-- <div class="member-section">
     <div class="member-section-title">Research Interests</div>
     <p>Robotics, AI, control</p>
-  </div>
+  </div> -->
 
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
@@ -484,10 +484,10 @@ nav_order: 1
     </a>
   </div>
 
-  <div class="member-section">
+  <!-- <div class="member-section">
     <div class="member-section-title">Research Interests</div>
     <p>Robotics, AI, control</p>
-  </div>
+  </div> -->
 
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
@@ -526,10 +526,10 @@ nav_order: 1
     </a>
   </div>
 
-  <div class="member-section">
+  <!-- <div class="member-section">
     <div class="member-section-title">Research Interests</div>
     <p>Robotics, AI, control</p>
-  </div>
+  </div> -->
 
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
@@ -569,10 +569,10 @@ nav_order: 1
     </a>
   </div>
 
-  <div class="member-section">
+  <!-- <div class="member-section">
     <div class="member-section-title">Research Interests</div>
     <p>Robotics, AI, control</p>
-  </div>
+  </div> -->
 
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
@@ -616,24 +616,24 @@ nav_order: 1
       CV
     </a>
   </div>
-  <div class="member-section">
+  <!-- <div class="member-section">
     <div class="member-section-title">Research Interests</div>
     <p>Robot learning, manipulation, control</p>
-  </div>
+  </div> -->
 
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
-      <li>Tung Minh Luu, Younghwan Lee, Donghoon Lee, <strong>Sunho Kim</strong>, Min Jun Kim, Chang D. Yoo. "Enhancing Rating-Based Reinforcement Learning to Effectively Leverage Feedback from Large Vision-Language Models." <em>Forty-second International Conference on Machine Learning (ICML), 2025.</em></li>
-      <li><strong>Sunho Kim</strong>, Hayeon Park, and Chang-Gun Lee. "Optimizing the Response Time for ROS Tasks in Multi-Core Processors." <em>2023 IEEE/ACM 27th International Symposium on Distributed Simulation and Real Time Applications (DS-RT). IEEE, 2023.</em></li>
+      <li>T. Luu, Y. Lee, D. Lee, <strong>S. Kim</strong>, M. J. Kim, C. D. Yoo. "Enhancing Rating-Based Reinforcement Learning to Effectively Leverage Feedback from Large Vision-Language Models." <em>Forty-second International Conference on Machine Learning (ICML), 2025.</em></li>
+      <li><strong>S. Kim</strong>, H. Park, and C. Lee. "Optimizing the Response Time for ROS Tasks in Multi-Core Processors." <em>2023 IEEE/ACM 27th International Symposium on Distributed Simulation and Real Time Applications (DS-RT). IEEE, 2023.</em></li>
     </ul>
   </div>
   <div class="member-section">
     <div class="member-section-title">Publications (Domestic)</div>
 
     <ul class="pub-list">
-      <li><strong>Sunho Kim</strong>, Dongmin Shin and Chang-Gun Lee. "Autoware Controller Interface for Actual Vehicle Driving," <em>Korea Computer Congress, 2022.</em></li>
+      <li><strong>S. Kim</strong>, D. Shin and C. Lee. "Autoware Controller Interface for Actual Vehicle Driving," <em>Korea Computer Congress, 2022.</em></li>
     </ul>
   </div>
 </div>
@@ -655,13 +655,17 @@ nav_order: 1
       CV
     </a>
   </div>
-  <div class="member-section">
+  <!-- <div class="member-section">
     <div class="member-section-title">Research Interests</div>
     <p>Motion planning, reinforcement learning</p>
-  </div>
+  </div> -->
 
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
+
+    <ul class="pub-list">
+      <li>J. Lee, <strong>W. Han</strong>, E. Kim, I. Choi and S. Yang, "A Stiffness-controlled Robotic Palm based on a Granular Jamming Mechanism," <em>2020 17th International Conference on Ubiquitous Robots (UR)</em></li>
+    </ul>
   </div>
 
 </div>
@@ -684,10 +688,10 @@ nav_order: 1
       CV
     </a>
   </div>
-  <div class="member-section">
+  <!-- <div class="member-section">
     <div class="member-section-title">Research Interests</div>
     <p>Robotics, AI, control</p>
-  </div>
+  </div> -->
 
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
@@ -713,10 +717,10 @@ nav_order: 1
       CV
     </a>
   </div>
-  <div class="member-section">
+  <!-- <div class="member-section">
     <div class="member-section-title">Research Interests</div>
     <p>Robotics, AI, control</p>
-  </div>
+  </div> -->
 
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
@@ -742,10 +746,10 @@ nav_order: 1
       CV
     </a>
   </div>
-  <div class="member-section">
+  <!-- <div class="member-section">
     <div class="member-section-title">Research Interests</div>
     <p>Robotics, AI, control</p>
-  </div>
+  </div> -->
 
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
@@ -771,10 +775,10 @@ nav_order: 1
       CV
     </a>
   </div>
-  <div class="member-section">
+  <!-- <div class="member-section">
     <div class="member-section-title">Research Interests</div>
     <p>Robotics, AI, control</p>
-  </div>
+  </div> -->
 
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
