@@ -56,4 +56,8 @@ Please don't hesitate to ask me any questions (position vacancy, research direct
 - Strong recommendation letters
 - Hands-on experience with real robotic systems
 - Familiarity with robotic software and frameworks (3D CAD, Linux, Matlab, Python, OpenCV, ROS, AI framework, ...)  
-  
+
+<div style="display:flex; align-items:center; justify-content:center; gap:1rem; margin-top:2rem; margin-bottom:1.5rem;">
+  <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="Intelligent Robotic Systems Lab Logo" style="width:160px; max-width:40%;">
+  <img src="{{ '/assets/img/kaist_logo.png' | relative_url }}" alt="KAIST Logo" style="width:240px; max-width:40%;">
+</div>

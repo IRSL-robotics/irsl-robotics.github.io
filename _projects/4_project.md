@@ -1,10 +1,10 @@
 ---
 layout: page
-title: Example
+title: Control
 description: with background image
 img: assets/img/12.jpg
 importance: 4
-category: research
+category: work
 related_publications: true
 ---
 
