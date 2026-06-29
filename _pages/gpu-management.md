@@ -203,6 +203,13 @@ nav: false
     display: none;
   }
 
+  .gpu-sync-message {
+    min-height: 1.4rem;
+    margin: -0.6rem 0 1rem;
+    color: var(--gpu-muted);
+    font-size: 0.9rem;
+  }
+
   @media (max-width: 640px) {
     .gpu-toolbar,
     .gpu-server-header {
@@ -222,17 +229,19 @@ nav: false
 
 <div class="gpu-page">
   <p>
-    This board is for tracking GPU usage across the lab servers. Changes are
-    saved in this browser automatically; use export/import to share or back up
-    the current allocation.
+    This board tracks GPU usage across the lab servers. When shared sync is
+    configured, everyone sees the same allocation; this browser also keeps a
+    local backup.
   </p>
 
   <div class="gpu-toolbar" aria-label="GPU management tools">
     <div class="gpu-summary">
       <span class="gpu-pill"><span id="gpu-used-count">0</span>&nbsp;/&nbsp;14 in use</span>
       <span class="gpu-pill"><span id="gpu-free-count">14</span>&nbsp;available</span>
+      <span class="gpu-pill" id="gpu-sync-status">Local only</span>
     </div>
     <div class="gpu-actions">
+      <button class="gpu-button" type="button" id="gpu-refresh">Refresh</button>
       <button class="gpu-button" type="button" id="gpu-export">Export</button>
       <button class="gpu-button" type="button" id="gpu-import-button">Import</button>
       <button class="gpu-button" type="button" id="gpu-reset">Reset</button>
@@ -240,11 +249,14 @@ nav: false
     </div>
   </div>
 
+  <div class="gpu-sync-message" id="gpu-sync-message"></div>
+
   <div id="gpu-board"></div>
 </div>
 
 <script>
   (() => {
+    const syncEndpoint = {{ site.data.gpu_management.sync_endpoint | default: "" | jsonify }};
     const members = [
       "Min Jun Kim",
       "Kanghyun Kim",
@@ -274,7 +286,10 @@ nav: false
     const board = document.getElementById("gpu-board");
     const usedCount = document.getElementById("gpu-used-count");
     const freeCount = document.getElementById("gpu-free-count");
+    const syncStatus = document.getElementById("gpu-sync-status");
+    const syncMessage = document.getElementById("gpu-sync-message");
     const importFile = document.getElementById("gpu-import-file");
+    let saveTimer;
 
     const gpuIds = servers.flatMap((server) =>
       Array.from({ length: server.count }, (_, index) => `${server.prefix}-${index + 1}`)
@@ -294,10 +309,105 @@ nav: false
     };
 
     let state = loadState();
+    let isRemoteReady = false;
+
+    const setSyncMessage = (message) => {
+      syncMessage.textContent = message;
+    };
+
+    const normalizeState = (incoming) => ({ ...emptyState(), ...(incoming || {}) });
+
+    const saveLocalState = () => {
+      localStorage.setItem(storageKey, JSON.stringify(state));
+    };
 
     const saveState = () => {
-      localStorage.setItem(storageKey, JSON.stringify(state));
+      saveLocalState();
       updateSummary();
+      scheduleRemoteSave();
+    };
+
+    const syncUrl = (params = {}) => {
+      const url = new URL(syncEndpoint);
+      Object.entries(params).forEach(([key, value]) => url.searchParams.set(key, value));
+      return url.toString();
+    };
+
+    const loadRemoteState = () => {
+      if (!syncEndpoint) {
+        setSyncMessage("Shared sync is not configured yet. Changes are saved only in this browser.");
+        return Promise.resolve();
+      }
+
+      setSyncMessage("Loading shared GPU assignments...");
+      return new Promise((resolve) => {
+        const callbackName = `gpuSyncCallback${Date.now()}`;
+        const script = document.createElement("script");
+        const cleanup = () => {
+          delete window[callbackName];
+          script.remove();
+        };
+
+        window[callbackName] = (payload) => {
+          cleanup();
+          if (payload?.ok && payload.state) {
+            state = normalizeState(payload.state);
+            saveLocalState();
+            isRemoteReady = true;
+            render();
+            syncStatus.textContent = "Shared";
+            setSyncMessage(`Shared data loaded${payload.updatedAt ? `: ${payload.updatedAt}` : "."}`);
+          } else {
+            syncStatus.textContent = "Sync error";
+            setSyncMessage("Shared data could not be loaded. Local backup is shown.");
+          }
+          resolve();
+        };
+
+        script.onerror = () => {
+          cleanup();
+          syncStatus.textContent = "Sync error";
+          setSyncMessage("Shared data could not be loaded. Local backup is shown.");
+          resolve();
+        };
+
+        script.src = syncUrl({ action: "get", callback: callbackName });
+        document.body.appendChild(script);
+      });
+    };
+
+    const saveRemoteState = () => {
+      if (!syncEndpoint || !isRemoteReady) return;
+
+      const form = document.createElement("form");
+      const frameName = `gpu-sync-frame-${Date.now()}`;
+      const frame = document.createElement("iframe");
+      const payload = document.createElement("input");
+
+      frame.name = frameName;
+      frame.hidden = true;
+      form.hidden = true;
+      form.method = "POST";
+      form.action = syncEndpoint;
+      form.target = frameName;
+      payload.name = "payload";
+      payload.value = JSON.stringify({ state });
+
+      form.appendChild(payload);
+      document.body.append(frame, form);
+      form.submit();
+      syncStatus.textContent = "Shared";
+      setSyncMessage("Saved to shared sheet.");
+
+      window.setTimeout(() => {
+        form.remove();
+        frame.remove();
+      }, 2500);
+    };
+
+    const scheduleRemoteSave = () => {
+      window.clearTimeout(saveTimer);
+      saveTimer = window.setTimeout(saveRemoteState, 450);
     };
 
     const updateSummary = () => {
@@ -424,7 +534,7 @@ nav: false
 
       try {
         const imported = JSON.parse(await file.text());
-        state = { ...emptyState(), ...imported };
+        state = normalizeState(imported);
         saveState();
         render();
       } catch {
@@ -434,6 +544,11 @@ nav: false
       }
     });
 
+    document.getElementById("gpu-refresh").addEventListener("click", () => {
+      loadRemoteState();
+    });
+
     render();
+    loadRemoteState();
   })();
 </script>
