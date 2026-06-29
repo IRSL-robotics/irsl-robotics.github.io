@@ -225,7 +225,7 @@
   }
 </style> <div class="gpu-page"> <p> This board tracks GPU usage across the lab servers. When shared sync is configured, everyone sees the same allocation; this browser also keeps a local backup. </p> <div class="gpu-toolbar" aria-label="GPU management tools"> <div class="gpu-summary"> <span class="gpu-pill"><span id="gpu-used-count">0</span> / 14 in use</span> <span class="gpu-pill"><span id="gpu-free-count">14</span> available</span> <span class="gpu-pill" id="gpu-sync-status">Local only</span> </div> <div class="gpu-actions"> <button class="gpu-button" type="button" id="gpu-refresh">Refresh</button> <button class="gpu-button" type="button" id="gpu-export">Export</button> <button class="gpu-button" type="button" id="gpu-import-button">Import</button> <button class="gpu-button" type="button" id="gpu-reset">Reset</button> <input class="gpu-import" type="file" id="gpu-import-file" accept="application/json,.json"> </div> </div> <div class="gpu-sync-message" id="gpu-sync-message"></div> <div id="gpu-board"></div> </div> <script>
   (() => {
-    const syncEndpoint = "";
+    const syncEndpoint = "https://script.google.com/macros/s/AKfycbx8VsLt0F1DZDroHB2MQ6BPhqMmBhL6sELVQGcOioxL3Oka6LuCzGIacvmF6q3wIi1_WQ/exec";
     const members = [
       "Min Jun Kim",
       "Kanghyun Kim",
