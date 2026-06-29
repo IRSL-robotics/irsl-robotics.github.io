@@ -1,0 +1,413 @@
+---
+layout: page
+permalink: /about/gpu-management/
+title: GPU Management
+description: GPU reservation board for IRSL members
+nav: false
+---
+
+<style>
+  .gpu-page {
+    --gpu-border: var(--global-divider-color, #d7dde5);
+    --gpu-muted: var(--global-text-color-light, #6b7280);
+    --gpu-panel: var(--global-card-bg-color, #ffffff);
+    --gpu-accent: var(--global-theme-color, #2563eb);
+  }
+
+  .gpu-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin: 1rem 0 1.25rem;
+    padding: 0.85rem;
+    border: 1px solid var(--gpu-border);
+    border-radius: 8px;
+    background: var(--gpu-panel);
+  }
+
+  .gpu-summary {
+    display: flex;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .gpu-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid var(--gpu-border);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 650;
+  }
+
+  .gpu-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .gpu-button {
+    min-height: 2rem;
+    padding: 0.28rem 0.7rem;
+    border: 1px solid var(--gpu-accent);
+    border-radius: 6px;
+    color: var(--gpu-accent);
+    background: transparent;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 650;
+    cursor: pointer;
+  }
+
+  .gpu-button:hover,
+  .gpu-button:focus {
+    color: #ffffff;
+    background: var(--gpu-accent);
+  }
+
+  .gpu-server {
+    margin: 1.2rem 0 1.7rem;
+  }
+
+  .gpu-server-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .gpu-server-title {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 750;
+  }
+
+  .gpu-server-count {
+    color: var(--gpu-muted);
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .gpu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.85rem;
+  }
+
+  .gpu-card {
+    border: 1px solid var(--gpu-border);
+    border-radius: 8px;
+    padding: 0.9rem;
+    background: var(--gpu-panel);
+  }
+
+  .gpu-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .gpu-name {
+    font-size: 1rem;
+    font-weight: 750;
+  }
+
+  .gpu-status {
+    min-height: 1.65rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    background: #eaf7ef;
+    color: #15613a;
+    font-size: 0.78rem;
+    font-weight: 750;
+  }
+
+  .gpu-status.is-used {
+    background: #fff3d9;
+    color: #8a5200;
+  }
+
+  .gpu-field {
+    display: grid;
+    gap: 0.28rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .gpu-field label {
+    color: var(--gpu-muted);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .gpu-field select,
+  .gpu-field input {
+    width: 100%;
+    min-height: 2.25rem;
+    padding: 0.35rem 0.45rem;
+    border: 1px solid var(--gpu-border);
+    border-radius: 6px;
+    background: var(--gpu-panel);
+    color: var(--global-text-color, #111827);
+    font: inherit;
+    font-size: 0.92rem;
+  }
+
+  .gpu-date-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.55rem;
+  }
+
+  .gpu-clear {
+    width: 100%;
+    min-height: 2rem;
+    border-color: var(--gpu-border);
+    color: var(--gpu-muted);
+  }
+
+  .gpu-import {
+    display: none;
+  }
+
+  @media (max-width: 640px) {
+    .gpu-toolbar,
+    .gpu-server-header {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .gpu-actions {
+      justify-content: flex-start;
+    }
+
+    .gpu-date-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="gpu-page">
+  <p>
+    This board is for tracking GPU usage across the lab servers. Changes are
+    saved in this browser automatically; use export/import to share or back up
+    the current allocation.
+  </p>
+
+  <div class="gpu-toolbar" aria-label="GPU management tools">
+    <div class="gpu-summary">
+      <span class="gpu-pill"><span id="gpu-used-count">0</span>&nbsp;/&nbsp;14 in use</span>
+      <span class="gpu-pill"><span id="gpu-free-count">14</span>&nbsp;available</span>
+    </div>
+    <div class="gpu-actions">
+      <button class="gpu-button" type="button" id="gpu-export">Export</button>
+      <button class="gpu-button" type="button" id="gpu-import-button">Import</button>
+      <button class="gpu-button" type="button" id="gpu-reset">Reset</button>
+      <input class="gpu-import" type="file" id="gpu-import-file" accept="application/json,.json">
+    </div>
+  </div>
+
+  <div id="gpu-board"></div>
+</div>
+
+<script>
+  (() => {
+    const members = [
+      "Min Jun Kim",
+      "Kanghyun Kim",
+      "Jinyeong Jeong",
+      "Ji Wan Han",
+      "Seo Wook Han",
+      "Seongsu Park",
+      "Jiwon Kim",
+      "Sungmin Kim",
+      "Sanghoon Lee",
+      "Taeho Yun",
+      "Sunho Kim",
+      "Wonjun Han",
+      "Jaehun Jeong",
+      "Seoyoon Kim",
+      "Jinyeol Kim",
+      "Seungmin Shin",
+    ];
+
+    const servers = [
+      { name: "NRMK Server", count: 8, prefix: "NRMK" },
+      { name: "New Server", count: 4, prefix: "NEW" },
+      { name: "Old Server", count: 2, prefix: "OLD" },
+    ];
+
+    const storageKey = "irsl-gpu-management-v1";
+    const board = document.getElementById("gpu-board");
+    const usedCount = document.getElementById("gpu-used-count");
+    const freeCount = document.getElementById("gpu-free-count");
+    const importFile = document.getElementById("gpu-import-file");
+
+    const gpuIds = servers.flatMap((server) =>
+      Array.from({ length: server.count }, (_, index) => `${server.prefix}-${index + 1}`)
+    );
+
+    const emptyState = () =>
+      Object.fromEntries(
+        gpuIds.map((id) => [id, { user: "", startDate: "", endDate: "" }])
+      );
+
+    const loadState = () => {
+      try {
+        return { ...emptyState(), ...JSON.parse(localStorage.getItem(storageKey)) };
+      } catch {
+        return emptyState();
+      }
+    };
+
+    let state = loadState();
+
+    const saveState = () => {
+      localStorage.setItem(storageKey, JSON.stringify(state));
+      updateSummary();
+    };
+
+    const updateSummary = () => {
+      const used = gpuIds.filter((id) => state[id]?.user).length;
+      usedCount.textContent = used;
+      freeCount.textContent = gpuIds.length - used;
+
+      gpuIds.forEach((id) => {
+        const status = document.querySelector(`[data-status-for="${id}"]`);
+        if (!status) return;
+        const isUsed = Boolean(state[id]?.user);
+        status.textContent = isUsed ? "In use" : "Available";
+        status.classList.toggle("is-used", isUsed);
+      });
+    };
+
+    const memberOptions = () =>
+      [`<option value="">Available</option>`]
+        .concat(members.map((member) => `<option value="${member}">${member}</option>`))
+        .join("");
+
+    const renderCard = (server, index) => {
+      const id = `${server.prefix}-${index + 1}`;
+      const data = state[id] || { user: "", startDate: "", endDate: "" };
+
+      return `
+        <article class="gpu-card">
+          <div class="gpu-card-top">
+            <div class="gpu-name">GPU ${index + 1}</div>
+            <div class="gpu-status" data-status-for="${id}">Available</div>
+          </div>
+          <div class="gpu-field">
+            <label for="${id}-user">User</label>
+            <select id="${id}-user" data-gpu-field="user" data-gpu-id="${id}">
+              ${memberOptions()}
+            </select>
+          </div>
+          <div class="gpu-date-row">
+            <div class="gpu-field">
+              <label for="${id}-start">Start date</label>
+              <input id="${id}-start" type="date" value="${data.startDate}" data-gpu-field="startDate" data-gpu-id="${id}">
+            </div>
+            <div class="gpu-field">
+              <label for="${id}-end">Expected end</label>
+              <input id="${id}-end" type="date" value="${data.endDate}" data-gpu-field="endDate" data-gpu-id="${id}">
+            </div>
+          </div>
+          <button class="gpu-button gpu-clear" type="button" data-clear-gpu="${id}">Clear</button>
+        </article>
+      `;
+    };
+
+    const render = () => {
+      board.innerHTML = servers
+        .map(
+          (server) => `
+            <section class="gpu-server">
+              <div class="gpu-server-header">
+                <h2 class="gpu-server-title">${server.name}</h2>
+                <div class="gpu-server-count">${server.count} GPUs</div>
+              </div>
+              <div class="gpu-grid">
+                ${Array.from({ length: server.count }, (_, index) => renderCard(server, index)).join("")}
+              </div>
+            </section>
+          `
+        )
+        .join("");
+
+      gpuIds.forEach((id) => {
+        const select = document.getElementById(`${id}-user`);
+        if (select) select.value = state[id]?.user || "";
+      });
+
+      updateSummary();
+    };
+
+    board.addEventListener("input", (event) => {
+      const field = event.target.dataset.gpuField;
+      const id = event.target.dataset.gpuId;
+      if (!field || !id) return;
+
+      state[id] = {
+        ...(state[id] || { user: "", startDate: "", endDate: "" }),
+        [field]: event.target.value,
+      };
+      saveState();
+    });
+
+    board.addEventListener("click", (event) => {
+      const id = event.target.dataset.clearGpu;
+      if (!id) return;
+
+      state[id] = { user: "", startDate: "", endDate: "" };
+      saveState();
+      render();
+    });
+
+    document.getElementById("gpu-reset").addEventListener("click", () => {
+      if (!window.confirm("Clear all GPU assignments on this browser?")) return;
+      state = emptyState();
+      saveState();
+      render();
+    });
+
+    document.getElementById("gpu-export").addEventListener("click", () => {
+      const blob = new Blob([JSON.stringify(state, null, 2)], {
+        type: "application/json",
+      });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "irsl-gpu-management.json";
+      link.click();
+      URL.revokeObjectURL(link.href);
+    });
+
+    document.getElementById("gpu-import-button").addEventListener("click", () => {
+      importFile.click();
+    });
+
+    importFile.addEventListener("change", async () => {
+      const file = importFile.files?.[0];
+      if (!file) return;
+
+      try {
+        const imported = JSON.parse(await file.text());
+        state = { ...emptyState(), ...imported };
+        saveState();
+        render();
+      } catch {
+        window.alert("The selected file could not be imported.");
+      } finally {
+        importFile.value = "";
+      }
+    });
+
+    render();
+  })();
+</script>
