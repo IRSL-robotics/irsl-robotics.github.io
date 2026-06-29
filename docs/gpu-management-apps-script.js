@@ -62,7 +62,7 @@ function writeState_(state) {
   const updatedAt = new Date().toISOString();
 
   SERVERS.forEach((server) => {
-    for (let index = 1; index <= server.count; index += 1) {
+    for (let index = 0; index < server.count; index += 1) {
       const id = `${server.prefix}-${index}`;
       const item = state[id] || {};
       rows.push([

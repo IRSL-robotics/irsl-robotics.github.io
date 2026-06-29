@@ -292,7 +292,7 @@ nav: false
     let saveTimer;
 
     const gpuIds = servers.flatMap((server) =>
-      Array.from({ length: server.count }, (_, index) => `${server.prefix}-${index + 1}`)
+      Array.from({ length: server.count }, (_, index) => `${server.prefix}-${index}`)
     );
 
     const emptyState = () =>
@@ -300,9 +300,24 @@ nav: false
         gpuIds.map((id) => [id, { user: "", startDate: "", endDate: "" }])
       );
 
+    const normalizeState = (incoming) => {
+      const normalized = emptyState();
+      const source = incoming || {};
+
+      servers.forEach((server) => {
+        for (let index = 0; index < server.count; index += 1) {
+          const id = `${server.prefix}-${index}`;
+          const legacyId = `${server.prefix}-${index + 1}`;
+          normalized[id] = source[id] || source[legacyId] || normalized[id];
+        }
+      });
+
+      return normalized;
+    };
+
     const loadState = () => {
       try {
-        return { ...emptyState(), ...JSON.parse(localStorage.getItem(storageKey)) };
+        return normalizeState(JSON.parse(localStorage.getItem(storageKey)));
       } catch {
         return emptyState();
       }
@@ -314,8 +329,6 @@ nav: false
     const setSyncMessage = (message) => {
       syncMessage.textContent = message;
     };
-
-    const normalizeState = (incoming) => ({ ...emptyState(), ...(incoming || {}) });
 
     const saveLocalState = () => {
       localStorage.setItem(storageKey, JSON.stringify(state));
@@ -430,13 +443,13 @@ nav: false
         .join("");
 
     const renderCard = (server, index) => {
-      const id = `${server.prefix}-${index + 1}`;
+      const id = `${server.prefix}-${index}`;
       const data = state[id] || { user: "", startDate: "", endDate: "" };
 
       return `
         <article class="gpu-card">
           <div class="gpu-card-top">
-            <div class="gpu-name">GPU ${index + 1}</div>
+            <div class="gpu-name">GPU ${index}</div>
             <div class="gpu-status" data-status-for="${id}">Available</div>
           </div>
           <div class="gpu-field">
