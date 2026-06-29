@@ -72,6 +72,7 @@ nav: false
 
   .gpu-server {
     margin: 1.2rem 0 1.7rem;
+    padding-top: 0.15rem;
   }
 
   .gpu-server-header {
@@ -79,7 +80,11 @@ nav: false
     align-items: baseline;
     justify-content: space-between;
     gap: 1rem;
-    margin-bottom: 0.65rem;
+    margin-bottom: 0.75rem;
+    padding: 0.55rem 0.7rem;
+    border-left: 5px solid var(--server-accent, var(--gpu-accent));
+    border-radius: 8px;
+    background: var(--server-soft, transparent);
   }
 
   .gpu-server-title {
@@ -89,9 +94,28 @@ nav: false
   }
 
   .gpu-server-count {
-    color: var(--gpu-muted);
+    color: var(--server-text, var(--gpu-muted));
     font-size: 0.95rem;
+    font-weight: 650;
     white-space: nowrap;
+  }
+
+  .gpu-server-nrmk {
+    --server-accent: #2f7d5b;
+    --server-soft: #edf8f2;
+    --server-text: #1d5d42;
+  }
+
+  .gpu-server-new {
+    --server-accent: #2c6fb8;
+    --server-soft: #eef6ff;
+    --server-text: #1f5a99;
+  }
+
+  .gpu-server-old {
+    --server-accent: #b36b2c;
+    --server-soft: #fff5e8;
+    --server-text: #8a501d;
   }
 
   .gpu-grid {
@@ -315,7 +339,7 @@ nav: false
               <input id="${id}-start" type="date" value="${data.startDate}" data-gpu-field="startDate" data-gpu-id="${id}">
             </div>
             <div class="gpu-field">
-              <label for="${id}-end">Expected end</label>
+              <label for="${id}-end">End date</label>
               <input id="${id}-end" type="date" value="${data.endDate}" data-gpu-field="endDate" data-gpu-id="${id}">
             </div>
           </div>
@@ -328,7 +352,7 @@ nav: false
       board.innerHTML = servers
         .map(
           (server) => `
-            <section class="gpu-server">
+            <section class="gpu-server gpu-server-${server.prefix.toLowerCase()}">
               <div class="gpu-server-header">
                 <h2 class="gpu-server-title">${server.name}</h2>
                 <div class="gpu-server-count">${server.count} GPUs</div>
