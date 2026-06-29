@@ -174,19 +174,21 @@ nav: false
   .gpu-field select,
   .gpu-field input {
     width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     min-height: 2.25rem;
-    padding: 0.35rem 0.45rem;
+    padding: 0.35rem 0.35rem;
     border: 1px solid var(--gpu-border);
     border-radius: 6px;
     background: var(--gpu-panel);
     color: var(--global-text-color, #111827);
     font: inherit;
-    font-size: 0.92rem;
+    font-size: 0.86rem;
   }
 
   .gpu-date-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 0.55rem;
   }
 
@@ -339,7 +341,7 @@ nav: false
               <input id="${id}-start" type="date" value="${data.startDate}" data-gpu-field="startDate" data-gpu-id="${id}">
             </div>
             <div class="gpu-field">
-              <label for="${id}-end">End date</label>
+              <label for="${id}-end">Expected end</label>
               <input id="${id}-end" type="date" value="${data.endDate}" data-gpu-field="endDate" data-gpu-id="${id}">
             </div>
           </div>
