@@ -21,12 +21,6 @@ latest_posts:
 
 <img src="{{ '/assets/img/irsl_lab.jpg' | relative_url }}" alt="Intelligent Robotic Systems Lab" style="width:100%; border-radius:10px; margin-bottom:1.5rem;">
 
-<p style="margin: 0 0 1.5rem;">
-  <a href="{{ '/about/gpu-management/' | relative_url }}" style="display:inline-block; padding:0.45rem 0.85rem; border:1px solid var(--global-theme-color, #2563eb); border-radius:6px; color:var(--global-theme-color, #2563eb); font-weight:650; text-decoration:none;">
-    GPU Management
-  </a>
-</p>
-
 ### We are hiring!  
 If you are interested in joining our group, send an email to minjun.kim@kaist.ac.kr. Please include  your transcript with a CV.  
 Please don't hesitate to ask me any questions (position vacancy, research direction/topics, lab management policy, etc.). 

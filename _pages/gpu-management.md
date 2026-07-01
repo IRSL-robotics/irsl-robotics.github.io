@@ -120,23 +120,30 @@ nav: false
 
   .gpu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 0.85rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.55rem;
   }
 
   .gpu-card {
+    display: grid;
+    grid-template-columns:
+      minmax(7rem, 0.75fr) minmax(11rem, 1.3fr) minmax(9rem, 1fr)
+      minmax(9rem, 1fr) auto;
+    align-items: end;
+    gap: 0.7rem;
     border: 1px solid var(--gpu-border);
     border-radius: 8px;
-    padding: 0.9rem;
+    padding: 0.65rem 0.75rem;
     background: var(--gpu-panel);
   }
 
   .gpu-card-top {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    margin-bottom: 0.8rem;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-height: 2.55rem;
   }
 
   .gpu-name {
@@ -162,7 +169,7 @@ nav: false
   .gpu-field {
     display: grid;
     gap: 0.28rem;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0;
   }
 
   .gpu-field label {
@@ -187,13 +194,12 @@ nav: false
   }
 
   .gpu-date-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 0.55rem;
+    display: contents;
   }
 
   .gpu-clear {
-    width: 100%;
+    width: auto;
+    min-width: 4.8rem;
     min-height: 2rem;
     border-color: var(--gpu-border);
     color: var(--gpu-muted);
@@ -221,17 +227,25 @@ nav: false
       justify-content: flex-start;
     }
 
-    .gpu-date-row {
+    .gpu-card {
       grid-template-columns: 1fr;
+    }
+
+    .gpu-card-top {
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .gpu-clear {
+      width: 100%;
     }
   }
 </style>
 
 <div class="gpu-page">
   <p>
-    This board tracks GPU usage across the lab servers. When shared sync is
-    configured, everyone sees the same allocation; this browser also keeps a
-    local backup.
+    This board tracks GPU usage across the lab servers.
   </p>
 
   <div class="gpu-toolbar" aria-label="GPU management tools">
@@ -290,6 +304,7 @@ nav: false
     const syncMessage = document.getElementById("gpu-sync-message");
     const importFile = document.getElementById("gpu-import-file");
     let saveTimer;
+    let expirationTimer;
 
     const gpuIds = servers.flatMap((server) =>
       Array.from({ length: server.count }, (_, index) => `${server.prefix}-${index}`)
@@ -330,13 +345,26 @@ nav: false
       syncMessage.textContent = message;
     };
 
+    const todayKey = () => {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const day = String(now.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+    };
+
     const saveLocalState = () => {
       localStorage.setItem(storageKey, JSON.stringify(state));
     };
 
     const saveState = () => {
+      const expiredCleared = clearExpiredAssignments({ persist: false });
       saveLocalState();
-      updateSummary();
+      if (expiredCleared) {
+        render();
+      } else {
+        updateSummary();
+      }
       scheduleRemoteSave();
     };
 
@@ -365,11 +393,17 @@ nav: false
           cleanup();
           if (payload?.ok && payload.state) {
             state = normalizeState(payload.state);
-            saveLocalState();
             isRemoteReady = true;
+            const expiredCleared = clearExpiredAssignments({ persist: false });
+            saveLocalState();
             render();
             syncStatus.textContent = "Shared";
-            setSyncMessage(`Shared data loaded${payload.updatedAt ? `: ${payload.updatedAt}` : "."}`);
+            if (expiredCleared) scheduleRemoteSave();
+            setSyncMessage(
+              expiredCleared
+                ? "Shared data loaded; expired reservations were cleared."
+                : `Shared data loaded${payload.updatedAt ? `: ${payload.updatedAt}` : "."}`
+            );
           } else {
             syncStatus.textContent = "Sync error";
             setSyncMessage("Shared data could not be loaded. Local backup is shown.");
@@ -421,6 +455,48 @@ nav: false
     const scheduleRemoteSave = () => {
       window.clearTimeout(saveTimer);
       saveTimer = window.setTimeout(saveRemoteState, 450);
+    };
+
+    const clearGpu = (id) => {
+      state[id] = { user: "", startDate: "", endDate: "" };
+    };
+
+    const clearExpiredAssignments = ({ persist = true } = {}) => {
+      const today = todayKey();
+      let didClear = false;
+
+      gpuIds.forEach((id) => {
+        const item = state[id];
+        if (!item?.endDate || item.endDate >= today) return;
+        clearGpu(id);
+        didClear = true;
+      });
+
+      if (didClear && persist) {
+        saveLocalState();
+        render();
+        scheduleRemoteSave();
+      }
+
+      return didClear;
+    };
+
+    const scheduleExpirationCheck = () => {
+      window.clearTimeout(expirationTimer);
+      const now = new Date();
+      const nextMidnight = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate() + 1,
+        0,
+        0,
+        1
+      );
+
+      expirationTimer = window.setTimeout(() => {
+        clearExpiredAssignments();
+        scheduleExpirationCheck();
+      }, nextMidnight.getTime() - now.getTime());
     };
 
     const updateSummary = () => {
@@ -514,7 +590,7 @@ nav: false
       const id = event.target.dataset.clearGpu;
       if (!id) return;
 
-      state[id] = { user: "", startDate: "", endDate: "" };
+      clearGpu(id);
       saveState();
       render();
     });
@@ -561,7 +637,10 @@ nav: false
       loadRemoteState();
     });
 
+    clearExpiredAssignments({ persist: false });
+    saveLocalState();
     render();
+    scheduleExpirationCheck();
     loadRemoteState();
   })();
 </script>
