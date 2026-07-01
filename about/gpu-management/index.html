@@ -118,23 +118,30 @@
 
   .gpu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 0.85rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.55rem;
   }
 
   .gpu-card {
+    display: grid;
+    grid-template-columns:
+      minmax(7rem, 0.75fr) minmax(11rem, 1.3fr) minmax(9rem, 1fr)
+      minmax(9rem, 1fr) auto;
+    align-items: end;
+    gap: 0.7rem;
     border: 1px solid var(--gpu-border);
     border-radius: 8px;
-    padding: 0.9rem;
+    padding: 0.65rem 0.75rem;
     background: var(--gpu-panel);
   }
 
   .gpu-card-top {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    margin-bottom: 0.8rem;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-height: 2.55rem;
   }
 
   .gpu-name {
@@ -160,7 +167,7 @@
   .gpu-field {
     display: grid;
     gap: 0.28rem;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0;
   }
 
   .gpu-field label {
@@ -185,13 +192,12 @@
   }
 
   .gpu-date-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 0.55rem;
+    display: contents;
   }
 
   .gpu-clear {
-    width: 100%;
+    width: auto;
+    min-width: 4.8rem;
     min-height: 2rem;
     border-color: var(--gpu-border);
     color: var(--gpu-muted);
@@ -219,11 +225,21 @@
       justify-content: flex-start;
     }
 
-    .gpu-date-row {
+    .gpu-card {
       grid-template-columns: 1fr;
     }
+
+    .gpu-card-top {
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .gpu-clear {
+      width: 100%;
+    }
   }
-</style> <div class="gpu-page"> <p> This board tracks GPU usage across the lab servers. When shared sync is configured, everyone sees the same allocation; this browser also keeps a local backup. </p> <div class="gpu-toolbar" aria-label="GPU management tools"> <div class="gpu-summary"> <span class="gpu-pill"><span id="gpu-used-count">0</span> / 14 in use</span> <span class="gpu-pill"><span id="gpu-free-count">14</span> available</span> <span class="gpu-pill" id="gpu-sync-status">Local only</span> </div> <div class="gpu-actions"> <button class="gpu-button" type="button" id="gpu-refresh">Refresh</button> <button class="gpu-button" type="button" id="gpu-export">Export</button> <button class="gpu-button" type="button" id="gpu-import-button">Import</button> <button class="gpu-button" type="button" id="gpu-reset">Reset</button> <input class="gpu-import" type="file" id="gpu-import-file" accept="application/json,.json"> </div> </div> <div class="gpu-sync-message" id="gpu-sync-message"></div> <div id="gpu-board"></div> </div> <script>
+</style> <div class="gpu-page"> <p> This board tracks GPU usage across the lab servers. </p> <div class="gpu-toolbar" aria-label="GPU management tools"> <div class="gpu-summary"> <span class="gpu-pill"><span id="gpu-used-count">0</span> / 14 in use</span> <span class="gpu-pill"><span id="gpu-free-count">14</span> available</span> <span class="gpu-pill" id="gpu-sync-status">Local only</span> </div> <div class="gpu-actions"> <button class="gpu-button" type="button" id="gpu-refresh">Refresh</button> <button class="gpu-button" type="button" id="gpu-export">Export</button> <button class="gpu-button" type="button" id="gpu-import-button">Import</button> <button class="gpu-button" type="button" id="gpu-reset">Reset</button> <input class="gpu-import" type="file" id="gpu-import-file" accept="application/json,.json"> </div> </div> <div class="gpu-sync-message" id="gpu-sync-message"></div> <div id="gpu-board"></div> </div> <script>
   (() => {
     const syncEndpoint = "https://script.google.com/macros/s/AKfycby95ioLfo-f-T5x2pqO0Z8eutRNnWfDmZI53JLebTNZgl_PluOBPDGsC2gFxejX3dfIpA/exec";
     const members = [
@@ -259,6 +275,7 @@
     const syncMessage = document.getElementById("gpu-sync-message");
     const importFile = document.getElementById("gpu-import-file");
     let saveTimer;
+    let expirationTimer;
 
     const gpuIds = servers.flatMap((server) =>
       Array.from({ length: server.count }, (_, index) => `${server.prefix}-${index}`)
@@ -299,13 +316,26 @@
       syncMessage.textContent = message;
     };
 
+    const todayKey = () => {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const day = String(now.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+    };
+
     const saveLocalState = () => {
       localStorage.setItem(storageKey, JSON.stringify(state));
     };
 
     const saveState = () => {
+      const expiredCleared = clearExpiredAssignments({ persist: false });
       saveLocalState();
-      updateSummary();
+      if (expiredCleared) {
+        render();
+      } else {
+        updateSummary();
+      }
       scheduleRemoteSave();
     };
 
@@ -334,11 +364,17 @@
           cleanup();
           if (payload?.ok && payload.state) {
             state = normalizeState(payload.state);
-            saveLocalState();
             isRemoteReady = true;
+            const expiredCleared = clearExpiredAssignments({ persist: false });
+            saveLocalState();
             render();
             syncStatus.textContent = "Shared";
-            setSyncMessage(`Shared data loaded${payload.updatedAt ? `: ${payload.updatedAt}` : "."}`);
+            if (expiredCleared) scheduleRemoteSave();
+            setSyncMessage(
+              expiredCleared
+                ? "Shared data loaded; expired reservations were cleared."
+                : `Shared data loaded${payload.updatedAt ? `: ${payload.updatedAt}` : "."}`
+            );
           } else {
             syncStatus.textContent = "Sync error";
             setSyncMessage("Shared data could not be loaded. Local backup is shown.");
@@ -390,6 +426,48 @@
     const scheduleRemoteSave = () => {
       window.clearTimeout(saveTimer);
       saveTimer = window.setTimeout(saveRemoteState, 450);
+    };
+
+    const clearGpu = (id) => {
+      state[id] = { user: "", startDate: "", endDate: "" };
+    };
+
+    const clearExpiredAssignments = ({ persist = true } = {}) => {
+      const today = todayKey();
+      let didClear = false;
+
+      gpuIds.forEach((id) => {
+        const item = state[id];
+        if (!item?.endDate || item.endDate >= today) return;
+        clearGpu(id);
+        didClear = true;
+      });
+
+      if (didClear && persist) {
+        saveLocalState();
+        render();
+        scheduleRemoteSave();
+      }
+
+      return didClear;
+    };
+
+    const scheduleExpirationCheck = () => {
+      window.clearTimeout(expirationTimer);
+      const now = new Date();
+      const nextMidnight = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate() + 1,
+        0,
+        0,
+        1
+      );
+
+      expirationTimer = window.setTimeout(() => {
+        clearExpiredAssignments();
+        scheduleExpirationCheck();
+      }, nextMidnight.getTime() - now.getTime());
     };
 
     const updateSummary = () => {
@@ -483,7 +561,7 @@
       const id = event.target.dataset.clearGpu;
       if (!id) return;
 
-      state[id] = { user: "", startDate: "", endDate: "" };
+      clearGpu(id);
       saveState();
       render();
     });
@@ -530,7 +608,10 @@
       loadRemoteState();
     });
 
+    clearExpiredAssignments({ persist: false });
+    saveLocalState();
     render();
+    scheduleExpirationCheck();
     loadRemoteState();
   })();
 </script> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Intelligent Robotic Systems Lab. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. </div> </footer> <script>
