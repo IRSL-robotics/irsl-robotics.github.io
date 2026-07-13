@@ -305,6 +305,9 @@ nav: false
     const importFile = document.getElementById("gpu-import-file");
     let saveTimer;
     let expirationTimer;
+    let operationSequence = 0;
+    let pendingOperations = [];
+    let isSavingRemote = false;
 
     const gpuIds = servers.flatMap((server) =>
       Array.from({ length: server.count }, (_, index) => `${server.prefix}-${index}`)
@@ -340,6 +343,7 @@ nav: false
 
     let state = loadState();
     let isRemoteReady = false;
+    let remoteProtocolVersion = 0;
 
     const setSyncMessage = (message) => {
       syncMessage.textContent = message;
@@ -357,7 +361,39 @@ nav: false
       localStorage.setItem(storageKey, JSON.stringify(state));
     };
 
-    const saveState = () => {
+    const queueOperation = (operation) => {
+      pendingOperations.push({ ...operation, sequence: ++operationSequence });
+    };
+
+    const applyOperationLocally = (operation) => {
+      const id = operation.id;
+      if (!id || !gpuIds.includes(id)) return;
+
+      if (operation.type === "patch") {
+        state[id] = {
+          ...(state[id] || { user: "", startDate: "", endDate: "" }),
+          ...(operation.fields || {}),
+        };
+      } else if (operation.type === "set") {
+        const item = operation.item || {};
+        state[id] = {
+          user: item.user || "",
+          startDate: item.startDate || "",
+          endDate: item.endDate || "",
+        };
+      } else if (operation.type === "clear") {
+        clearGpu(id);
+      } else if (
+        operation.type === "clearExpired" &&
+        state[id]?.endDate === operation.expectedEndDate &&
+        state[id].endDate < todayKey()
+      ) {
+        clearGpu(id);
+      }
+    };
+
+    const saveState = (operation) => {
+      if (operation) queueOperation(operation);
       const expiredCleared = clearExpiredAssignments({ persist: false });
       saveLocalState();
       if (expiredCleared) {
@@ -394,16 +430,25 @@ nav: false
           if (payload?.ok && payload.state) {
             state = normalizeState(payload.state);
             isRemoteReady = true;
+            remoteProtocolVersion = Number(payload.protocolVersion || 1);
+            pendingOperations.forEach(applyOperationLocally);
             const expiredCleared = clearExpiredAssignments({ persist: false });
             saveLocalState();
             render();
-            syncStatus.textContent = "Shared";
-            if (expiredCleared) scheduleRemoteSave();
-            setSyncMessage(
-              expiredCleared
-                ? "Shared data loaded; expired reservations were cleared."
-                : `Shared data loaded${payload.updatedAt ? `: ${payload.updatedAt}` : "."}`
-            );
+            if (remoteProtocolVersion >= 2) {
+              syncStatus.textContent = "Shared";
+              if (expiredCleared || pendingOperations.length) scheduleRemoteSave();
+              setSyncMessage(
+                expiredCleared
+                  ? "Shared data loaded; expired reservations were checked."
+                  : `Shared data loaded${payload.updatedAt ? `: ${payload.updatedAt}` : "."}`
+              );
+            } else {
+              syncStatus.textContent = "Update required";
+              setSyncMessage(
+                "Shared sync is read-only until the Google Apps Script is updated to the current version."
+              );
+            }
           } else {
             syncStatus.textContent = "Sync error";
             setSyncMessage("Shared data could not be loaded. Local backup is shown.");
@@ -424,32 +469,63 @@ nav: false
     };
 
     const saveRemoteState = () => {
-      if (!syncEndpoint || !isRemoteReady) return;
+      if (
+        !syncEndpoint ||
+        !isRemoteReady ||
+        remoteProtocolVersion < 2 ||
+        isSavingRemote ||
+        !pendingOperations.length
+      ) {
+        return;
+      }
 
       const form = document.createElement("form");
       const frameName = `gpu-sync-frame-${Date.now()}`;
       const frame = document.createElement("iframe");
       const payload = document.createElement("input");
+      const sentOperations = pendingOperations.slice();
+      const sentSequences = new Set(sentOperations.map((operation) => operation.sequence));
+      let didFinish = false;
+
+      const finishSave = () => {
+        if (didFinish) return;
+        didFinish = true;
+        pendingOperations = pendingOperations.filter(
+          (operation) => !sentSequences.has(operation.sequence)
+        );
+        isSavingRemote = false;
+        form.remove();
+        frame.remove();
+        loadRemoteState().then(() => {
+          if (pendingOperations.length) scheduleRemoteSave();
+        });
+      };
 
       frame.name = frameName;
       frame.hidden = true;
+      frame.src = `about:blank#${frameName}`;
       form.hidden = true;
       form.method = "POST";
       form.action = syncEndpoint;
       form.target = frameName;
       payload.name = "payload";
-      payload.value = JSON.stringify({ state });
+      payload.value = JSON.stringify({ operations: sentOperations });
 
       form.appendChild(payload);
+      isSavingRemote = true;
+      frame.addEventListener(
+        "load",
+        () => {
+          frame.addEventListener("load", finishSave, { once: true });
+          form.submit();
+        },
+        { once: true }
+      );
       document.body.append(frame, form);
-      form.submit();
       syncStatus.textContent = "Shared";
-      setSyncMessage("Saved to shared sheet.");
+      setSyncMessage("Saving changes to the shared sheet...");
 
-      window.setTimeout(() => {
-        form.remove();
-        frame.remove();
-      }, 2500);
+      window.setTimeout(finishSave, 4000);
     };
 
     const scheduleRemoteSave = () => {
@@ -468,7 +544,9 @@ nav: false
       gpuIds.forEach((id) => {
         const item = state[id];
         if (!item?.endDate || item.endDate >= today) return;
+        const expectedEndDate = item.endDate;
         clearGpu(id);
+        queueOperation({ type: "clearExpired", id, expectedEndDate });
         didClear = true;
       });
 
@@ -583,7 +661,7 @@ nav: false
         ...(state[id] || { user: "", startDate: "", endDate: "" }),
         [field]: event.target.value,
       };
-      saveState();
+      saveState({ type: "patch", id, fields: { [field]: event.target.value } });
     });
 
     board.addEventListener("click", (event) => {
@@ -591,13 +669,14 @@ nav: false
       if (!id) return;
 
       clearGpu(id);
-      saveState();
+      saveState({ type: "clear", id });
       render();
     });
 
     document.getElementById("gpu-reset").addEventListener("click", () => {
       if (!window.confirm("Clear all GPU assignments on this browser?")) return;
       state = emptyState();
+      gpuIds.forEach((id) => queueOperation({ type: "clear", id }));
       saveState();
       render();
     });
@@ -624,6 +703,7 @@ nav: false
       try {
         const imported = JSON.parse(await file.text());
         state = normalizeState(imported);
+        gpuIds.forEach((id) => queueOperation({ type: "set", id, item: state[id] }));
         saveState();
         render();
       } catch {

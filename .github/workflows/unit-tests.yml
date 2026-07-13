@@ -15,6 +15,7 @@ on:
       - "_posts/**"
       - "_projects/**"
       - "assets/**"
+      - "docs/gpu-management-apps-script.js"
       - "test/**"
       - "package.json"
       - "package-lock.json"
@@ -33,6 +34,7 @@ on:
       - "_posts/**"
       - "_projects/**"
       - "assets/**"
+      - "docs/gpu-management-apps-script.js"
       - "test/**"
       - "package.json"
       - "package-lock.json"
@@ -68,6 +70,9 @@ jobs:
 
       - name: Run style contract lint 🧷
         run: npm run lint:style-contract
+
+      - name: Run GPU management sync test 🖥️
+        run: npm run test:gpu-management-sync
 
       - name: Install build prerequisites 🔧
         run: |

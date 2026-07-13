@@ -13,6 +13,7 @@ function doGet(event) {
   const callback = /^[\w.$]+$/.test(requestedCallback) ? requestedCallback : "callback";
   const payload = JSON.stringify({
     ok: true,
+    protocolVersion: 2,
     state: readState_(),
     updatedAt: new Date().toISOString(),
   });
@@ -28,7 +29,12 @@ function doPost(event) {
 
   try {
     const payload = JSON.parse(event.parameter.payload || "{}");
-    writeState_(payload.state || {});
+    if (Array.isArray(payload.operations)) {
+      applyOperations_(payload.operations);
+    } else {
+      // Keep accepting payloads from pages deployed before operation-based sync.
+      writeState_(payload.state || {});
+    }
 
     return ContentService.createTextOutput(
       JSON.stringify({ ok: true, updatedAt: new Date().toISOString() })
@@ -36,6 +42,68 @@ function doPost(event) {
   } finally {
     lock.releaseLock();
   }
+}
+
+function applyOperations_(operations) {
+  const state = readState_();
+  const validIds = new Set();
+
+  SERVERS.forEach((server) => {
+    for (let index = 0; index < server.count; index += 1) {
+      validIds.add(`${server.prefix}-${index}`);
+    }
+  });
+
+  operations.forEach((operation) => {
+    if (!operation || !validIds.has(operation.id)) return;
+
+    const current = sanitizeItem_(state[operation.id]);
+
+    if (operation.type === "patch") {
+      const fields = operation.fields || {};
+      ["user", "startDate", "endDate"].forEach((field) => {
+        if (Object.prototype.hasOwnProperty.call(fields, field)) {
+          current[field] = String(fields[field] || "");
+        }
+      });
+      state[operation.id] = current;
+      return;
+    }
+
+    if (operation.type === "set") {
+      state[operation.id] = sanitizeItem_(operation.item);
+      return;
+    }
+
+    if (operation.type === "clear") {
+      state[operation.id] = sanitizeItem_({});
+      return;
+    }
+
+    if (
+      operation.type === "clearExpired" &&
+      current.endDate &&
+      current.endDate === String(operation.expectedEndDate || "") &&
+      current.endDate < todayKey_()
+    ) {
+      state[operation.id] = sanitizeItem_({});
+    }
+  });
+
+  writeState_(state);
+}
+
+function sanitizeItem_(item) {
+  const source = item || {};
+  return {
+    user: String(source.user || ""),
+    startDate: String(source.startDate || ""),
+    endDate: String(source.endDate || ""),
+  };
+}
+
+function todayKey_() {
+  return Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyy-MM-dd");
 }
 
 function readState_() {

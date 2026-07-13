@@ -16,17 +16,27 @@ Google Sheet and a small Google Apps Script web app.
 9. Paste that URL into `_data/gpu_management.yml`:
 
 ```yaml
-sync_endpoint: "https://script.google.com/macros/s/AKfycby95ioLfo-f-T5x2pqO0Z8eutRNnWfDmZI53JLebTNZgl_PluOBPDGsC2gFxejX3dfIpA/exec"
+sync_endpoint: "https://script.google.com/macros/s/AKfycbyXAdDNw8P7p-5UWWsG7IxDuUdFw4MG1HV7Azkqzx1s8cVIrWlYBZIzL30e34J69scqmA/exec"
 ```
 
 After the endpoint is configured and the site is deployed, everyone using the
 GPU management page will read from and save to the same Google Sheet.
+
+When `docs/gpu-management-apps-script.js` changes, create a new deployment
+version from `Deploy` > `Manage deployments` > `Edit` before deploying the site
+change. Deploy the Apps Script first, then deploy the site. The page intentionally
+keeps shared sync read-only when it detects an older script, because the
+operation-based sync in the current script is required to prevent an old browser
+tab from overwriting a reservation that another user extended.
 
 ## Notes
 
 - The page keeps a browser-local backup and falls back to it if the shared sheet
   cannot be reached.
 - The Google Sheet is still readable as a normal table with one row per GPU.
+- Shared saves update only the GPU fields that changed. Automatic expiration is
+  conditional on the Expected End value still matching, so a stale browser tab
+  cannot clear a reservation that has since been extended.
 - GPU numbers are zero-based (`GPU 0`, `GPU 1`, ...). If this script changes,
   update and redeploy the Google Apps Script web app. Existing one-based rows in
   the sheet are migrated by the page and rewritten as zero-based rows on the
