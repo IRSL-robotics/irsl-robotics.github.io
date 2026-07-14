@@ -1,0 +1,33 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1200 675"
+  role="img"
+  aria-labelledby="title description"
+>
+  <title id="title">Publication preview to be determined</title>
+  <desc id="description">A temporary placeholder for a forthcoming publication preview image.</desc>
+  <rect width="1200" height="675" fill="#f3f4f6" />
+  <rect
+    x="24"
+    y="24"
+    width="1152"
+    height="627"
+    rx="20"
+    fill="none"
+    stroke="#c7cbd1"
+    stroke-width="4"
+    stroke-dasharray="16 12"
+  />
+  <text
+    x="600"
+    y="338"
+    fill="#6b7280"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="96"
+    font-weight="700"
+    text-anchor="middle"
+    dominant-baseline="middle"
+  >
+    TBD
+  </text>
+</svg>
