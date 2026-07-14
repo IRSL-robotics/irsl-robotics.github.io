@@ -2,7 +2,7 @@
 layout: page
 permalink: /lecture/
 title: Lecture
-description: # Course materials, schedules, and resources for classes taught.
+description: Robotics and control courses taught by Professor Min Jun Kim at KAIST, including nonlinear control, robot control, and control systems engineering.
 nav: true
 nav_order: 6
 calendar: false

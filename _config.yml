@@ -2,19 +2,21 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: blank #Intelligent Robotic Systems Lab # the website title (if blank, full name will be used instead)
+title: Intelligent Robotic Systems Lab
 first_name: Intelligent Robotic Systems
 middle_name: 
 last_name: Lab
+author: Intelligent Robotic Systems Lab, KAIST
 contact_note: >
   For inquiries, please contact the KAIST Intelligent Robotic Systems Lab.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Intelligent Robotic Systems Lab (IRSL), KAIST - Official Website
+  Official website of the Intelligent Robotic Systems Lab (IRSL) at KAIST,
+  researching robot control, physical AI, aerial manipulation, perception, and planning.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
 # Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
   # Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
-keywords: kaist, robotics
+keywords: KAIST, Intelligent Robotic Systems Lab, IRSL, robotics, robot control, physical AI, aerial manipulation, robot perception, manipulation planning, contact estimation
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: 🤖 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
@@ -98,9 +100,9 @@ max_width: 930px
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
 # see https://schema.org/docs/faq.html for more information
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
-serve_schema_org: false # Include Schema.org in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+serve_og_meta: true # Include Open Graph meta tags in the HTML head
+serve_schema_org: true # Include Schema.org in the HTML head
+og_image: /assets/img/irsl_lab.jpg # The site-wide (default for all links) Open Graph preview image
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification

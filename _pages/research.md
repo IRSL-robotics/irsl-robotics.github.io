@@ -2,7 +2,7 @@
 layout: page
 title: Research
 permalink: /research/
-description: # A growing collection of your cool projects.
+description: Research at KAIST IRSL on physical robot interaction, control, state estimation, perception, planning, and intelligent mobile and aerial robotic systems.
 nav: true
 nav_order: 1
 horizontal: false

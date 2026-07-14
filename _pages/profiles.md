@@ -2,7 +2,7 @@
 layout: page
 permalink: /profiles/
 title: Members
-description: # members of the lab or group
+description: Meet Professor Min Jun Kim and the researchers of the Intelligent Robotic Systems Lab (IRSL) at KAIST.
 nav: true
 nav_order: 1
 ---

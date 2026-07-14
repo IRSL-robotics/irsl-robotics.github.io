@@ -2,7 +2,7 @@
 layout: page
 title: Projects
 permalink: /projects/
-description: # A growing collection of your cool projects.
+description: Robotics projects from KAIST IRSL in robot control, physical AI, manipulation, perception, and aerial robotic systems.
 nav: true
 nav_order: 3
 display_categories: [Robot Control, Physical AI, Aerial Manipulation]

@@ -3,6 +3,7 @@ layout: about
 title: Home
 permalink: /
 subtitle: Research Group @ KAIST  
+description: Intelligent Robotic Systems Lab (IRSL) at KAIST researches robot control, physical AI, aerial manipulation, perception, contact estimation, and planning.
 
 profile: false
 selected_papers: false # includes a list of papers marked as "selected={true}"
@@ -18,6 +19,10 @@ latest_posts:
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
+
+## Intelligent Robotic Systems Lab (IRSL)
+
+The Intelligent Robotic Systems Lab at KAIST, led by Professor Min Jun Kim, develops intelligent robots that can safely perceive, plan, and physically interact with complex environments. Explore our [research]({{ '/research/' | relative_url }}), [publications]({{ '/selected_publications/' | relative_url }}), and [members]({{ '/profiles/' | relative_url }}).
 
 <img src="{{ '/assets/img/irsl_lab.jpg' | relative_url }}" alt="Intelligent Robotic Systems Lab" style="width:100%; border-radius:10px; margin-bottom:1.5rem;">
 
