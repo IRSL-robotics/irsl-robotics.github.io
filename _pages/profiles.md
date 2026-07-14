@@ -366,6 +366,7 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
+      <li><strong>S. W. Han</strong>, and M. J. Kim, “Mixture of Flow Matching and Particle Filter for Proprioception-based Online Contact Estimation,” <em>IEEE Transactions on Robotics (T-RO), accepted, 2026</em></li>
       <li><strong>S. W. Han</strong>, and M. J. Kim, “Learning Multi-Contact Localization via Diffusion Models with Proprioceptive Sensing,” <em>2025 RSS Workshop on Navigating Contact Dynamics in Robotics</em></li>
       <li><strong>S. W. Han</strong>, and M. J. Kim, “CDM: Contact Diffusion Model for Multi-Contact Point Localization”, <em>IEEE ICRA 2025</em></li>
       <li><strong>S. W. Han</strong>, and M. J. Kim, “Contact Estimation Diffusion Model for Collaborative Robots” <em>(poster presentation), IEEE ICCAS 2024</em></li>

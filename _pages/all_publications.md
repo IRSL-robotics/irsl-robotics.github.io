@@ -9,6 +9,7 @@ nav: False
 <!-- <p><strong><sup>*</sup></strong> Co-first authors; <strong><sup>†</sup></strong> Co-corresponding authors.</p> -->
 
 #### 2026
+- S. W. Han, and M. J. Kim, "Mixture of Flow Matching and Particle Filter for Proprioception-based Online Contact Estimation", <em>IEEE T-RO, accepted</em>
 - S. Kim<sup>\*</sup>, K. Kim<sup>\*</sup>, D. Ko, Y. J. Heo, and M. J. Kim, "Spatially Conditioned Diffusion Policy: Learning Precise and Robust Manipulation with a Single RGB Camera", <em>arXiv preprint</em>
 - Y. B. Lee<sup>\*</sup>, T. H. Yun<sup>\*</sup>, and M. J. Kim, "Extreme High-Gain Friction Observer of Flexible Joint Robots With L1 Adaptive Framework", <em>IEEE T-RO, accepted</em>
 
