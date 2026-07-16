@@ -256,9 +256,9 @@
       width: 100%;
     }
   }
-</style> <div class="gpu-page"> <p> This board tracks GPU usage across the lab servers. </p> <div class="gpu-toolbar" aria-label="GPU management tools"> <div class="gpu-summary"> <span class="gpu-pill"><span id="gpu-used-count">0</span> / 14 in use</span> <span class="gpu-pill"><span id="gpu-free-count">14</span> available</span> <span class="gpu-pill" id="gpu-sync-status">Local only</span> </div> <div class="gpu-actions"> <button class="gpu-button" type="button" id="gpu-refresh">Refresh</button> <button class="gpu-button" type="button" id="gpu-export">Export</button> <button class="gpu-button" type="button" id="gpu-import-button">Import</button> <button class="gpu-button" type="button" id="gpu-reset">Reset</button> <input class="gpu-import" type="file" id="gpu-import-file" accept="application/json,.json"> </div> </div> <div class="gpu-sync-message" id="gpu-sync-message"></div> <div id="gpu-board"></div> </div> <script>
+</style> <div class="gpu-page"> <p> This board tracks GPU usage across the lab servers. </p> <div class="gpu-toolbar" aria-label="GPU management tools"> <div class="gpu-summary"> <span class="gpu-pill"><span id="gpu-used-count">0</span> / 14 in use</span> <span class="gpu-pill"><span id="gpu-free-count">14</span> available</span> <span class="gpu-pill" id="gpu-sync-status">Local only</span> </div> <div class="gpu-actions"> <button class="gpu-button" type="button" id="gpu-refresh">Refresh</button> <button class="gpu-button" type="button" id="gpu-export">Export</button> <button class="gpu-button" type="button" id="gpu-import-button">Import</button> <button class="gpu-button" type="button" id="gpu-reset">Clear all</button> <input class="gpu-import" type="file" id="gpu-import-file" accept="application/json,.json"> </div> </div> <div class="gpu-sync-message" id="gpu-sync-message"></div> <div id="gpu-board"></div> </div> <script>
   (() => {
-    const syncEndpoint = "https://script.google.com/macros/s/AKfycbyXAdDNw8P7p-5UWWsG7IxDuUdFw4MG1HV7Azkqzx1s8cVIrWlYBZIzL30e34J69scqmA/exec";
+    const syncEndpoint = "https://script.google.com/macros/s/AKfycbzkX0uxm4t6Ppev19M3f6bAeEhHW3yi5NRNqWIESQ4qCNOb5f8BdT0l0dFeRD_x7Dd-ZQ/exec";
     const members = [
       "Min Jun Kim",
       "Kanghyun Kim",
@@ -285,6 +285,7 @@
     ];
 
     const storageKey = "irsl-gpu-management-v1";
+    const pendingStorageKey = "irsl-gpu-management-pending-v1";
     const board = document.getElementById("gpu-board");
     const usedCount = document.getElementById("gpu-used-count");
     const freeCount = document.getElementById("gpu-free-count");
@@ -311,10 +312,15 @@
       const source = incoming || {};
 
       servers.forEach((server) => {
+        const usesZeroBasedIds = Object.prototype.hasOwnProperty.call(
+          source,
+          `${server.prefix}-0`
+        );
         for (let index = 0; index < server.count; index += 1) {
           const id = `${server.prefix}-${index}`;
           const legacyId = `${server.prefix}-${index + 1}`;
-          normalized[id] = source[id] || source[legacyId] || normalized[id];
+          normalized[id] =
+            source[usesZeroBasedIds ? id : legacyId] || normalized[id];
         }
       });
 
@@ -349,8 +355,29 @@
       localStorage.setItem(storageKey, JSON.stringify(state));
     };
 
+    const savePendingOperations = () => {
+      localStorage.setItem(pendingStorageKey, JSON.stringify(pendingOperations));
+    };
+
+    const loadPendingOperations = () => {
+      try {
+        const stored = JSON.parse(localStorage.getItem(pendingStorageKey));
+        if (!Array.isArray(stored)) return;
+        pendingOperations = stored.filter(
+          (operation) => operation && gpuIds.includes(operation.id)
+        );
+        operationSequence = pendingOperations.reduce(
+          (maximum, operation) => Math.max(maximum, Number(operation.sequence) || 0),
+          0
+        );
+      } catch {
+        pendingOperations = [];
+      }
+    };
+
     const queueOperation = (operation) => {
       pendingOperations.push({ ...operation, sequence: ++operationSequence });
+      savePendingOperations();
     };
 
     const applyOperationLocally = (operation) => {
@@ -398,127 +425,120 @@
       return url.toString();
     };
 
-    const loadRemoteState = () => {
-      if (!syncEndpoint) {
-        setSyncMessage("Shared sync is not configured yet. Changes are saved only in this browser.");
-        return Promise.resolve();
-      }
-
-      setSyncMessage("Loading shared GPU assignments...");
-      return new Promise((resolve) => {
-        const callbackName = `gpuSyncCallback${Date.now()}`;
+    const requestRemote = (params) =>
+      new Promise((resolve, reject) => {
+        const callbackName = `gpuSyncCallback${Date.now()}${Math.random()
+          .toString(36)
+          .slice(2)}`;
         const script = document.createElement("script");
+        const timeout = window.setTimeout(() => {
+          cleanup();
+          reject(new Error("Shared sync timed out"));
+        }, 10000);
         const cleanup = () => {
+          window.clearTimeout(timeout);
           delete window[callbackName];
           script.remove();
         };
 
         window[callbackName] = (payload) => {
           cleanup();
-          if (payload?.ok && payload.state) {
-            state = normalizeState(payload.state);
-            isRemoteReady = true;
-            remoteProtocolVersion = Number(payload.protocolVersion || 1);
-            pendingOperations.forEach(applyOperationLocally);
-            const expiredCleared = clearExpiredAssignments({ persist: false });
-            saveLocalState();
-            render();
-            if (remoteProtocolVersion >= 2) {
-              syncStatus.textContent = "Shared";
-              if (expiredCleared || pendingOperations.length) scheduleRemoteSave();
-              setSyncMessage(
-                expiredCleared
-                  ? "Shared data loaded; expired reservations were checked."
-                  : `Shared data loaded${payload.updatedAt ? `: ${payload.updatedAt}` : "."}`
-              );
-            } else {
-              syncStatus.textContent = "Update required";
-              setSyncMessage(
-                "Shared sync is read-only until the Google Apps Script is updated to the current version."
-              );
-            }
-          } else {
-            syncStatus.textContent = "Sync error";
-            setSyncMessage("Shared data could not be loaded. Local backup is shown.");
-          }
-          resolve();
+          resolve(payload);
         };
-
         script.onerror = () => {
           cleanup();
-          syncStatus.textContent = "Sync error";
-          setSyncMessage("Shared data could not be loaded. Local backup is shown.");
-          resolve();
+          reject(new Error("Shared sync request failed"));
         };
-
-        script.src = syncUrl({ action: "get", callback: callbackName });
+        script.src = syncUrl({ ...params, callback: callbackName });
         document.body.appendChild(script);
       });
+
+    const reconcileRemoteState = (payload) => {
+      state = normalizeState(payload.state);
+      isRemoteReady = true;
+      remoteProtocolVersion = Number(payload.protocolVersion || 1);
+      pendingOperations.forEach(applyOperationLocally);
+      const expiredCleared = clearExpiredAssignments({ persist: false });
+      saveLocalState();
+      render();
+      return expiredCleared;
     };
 
-    const saveRemoteState = () => {
+    const loadRemoteState = async () => {
+      if (!syncEndpoint) {
+        setSyncMessage("Shared sync is not configured yet. Changes are saved only in this browser.");
+        return;
+      }
+
+      setSyncMessage("Loading shared GPU assignments...");
+      try {
+        const payload = await requestRemote({ action: "get" });
+        if (!payload?.ok || !payload.state) throw new Error("Invalid shared sync response");
+        const expiredCleared = reconcileRemoteState(payload);
+        if (remoteProtocolVersion >= 3) {
+          syncStatus.textContent = "Shared";
+          if (expiredCleared || pendingOperations.length) scheduleRemoteSave();
+          setSyncMessage(
+            expiredCleared
+              ? "Shared data loaded; expired reservations were checked."
+              : `Shared data loaded${payload.updatedAt ? `: ${payload.updatedAt}` : "."}`
+          );
+        } else {
+          syncStatus.textContent = "Update required";
+          setSyncMessage(
+            "Shared sync is read-only until the Google Apps Script is updated to version 3."
+          );
+        }
+      } catch {
+        syncStatus.textContent = "Sync error";
+        setSyncMessage("Shared data could not be loaded. Unsaved local changes are preserved.");
+      }
+    };
+
+    const saveRemoteState = async () => {
       if (
         !syncEndpoint ||
         !isRemoteReady ||
-        remoteProtocolVersion < 2 ||
+        remoteProtocolVersion < 3 ||
         isSavingRemote ||
         !pendingOperations.length
       ) {
         return;
       }
 
-      const form = document.createElement("form");
-      const frameName = `gpu-sync-frame-${Date.now()}`;
-      const frame = document.createElement("iframe");
-      const payload = document.createElement("input");
       const sentOperations = pendingOperations.slice();
       const sentSequences = new Set(sentOperations.map((operation) => operation.sequence));
-      let didFinish = false;
+      let retryDelay = 450;
+      isSavingRemote = true;
+      syncStatus.textContent = "Saving";
+      setSyncMessage("Saving changes to the shared sheet...");
 
-      const finishSave = () => {
-        if (didFinish) return;
-        didFinish = true;
+      try {
+        const payload = await requestRemote({
+          action: "apply",
+          payload: JSON.stringify(sentOperations),
+        });
+        if (!payload?.ok || !payload.state) throw new Error("Shared save was rejected");
         pendingOperations = pendingOperations.filter(
           (operation) => !sentSequences.has(operation.sequence)
         );
+        savePendingOperations();
+        reconcileRemoteState(payload);
+        syncStatus.textContent = "Shared";
+        setSyncMessage("Saved to the shared sheet.");
+      } catch {
+        retryDelay = 5000;
+        syncStatus.textContent = "Retrying";
+        setSyncMessage("Shared save failed. Your change is kept locally and will be retried.");
+      } finally {
         isSavingRemote = false;
-        form.remove();
-        frame.remove();
-        loadRemoteState().then(() => {
-          if (pendingOperations.length) scheduleRemoteSave();
-        });
-      };
-
-      frame.name = frameName;
-      frame.hidden = true;
-      frame.src = `about:blank#${frameName}`;
-      form.hidden = true;
-      form.method = "POST";
-      form.action = syncEndpoint;
-      form.target = frameName;
-      payload.name = "payload";
-      payload.value = JSON.stringify({ operations: sentOperations });
-
-      form.appendChild(payload);
-      isSavingRemote = true;
-      frame.addEventListener(
-        "load",
-        () => {
-          frame.addEventListener("load", finishSave, { once: true });
-          form.submit();
-        },
-        { once: true }
-      );
-      document.body.append(frame, form);
-      syncStatus.textContent = "Shared";
-      setSyncMessage("Saving changes to the shared sheet...");
-
-      window.setTimeout(finishSave, 4000);
+        if (pendingOperations.length) scheduleRemoteSave(retryDelay);
+      }
     };
 
-    const scheduleRemoteSave = () => {
+    const scheduleRemoteSave = (delay = 450) => {
       window.clearTimeout(saveTimer);
-      saveTimer = window.setTimeout(saveRemoteState, 450);
+      saveTimer = window.setTimeout(saveRemoteState, delay);
     };
 
     const clearGpu = (id) => {
@@ -662,7 +682,10 @@
     });
 
     document.getElementById("gpu-reset").addEventListener("click", () => {
-      if (!window.confirm("Clear all GPU assignments on this browser?")) return;
+      const confirmation = window.prompt(
+        'This clears every shared GPU assignment for everyone. Type "CLEAR ALL" to continue.'
+      );
+      if (confirmation !== "CLEAR ALL") return;
       state = emptyState();
       gpuIds.forEach((id) => queueOperation({ type: "clear", id }));
       saveState();
@@ -705,6 +728,8 @@
       loadRemoteState();
     });
 
+    loadPendingOperations();
+    pendingOperations.forEach(applyOperationLocally);
     clearExpiredAssignments({ persist: false });
     saveLocalState();
     render();
