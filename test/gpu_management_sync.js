@@ -2,6 +2,12 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const vm = require("node:vm");
 
+const pageSource = fs.readFileSync("_pages/gpu-management.md", "utf8");
+assert.match(pageSource, /irsl-gpu-management-pending-v1/);
+assert.match(pageSource, /action: "apply"/);
+assert.match(pageSource, /confirmation !== "CLEAR ALL"/);
+assert.doesNotMatch(pageSource, /form\.submit\(\)/);
+
 const rows = [];
 
 const sheet = {
@@ -45,8 +51,16 @@ const context = {
     createTextOutput: () => ({ setMimeType() {} }),
   },
   LockService: {
-    getScriptLock: () => ({ waitLock() {}, releaseLock() {} }),
+    getScriptLock: () => ({
+      waitLock() {
+        context.lockDepth += 1;
+      },
+      releaseLock() {
+        context.lockDepth -= 1;
+      },
+    }),
   },
+  lockDepth: 0,
 };
 
 vm.runInNewContext(fs.readFileSync("docs/gpu-management-apps-script.js", "utf8"), context);
@@ -57,7 +71,8 @@ context.ContentService.createTextOutput = (text) => {
   return { setMimeType() {} };
 };
 context.doGet({ parameter: { callback: "testCallback" } });
-assert.match(getResponse, /"protocolVersion":2/);
+assert.match(getResponse, /"protocolVersion":3/);
+assert.equal(context.lockDepth, 0);
 
 const emptyState = Object.fromEntries(
   [
@@ -78,6 +93,19 @@ emptyState["NEW-0"] = {
   endDate: "2026-07-20",
 };
 context.writeState_(emptyState);
+
+context.doGet({
+  parameter: {
+    action: "apply",
+    callback: "saveCallback",
+    payload: JSON.stringify([
+      { type: "patch", id: "OLD-0", fields: { user: "Saved User" } },
+    ]),
+  },
+});
+assert.match(getResponse, /^saveCallback\(/);
+assert.match(getResponse, /"protocolVersion":3/);
+assert.match(getResponse, /"Saved User"/);
 
 context.applyOperations_([
   {

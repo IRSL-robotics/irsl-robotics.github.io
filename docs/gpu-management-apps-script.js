@@ -11,16 +11,38 @@ const HEADERS = ["GPU ID", "Server", "GPU", "User", "Start Date", "Expected End"
 function doGet(event) {
   const requestedCallback = (event && event.parameter.callback) || "callback";
   const callback = /^[\w.$]+$/.test(requestedCallback) ? requestedCallback : "callback";
-  const payload = JSON.stringify({
-    ok: true,
-    protocolVersion: 2,
-    state: readState_(),
-    updatedAt: new Date().toISOString(),
-  });
+  const parameters = (event && event.parameter) || {};
+  const lock = LockService.getScriptLock();
+  let response;
+
+  lock.waitLock(10000);
+  try {
+    if (parameters.action === "apply") {
+      const operations = JSON.parse(parameters.payload || "[]");
+      if (!Array.isArray(operations)) throw new Error("Invalid operations payload");
+      applyOperations_(operations);
+    }
+    response = responsePayload_();
+  } catch (error) {
+    response = { ok: false, protocolVersion: 3, error: String(error) };
+  } finally {
+    lock.releaseLock();
+  }
+
+  const payload = JSON.stringify(response);
 
   return ContentService.createTextOutput(`${callback}(${payload});`).setMimeType(
     ContentService.MimeType.JAVASCRIPT
   );
+}
+
+function responsePayload_() {
+  return {
+    ok: true,
+    protocolVersion: 3,
+    state: readState_(),
+    updatedAt: new Date().toISOString(),
+  };
 }
 
 function doPost(event) {
