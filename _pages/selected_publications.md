@@ -2,7 +2,7 @@
 layout: page
 permalink: /selected_publications/
 title: Selected Publications
-description: Selected robotics publications from KAIST IRSL on robot control, physical AI, contact estimation, manipulation, perception, and aerial robotics.
+description:
 nav: false
 ---
 

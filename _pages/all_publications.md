@@ -2,7 +2,7 @@
 layout: page
 permalink: /all_publications/
 title: All Publications
-description: Complete publication list of the Intelligent Robotic Systems Lab (IRSL) at KAIST, led by Professor Min Jun Kim.
+description:
 nav: False
 ---
 
