@@ -110,7 +110,6 @@ This project contributes:
 - Wonjun Han
 - Taeho Yun
 
-
 <!-- Add additional contributors here. -->
 
 ## Media
