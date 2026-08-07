@@ -4,7 +4,7 @@ title: Grasping
 description: a project with a background image and giscus comments
 img: assets/img/3.jpg
 importance: 0
-category: Physical AI
+category: Intelligence
 giscus_comments: true
 ---
 

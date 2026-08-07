@@ -5,7 +5,7 @@ permalink: /projects/
 description: 
 nav: true
 nav_order: 3
-display_categories: [Robot Control, Physical AI, Aerial Manipulation]
+display_categories: [Control, Intelligence, Hardware]
 horizontal: false
 ---
 

@@ -4,7 +4,7 @@ title: SAM
 description: with background image
 img: assets/img/12.jpg
 importance: 1
-category: Aerial Manipulation
+category: Hardware
 related_publications: true
 ---
 

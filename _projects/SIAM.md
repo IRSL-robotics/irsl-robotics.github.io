@@ -2,9 +2,9 @@
 layout: page
 title: SIAM
 description: "A propeller-free cable-suspended dual-arm manipulation platform for high-altitude physical work."
-img: assets/img/projects/siam/siam_teaser.jpg
+img: assets/img/projects/siam/SIAM.png
 importance: 1
-category: Aerial Manipulation
+category: Hardware
 related_publications: true
 ---
 

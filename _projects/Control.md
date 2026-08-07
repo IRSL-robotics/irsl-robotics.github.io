@@ -4,7 +4,7 @@ title: Control
 description: with background image
 img: assets/img/12.jpg
 importance: 4
-category: Robot Control
+category: Control
 related_publications: true
 ---
 
