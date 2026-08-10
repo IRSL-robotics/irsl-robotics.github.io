@@ -16,7 +16,7 @@ Google Sheet and a small Google Apps Script web app.
 9. Paste that URL into `_data/gpu_management.yml`:
 
 ```yaml
-sync_endpoint: "https://script.google.com/macros/s/AKfycbzkX0uxm4t6Ppev19M3f6bAeEhHW3yi5NRNqWIESQ4qCNOb5f8BdT0l0dFeRD_x7Dd-ZQ/exec"
+sync_endpoint: "https://script.google.com/macros/s/AKfycbzzlmuRip5GyytWWdjJmv_qouMh2pq1XBqP8x2LD8wAN0UzMFHAbm-0f8HicbbYC2xe/exec"
 ```
 
 After the endpoint is configured and the site is deployed, everyone using the

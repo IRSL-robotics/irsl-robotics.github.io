@@ -250,8 +250,8 @@ nav: false
 
   <div class="gpu-toolbar" aria-label="GPU management tools">
     <div class="gpu-summary">
-      <span class="gpu-pill"><span id="gpu-used-count">0</span>&nbsp;/&nbsp;14 in use</span>
-      <span class="gpu-pill"><span id="gpu-free-count">14</span>&nbsp;available</span>
+      <span class="gpu-pill"><span id="gpu-used-count">0</span>&nbsp;/&nbsp;17 in use</span>
+      <span class="gpu-pill"><span id="gpu-free-count">17</span>&nbsp;available</span>
       <span class="gpu-pill" id="gpu-sync-status">Local only</span>
     </div>
     <div class="gpu-actions">
@@ -292,7 +292,7 @@ nav: false
 
     const servers = [
       { name: "NRMK Server", count: 8, prefix: "NRMK" },
-      { name: "New Server", count: 4, prefix: "NEW" },
+      { name: "New Server", count: 7, prefix: "NEW" },
       { name: "Old Server", count: 2, prefix: "OLD" },
     ];
 

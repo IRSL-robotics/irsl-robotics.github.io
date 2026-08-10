@@ -2,7 +2,7 @@ const SHEET_NAME = "GPU Management";
 
 const SERVERS = [
   { name: "NRMK Server", count: 8, prefix: "NRMK" },
-  { name: "New Server", count: 4, prefix: "NEW" },
+  { name: "New Server", count: 7, prefix: "NEW" },
   { name: "Old Server", count: 2, prefix: "OLD" },
 ];
 
