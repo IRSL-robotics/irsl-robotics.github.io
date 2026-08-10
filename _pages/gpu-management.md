@@ -113,9 +113,9 @@ nav: false
   }
 
   .gpu-server-old {
-    --server-accent: #b36b2c;
-    --server-soft: #fff5e8;
-    --server-text: #8a501d;
+    --server-accent: #d9466f;
+    --server-soft: #fff0f5;
+    --server-text: #a61e4d;
   }
 
   .gpu-grid {
