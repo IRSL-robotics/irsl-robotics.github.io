@@ -11,6 +11,14 @@ research_item_type: publication
 related_publications: false
 ---
 
+{% include publication-detail-styles.liquid %}
+
+<div class="publication-detail" markdown="1">
+
+<a class="publication-detail__back" href="{{ '/research/robot-control/' | relative_url }}">&larr; Back to Control &amp; Safety</a>
+
+<p class="publication-detail__lead">{{ page.description }}</p>
+
 {% include figure.liquid loading="eager" path=page.img title=page.title class="img-fluid rounded z-depth-1" %}
 
 ## Overview
@@ -27,4 +35,6 @@ The approach works with standard optimal control solvers and is suitable for rea
 
 J. Kim and M. J. Kim, “Disturbance-Aware Model Predictive Control of Underactuated Robotics Systems,” *IEEE/RSJ IROS*, 2024. [IEEE](https://ieeexplore.ieee.org/abstract/document/10801851)
 
-[Original project page](https://sites.google.com/view/kaist-roboticslab/research/aerial-manipulation/da_mpc)
+<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/aerial-manipulation/da_mpc">Original Project Page &nearr;</a></div>
+
+</div>

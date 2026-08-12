@@ -11,6 +11,14 @@ research_item_type: publication
 related_publications: false
 ---
 
+{% include publication-detail-styles.liquid %}
+
+<div class="publication-detail" markdown="1">
+
+<a class="publication-detail__back" href="{{ '/research/robot-control/' | relative_url }}">&larr; Back to Control &amp; Safety</a>
+
+<p class="publication-detail__lead">{{ page.description }}</p>
+
 {% include figure.liquid loading="eager" path=page.img title=page.title class="img-fluid rounded z-depth-1" %}
 
 ## Overview
@@ -29,4 +37,6 @@ The representation reconstructs the physical rotation through the exponential ma
 
 J. Jeong, H. Mishra, C. Ott, and M. J. Kim, “A Memory-based SO(3) Parameterization: Theory and Application to 6D Impedance Control with Radially Unbounded Potential Function,” *IEEE ICRA*, 2022. [IEEE](https://ieeexplore.ieee.org/document/9812268)
 
-[Original project page](https://sites.google.com/view/kaist-roboticslab/research/aerial-manipulation/eec)
+<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/aerial-manipulation/eec">Original Project Page &nearr;</a></div>
+
+</div>

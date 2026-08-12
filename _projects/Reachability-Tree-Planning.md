@@ -11,6 +11,14 @@ research_item_type: publication
 related_publications: false
 ---
 
+{% include publication-detail-styles.liquid %}
+
+<div class="publication-detail" markdown="1">
+
+<a class="publication-detail__back" href="{{ '/research/physical-ai/' | relative_url }}">&larr; Back to Physical AI</a>
+
+<p class="publication-detail__lead">{{ page.description }}</p>
+
 {% include figure.liquid loading="eager" path=page.img title=page.title class="img-fluid rounded z-depth-1" %}
 
 ## Overview
@@ -27,4 +35,6 @@ Results from low level motion planning are returned to the high level planner. T
 
 K. Kim, D. Park, and M. J. Kim, “A Reachability Tree-Based Algorithm for Robot Task and Motion Planning,” *IEEE ICRA*, 2023. [arXiv](https://arxiv.org/abs/2303.03825) · [IEEE](https://ieeexplore.ieee.org/document/10160294)
 
-[Original project page](https://sites.google.com/view/kaist-roboticslab/research/mobile-manipulation/mobile_research-topic-1)
+<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/mobile-manipulation/mobile_research-topic-1">Original Project Page &nearr;</a></div>
+
+</div>

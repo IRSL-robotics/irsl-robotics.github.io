@@ -11,6 +11,14 @@ research_item_type: publication
 related_publications: false
 ---
 
+{% include publication-detail-styles.liquid %}
+
+<div class="publication-detail" markdown="1">
+
+<a class="publication-detail__back" href="{{ '/research/hardware-design/' | relative_url }}">&larr; Back to Robotic Systems &amp; Hardware</a>
+
+<p class="publication-detail__lead">{{ page.description }}</p>
+
 {% include figure.liquid loading="eager" path=page.img title=page.title class="img-fluid rounded z-depth-1" %}
 
 ## Overview
@@ -27,4 +35,6 @@ The optimized non-isotropic configuration preserves the required wrench capabili
 
 S. Park and M. J. Kim, “Design of a Fully Actuated Drone with Non-Isotropic Wrench Shape,” *IEEE/RSJ IROS*, 2024. [IEEE](https://ieeexplore.ieee.org/abstract/document/10801419)
 
-[Original project page](https://sites.google.com/view/kaist-roboticslab/research/aerial-manipulation/aerial_research-topic-5)
+<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/aerial-manipulation/aerial_research-topic-5">Original Project Page &nearr;</a></div>
+
+</div>
