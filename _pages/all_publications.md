@@ -8,6 +8,20 @@ nav: False
 
 <!-- <p><strong><sup>*</sup></strong> Co-first authors; <strong><sup>†</sup></strong> Co-corresponding authors.</p> -->
 
+<p class="all-publications__intro">
+  Explore our complete publication record, organized by category and year.
+</p>
+
+<nav class="all-publications__nav" aria-label="Publication categories">
+  <a href="#international-publications">International</a>
+  <a href="#domestic-publications">Domestic</a>
+  <a href="#patents">Patents</a>
+</nav>
+
+<div class="all-publications" markdown="1">
+
+<h2 id="international-publications" class="all-publications__section"><span>01</span> International Publications</h2>
+
 #### 2026
 - S. W. Han, and M. J. Kim, "Mixture of Flow Matching and Particle Filter for Proprioception-based Online Contact Estimation", <em>IEEE T-RO, accepted</em>
 - S. Kim<sup>\*</sup>, K. Kim<sup>\*</sup>, D. Ko, Y. J. Heo, and M. J. Kim, "Spatially Conditioned Diffusion Policy: Learning Precise and Robust Manipulation with a Single RGB Camera", <em>arXiv preprint</em>
@@ -93,7 +107,7 @@ nav: False
 - J. Lee, S. Kim, Y. S. Kim, W. K. Chung, and M. J. Kim, "Automated surgical planning and evaluation algorithm for spinal fusion surgery with three-dimensional pedicle mode", *IEEE/RSJ IROS 2011*
 - M. J. Kim, and W. K. Chung, "Nonlinear Disturbance observer design for Euler-Lagrange systems: An initial study", *URAI 2011*
 
-### Domestic
+<h2 id="domestic-publications" class="all-publications__section"><span>02</span> Domestic Publications</h2>
 
 #### 2024
 - S. W. Han, M. Iskandar, J. Lee, and M. J. Kim, "Optimization-based Multi-Contact Force Control", *The 19th KRoC*
@@ -118,7 +132,7 @@ nav: False
 #### 2010
 - M. J. Kim, K. Lee, and W. K. Chung, "Enhancement of VFH algorithm", *The 5th KRoC*
 
-### Patents
+<h2 id="patents" class="all-publications__section"><span>03</span> Patents</h2>
 
 #### 2024
 - 김민준, 한지완 "최소한의 센서 사용으로 안전을 위한 복수의 제약조건 설정이 가능한 로봇 정밀 제어 프레임워크", *국내특허, 출원번호: 10-2024-0196135/1, 출원일자: 2024.12.24*
@@ -127,3 +141,140 @@ nav: False
 #### 2023
 - 김민준, 이효준, 김성민, "전문가 개입 없이 안전한 매니퓰레이터의 강인제어 매개변수 자동 튜닝 방법", *국내특허, 출원번호: 10-2023-0181280, 출원일자: 2023.12.13*
 - 김민준, 한지완, 김지원, "운동량 기반으로 추정한 외력을 이용하여 주변 환경과 상호 작용이 가능한 로봇 제어 시스템 및 방법", *국내특허, 출원번호: 10-2023-0134387, 출원일자: 2023.10.10*
+
+</div>
+
+<style>
+  .all-publications__intro {
+    max-width: 42rem;
+    margin: -0.25rem 0 1.15rem;
+    color: var(--global-text-color-light, #667085);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .all-publications__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .all-publications__nav a {
+    padding: 0.42rem 0.85rem;
+    border: 1px solid color-mix(in srgb, var(--global-theme-color, #2563eb) 22%, var(--global-divider-color, #d0d5dd));
+    border-radius: 999px;
+    color: var(--global-text-color, #344054);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+      border-color 160ms ease,
+      color 160ms ease,
+      background-color 160ms ease;
+  }
+
+  .all-publications__nav a:hover,
+  .all-publications__nav a:focus-visible {
+    border-color: color-mix(in srgb, var(--global-theme-color, #2563eb) 52%, transparent);
+    background-color: color-mix(in srgb, var(--global-theme-color, #2563eb) 6%, transparent);
+    color: var(--global-theme-color, #2563eb);
+  }
+
+  .all-publications .all-publications__section {
+    display: flex;
+    align-items: baseline;
+    gap: 0.65rem;
+    margin: 4.5rem 0 1.75rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--global-theme-color, #2563eb) 20%, transparent);
+    color: var(--global-text-color, #101828);
+    font-size: 1.45rem;
+    font-weight: 680;
+    letter-spacing: -0.025em;
+  }
+
+  .all-publications .all-publications__section:first-child {
+    margin-top: 0;
+  }
+
+  .all-publications__section span {
+    color: color-mix(in srgb, var(--global-theme-color, #2563eb) 68%, transparent);
+    font-size: 0.72rem;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+  }
+
+  .all-publications h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 2.5rem 0 0.45rem;
+    color: color-mix(in srgb, var(--global-theme-color, #2563eb) 70%, var(--global-text-color, #111827));
+    font-size: 1.05rem;
+    font-weight: 680;
+    letter-spacing: -0.01em;
+  }
+
+  .all-publications h4::after {
+    flex: 1;
+    height: 1px;
+    background: color-mix(in srgb, var(--global-divider-color, #d0d5dd) 72%, transparent);
+    content: "";
+  }
+
+  .all-publications ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .all-publications li {
+    position: relative;
+    margin: 0;
+    padding: 0.82rem 0.35rem 0.82rem 1.05rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--global-divider-color, #d0d5dd) 58%, transparent);
+    color: var(--global-text-color, #344054);
+    font-size: 0.93rem;
+    line-height: 1.65;
+  }
+
+  .all-publications li::before {
+    position: absolute;
+    top: 1.42rem;
+    left: 0.15rem;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--global-theme-color, #2563eb) 58%, transparent);
+    content: "";
+  }
+
+  .all-publications li em {
+    color: color-mix(in srgb, var(--global-theme-color, #2563eb) 68%, var(--global-text-color, #344054));
+    font-style: normal;
+    font-weight: 620;
+  }
+
+  @media (max-width: 576px) {
+    .all-publications__nav {
+      gap: 0.4rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .all-publications__nav a {
+      padding: 0.38rem 0.7rem;
+      font-size: 0.78rem;
+    }
+
+    .all-publications .all-publications__section {
+      margin-top: 3.5rem;
+      font-size: 1.28rem;
+    }
+
+    .all-publications li {
+      padding-right: 0;
+      font-size: 0.9rem;
+    }
+  }
+</style>
