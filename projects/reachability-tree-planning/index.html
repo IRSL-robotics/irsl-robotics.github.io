@@ -21,7 +21,136 @@
   }
 </style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%A4%96&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://irsl-robotics.github.io/projects/reachability-tree-planning/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
     initTheme();
-  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Intelligent Robotic Systems Lab (IRSL) </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">Home </a> </li> <li class="nav-item "> <a class="nav-link" href="/profiles/">Members </a> </li> <li class="nav-item "> <a class="nav-link" href="/research/">Research </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Publications </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/selected_publications/">Selected Publications</a> <div class="dropdown-divider"></div> <a class="dropdown-item " href="/all_publications/">All Publications</a> </div> </li> <li class="nav-item "> <a class="nav-link" href="/lecture/">Lecture </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">Manipulation Planning with Tight Geometric Constraints</h1> <p class="post-description">Hierarchical task and motion planning guided by a reachability tree.</p> </header> <article> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/publication_preview/TAMP-480.webp 480w,/assets/img/publication_preview/TAMP-800.webp 800w,/assets/img/publication_preview/TAMP-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/publication_preview/TAMP.gif" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="Manipulation Planning with Tight Geometric Constraints" loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> </figure> <h2 id="overview">Overview</h2> <p>Manipulation tasks with tight geometric constraints are difficult for sampling based methods because many sampled actions are infeasible. This project introduces a hierarchical planning algorithm built around a reachability tree to focus computation on promising task and motion choices.</p> <p>Results from low level motion planning are returned to the high level planner. This experience improves later decisions, reduces unproductive sampling, and avoids unnecessary growth of the symbolic planning problem.</p> <h2 id="video">Video</h2> <figure> <iframe src="https://www.youtube.com/embed/Ro7cHC7oUzE" class="img-fluid rounded z-depth-1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" width="auto" height="auto"></iframe> </figure> <h2 id="publication">Publication</h2> <p>K. Kim, D. Park, and M. J. Kim, “A Reachability Tree-Based Algorithm for Robot Task and Motion Planning,” <em>IEEE ICRA</em>, 2023. <a href="https://arxiv.org/abs/2303.03825" rel="external nofollow noopener" target="_blank">arXiv</a> · <a href="https://ieeexplore.ieee.org/document/10160294" rel="external nofollow noopener" target="_blank">IEEE</a></p> <p><a href="https://sites.google.com/view/kaist-roboticslab/research/mobile-manipulation/mobile_research-topic-1" rel="external nofollow noopener" target="_blank">Original project page</a></p> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Intelligent Robotic Systems Lab. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. </div> </footer> <script>
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Intelligent Robotic Systems Lab (IRSL) </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">Home </a> </li> <li class="nav-item "> <a class="nav-link" href="/profiles/">Members </a> </li> <li class="nav-item "> <a class="nav-link" href="/research/">Research </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Publications </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/selected_publications/">Selected Publications</a> <div class="dropdown-divider"></div> <a class="dropdown-item " href="/all_publications/">All Publications</a> </div> </li> <li class="nav-item "> <a class="nav-link" href="/lecture/">Lecture </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">Manipulation Planning with Tight Geometric Constraints</h1> <p class="post-description">Hierarchical task and motion planning guided by a reachability tree.</p> </header> <article> <style>
+  .publication-detail {
+    --publication-accent: var(--global-theme-color, #2563eb);
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .publication-detail__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    color: var(--global-text-color-light, #667085);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .publication-detail__back:hover,
+  .publication-detail__back:focus-visible {
+    color: var(--publication-accent);
+    text-decoration: none;
+  }
+
+  .publication-detail__lead {
+    margin: 0 0 1.8rem;
+    padding: 0 0 0 0.9rem;
+    border-left: 2px solid color-mix(in srgb, var(--publication-accent) 52%, transparent);
+    color: var(--global-text-color-light, #667085);
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+
+  .publication-detail figure,
+  .publication-detail .video-container {
+    margin: 1.25rem 0 2.25rem;
+  }
+
+  .publication-detail figure img,
+  .publication-detail > img {
+    display: block;
+    width: 100%;
+    max-height: 460px;
+    border-radius: 14px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .publication-detail iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 14px;
+  }
+
+  .publication-detail h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 2.8rem 0 1rem;
+    color: var(--global-text-color, #111827);
+    font-size: 1.25rem;
+    font-weight: 680;
+    letter-spacing: -0.02em;
+  }
+
+  .publication-detail h2::after {
+    flex: 1;
+    height: 1px;
+    background: color-mix(in srgb, var(--publication-accent) 18%, transparent);
+    content: "";
+  }
+
+  .publication-detail p {
+    color: var(--global-text-color, #344054);
+    line-height: 1.75;
+  }
+
+  .publication-detail h2[id="publication"] + p {
+    padding: 1rem 1.1rem;
+    border: 1px solid color-mix(in srgb, var(--publication-accent) 15%, var(--global-divider-color, #d0d5dd));
+    border-radius: 12px;
+    background: var(--global-card-bg-color, #fff);
+  }
+
+  .publication-detail h2[id="publication"] + p a,
+  .publication-detail__source {
+    display: inline-flex;
+    align-items: center;
+    margin: 0.25rem 0.12rem 0;
+    padding: 0.28rem 0.62rem;
+    border: 1px solid color-mix(in srgb, var(--publication-accent) 30%, transparent);
+    border-radius: 999px;
+    color: var(--publication-accent);
+    font-size: 0.76rem;
+    font-weight: 650;
+    line-height: 1.25;
+    text-decoration: none;
+  }
+
+  .publication-detail h2[id="publication"] + p a:hover,
+  .publication-detail h2[id="publication"] + p a:focus-visible,
+  .publication-detail__source:hover,
+  .publication-detail__source:focus-visible {
+    background: color-mix(in srgb, var(--publication-accent) 7%, transparent);
+    text-decoration: none;
+  }
+
+  .publication-detail__footer {
+    margin-top: 2.4rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.12));
+  }
+
+  @media (max-width: 576px) {
+    .publication-detail__lead {
+      font-size: 0.94rem;
+    }
+
+    .publication-detail figure img,
+    .publication-detail > img {
+      max-height: 320px;
+    }
+
+    .publication-detail h2 {
+      margin-top: 2.3rem;
+      font-size: 1.15rem;
+    }
+  }
+</style> <div class="publication-detail"> <p><a class="publication-detail__back" href="/research/physical-ai/">← Back to Physical AI</a></p> <p class="publication-detail__lead">Hierarchical task and motion planning guided by a reachability tree.</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/publication_preview/TAMP-480.webp 480w,/assets/img/publication_preview/TAMP-800.webp 800w,/assets/img/publication_preview/TAMP-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/publication_preview/TAMP.gif" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="Manipulation Planning with Tight Geometric Constraints" loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> </figure> <h2 id="overview">Overview</h2> <p>Manipulation tasks with tight geometric constraints are difficult for sampling based methods because many sampled actions are infeasible. This project introduces a hierarchical planning algorithm built around a reachability tree to focus computation on promising task and motion choices.</p> <p>Results from low level motion planning are returned to the high level planner. This experience improves later decisions, reduces unproductive sampling, and avoids unnecessary growth of the symbolic planning problem.</p> <h2 id="video">Video</h2> <figure> <iframe src="https://www.youtube.com/embed/Ro7cHC7oUzE" class="img-fluid rounded z-depth-1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" width="auto" height="auto"></iframe> </figure> <h2 id="publication">Publication</h2> <p>K. Kim, D. Park, and M. J. Kim, “A Reachability Tree-Based Algorithm for Robot Task and Motion Planning,” <em>IEEE ICRA</em>, 2023. <a href="https://arxiv.org/abs/2303.03825" rel="external nofollow noopener" target="_blank">arXiv</a> · <a href="https://ieeexplore.ieee.org/document/10160294" rel="external nofollow noopener" target="_blank">IEEE</a></p> <div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/mobile-manipulation/mobile_research-topic-1" rel="external nofollow noopener" target="_blank">Original Project Page &amp;nearr;</a></div> </div> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Intelligent Robotic Systems Lab. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. </div> </footer> <script>
   window.alFolio = {
     compatBootstrap: false
   };
