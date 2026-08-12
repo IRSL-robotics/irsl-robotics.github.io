@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Collaborative Aerial Manipulation
+publication_title: "Passivity-based Decentralized Control for Collaborative Grasping of Under-Actuated Aerial Manipulators"
 permalink: /projects/collaborative-aerial-manipulation/
 description: Decentralized control for stable collaborative grasping by multiple aerial manipulators.
 img: assets/img/publication_preview/passivity.gif
@@ -8,6 +9,8 @@ importance: 5
 category: Control
 research_area: robot-control
 research_item_type: publication
+paper_url: https://ieeexplore.ieee.org/document/10160334
+video_url: https://youtu.be/SYJX7bEBX_o
 related_publications: false
 ---
 
@@ -35,6 +38,6 @@ An inertially decoupled model and passivity based decentralized controller allow
 
 J. Jeong and M. J. Kim, “Passivity-based Decentralized Control for Collaborative Grasping of Under-Actuated Aerial Manipulators,” *IEEE ICRA*, 2023. [arXiv](https://arxiv.org/abs/2303.10567) · [IEEE](https://ieeexplore.ieee.org/document/10160334)
 
-<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/aerial-manipulation/aerial_research-topic1">Original Project Page &nearr;</a></div>
+<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/aerial-manipulation/aerial_research-topic1">Original Project Page ↗</a></div>
 
 </div>

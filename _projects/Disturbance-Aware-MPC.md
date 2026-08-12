@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Disturbance-Aware Model Predictive Control
+publication_title: "Disturbance-Aware Model Predictive Control of Underactuated Robotics Systems"
 permalink: /projects/disturbance-aware-mpc/
 description: Real time robust MPC for underactuated robots subject to unmatched disturbances.
 img: assets/img/publication_preview/da-mpc.gif
@@ -8,6 +9,8 @@ importance: 1
 category: Control
 research_area: robot-control
 research_item_type: publication
+paper_url: https://ieeexplore.ieee.org/abstract/document/10801851
+video_url: https://youtu.be/I3UTf2dZVbE
 related_publications: false
 ---
 
@@ -35,6 +38,6 @@ The approach works with standard optimal control solvers and is suitable for rea
 
 J. Kim and M. J. Kim, “Disturbance-Aware Model Predictive Control of Underactuated Robotics Systems,” *IEEE/RSJ IROS*, 2024. [IEEE](https://ieeexplore.ieee.org/abstract/document/10801851)
 
-<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/aerial-manipulation/da_mpc">Original Project Page &nearr;</a></div>
+<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/aerial-manipulation/da_mpc">Original Project Page ↗</a></div>
 
 </div>

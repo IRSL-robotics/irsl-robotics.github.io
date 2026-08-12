@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Manipulation Planning with Tight Geometric Constraints
+publication_title: "A Reachability Tree-Based Algorithm for Robot Task and Motion Planning"
 permalink: /projects/reachability-tree-planning/
 description: Hierarchical task and motion planning guided by a reachability tree.
 img: assets/img/publication_preview/TAMP.gif
@@ -8,6 +9,8 @@ importance: 2
 category: Intelligence
 research_area: physical-ai
 research_item_type: publication
+paper_url: https://ieeexplore.ieee.org/document/10160294
+video_url: https://youtu.be/Ro7cHC7oUzE
 related_publications: false
 ---
 
@@ -35,6 +38,6 @@ Results from low level motion planning are returned to the high level planner. T
 
 K. Kim, D. Park, and M. J. Kim, “A Reachability Tree-Based Algorithm for Robot Task and Motion Planning,” *IEEE ICRA*, 2023. [arXiv](https://arxiv.org/abs/2303.03825) · [IEEE](https://ieeexplore.ieee.org/document/10160294)
 
-<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/mobile-manipulation/mobile_research-topic-1">Original Project Page &nearr;</a></div>
+<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/mobile-manipulation/mobile_research-topic-1">Original Project Page ↗</a></div>
 
 </div>

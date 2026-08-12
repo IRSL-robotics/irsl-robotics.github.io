@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Multi-Contact Localization and Force Identification
+publication_title: "Proprioceptive Sensor-Based Simultaneous Multi-Contact Point Localization and Force Identification for Robotic Arms"
 permalink: /projects/multi-contact-localization/
 description: Proprioceptive estimation of multiple contact locations and forces on robot arms.
 img: assets/img/publication_preview/proprioceptive.gif
@@ -8,6 +9,8 @@ importance: 3
 category: Intelligence
 research_area: physical-ai
 research_item_type: publication
+paper_url: https://ieeexplore.ieee.org/document/10161173
+video_url: https://youtu.be/PgLwQNeAgYs
 related_publications: false
 ---
 
@@ -33,6 +36,6 @@ Robot mesh preprocessing supports fast computation, while a modified particle fi
 
 S. W. Han and M. J. Kim, “Proprioceptive Sensor-Based Simultaneous Multi-Contact Point Localization and Force Identification for Robotic Arms,” *IEEE ICRA*, 2023. [arXiv](https://arxiv.org/abs/2303.03903) · [IEEE](https://ieeexplore.ieee.org/document/10161173)
 
-<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/mobile-manipulation/mobile_research-topic-2">Original Project Page &nearr;</a></div>
+<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/mobile-manipulation/mobile_research-topic-2">Original Project Page ↗</a></div>
 
 </div>

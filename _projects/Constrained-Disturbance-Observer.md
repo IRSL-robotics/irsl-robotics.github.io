@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Disturbance Observer With Constraints
+publication_title: "Disturbance Observer With Constraints"
 permalink: /projects/constrained-disturbance-observer/
 description: A quadratic programming framework that adds user defined constraints to disturbance observers.
 img: assets/img/publication_preview/cdob.png
@@ -8,6 +9,7 @@ importance: 2
 category: Control
 research_area: robot-control
 research_item_type: publication
+paper_url: https://ieeexplore.ieee.org/abstract/document/10571557
 related_publications: false
 ---
 
@@ -31,6 +33,6 @@ When no constraint is active, CDOB behaves like a conventional disturbance obser
 
 T. H. Yun and M. J. Kim, “Disturbance Observer With Constraints,” *IEEE Control Systems Letters*, 2024. [IEEE](https://ieeexplore.ieee.org/abstract/document/10571557)
 
-<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/mobile-manipulation/mobile_research-topic-6">Original Project Page &nearr;</a></div>
+<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/mobile-manipulation/mobile_research-topic-6">Original Project Page ↗</a></div>
 
 </div>

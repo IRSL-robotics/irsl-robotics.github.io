@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Extreme High-Gain Friction Observer with L1 Adaptation
+publication_title: "Extreme High-Gain Friction Observer of Flexible Joint Robots With L1 Adaptive Framework"
 permalink: /projects/l1afo/
 description: High gain friction observation for accurate control and natural interaction of flexible joint robots.
 img: assets/img/publication_preview/l1afo.png
@@ -8,6 +9,8 @@ importance: 0
 category: Control
 research_area: robot-control
 research_item_type: publication
+paper_url: https://ieeexplore.ieee.org/document/11488895/
+video_url: https://youtu.be/hDSziWYDr94
 related_publications: false
 ---
 
@@ -37,6 +40,6 @@ Performance analysis shows that increasing the observer gain reduces steady stat
 
 Y. B. Lee, T. H. Yun, and M. J. Kim, “Extreme High-Gain Friction Observer of Flexible Joint Robots With L1 Adaptive Framework,” *IEEE Transactions on Robotics*, 2026. [IEEE](https://ieeexplore.ieee.org/document/11488895/) · [DOI](https://doi.org/10.1109/TRO.2026.3686177)
 
-<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/mobile-manipulation/l1afo">Original Project Page &nearr;</a></div>
+<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/mobile-manipulation/l1afo">Original Project Page ↗</a></div>
 
 </div>
