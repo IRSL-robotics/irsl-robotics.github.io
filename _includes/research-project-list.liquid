@@ -1,0 +1,309 @@
+{% assign research_projects = site.projects | where: "research_area", page.research_area | sort: "importance" %}
+{% assign project_items = research_projects | where: "research_item_type", "project" %}
+{% assign publication_items = research_projects | where: "research_item_type", "publication" %}
+
+<div class="research-projects">
+  <a class="research-projects__back" href="{{ '/research/' | relative_url }}"><span aria-hidden="true">&larr;</span> All research areas</a>
+
+  <header class="research-projects__header">
+    <p class="research-projects__kicker">{{ page.research_kicker }}</p>
+    <p>{{ page.research_intro }}</p>
+  </header>
+
+  <section class="research-projects__section" aria-labelledby="research-project-heading">
+    <div class="research-projects__section-heading">
+      <p class="research-projects__section-number" aria-hidden="true">01</p>
+      <div>
+        <h2 id="research-project-heading">Projects</h2>
+        <p>Ongoing research platforms and integrated systems.</p>
+      </div>
+    </div>
+
+    <div class="research-projects__grid">
+      {% for project in project_items %}
+        <article class="research-project-tile research-project-tile--project">
+          {% if project.img %}
+            <a class="research-project-tile__image-wrap" href="{{ project.url | relative_url }}" tabindex="-1" aria-hidden="true">
+              <img class="research-project-tile__image" src="{{ project.img | relative_url }}" alt="">
+            </a>
+          {% endif %}
+          <div class="research-project-tile__body">
+            <p class="research-project-tile__label">Project</p>
+            <h3>{{ project.title }}</h3>
+            {% if project.description %}<p>{{ project.description }}</p>{% endif %}
+            <a class="research-project-tile__action" href="{{ project.url | relative_url }}" aria-label="View the {{ project.title }} project">
+              View Project <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </article>
+      {% endfor %}
+
+      <article class="research-project-tile research-project-tile--upcoming">
+        <div class="research-project-tile__upcoming-mark" aria-hidden="true">+</div>
+        <div class="research-project-tile__body">
+          <p class="research-project-tile__label">In Progress</p>
+          <h3>More Projects</h3>
+          <p>Additional projects in this research area will be added here.</p>
+          <span class="research-project-tile__status">Coming Soon</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  {% if publication_items.size > 0 %}
+    <section class="research-projects__section research-projects__section--publications" aria-labelledby="research-publication-heading">
+      <div class="research-projects__section-heading">
+        <p class="research-projects__section-number" aria-hidden="true">02</p>
+        <div>
+          <h2 id="research-publication-heading">Publications</h2>
+          <p>Selected research presented through papers, experiments, and demonstrations.</p>
+        </div>
+      </div>
+
+      <div class="research-projects__grid">
+        {% for project in publication_items %}
+          <article class="research-project-tile research-project-tile--publication">
+            {% if project.img %}
+              <a class="research-project-tile__image-wrap" href="{{ project.url | relative_url }}" tabindex="-1" aria-hidden="true">
+                <img class="research-project-tile__image" src="{{ project.img | relative_url }}" alt="">
+              </a>
+            {% endif %}
+            <div class="research-project-tile__body">
+              <p class="research-project-tile__label">Publication</p>
+              <h3>{{ project.title }}</h3>
+              {% if project.description %}<p>{{ project.description }}</p>{% endif %}
+              <a class="research-project-tile__action" href="{{ project.url | relative_url }}" aria-label="View the {{ project.title }} publication">
+                View Publication <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+</div>
+
+<style>
+  .research-projects__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1.75rem;
+    color: var(--global-text-color-light, #667085);
+    font-size: 0.84rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .research-projects__back:hover {
+    color: var(--global-theme-color, #2563eb);
+    text-decoration: none;
+  }
+
+  .research-projects__header {
+    max-width: 720px;
+    margin-bottom: 2rem;
+  }
+
+  .research-projects__header > p:last-child {
+    color: var(--global-text-color-light, #667085);
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+
+  .research-projects__kicker {
+    margin-bottom: 0.55rem;
+    color: var(--global-theme-color, #2563eb);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .research-projects__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.4rem;
+  }
+
+  .research-projects__section + .research-projects__section {
+    margin-top: 3.25rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.12));
+  }
+
+  .research-projects__section-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .research-projects__section-heading h2 {
+    margin: 0 0 0.2rem;
+    color: var(--global-text-color, #111827);
+    font-size: 1.45rem;
+  }
+
+  .research-projects__section-heading div > p {
+    margin: 0;
+    color: var(--global-text-color-light, #667085);
+    font-size: 0.86rem;
+  }
+
+  .research-projects__section-number {
+    display: grid;
+    width: 2.1rem;
+    height: 2.1rem;
+    flex: 0 0 2.1rem;
+    margin: 0;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--global-theme-color, #2563eb);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 800;
+  }
+
+  .research-project-tile {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.12));
+    border-radius: 16px;
+    background: var(--global-card-bg-color, #fff);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .research-project-tile:not(.research-project-tile--upcoming):hover {
+    transform: translateY(-4px);
+    box-shadow: 0 17px 36px rgba(15, 23, 42, 0.12);
+  }
+
+  .research-project-tile__image-wrap {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    background: #e9edf2;
+  }
+
+  .research-project-tile__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 320ms ease;
+  }
+
+  .research-project-tile:hover .research-project-tile__image {
+    transform: scale(1.035);
+  }
+
+  .research-project-tile__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.4rem;
+  }
+
+  .research-project-tile__label {
+    margin: 0 0 0.4rem;
+    color: var(--global-theme-color, #2563eb);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .research-project-tile h3 {
+    margin: 0 0 0.65rem;
+    color: var(--global-text-color, #111827);
+    font-size: 1.35rem;
+  }
+
+  .research-project-tile--project {
+    border-top: 3px solid var(--global-theme-color, #2563eb);
+  }
+
+  .research-project-tile--publication .research-project-tile__label {
+    color: #7c3aed;
+  }
+
+  .research-project-tile__body > p:not(.research-project-tile__label) {
+    flex: 1;
+    margin-bottom: 1.25rem;
+    color: var(--global-text-color-light, #667085);
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .research-project-tile__action,
+  .research-project-tile__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .research-project-tile__action {
+    background: var(--global-theme-color, #2563eb);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .research-project-tile__action:hover,
+  .research-project-tile__action:focus-visible {
+    background: var(--global-hover-color, #1d4ed8);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .research-project-tile--upcoming {
+    justify-content: center;
+    min-height: 340px;
+    border-style: dashed;
+    box-shadow: none;
+  }
+
+  .research-project-tile__upcoming-mark {
+    display: grid;
+    width: 3.25rem;
+    height: 3.25rem;
+    margin: 1.5rem 1.4rem 0;
+    place-items: center;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--global-theme-color, #2563eb) 12%, transparent);
+    color: var(--global-theme-color, #2563eb);
+    font-size: 1.75rem;
+    font-weight: 300;
+  }
+
+  .research-project-tile__status {
+    border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.12));
+    color: var(--global-text-color-light, #667085);
+  }
+
+  @media (max-width: 700px) {
+    .research-projects__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .research-project-tile--upcoming {
+      min-height: 280px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .research-project-tile,
+    .research-project-tile__image {
+      transition: none;
+    }
+  }
+</style>

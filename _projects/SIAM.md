@@ -5,6 +5,8 @@ description: "A propeller-free cable-suspended dual-arm manipulation platform fo
 img: assets/img/projects/siam/SIAM.png
 importance: 1
 category: Hardware
+research_area: hardware-design
+research_item_type: project
 related_publications: true
 ---
 

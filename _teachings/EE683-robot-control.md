@@ -1,10 +1,8 @@
 ---
 layout: course
-title: EE683 Robot Control
+title: Robot Control
 description: # This course provides an introduction to machine learning concepts, algorithms, and applications. Students will learn about supervised and unsupervised learning, model evaluation, and practical implementations.
 instructor: Prof. Min Jun Kim
-year: 2020
-term: Fall
 # location: Main Campus, Room 301
 # time: Tuesdays and Thursdays, 10:00-11:30 AM
 course_id: EE683
