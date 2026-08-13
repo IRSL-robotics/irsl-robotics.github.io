@@ -24,7 +24,11 @@
         <article class="research-project-tile research-project-tile--project">
           {% if project.img %}
             <a class="research-project-tile__image-wrap" href="{{ project.url | relative_url }}" tabindex="-1" aria-hidden="true">
-              <img class="research-project-tile__image" src="{{ project.img | relative_url }}" alt="">
+              <img
+                class="research-project-tile__image{% if project.image_fit == 'contain' %} research-project-tile__image--contain{% endif %}"
+                src="{{ project.img | relative_url }}"
+                alt=""
+              >
             </a>
           {% endif %}
           <div class="research-project-tile__body">
@@ -187,6 +191,11 @@
     height: 100%;
     object-fit: cover;
     transition: transform 320ms ease;
+  }
+
+  .research-project-tile__image--contain {
+    padding: 0.65rem;
+    object-fit: contain;
   }
 
   .research-project-tile:hover .research-project-tile__image {
