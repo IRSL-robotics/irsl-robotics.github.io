@@ -185,6 +185,11 @@
     transition: transform 320ms ease;
   }
 
+  .research-project-tile__image--contain {
+    padding: 0.65rem;
+    object-fit: contain;
+  }
+
   .research-project-tile:hover .research-project-tile__image {
     transform: scale(1.035);
   }
@@ -869,6 +874,11 @@ ninja.data = [{
           description: "with background image",
           section: "Projects",handler: () => {
               window.location.href = "/projects/SAM/";
+            },},{id: "projects-sam2",
+          title: 'SAM2',
+          description: "",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/sam2/";
             },},{id: "projects-siam",
           title: 'SIAM',
           description: "A propeller-free cable-suspended dual-arm manipulation platform for high-altitude physical work.",
