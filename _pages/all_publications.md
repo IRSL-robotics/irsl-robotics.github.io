@@ -8,15 +8,22 @@ nav: False
 
 <!-- <p><strong><sup>*</sup></strong> Co-first authors; <strong><sup>†</sup></strong> Co-corresponding authors.</p> -->
 
-<p class="all-publications__intro">
-  Explore our complete publication record, organized by category and year.
-</p>
-
 <nav class="all-publications__nav" aria-label="Publication categories">
-  <a href="#international-publications">International</a>
+  <button type="button" class="all-publications__nav-button" aria-expanded="false" aria-controls="international-venue-filter">
+    International
+  </button>
   <a href="#domestic-publications">Domestic</a>
   <a href="#patents">Patents</a>
 </nav>
+
+<section id="international-venue-filter" class="all-publications__venue-filter" aria-label="International publication venues" hidden>
+  <div class="all-publications__venue-heading">
+    <span>Browse international publications</span>
+    <strong>Choose a venue</strong>
+  </div>
+  <div class="all-publications__venue-buttons" role="group" aria-label="Filter publications by venue"></div>
+  <p class="all-publications__filter-status" aria-live="polite"></p>
+</section>
 
 <div class="all-publications" markdown="1">
 
@@ -145,40 +152,148 @@ nav: False
 </div>
 
 <style>
-  .all-publications__intro {
-    max-width: 42rem;
-    margin: -0.25rem 0 1.15rem;
-    color: var(--global-text-color-light, #667085);
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-
   .all-publications__nav {
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
-    gap: 0.55rem;
-    margin-bottom: 2.75rem;
+    gap: 0.3rem;
+    margin: 0 0 2.75rem;
+    padding: 0.35rem;
+    border: 1px solid color-mix(in srgb, var(--global-divider-color, #d0d5dd) 72%, transparent);
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--global-card-bg-color, #ffffff) 92%, var(--global-theme-color, #2563eb));
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--global-text-color, #101828) 5%, transparent);
   }
 
-  .all-publications__nav a {
-    padding: 0.42rem 0.85rem;
-    border: 1px solid color-mix(in srgb, var(--global-theme-color, #2563eb) 22%, var(--global-divider-color, #d0d5dd));
-    border-radius: 999px;
+  .all-publications__nav a,
+  .all-publications__nav-button {
+    appearance: none;
+    padding: 0.5rem 0.95rem;
+    border: 0;
+    border-radius: 0.72rem;
+    background: transparent;
     color: var(--global-text-color, #344054);
+    font-family: inherit;
     font-size: 0.82rem;
     font-weight: 600;
+    line-height: 1.4;
     text-decoration: none;
     transition:
-      border-color 160ms ease,
       color 160ms ease,
-      background-color 160ms ease;
+      background-color 160ms ease,
+      box-shadow 160ms ease,
+      transform 160ms ease;
   }
 
   .all-publications__nav a:hover,
-  .all-publications__nav a:focus-visible {
-    border-color: color-mix(in srgb, var(--global-theme-color, #2563eb) 52%, transparent);
-    background-color: color-mix(in srgb, var(--global-theme-color, #2563eb) 6%, transparent);
+  .all-publications__nav a:focus-visible,
+  .all-publications__nav-button:hover,
+  .all-publications__nav-button:focus-visible {
+    background-color: color-mix(in srgb, var(--global-theme-color, #2563eb) 8%, transparent);
     color: var(--global-theme-color, #2563eb);
+  }
+
+  .all-publications__nav-button {
+    cursor: pointer;
+  }
+
+  .all-publications__nav-button[aria-expanded="true"] {
+    background: var(--global-theme-color, #2563eb);
+    box-shadow: 0 5px 14px color-mix(in srgb, var(--global-theme-color, #2563eb) 24%, transparent);
+    color: #ffffff;
+  }
+
+  .all-publications__venue-filter {
+    position: relative;
+    overflow: hidden;
+    margin: -1.35rem 0 2.75rem;
+    padding: 1.2rem 1.25rem 1rem;
+    border: 1px solid color-mix(in srgb, var(--global-theme-color, #2563eb) 18%, var(--global-divider-color, #d0d5dd));
+    border-radius: 1.15rem;
+    background:
+      radial-gradient(circle at top right, color-mix(in srgb, var(--global-theme-color, #2563eb) 10%, transparent), transparent 42%),
+      var(--global-card-bg-color, #ffffff);
+  }
+
+  .all-publications__venue-filter[hidden] {
+    display: none;
+  }
+
+  .all-publications__venue-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 0.12rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .all-publications__venue-heading span {
+    color: var(--global-text-color-light, #667085);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .all-publications__venue-heading strong {
+    color: var(--global-text-color, #101828);
+    font-size: 1.05rem;
+    letter-spacing: -0.015em;
+  }
+
+  .all-publications__venue-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .all-publications__venue-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    padding: 0.44rem 0.72rem;
+    border: 1px solid color-mix(in srgb, var(--global-theme-color, #2563eb) 20%, var(--global-divider-color, #d0d5dd));
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--global-card-bg-color, #ffffff) 94%, transparent);
+    color: var(--global-text-color, #344054);
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 650;
+    cursor: pointer;
+    transition: 160ms ease;
+  }
+
+  .all-publications__venue-button span {
+    min-width: 1.25rem;
+    padding: 0.08rem 0.34rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--global-theme-color, #2563eb) 9%, transparent);
+    color: var(--global-text-color-light, #667085);
+    font-size: 0.68rem;
+    text-align: center;
+  }
+
+  .all-publications__venue-button:hover,
+  .all-publications__venue-button:focus-visible {
+    border-color: color-mix(in srgb, var(--global-theme-color, #2563eb) 55%, transparent);
+    color: var(--global-theme-color, #2563eb);
+    transform: translateY(-1px);
+  }
+
+  .all-publications__venue-button.is-active {
+    border-color: var(--global-theme-color, #2563eb);
+    background: var(--global-theme-color, #2563eb);
+    color: #ffffff;
+  }
+
+  .all-publications__venue-button.is-active span {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+  }
+
+  .all-publications__filter-status {
+    min-height: 1.2em;
+    margin: 0.8rem 0 0;
+    color: var(--global-text-color-light, #667085);
+    font-size: 0.76rem;
   }
 
   .all-publications .all-publications__section {
@@ -210,9 +325,9 @@ nav: False
     align-items: center;
     gap: 0.8rem;
     margin: 2.5rem 0 0.45rem;
-    color: color-mix(in srgb, var(--global-theme-color, #2563eb) 70%, var(--global-text-color, #111827));
-    font-size: 1.05rem;
-    font-weight: 680;
+    color: var(--global-theme-color, #2563eb);
+    font-size: 0.98rem;
+    font-weight: 720;
     letter-spacing: -0.01em;
   }
 
@@ -237,6 +352,14 @@ nav: False
     color: var(--global-text-color, #344054);
     font-size: 0.93rem;
     line-height: 1.65;
+    transition:
+      background-color 160ms ease,
+      padding-left 160ms ease;
+  }
+
+  .all-publications li:hover {
+    padding-left: 1.2rem;
+    background: color-mix(in srgb, var(--global-theme-color, #2563eb) 3.5%, transparent);
   }
 
   .all-publications li::before {
@@ -258,13 +381,22 @@ nav: False
 
   @media (max-width: 576px) {
     .all-publications__nav {
+      display: flex;
       gap: 0.4rem;
       margin-bottom: 2.25rem;
     }
 
-    .all-publications__nav a {
+    .all-publications__nav a,
+    .all-publications__nav-button {
+      flex: 1;
       padding: 0.38rem 0.7rem;
       font-size: 0.78rem;
+      text-align: center;
+    }
+
+    .all-publications__venue-filter {
+      margin-top: -1rem;
+      padding: 1rem;
     }
 
     .all-publications .all-publications__section {
@@ -278,3 +410,117 @@ nav: False
     }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const internationalHeading = document.getElementById("international-publications");
+    const domesticHeading = document.getElementById("domestic-publications");
+    const filterToggle = document.querySelector(".all-publications__nav-button");
+    const filterPanel = document.getElementById("international-venue-filter");
+    const filterButtons = filterPanel?.querySelector(".all-publications__venue-buttons");
+    const filterStatus = filterPanel?.querySelector(".all-publications__filter-status");
+
+    if (!internationalHeading || !domesticHeading || !filterToggle || !filterPanel || !filterButtons || !filterStatus) return;
+
+    const venueRules = [
+      ["T-RO", /\bT-RO\b/i],
+      ["RA-L", /\bRA-L\b/i],
+      ["T-MECH", /\bT-MECH\b/i],
+      ["ICRA", /\bICRA\b/i],
+      ["IROS", /\bIROS\b/i],
+      ["ICML", /\bICML\b/i],
+      ["ICEIC", /\bICEIC\b/i],
+      ["ANBRE", /\bANBRE\d*\b/i],
+      ["SYROCO", /\bSYROCO\b/i],
+      ["URAI", /\bURAI\b/i],
+      ["ICIT", /\bICIT\b/i],
+      ["Mechatronics", /\bMechatronics\b/i],
+      ["Scientific Reports", /Scientific Reports/i],
+      ["ISIJ International", /ISIJ International/i],
+      ["Intelligent Service Robotics", /Intelligent Service Robotics/i],
+      ["Optics Express", /Optics Express/i],
+      ["arXiv", /\barXiv\b/i],
+    ];
+    const yearGroups = [];
+    const publications = [];
+    let currentNode = internationalHeading.nextElementSibling;
+
+    while (currentNode && currentNode !== domesticHeading) {
+      if (currentNode.tagName === "H4") {
+        const list = currentNode.nextElementSibling;
+        if (list?.tagName === "UL") {
+          const items = [...list.querySelectorAll(":scope > li")];
+          yearGroups.push({ heading: currentNode, list, items });
+          publications.push(...items);
+        }
+      }
+      currentNode = currentNode.nextElementSibling;
+    }
+
+    const getVenue = (publication) => {
+      const venueText = publication.querySelector("em")?.textContent.trim() || "";
+      return venueRules.find(([, pattern]) => pattern.test(venueText))?.[0] || "Other";
+    };
+    const venueCounts = new Map();
+
+    publications.forEach((publication) => {
+      const venue = getVenue(publication);
+      publication.dataset.venue = venue;
+      venueCounts.set(venue, (venueCounts.get(venue) || 0) + 1);
+    });
+
+    const venues = venueRules.map(([venue]) => venue).filter((venue) => venueCounts.has(venue));
+    if (venueCounts.has("Other")) venues.push("Other");
+
+    const setFilter = (selectedVenue) => {
+      let visibleCount = 0;
+
+      publications.forEach((publication) => {
+        const visible = selectedVenue === "All" || publication.dataset.venue === selectedVenue;
+        publication.hidden = !visible;
+        if (visible) visibleCount += 1;
+      });
+
+      yearGroups.forEach(({ heading, list, items }) => {
+        const hasVisiblePublication = items.some((publication) => !publication.hidden);
+        heading.hidden = !hasVisiblePublication;
+        list.hidden = !hasVisiblePublication;
+      });
+
+      filterButtons.querySelectorAll("button").forEach((button) => {
+        const active = button.dataset.venue === selectedVenue;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+      filterStatus.textContent = `${visibleCount} publication${visibleCount === 1 ? "" : "s"} shown`;
+    };
+
+    const addFilterButton = (venue, count) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "all-publications__venue-button";
+      button.dataset.venue = venue;
+      button.innerHTML = `${venue} <span>${count}</span>`;
+      button.addEventListener("click", () => setFilter(venue));
+      filterButtons.appendChild(button);
+    };
+
+    addFilterButton("All", publications.length);
+    venues.forEach((venue) => addFilterButton(venue, venueCounts.get(venue)));
+    setFilter("All");
+
+    filterToggle.addEventListener("click", () => {
+      const willOpen = filterPanel.hidden;
+      filterPanel.hidden = !willOpen;
+      filterToggle.setAttribute("aria-expanded", String(willOpen));
+      if (willOpen) filterPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+
+    document.querySelectorAll('.all-publications__nav a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", () => {
+        filterPanel.hidden = true;
+        filterToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  });
+</script>

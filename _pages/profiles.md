@@ -140,7 +140,7 @@ nav_order: 1
 <details class="member-card">
 <summary>
   <div class="member-name">Min Jun Kim</div>
-  <div class="member-role">Assistant Professor</div>
+  <div class="member-role">Associate Professor</div>
 </summary>
 
 <div class="member-info">
@@ -160,7 +160,12 @@ nav_order: 1
 
     <div class="timeline">
       <div class="timeline-item">
-        <div class="timeline-date">2020.08–present</div>
+        <div class="timeline-date">2025.08–present</div>
+        <div class="timeline-desc">Associate Professor, KAIST, Korea</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2020.08–2025.07</div>
         <div class="timeline-desc">Assistant Professor, KAIST, Korea</div>
       </div>
 
@@ -200,10 +205,17 @@ nav_order: 1
 
     <p><strong>Associate Editor</strong></p>
     <ul class="activity-list">
+      <li>The International Journal of Robotics Research (IJRR), 2023–present</li>
       <li>IEEE Robotics and Automation Letters, 2017–2019</li>
       <li>IEEE/RSJ International Conference on Intelligent Robots and Systems, 2018, 2019, 2020</li>
       <li>IEEE International Conference on Robotics and Automation, 2020, 2021, 2022</li>
     </ul>
+
+    <p><strong>Program Co-Chair</strong></p>
+    <ul class="activity-list">
+      <li>IEEE ICRA 2027</li>
+    </ul>
+
   </div>
 </div>
 </details>
