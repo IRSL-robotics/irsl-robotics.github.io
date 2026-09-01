@@ -111,21 +111,6 @@ The two directions address complementary parts of the same problem. Sensing make
     aspect-ratio: 16 / 9;
   }
 
-  .whole-arm-project h3 {
-    margin-top: 1.8rem;
-    color: color-mix(in srgb, var(--publication-accent) 78%, var(--global-text-color, #111827));
-    font-size: 1.05rem;
-  }
-
-  .whole-arm-project ol {
-    padding-left: 1.35rem;
-  }
-
-  .whole-arm-project ol li {
-    margin-bottom: 1rem;
-    padding-left: 0.25rem;
-  }
-
   @media (max-width: 640px) {
     .whole-arm-project__media-grid {
       grid-template-columns: 1fr;
