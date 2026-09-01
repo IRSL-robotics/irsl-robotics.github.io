@@ -43,7 +43,7 @@ horizontal: false
   <article class="research-card">
     <div class="research-card__image-wrap">
       <img
-        src="{{ '/assets/img/projects/Physical_AI.jpeg' | relative_url }}"
+        src="{{ '/assets/img/projects/spatio-temporal/scdm.png' | relative_url }}"
         alt="Physical AI research preview"
         class="research-card__image"
       >
@@ -66,7 +66,7 @@ horizontal: false
       <img
         src="{{ '/assets/img/projects/Hardware.png' | relative_url }}"
         alt="Robotic systems and hardware research preview"
-        class="research-card__image"
+        class="research-card__image research-card__image--hardware"
       >
       <span class="research-card__number" aria-hidden="true">03</span>
     </div>
@@ -141,6 +141,10 @@ horizontal: false
     height: 100%;
     object-fit: cover;
     transition: transform 350ms ease;
+  }
+
+  .research-card__image--hardware {
+    object-position: center 58%;
   }
 
   .research-card:hover .research-card__image {

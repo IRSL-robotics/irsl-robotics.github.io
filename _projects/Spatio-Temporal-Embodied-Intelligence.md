@@ -140,4 +140,17 @@ Our long-term goal is to build **spatio-temporal world models** that capture the
 
 Such world models can allow embodied agents to understand dynamic 3D environments, anticipate the consequences of their actions, and generate adaptive behavior across a wide range of physical tasks.
 
+---
+
+## Representative Publications
+
+1. **Spatially Conditioned Diffusion Policy: Learning Precise and Robust Manipulation with a Single RGB Camera**<br>
+   *Seoyoon Kim<sup>\*</sup>, Kanghyun Kim<sup>\*</sup>, Dongwoo Ko, Yeong Jin Heo, Min Jun Kim*<br>
+   *arXiv preprint, 2026* · [arXiv](https://arxiv.org/abs/2606.14535)<br>
+   <small><sup>\*</sup> Co-first authors</small>
+
+2. **SPLIT: SE(3)-diffusion via Local Geometry-based Score Prediction for 3D Scene-to-Pose-Set Matching Problems**<br>
+   *Kanghyun Kim, Min Jun Kim*<br>
+   *arXiv preprint, 2024* · [arXiv](https://arxiv.org/abs/2411.10049) · [Video](https://youtu.be/4r8OO1CSu6w)
+
 </div>
