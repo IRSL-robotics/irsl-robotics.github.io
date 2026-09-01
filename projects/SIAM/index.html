@@ -21,11 +21,186 @@
   }
 </style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%A4%96&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://irsl-robotics.github.io/projects/SIAM/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
     initTheme();
-  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Intelligent Robotic Systems Lab (IRSL) </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">Home </a> </li> <li class="nav-item "> <a class="nav-link" href="/profiles/">Members </a> </li> <li class="nav-item "> <a class="nav-link" href="/research/">Research </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Publications </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/selected_publications/">Selected Publications</a> <div class="dropdown-divider"></div> <a class="dropdown-item " href="/all_publications/">All Publications</a> </div> </li> <li class="nav-item "> <a class="nav-link" href="/lecture/">Lecture </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">SIAM</h1> <p class="post-description">A propeller-free cable-suspended dual-arm manipulation platform for high-altitude physical work.</p> </header> <article> <blockquote> <p><strong>Status:</strong> ongoing / prototype<br> <strong>Keywords:</strong> cable-suspended robot, suspended manipulation, internal actuation, teleoperation, imitation learning, high-altitude work</p> </blockquote> <h2 id="overview">Overview</h2> <p><strong>SIAM</strong> stands for <strong>Cable-Suspended System with Internally-Actuated Mass</strong>.<br> This project develops a cable-suspended robotic manipulation platform for automating high-altitude physical work such as inspection, maintenance, repair, tool use, and object handling.</p> <p>Unlike conventional UAV-based aerial manipulators, SIAM is supported by a cable and does not rely on propellers to generate its main supporting force. Instead, the platform uses an internal actuation mechanism, including reaction wheels and a moving mass, to stabilize the suspended base while manipulation tasks are performed.</p> <p>The current platform integrates a suspended base, dual-arm manipulators, dexterous hands, vision sensors, a VR-based teleoperation interface, and a learning-based policy extension into a unified manipulation pipeline.</p> <h2 id="motivation">Motivation</h2> <p>High-altitude maintenance is required in infrastructure, energy, and industrial sites, including wind turbines, communication towers, concrete structures, and ship walls. These tasks often require workers to operate in dangerous and confined environments.</p> <p>Many high-altitude tasks are not limited to visual inspection. They require <strong>physical interaction</strong> with the environment, such as tool use, surface repair, object handling, and painting. Therefore, a robotic system for high-altitude work should provide not only access to the workspace but also stable manipulation capability.</p> <h2 id="system-concept">System Concept</h2> <p>SIAM is designed as a propeller-free suspended manipulation system. The cable supports the weight of the system, while internal actuation is used to regulate the base motion.</p> <p>The internal actuation mechanism consists of:</p> <ul> <li> <strong>Reaction wheels</strong> for damping base oscillation and regulating roll, pitch, and yaw motion.</li> <li> <strong>Moving mass modules</strong> for repositioning the center of mass and compensating base attitude changes caused by payload and arm motion.</li> </ul> <p>This structure allows the system to stabilize the suspended base without using propeller thrust near the work surface.</p> <h2 id="integrated-hardware-platform">Integrated Hardware Platform</h2> <p>The implemented SIAM platform consists of:</p> <ul> <li>Cable-suspended base structure</li> <li>Reaction-wheel-based attitude stabilization module</li> <li>Moving-mass-based center-of-mass compensation module</li> <li>Dual-arm manipulation area</li> <li>Dexterous hands</li> <li>Head and wrist vision modules</li> <li>VR teleoperation interface</li> <li>Real-time control framework</li> </ul> <p>The vision module includes a head camera for observing the task workspace and wrist cameras for close-range manipulation feedback.</p> <h2 id="control-and-teleoperation-framework">Control and Teleoperation Framework</h2> <p>The control framework converts human operator input into executable robot commands through the following pipeline:</p> <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Operator Input
-→ Command Mapping
-→ System Control Layer
-→ SIAM Hardware
-</code></pre></div></div> <p>The operator provides end-effector targets and gripper commands through a VR-based teleoperation interface. These commands are converted into robot motion through QP-based inverse kinematics, hand control, head camera control, and suspended-base stabilization.</p> <p>The same control framework is used for both teleoperated execution and learning-based autonomous execution.</p> <h2 id="imitation-learning-extension">Imitation Learning Extension</h2> <p>To extend the system from teleoperation to autonomous execution, teleoperation demonstrations are used for behavior cloning-based imitation learning.</p> <p>The policy is based on <strong>Action Chunking Transformer (ACT)</strong>. ACT predicts a sequence of future actions from the current observation, which helps reduce command fluctuation compared with single-step action prediction.</p> <p>In this project, the learned policy outputs:</p> <ul> <li>End-effector target command</li> <li>Gripper command</li> </ul> <p>The predicted commands are then executed through the same SIAM control pipeline used for teleoperation.</p> <h2 id="demonstrated-tasks">Demonstrated Tasks</h2> <p>The platform has been validated through:</p> <ul> <li>Suspended-base stabilization</li> <li>End-effector trajectory tracking</li> <li>VR-based teleoperation task execution</li> <li>Teleoperation demonstration collection</li> <li>ACT-based autonomous manipulation extension</li> </ul> <p>A representative learning task is a cup pick-and-place task, where the policy grasps a randomly placed cup within a predefined workspace and moves it to a target region.</p> <h2 id="contribution">Contribution</h2> <p>This project contributes:</p> <ol> <li> <p><strong>Integrated suspended manipulation platform</strong><br> A cable-suspended SIAM system is implemented as a real dual-arm manipulation platform.</p> </li> <li> <p><strong>Teleoperation system for remote task execution</strong><br> A VR-based teleoperation interface is integrated with the SIAM control framework.</p> </li> <li> <p><strong>Imitation learning extension for autonomous execution</strong><br> Teleoperation demonstrations are used to train a learning policy that replaces the operator command while preserving the same lower-level control pipeline.</p> </li> </ol> <h2 id="people">People</h2> <ul> <li>Wonjun Han</li> <li>Taeho Yun</li> </ul> <h2 id="media">Media</h2> <h2 id="publications">Publications</h2> </article> <h2>References</h2> <div class="publications"> </div> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Intelligent Robotic Systems Lab. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. </div> </footer> <script>
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Intelligent Robotic Systems Lab (IRSL) </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">Home </a> </li> <li class="nav-item "> <a class="nav-link" href="/profiles/">Members </a> </li> <li class="nav-item "> <a class="nav-link" href="/research/">Research </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Publications </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/selected_publications/">Selected Publications</a> <div class="dropdown-divider"></div> <a class="dropdown-item " href="/all_publications/">All Publications</a> </div> </li> <li class="nav-item "> <a class="nav-link" href="/lecture/">Lecture </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">SIAM</h1> <p class="post-description">A propeller-free cable-suspended dual-arm manipulation platform for high-altitude physical work.</p> </header> <article> <style>
+  .publication-detail {
+    --publication-accent: var(--global-theme-color, #2563eb);
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .publication-detail__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    color: var(--global-text-color-light, #667085);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .publication-detail__back:hover,
+  .publication-detail__back:focus-visible {
+    color: var(--publication-accent);
+    text-decoration: none;
+  }
+
+  .publication-detail__lead {
+    margin: 0 0 1.8rem;
+    padding: 0 0 0 0.9rem;
+    border-left: 2px solid color-mix(in srgb, var(--publication-accent) 52%, transparent);
+    color: var(--global-text-color-light, #667085);
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+
+  .publication-detail figure,
+  .publication-detail .video-container {
+    margin: 1.25rem auto 2.25rem;
+  }
+
+  .publication-detail figure img,
+  .publication-detail > img {
+    display: block;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    max-height: 460px;
+    border-radius: 14px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .publication-detail iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 14px;
+  }
+
+  .publication-detail h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 2.8rem 0 1rem;
+    color: var(--global-text-color, #111827);
+    font-size: 1.25rem;
+    font-weight: 680;
+    letter-spacing: -0.02em;
+  }
+
+  .publication-detail h2::after {
+    flex: 1;
+    height: 1px;
+    background: color-mix(in srgb, var(--publication-accent) 18%, transparent);
+    content: "";
+  }
+
+  .publication-detail p {
+    color: var(--global-text-color, #344054);
+    line-height: 1.75;
+  }
+
+  .publication-detail h2[id="publication"] + p {
+    padding: 1rem 1.1rem;
+    border: 1px solid color-mix(in srgb, var(--publication-accent) 15%, var(--global-divider-color, #d0d5dd));
+    border-radius: 12px;
+    background: var(--global-card-bg-color, #fff);
+  }
+
+  .publication-detail h2[id="publication"] + p a,
+  .publication-detail__source {
+    display: inline-flex;
+    align-items: center;
+    margin: 0.25rem 0.12rem 0;
+    padding: 0.28rem 0.62rem;
+    border: 1px solid color-mix(in srgb, var(--publication-accent) 30%, transparent);
+    border-radius: 999px;
+    color: var(--publication-accent);
+    font-size: 0.76rem;
+    font-weight: 650;
+    line-height: 1.25;
+    text-decoration: none;
+  }
+
+  .publication-detail h2[id="publication"] + p a:hover,
+  .publication-detail h2[id="publication"] + p a:focus-visible,
+  .publication-detail__source:hover,
+  .publication-detail__source:focus-visible {
+    background: color-mix(in srgb, var(--publication-accent) 7%, transparent);
+    text-decoration: none;
+  }
+
+  .publication-detail__footer {
+    margin-top: 2.4rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.12));
+  }
+
+  @media (max-width: 576px) {
+    .publication-detail__lead {
+      font-size: 0.94rem;
+    }
+
+    .publication-detail figure img,
+    .publication-detail > img {
+      max-height: 320px;
+    }
+
+    .publication-detail h2 {
+      margin-top: 2.3rem;
+      font-size: 1.15rem;
+    }
+  }
+</style> <div class="publication-detail siam-project"> <p><a class="publication-detail__back" href="/research/hardware-design/">← Back to Robotic Systems &amp; Hardware</a></p> <p class="publication-detail__lead"><strong>Building a new robotic platform for high-altitude physical work:</strong> We develop a propeller-free cable-suspended robot that combines internal stabilization and dexterous manipulation for inspection, maintenance, repair, and other physical tasks in difficult-to-access environments.</p> <p>Robots can already reach many high-altitude environments for inspection, but <strong>performing physical work</strong> in these environments remains challenging. Maintenance and repair require a robot not only to access a worksite, but also to remain stable while making contact, operating tools, handling objects, and exerting forces on the surrounding structure.</p> <p>Conventional aerial manipulators typically rely on propeller thrust to support and stabilize the robot. This makes physical interaction near walls, structures, and confined workspaces difficult, particularly when sustained contact or large manipulation forces are required.</p> <p><strong>SIAM — Cable-Suspended System with Internally-Actuated Mass — explores a different robotic system architecture.</strong></p> <p>Instead of using propellers to support its weight, SIAM is suspended by a cable. The cable provides the main supporting force, while <strong>internal actuation</strong> regulates the motion and configuration of the suspended platform. This separation between <strong>weight support</strong> and <strong>platform stabilization</strong> allows us to investigate a new class of robotic systems designed specifically for physical work at height. Our goal is to develop SIAM as an integrated robotic platform that can <strong>reach high-altitude workspaces, stabilize itself during interaction, and perform dexterous manipulation tasks</strong>.</p> <figure class="siam-project__media siam-project__media--hero"> <img src="/assets/img/projects/siam/SIAM.png" alt="The SIAM cable-suspended dual-arm robotic platform" loading="eager"> </figure> <h2 id="cable-suspended-robotic-system">Cable-Suspended Robotic System</h2> <p>SIAM uses a cable to support the weight of the robot, allowing the system to operate without continuously generating aerodynamic thrust near the workspace.</p> <p>A suspended platform, however, introduces its own challenges. Arm motion, payload changes, and contact forces can directly disturb the base and generate oscillation. The robot must therefore regulate its suspended body while simultaneously performing manipulation.</p> <p>SIAM addresses this problem by treating the <strong>suspended base and manipulators as a single integrated robotic system</strong>.</p> <h2 id="internal-actuation">Internal Actuation</h2> <p>A central hardware concept of SIAM is the use of <strong>internal actuation</strong> to control the suspended platform.</p> <p>The system combines two complementary mechanisms:</p> <ul> <li> <strong>Reaction wheels</strong> regulate rotational motion and suppress base oscillation.</li> <li> <strong>Moving-mass modules</strong> modify the center of mass of the system to compensate for changes caused by arm motion and payload.</li> </ul> <figure class="siam-project__media siam-project__media--mechanism"> <img src="/assets/img/projects/siam/Moving_Mass.png" alt="Moving-mass mechanism used to regulate the suspended platform" loading="lazy"> </figure> <p>Because these mechanisms act internally, SIAM can regulate its suspended configuration without relying on propeller thrust close to the environment.</p> <p>The broader objective is to understand how internal actuation can make cable-suspended platforms practical for manipulation-intensive tasks rather than only for passive observation or transportation.</p> <h2 id="integrated-manipulation-platform">Integrated Manipulation Platform</h2> <p>SIAM is designed not as an isolated stabilization mechanism, but as a complete robotic manipulation platform.</p> <p>The current system integrates:</p> <ul> <li>A cable-suspended robotic base</li> <li>Reaction-wheel-based attitude regulation</li> <li>Moving-mass-based center-of-mass compensation</li> <li>Dual-arm manipulators</li> <li>Dexterous robotic hands</li> <li>Head and wrist cameras</li> <li>VR-based teleoperation</li> <li>Real-time robot control</li> </ul> <p>Together, these components allow us to study the full system-level problem of performing manipulation from a dynamically coupled suspended platform.</p> <h2 id="remote-and-autonomous-operation">Remote and Autonomous Operation</h2> <p>SIAM currently uses VR-based teleoperation as the primary interface for executing manipulation tasks and collecting demonstrations.</p> <p>Operator commands are converted into robot motion through a shared control framework that handles inverse kinematics, hand control, sensing, and suspended-base regulation.</p> <p>The same system architecture also provides a path toward autonomous operation. Demonstrations collected through teleoperation can be used to train learning-based policies, which generate manipulation commands while retaining the same underlying hardware and control stack.</p> <figure class="siam-project__media siam-project__media--policy"> <img src="/assets/img/projects/siam/Autonomous_Policy.gif" alt="Autonomous SIAM policy performing a manipulation task from multiple camera views" loading="lazy"> </figure> <p>In this way, learning is treated as an <strong>extension of the robotic system</strong>, rather than the central focus of the project.</p> <h2 id="toward-high-altitude-physical-work">Toward High-Altitude Physical Work</h2> <p>The long-term goal of SIAM is to enable robots to perform <strong>physical work in locations that are difficult, dangerous, or expensive for people to access</strong>.</p> <p>Potential applications include inspection, maintenance, repair, surface treatment, tool use, and object handling on structures such as wind turbines, communication towers, buildings, industrial facilities, and large vessels.</p> <p>SIAM explores whether a <strong>cable-supported, internally actuated manipulation platform</strong> can provide a practical alternative to conventional aerial robots for these tasks.</p> <p>By bringing together suspension, internal stabilization, manipulation hardware, perception, teleoperation, and autonomous execution in a single platform, the project aims to establish a new robotic system architecture for high-altitude physical work.</p> </div> <style>
+  .siam-project__media {
+    overflow: hidden;
+    width: min(100%, 760px);
+    margin: 1.25rem auto 1.75rem !important;
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--global-divider-color, #d0d5dd) 24%, transparent);
+  }
+
+  .siam-project .siam-project__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    border-radius: 0;
+    object-fit: contain;
+  }
+
+  .siam-project__media--hero {
+    width: min(100%, 600px);
+  }
+
+  .siam-project .siam-project__media--hero img {
+    aspect-ratio: 1;
+    padding: 1rem;
+  }
+
+  .siam-project__media--mechanism {
+    width: min(100%, 600px);
+  }
+
+  .siam-project .siam-project__media--mechanism img {
+    aspect-ratio: 3 / 2;
+  }
+
+  .siam-project .siam-project__media--policy img {
+    aspect-ratio: 16 / 9;
+  }
+
+  @media (max-width: 576px) {
+    .siam-project__media {
+      margin: 1.15rem auto 1.6rem !important;
+    }
+
+    .siam-project .siam-project__media--hero img {
+      padding: 0.65rem;
+    }
+  }
+</style> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Intelligent Robotic Systems Lab. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. </div> </footer> <script>
   window.alFolio = {
     compatBootstrap: false
   };
