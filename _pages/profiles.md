@@ -594,17 +594,10 @@ nav_order: 1
 </div>
 </details>
 
-</div>
-
-
-## MS Candidates  
-
-<div class="member-grid">
-
 <details class="member-card">
 <summary>
   <div class="member-name">Sunho Kim</div>
-  <div class="member-role">MS Candidate</div>
+  <div class="member-role">Ph.D. Candidate</div>
 </summary>
 
 <div class="member-info">
@@ -642,41 +635,8 @@ nav_order: 1
 
 <details class="member-card">
 <summary>
-  <div class="member-name">Wonjun Han</div>
-  <div class="member-role">MS Candidate</div>
-</summary>
-
-<div class="member-info">
-
-  <!-- <div class="info-line">
-    <strong>Email:</strong> student.email (at) kaist.ac.kr
-  </div> -->
-  <div class="member-links">
-    <a class="member-button" href="{{ '/assets/pdf/cv/CV_Wonjun_Han.pdf' | relative_url }}" target="_blank">
-      CV
-    </a>
-  </div>
-  <!-- <div class="member-section">
-    <div class="member-section-title">Research Interests</div>
-    <p>Motion planning, reinforcement learning</p>
-  </div> -->
-
-  <div class="member-section">
-    <div class="member-section-title">Publications (International)</div>
-
-    <ul class="pub-list">
-      <li>J. Lee, <strong>W. Han</strong>, E. Kim, I. Choi and S. Yang, "A Stiffness-controlled Robotic Palm based on a Granular Jamming Mechanism," <em>2020 17th International Conference on Ubiquitous Robots (UR)</em></li>
-    </ul>
-  </div>
-
-</div>
-</details>
-
-
-<details class="member-card">
-<summary>
   <div class="member-name">Jaehun Jeong</div>
-  <div class="member-role">MS Candidate</div>
+  <div class="member-role">Ph.D. Candidate</div>
 </summary>
 
 <div class="member-info">
@@ -700,6 +660,13 @@ nav_order: 1
 
 </div>
 </details>
+
+</div>
+
+
+## MS Candidates
+
+<div class="member-grid">
 
 
 <details class="member-card">
@@ -804,6 +771,9 @@ nav_order: 1
 - Taeho Yun (M.S. 2025, continuing as a Ph.D. student)
 - Young Bin Lee (M.S. 2025)
 - Seung Min Yang (M.S. 2025)
+- Sunho Kim (M.S. 2026, continuing as a Ph.D. student)
+- Wonjun Han (M.S. 2026)
+- Jaehun Jeong (M.S. 2026, continuing as a Ph.D. student)
 
 
 
