@@ -17,10 +17,7 @@ related_publications: false
 
 <a class="publication-detail__back" href="{{ '/research/robot-control/' | relative_url }}">&larr; Back to Control &amp; Safety</a>
 
-<div class="constraint-aware-control__vision">
-  <p class="constraint-aware-control__vision-label">Vision</p>
-  <p class="constraint-aware-control__vision-copy"><strong>Making robots trusted partners in the real world:</strong> we develop control methods that remain <strong>robust under uncertainty</strong> while respecting the <strong>constraints</strong> required for <strong>safe and dependable operation</strong>.</p>
-</div>
+<p class="publication-detail__lead"><strong>Making robots trusted partners in the real world:</strong> we develop control methods that remain <strong>robust under uncertainty</strong> while respecting the <strong>constraints</strong> required for <strong>safe and dependable operation</strong>.</p>
 
 Robots can become part of everyday life only if they operate reliably **beyond controlled laboratory conditions**. In the real world, **disturbances, modeling errors, changing contacts, and underactuation** continually challenge nominal predictions. At the same time, **state and input limits**, feasible operating regions, and task-specific requirements define which actions are acceptable. A controller that only compensates for uncertainty may maintain performance yet still command behavior that is **infeasible or unsafe**.
 

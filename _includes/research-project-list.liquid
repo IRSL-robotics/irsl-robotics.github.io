@@ -41,18 +41,6 @@
           </div>
         </article>
       {% endfor %}
-
-      {% unless page.research_area == "physical-ai" %}
-        <article class="research-project-tile research-project-tile--upcoming">
-          <div class="research-project-tile__upcoming-mark" aria-hidden="true">+</div>
-          <div class="research-project-tile__body">
-            <p class="research-project-tile__label">In Progress</p>
-            <h3>More Projects</h3>
-            <p>Additional projects in this research area will be added here.</p>
-            <span class="research-project-tile__status">Coming Soon</span>
-          </div>
-        </article>
-      {% endunless %}
     </div>
   </section>
 
@@ -176,7 +164,7 @@
       box-shadow 180ms ease;
   }
 
-  .research-project-tile:not(.research-project-tile--upcoming):hover {
+  .research-project-tile:hover {
     transform: translateY(-4px);
     box-shadow: 0 17px 36px rgba(15, 23, 42, 0.12);
   }
@@ -262,8 +250,7 @@
     line-height: 1.6;
   }
 
-  .research-project-tile__action,
-  .research-project-tile__status {
+  .research-project-tile__action {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
@@ -286,38 +273,9 @@
     text-decoration: none;
   }
 
-  .research-project-tile--upcoming {
-    justify-content: center;
-    min-height: 340px;
-    border-style: dashed;
-    box-shadow: none;
-  }
-
-  .research-project-tile__upcoming-mark {
-    display: grid;
-    width: 3.25rem;
-    height: 3.25rem;
-    margin: 1.5rem 1.4rem 0;
-    place-items: center;
-    border-radius: 50%;
-    background: color-mix(in srgb, var(--global-theme-color, #2563eb) 12%, transparent);
-    color: var(--global-theme-color, #2563eb);
-    font-size: 1.75rem;
-    font-weight: 300;
-  }
-
-  .research-project-tile__status {
-    border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.12));
-    color: var(--global-text-color-light, #667085);
-  }
-
   @media (max-width: 700px) {
     .research-projects__grid {
       grid-template-columns: 1fr;
-    }
-
-    .research-project-tile--upcoming {
-      min-height: 280px;
     }
   }
 
