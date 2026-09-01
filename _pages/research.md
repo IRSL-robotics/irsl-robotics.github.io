@@ -11,7 +11,7 @@ horizontal: false
 <div class="research-intro">
   <p>
     We develop intelligent robotic systems that safely and autonomously interact with the physical world. Spanning
-    <strong>Ground &amp; Aerial Robotics</strong>, our research brings together <strong>Control &amp; Safety</strong>,
+    <strong>Ground &amp; Aerial Robotics</strong>, our research brings together <strong>Robot Control &amp; Safety</strong>,
     <strong>Physical AI</strong>, and <strong>Robotic Systems &amp; Hardware</strong> to create robots that are robust and capable
     in the real world.
   </p>
@@ -29,12 +29,12 @@ horizontal: false
     </div>
     <div class="research-card__body">
       <p class="research-card__eyebrow">Robust Control · Safe Interaction · Adaptation</p>
-      <h2>Control &amp; Safety</h2>
+      <h2>Robot Control &amp; Safety</h2>
       <p>
         Robust and safety-aware control methods that enable reliable physical interaction under uncertainty, disturbances, and dynamic
         environments.
       </p>
-      <a class="research-card__action" href="{{ '/research/robot-control/' | relative_url }}" aria-label="Explore Control and Safety projects">
+      <a class="research-card__action" href="{{ '/research/robot-control/' | relative_url }}" aria-label="Explore Robot Control and Safety projects">
         Learn More <span aria-hidden="true">&rarr;</span>
       </a>
     </div>

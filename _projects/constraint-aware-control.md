@@ -15,7 +15,7 @@ related_publications: false
 
 <div class="publication-detail constraint-aware-control" markdown="1">
 
-<a class="publication-detail__back" href="{{ '/research/robot-control/' | relative_url }}">&larr; Back to Control &amp; Safety</a>
+<a class="publication-detail__back" href="{{ '/research/robot-control/' | relative_url }}">&larr; Back to Robot Control &amp; Safety</a>
 
 <p class="publication-detail__lead"><strong>Making robots trusted partners in the real world:</strong> we develop control methods that remain <strong>robust under uncertainty</strong> while respecting the <strong>constraints</strong> required for <strong>safe and dependable operation</strong>.</p>
 

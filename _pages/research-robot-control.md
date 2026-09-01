@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Control & Safety
+title: Robot Control & Safety
 permalink: /research/robot-control/
 description: Robust and safety-aware control for reliable physical interaction.
 nav: false

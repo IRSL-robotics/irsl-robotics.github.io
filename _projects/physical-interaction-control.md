@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Robot Control & Safety
+title: Physical Interaction Control
 permalink: /projects/physical-interaction-control/
 description: Control principles for autonomous physical interaction in uncertain, unstructured, and contact-rich environments.
 img: assets/img/publication_preview/l1afo.png
@@ -15,7 +15,7 @@ related_publications: false
 
 <div class="publication-detail physical-interaction-control" markdown="1">
 
-<a class="publication-detail__back" href="{{ '/research/robot-control/' | relative_url }}">&larr; Back to Control &amp; Safety</a>
+<a class="publication-detail__back" href="{{ '/research/robot-control/' | relative_url }}">&larr; Back to Robot Control &amp; Safety</a>
 
 <p class="publication-detail__lead"><strong>Toward autonomous physical interaction in the real world:</strong> we develop control principles that let robots interact reliably amid unstructured environments, and changing physical contact.</p>
 
