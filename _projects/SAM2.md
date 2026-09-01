@@ -20,6 +20,14 @@ related_publications: false
 
 <p class="publication-detail__lead"><strong>Beyond the limits of aerial physical interaction:</strong> we develop aerial robotic systems that can navigate demanding high-altitude workspaces, physically engage with their surroundings, and perform complex manipulation tasks in environments that are difficult or hazardous for people to access.</p>
 
+<figure class="publication-detail__media">
+  <img
+    src="{{ '/assets/img/projects/sam2/SAM2_teaser.png' | relative_url }}"
+    alt="SAM2 maneuvering through a high-altitude workspace for physical interaction"
+    loading="eager"
+  >
+</figure>
+
 Large-scale structures such as buildings, bridges, towers, and wind turbines require more than visual inspection. Maintenance, repair, surface operations, and tool use all involve direct physical interaction with the environment. Performing such tasks at height exposes human workers to substantial risk and operational cost, while robotic operation requires capabilities beyond simply reaching or observing the workspace.
 
 SAM2, a **cable-suspended aerial manipulator with maneuverability**, actively moves through an extended workspace and physically interacts with the environment from the positions and configurations required by a task.

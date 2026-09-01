@@ -24,8 +24,6 @@ Conventional aerial manipulators typically rely on propeller thrust to support a
 
 **SIAM — Cable-Suspended System with Internally-Actuated Mass — explores a different robotic system architecture.**
 
-Instead of using propellers to support its weight, SIAM is suspended by a cable. The cable provides the main supporting force, while **internal actuation** regulates the motion and configuration of the suspended platform. This separation between **weight support** and **platform stabilization** allows us to investigate a new class of robotic systems designed specifically for physical work at height. Our goal is to develop SIAM as an integrated robotic platform that can **reach high-altitude workspaces, stabilize itself during interaction, and perform dexterous manipulation tasks**.
-
 <figure class="siam-project__media siam-project__media--hero">
   <img
     src="{{ '/assets/img/projects/siam/SIAM.png' | relative_url }}"
@@ -33,6 +31,8 @@ Instead of using propellers to support its weight, SIAM is suspended by a cable.
     loading="eager"
   >
 </figure>
+
+Instead of using propellers to support its weight, SIAM is suspended by a cable. The cable provides the main supporting force, while **internal actuation** regulates the motion and configuration of the suspended platform. This separation between **weight support** and **platform stabilization** allows us to investigate a new class of robotic systems designed specifically for physical work at height. Our goal is to develop SIAM as an integrated robotic platform that can **reach high-altitude workspaces, stabilize itself during interaction, and perform dexterous manipulation tasks**.
 
 ## Cable-Suspended Robotic System
 
