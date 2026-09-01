@@ -42,15 +42,17 @@
         </article>
       {% endfor %}
 
-      <article class="research-project-tile research-project-tile--upcoming">
-        <div class="research-project-tile__upcoming-mark" aria-hidden="true">+</div>
-        <div class="research-project-tile__body">
-          <p class="research-project-tile__label">In Progress</p>
-          <h3>More Projects</h3>
-          <p>Additional projects in this research area will be added here.</p>
-          <span class="research-project-tile__status">Coming Soon</span>
-        </div>
-      </article>
+      {% unless page.research_area == "physical-ai" %}
+        <article class="research-project-tile research-project-tile--upcoming">
+          <div class="research-project-tile__upcoming-mark" aria-hidden="true">+</div>
+          <div class="research-project-tile__body">
+            <p class="research-project-tile__label">In Progress</p>
+            <h3>More Projects</h3>
+            <p>Additional projects in this research area will be added here.</p>
+            <span class="research-project-tile__status">Coming Soon</span>
+          </div>
+        </article>
+      {% endunless %}
     </div>
   </section>
 

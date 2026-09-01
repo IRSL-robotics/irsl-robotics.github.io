@@ -160,12 +160,12 @@ nav_order: 1
 
     <div class="timeline">
       <div class="timeline-item">
-        <div class="timeline-date">2025.08–present</div>
+        <div class="timeline-date">2025.09–present</div>
         <div class="timeline-desc">Associate Professor, KAIST, Korea</div>
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-date">2020.08–2025.07</div>
+        <div class="timeline-date">2020.08–2025.08</div>
         <div class="timeline-desc">Assistant Professor, KAIST, Korea</div>
       </div>
 
