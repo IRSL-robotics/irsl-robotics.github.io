@@ -7,122 +7,155 @@ importance: 1
 category: Hardware
 research_area: hardware-design
 research_item_type: project
-related_publications: true
+related_publications: false
 ---
 
-> **Status:** ongoing / prototype  
-> **Keywords:** cable-suspended robot, suspended manipulation, internal actuation, teleoperation, imitation learning, high-altitude work
+{% include publication-detail-styles.liquid %}
 
-## Overview
+<div class="publication-detail siam-project" markdown="1">
 
-**SIAM** stands for **Cable-Suspended System with Internally-Actuated Mass**.  
-This project develops a cable-suspended robotic manipulation platform for automating high-altitude physical work such as inspection, maintenance, repair, tool use, and object handling.
+<a class="publication-detail__back" href="{{ '/research/hardware-design/' | relative_url }}">&larr; Back to Robotic Systems &amp; Hardware</a>
 
-Unlike conventional UAV-based aerial manipulators, SIAM is supported by a cable and does not rely on propellers to generate its main supporting force. Instead, the platform uses an internal actuation mechanism, including reaction wheels and a moving mass, to stabilize the suspended base while manipulation tasks are performed.
+<p class="publication-detail__lead"><strong>Building a new robotic platform for high-altitude physical work:</strong> We develop a propeller-free cable-suspended robot that combines internal stabilization and dexterous manipulation for inspection, maintenance, repair, and other physical tasks in difficult-to-access environments.</p>
 
-The current platform integrates a suspended base, dual-arm manipulators, dexterous hands, vision sensors, a VR-based teleoperation interface, and a learning-based policy extension into a unified manipulation pipeline.
+Robots can already reach many high-altitude environments for inspection, but **performing physical work** in these environments remains challenging. Maintenance and repair require a robot not only to access a worksite, but also to remain stable while making contact, operating tools, handling objects, and exerting forces on the surrounding structure.
 
-## Motivation
+Conventional aerial manipulators typically rely on propeller thrust to support and stabilize the robot. This makes physical interaction near walls, structures, and confined workspaces difficult, particularly when sustained contact or large manipulation forces are required.
 
-High-altitude maintenance is required in infrastructure, energy, and industrial sites, including wind turbines, communication towers, concrete structures, and ship walls. These tasks often require workers to operate in dangerous and confined environments.
+**SIAM — Cable-Suspended System with Internally-Actuated Mass — explores a different robotic system architecture.**
 
-Many high-altitude tasks are not limited to visual inspection. They require **physical interaction** with the environment, such as tool use, surface repair, object handling, and painting. Therefore, a robotic system for high-altitude work should provide not only access to the workspace but also stable manipulation capability.
+Instead of using propellers to support its weight, SIAM is suspended by a cable. The cable provides the main supporting force, while **internal actuation** regulates the motion and configuration of the suspended platform. This separation between **weight support** and **platform stabilization** allows us to investigate a new class of robotic systems designed specifically for physical work at height. Our goal is to develop SIAM as an integrated robotic platform that can **reach high-altitude workspaces, stabilize itself during interaction, and perform dexterous manipulation tasks**.
 
-## System Concept
+<figure class="siam-project__media siam-project__media--hero">
+  <img
+    src="{{ '/assets/img/projects/siam/SIAM.png' | relative_url }}"
+    alt="The SIAM cable-suspended dual-arm robotic platform"
+    loading="eager"
+  >
+</figure>
 
-SIAM is designed as a propeller-free suspended manipulation system. The cable supports the weight of the system, while internal actuation is used to regulate the base motion.
+## Cable-Suspended Robotic System
 
-The internal actuation mechanism consists of:
+SIAM uses a cable to support the weight of the robot, allowing the system to operate without continuously generating aerodynamic thrust near the workspace.
 
-- **Reaction wheels** for damping base oscillation and regulating roll, pitch, and yaw motion.
-- **Moving mass modules** for repositioning the center of mass and compensating base attitude changes caused by payload and arm motion.
+A suspended platform, however, introduces its own challenges. Arm motion, payload changes, and contact forces can directly disturb the base and generate oscillation. The robot must therefore regulate its suspended body while simultaneously performing manipulation.
 
-This structure allows the system to stabilize the suspended base without using propeller thrust near the work surface.
+SIAM addresses this problem by treating the **suspended base and manipulators as a single integrated robotic system**.
 
-## Integrated Hardware Platform
+## Internal Actuation
 
-The implemented SIAM platform consists of:
+A central hardware concept of SIAM is the use of **internal actuation** to control the suspended platform.
 
-- Cable-suspended base structure
-- Reaction-wheel-based attitude stabilization module
-- Moving-mass-based center-of-mass compensation module
-- Dual-arm manipulation area
-- Dexterous hands
-- Head and wrist vision modules
-- VR teleoperation interface
-- Real-time control framework
+The system combines two complementary mechanisms:
 
-The vision module includes a head camera for observing the task workspace and wrist cameras for close-range manipulation feedback.
+* **Reaction wheels** regulate rotational motion and suppress base oscillation.
+* **Moving-mass modules** modify the center of mass of the system to compensate for changes caused by arm motion and payload.
 
-## Control and Teleoperation Framework
+<figure class="siam-project__media siam-project__media--mechanism">
+  <img
+    src="{{ '/assets/img/projects/siam/Moving_Mass.png' | relative_url }}"
+    alt="Moving-mass mechanism used to regulate the suspended platform"
+    loading="lazy"
+  >
+</figure>
 
-The control framework converts human operator input into executable robot commands through the following pipeline:
+Because these mechanisms act internally, SIAM can regulate its suspended configuration without relying on propeller thrust close to the environment.
 
-```text
-Operator Input
-→ Command Mapping
-→ System Control Layer
-→ SIAM Hardware
-```
+The broader objective is to understand how internal actuation can make cable-suspended platforms practical for manipulation-intensive tasks rather than only for passive observation or transportation.
 
-The operator provides end-effector targets and gripper commands through a VR-based teleoperation interface. These commands are converted into robot motion through QP-based inverse kinematics, hand control, head camera control, and suspended-base stabilization.
+## Integrated Manipulation Platform
 
-The same control framework is used for both teleoperated execution and learning-based autonomous execution.
+SIAM is designed not as an isolated stabilization mechanism, but as a complete robotic manipulation platform.
 
-## Imitation Learning Extension
+The current system integrates:
 
-To extend the system from teleoperation to autonomous execution, teleoperation demonstrations are used for behavior cloning-based imitation learning.
+* A cable-suspended robotic base
+* Reaction-wheel-based attitude regulation
+* Moving-mass-based center-of-mass compensation
+* Dual-arm manipulators
+* Dexterous robotic hands
+* Head and wrist cameras
+* VR-based teleoperation
+* Real-time robot control
 
-The policy is based on **Action Chunking Transformer (ACT)**. ACT predicts a sequence of future actions from the current observation, which helps reduce command fluctuation compared with single-step action prediction.
+Together, these components allow us to study the full system-level problem of performing manipulation from a dynamically coupled suspended platform.
 
-In this project, the learned policy outputs:
+## Remote and Autonomous Operation
 
-- End-effector target command
-- Gripper command
+SIAM currently uses VR-based teleoperation as the primary interface for executing manipulation tasks and collecting demonstrations.
 
-The predicted commands are then executed through the same SIAM control pipeline used for teleoperation.
+Operator commands are converted into robot motion through a shared control framework that handles inverse kinematics, hand control, sensing, and suspended-base regulation.
 
-## Demonstrated Tasks
+The same system architecture also provides a path toward autonomous operation. Demonstrations collected through teleoperation can be used to train learning-based policies, which generate manipulation commands while retaining the same underlying hardware and control stack.
 
-The platform has been validated through:
+<figure class="siam-project__media siam-project__media--policy">
+  <img
+    src="{{ '/assets/img/projects/siam/Autonomous_Policy.gif' | relative_url }}"
+    alt="Autonomous SIAM policy performing a manipulation task from multiple camera views"
+    loading="lazy"
+  >
+</figure>
 
-- Suspended-base stabilization
-- End-effector trajectory tracking
-- VR-based teleoperation task execution
-- Teleoperation demonstration collection
-- ACT-based autonomous manipulation extension
+In this way, learning is treated as an **extension of the robotic system**, rather than the central focus of the project.
 
-A representative learning task is a cup pick-and-place task, where the policy grasps a randomly placed cup within a predefined workspace and moves it to a target region.
+## Toward High-Altitude Physical Work
 
-## Contribution
+The long-term goal of SIAM is to enable robots to perform **physical work in locations that are difficult, dangerous, or expensive for people to access**.
 
-This project contributes:
+Potential applications include inspection, maintenance, repair, surface treatment, tool use, and object handling on structures such as wind turbines, communication towers, buildings, industrial facilities, and large vessels.
 
-1. **Integrated suspended manipulation platform**  
-   A cable-suspended SIAM system is implemented as a real dual-arm manipulation platform.
+SIAM explores whether a **cable-supported, internally actuated manipulation platform** can provide a practical alternative to conventional aerial robots for these tasks.
 
-2. **Teleoperation system for remote task execution**  
-   A VR-based teleoperation interface is integrated with the SIAM control framework.
+By bringing together suspension, internal stabilization, manipulation hardware, perception, teleoperation, and autonomous execution in a single platform, the project aims to establish a new robotic system architecture for high-altitude physical work.
 
-3. **Imitation learning extension for autonomous execution**  
-   Teleoperation demonstrations are used to train a learning policy that replaces the operator command while preserving the same lower-level control pipeline.
+</div>
 
-## People
+<style>
+  .siam-project__media {
+    overflow: hidden;
+    width: min(100%, 760px);
+    margin: 1.25rem auto 1.75rem !important;
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--global-divider-color, #d0d5dd) 24%, transparent);
+  }
 
-- Wonjun Han
-- Taeho Yun
+  .siam-project .siam-project__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    border-radius: 0;
+    object-fit: contain;
+  }
 
-<!-- Add additional contributors here. -->
+  .siam-project__media--hero {
+    width: min(100%, 600px);
+  }
 
-## Media
+  .siam-project .siam-project__media--hero img {
+    aspect-ratio: 1;
+    padding: 1rem;
+  }
 
-<!-- Recommended files:
-- assets/img/projects/siam/siam_teaser.jpg
-- assets/img/projects/siam/system_overview.jpg
-- assets/img/projects/siam/teleoperation_demo.gif
-- assets/img/projects/siam/autonomous_execution.gif
--->
+  .siam-project__media--mechanism {
+    width: min(100%, 600px);
+  }
 
-## Publications
+  .siam-project .siam-project__media--mechanism img {
+    aspect-ratio: 3 / 2;
+  }
 
-<!-- Add related papers, thesis, or presentation links here when available. -->
+  .siam-project .siam-project__media--policy img {
+    aspect-ratio: 16 / 9;
+  }
+
+  @media (max-width: 576px) {
+    .siam-project__media {
+      margin: 1.15rem auto 1.6rem !important;
+    }
+
+    .siam-project .siam-project__media--hero img {
+      padding: 0.65rem;
+    }
+  }
+</style>

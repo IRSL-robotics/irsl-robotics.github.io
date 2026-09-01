@@ -79,9 +79,10 @@ The two directions address complementary parts of the same problem. Sensing make
 <style>
   .whole-arm-project__media-grid {
     display: grid;
+    width: min(100%, 760px);
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
-    margin: 1.25rem 0 1.75rem;
+    margin: 1.25rem auto 1.75rem;
   }
 
   .whole-arm-project__media-grid figure,

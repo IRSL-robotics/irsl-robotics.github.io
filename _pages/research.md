@@ -43,7 +43,7 @@ horizontal: false
   <article class="research-card">
     <div class="research-card__image-wrap">
       <img
-        src="{{ '/assets/img/projects/spatio-temporal/scdm.png' | relative_url }}"
+        src="{{ '/assets/img/projects/Physical_AI.png' | relative_url }}"
         alt="Physical AI research preview"
         class="research-card__image"
       >
