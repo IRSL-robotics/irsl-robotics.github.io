@@ -78,6 +78,39 @@
     border-radius: 14px;
   }
 
+  .publication-detail .publication-detail__media {
+    width: min(100%, 720px);
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--global-divider-color, #d0d5dd) 20%, transparent);
+  }
+
+  .publication-detail .publication-detail__media img {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    border-radius: 0;
+    object-fit: contain;
+  }
+
+  .publication-detail .publication-detail__media-grid {
+    display: grid;
+    width: min(100%, 720px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 1.25rem auto 2.25rem;
+  }
+
+  .publication-detail .publication-detail__media-grid > img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--global-divider-color, #d0d5dd) 20%, transparent);
+    object-fit: contain;
+  }
+
   .publication-detail h2 {
     display: flex;
     align-items: center;
@@ -94,6 +127,54 @@
     height: 1px;
     background: color-mix(in srgb, var(--publication-accent) 18%, transparent);
     content: "";
+  }
+
+  .publication-detail h2[id="representative-publications"] ~ h3 {
+    margin: 1.8rem 0 0.7rem;
+    color: color-mix(in srgb, var(--publication-accent) 78%, var(--global-text-color, #111827));
+    font-size: 1.05rem;
+    font-weight: 680;
+    letter-spacing: -0.01em;
+  }
+
+  .publication-detail h2[id="representative-publications"] ~ ol,
+  .publication-detail h2[id="representative-publications"] ~ ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.35rem;
+  }
+
+  .publication-detail h2[id="representative-publications"] ~ ol > li,
+  .publication-detail h2[id="representative-publications"] ~ ul > li {
+    margin-bottom: 1rem;
+    padding-left: 0.25rem;
+    line-height: 1.65;
+  }
+
+  .publication-detail h2[id="representative-publications"] ~ details {
+    margin-top: 1.5rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid color-mix(in srgb, var(--publication-accent) 16%, var(--global-divider-color, #d0d5dd));
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--publication-accent) 3%, var(--global-card-bg-color, #ffffff));
+  }
+
+  .publication-detail h2[id="representative-publications"] ~ details summary {
+    color: var(--global-text-color, #111827);
+    cursor: pointer;
+  }
+
+  .publication-detail h2[id="representative-publications"] ~ details[open] summary {
+    margin-bottom: 0.85rem;
+  }
+
+  .publication-detail h2[id="representative-publications"] ~ details ul {
+    margin-bottom: 0;
+    padding-left: 1.35rem;
+  }
+
+  .publication-detail h2[id="representative-publications"] ~ details li {
+    margin-bottom: 0.75rem;
+    line-height: 1.65;
   }
 
   .publication-detail p {
@@ -151,6 +232,14 @@
       margin-top: 2.3rem;
       font-size: 1.15rem;
     }
+
+    .publication-detail h2[id="representative-publications"] ~ h3 {
+      font-size: 1rem;
+    }
+
+    .publication-detail .publication-detail__media-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style> <div class="publication-detail whole-arm-project"> <p><a class="publication-detail__back" href="/research/physical-ai/">← Back to Physical AI</a></p> <p class="publication-detail__lead"><strong>Giving robots whole-arm physical intelligence:</strong> we develop robots that can sense, understand, and use contact across their entire arms.</p> <p>Humans often use the shoulder, elbow, forearm, and hand together when interacting with the environment. Contact across the arm helps us guide motion, distribute force, and adapt when the surroundings are uncertain. Most robot manipulation, however, still focuses primarily on positioning and controlling the end-effector.</p> <p>This end-effector-centered view leaves much of the robot arm underused. Contacts along the arm are often treated simply as collisions, even though they can provide useful information about the environment and support more coordinated ways of performing a task. Enabling robots to recognize and make use of these interactions requires perception and action to be considered together.</p> <p>Our research explores how a robot can instead use its whole arm as an interface for both sensing and action. This goal brings together two closely related directions: <strong>Whole-Arm Sensing</strong> and <strong>Whole-Arm Manipulation</strong>.</p> <h2 id="whole-arm-sensing">Whole-Arm Sensing</h2> <div class="whole-arm-project__media-grid"> <figure> <img src="/assets/img/projects/whole_arm/whole_arm_sensing.gif" alt="Robot demonstrating whole-arm contact sensing"> </figure> <figure> <img src="/assets/img/projects/whole_arm/whole_arm_sensing2.gif" alt="Robot localizing physical contact along its arm"> </figure> </div> <p>Whole-Arm Sensing enables a robot to perceive where and how physical interaction occurs across its arm. By extending contact awareness beyond the gripper, the robot can better understand its physical relationship with the surrounding environment.</p> <p>Rather than treating the arm only as a mechanism for positioning the hand, this direction considers every link as a potential point of interaction. Such awareness becomes especially important when a robot works close to objects, people, or confined spaces, where contact may occur at several parts of the arm and change throughout a task. The aim is to give the robot enough information to recognize these interactions and respond appropriately.</p> <h2 id="whole-arm-manipulation">Whole-Arm Manipulation</h2> <figure class="whole-arm-project__media-wide"> <img src="/assets/img/projects/whole_arm/whole_arm_manipulation.gif" alt="Robot demonstrating learned whole-arm manipulation"> </figure> <p>Whole-Arm Manipulation studies how robots can learn to coordinate motion and contact across the entire arm. Through whole-arm teleoperation and learning, our research aims to capture how humans use posture and physical interaction to perform tasks, and to transfer these behaviors into adaptable robot policies.</p> <p>Human manipulation involves more than following a hand trajectory. We continually adjust the configuration of the arm, decide how to engage with the environment, and redistribute motion and force as a task develops. Whole-arm teleoperation provides a natural way to demonstrate these coordinated behaviors, while learning allows robots to turn the demonstrations into strategies that can adapt to new interactions and task conditions.</p> <p>The two directions address complementary parts of the same problem. Sensing makes physical interaction across the arm observable, while manipulation studies how that interaction can guide learned behavior. Viewed together, they allow a robot to understand how its body is engaged with the environment and determine how to use that interaction as part of a task. This integrated perspective forms the basis of <strong>whole-arm physical intelligence</strong>.</p> <h2 id="representative-publications">Representative Publications</h2> <h3 id="whole-arm-sensing-1">Whole-Arm Sensing</h3> <ol> <li> <p><strong>Mixture of Flow Matching and Particle Filter for Proprioception-Based Online Contact Estimation</strong><br> <em>Seo Wook Han, Min Jun Kim</em><br> <em>IEEE Transactions on Robotics (T-RO), 2026 (to be presented at Humanoids 2026)</em></p> </li> <li> <p><strong>CDM: Contact Diffusion Model for Multi-Contact Point Localization</strong><br> <em>Seo Wook Han, Min Jun Kim</em><br> <em>IEEE International Conference on Robotics and Automation (ICRA), 2025</em></p> </li> <li> <p><strong>Proprioceptive Sensor-Based Simultaneous Multi-Contact Point Localization and Force Identification for Robotic Arms</strong><br> <em>Seo Wook Han, Min Jun Kim</em><br> <em>IEEE International Conference on Robotics and Automation (ICRA), 2023</em></p> </li> </ol> <h3 id="whole-arm-manipulation-1">Whole-Arm Manipulation</h3> <ol> <li> <strong>Online Multi-Contact Feedback Model Predictive Control for Interactive Robotic Tasks</strong><br> <em>Seo Wook Han, Maged Iskandar, Jinoh Lee, Min Jun Kim</em><br> <em>IEEE International Conference on Robotics and Automation (ICRA), 2024</em> </li> </ol> </div> <style>
   .whole-arm-project__media-grid {
@@ -185,21 +274,6 @@
     max-width: 760px;
     margin: 1.25rem auto 1.75rem;
     aspect-ratio: 16 / 9;
-  }
-
-  .whole-arm-project h3 {
-    margin-top: 1.8rem;
-    color: color-mix(in srgb, var(--publication-accent) 78%, var(--global-text-color, #111827));
-    font-size: 1.05rem;
-  }
-
-  .whole-arm-project ol {
-    padding-left: 1.35rem;
-  }
-
-  .whole-arm-project ol li {
-    margin-bottom: 1rem;
-    padding-left: 0.25rem;
   }
 
   @media (max-width: 640px) {
@@ -712,6 +786,16 @@ ninja.data = [{
           description: "Enabling robots to sense, understand, and use contact across their entire arms.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/whole-arm-physical-intelligence/";
+            },},{id: "projects-constraint-aware-control",
+          title: 'Constraint-Aware Control',
+          description: "Control methods that remain robust to uncertainty while respecting the constraints required for safe and dependable real-world operation.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/constraint-aware-control/";
+            },},{id: "projects-robot-control-amp-safety",
+          title: 'Robot Control &amp; Safety',
+          description: "Control principles for autonomous physical interaction in uncertain, unstructured, and contact-rich environments.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/physical-interaction-control/";
             },},{id: "teachings-control-system-engineering",
           title: 'Control System Engineering',
           description: "",

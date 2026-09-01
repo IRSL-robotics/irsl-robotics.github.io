@@ -78,6 +78,39 @@
     border-radius: 14px;
   }
 
+  .publication-detail .publication-detail__media {
+    width: min(100%, 720px);
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--global-divider-color, #d0d5dd) 20%, transparent);
+  }
+
+  .publication-detail .publication-detail__media img {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    border-radius: 0;
+    object-fit: contain;
+  }
+
+  .publication-detail .publication-detail__media-grid {
+    display: grid;
+    width: min(100%, 720px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 1.25rem auto 2.25rem;
+  }
+
+  .publication-detail .publication-detail__media-grid > img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--global-divider-color, #d0d5dd) 20%, transparent);
+    object-fit: contain;
+  }
+
   .publication-detail h2 {
     display: flex;
     align-items: center;
@@ -94,6 +127,54 @@
     height: 1px;
     background: color-mix(in srgb, var(--publication-accent) 18%, transparent);
     content: "";
+  }
+
+  .publication-detail h2[id="representative-publications"] ~ h3 {
+    margin: 1.8rem 0 0.7rem;
+    color: color-mix(in srgb, var(--publication-accent) 78%, var(--global-text-color, #111827));
+    font-size: 1.05rem;
+    font-weight: 680;
+    letter-spacing: -0.01em;
+  }
+
+  .publication-detail h2[id="representative-publications"] ~ ol,
+  .publication-detail h2[id="representative-publications"] ~ ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.35rem;
+  }
+
+  .publication-detail h2[id="representative-publications"] ~ ol > li,
+  .publication-detail h2[id="representative-publications"] ~ ul > li {
+    margin-bottom: 1rem;
+    padding-left: 0.25rem;
+    line-height: 1.65;
+  }
+
+  .publication-detail h2[id="representative-publications"] ~ details {
+    margin-top: 1.5rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid color-mix(in srgb, var(--publication-accent) 16%, var(--global-divider-color, #d0d5dd));
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--publication-accent) 3%, var(--global-card-bg-color, #ffffff));
+  }
+
+  .publication-detail h2[id="representative-publications"] ~ details summary {
+    color: var(--global-text-color, #111827);
+    cursor: pointer;
+  }
+
+  .publication-detail h2[id="representative-publications"] ~ details[open] summary {
+    margin-bottom: 0.85rem;
+  }
+
+  .publication-detail h2[id="representative-publications"] ~ details ul {
+    margin-bottom: 0;
+    padding-left: 1.35rem;
+  }
+
+  .publication-detail h2[id="representative-publications"] ~ details li {
+    margin-bottom: 0.75rem;
+    line-height: 1.65;
   }
 
   .publication-detail p {
@@ -150,6 +231,14 @@
     .publication-detail h2 {
       margin-top: 2.3rem;
       font-size: 1.15rem;
+    }
+
+    .publication-detail h2[id="representative-publications"] ~ h3 {
+      font-size: 1rem;
+    }
+
+    .publication-detail .publication-detail__media-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style> <div class="publication-detail"> <p><a class="publication-detail__back" href="/research/hardware-design/">← Back to Robotic Systems &amp; Hardware</a></p> <p class="publication-detail__lead">An energy efficient fully actuated drone designed for directional aerial contact forces.</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/publication_preview/design-480.webp 480w,/assets/img/publication_preview/design-800.webp 800w,/assets/img/publication_preview/design-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/publication_preview/design.gif" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="Fully Actuated Drone with Non-Isotropic Wrench Shape" loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> </figure> <h2 id="overview">Overview</h2> <p>Conventional fully actuated drones often tilt their propellers symmetrically, producing an isotropic wrench shape that can waste energy during directional contact tasks. This project begins with the force and torque set required for aerial contact manipulation and incorporates it directly into the vehicle design optimization.</p> <p>The optimized non-isotropic configuration preserves the required wrench capability while reducing hovering energy. In simulation, it more than doubled hovering efficiency and improved contact force efficiency by nearly 1.4 times compared with a typical fully actuated design.</p> <h2 id="video">Video</h2> <figure> <iframe src="https://www.youtube.com/embed/QhGdCXcCHgg" class="img-fluid rounded z-depth-1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" width="auto" height="auto"></iframe> </figure> <h2 id="publication">Publication</h2> <p>S. Park and M. J. Kim, “Design of a Fully Actuated Drone with Non-Isotropic Wrench Shape,” <em>IEEE/RSJ IROS</em>, 2024. <a href="https://ieeexplore.ieee.org/abstract/document/10801419" rel="external nofollow noopener" target="_blank">IEEE</a></p> <div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/aerial-manipulation/aerial_research-topic-5" rel="external nofollow noopener" target="_blank">Original Project Page ↗</a></div> </div> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Intelligent Robotic Systems Lab. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. </div> </footer> <script>
@@ -657,6 +746,16 @@ ninja.data = [{
           description: "Enabling robots to sense, understand, and use contact across their entire arms.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/whole-arm-physical-intelligence/";
+            },},{id: "projects-constraint-aware-control",
+          title: 'Constraint-Aware Control',
+          description: "Control methods that remain robust to uncertainty while respecting the constraints required for safe and dependable real-world operation.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/constraint-aware-control/";
+            },},{id: "projects-robot-control-amp-safety",
+          title: 'Robot Control &amp; Safety',
+          description: "Control principles for autonomous physical interaction in uncertain, unstructured, and contact-rich environments.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/physical-interaction-control/";
             },},{id: "teachings-control-system-engineering",
           title: 'Control System Engineering',
           description: "",
