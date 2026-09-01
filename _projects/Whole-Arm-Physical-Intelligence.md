@@ -3,7 +3,7 @@ layout: page
 title: Whole-Arm Physical Intelligence
 permalink: /projects/whole-arm-physical-intelligence/
 description: Enabling robots to sense, understand, and use contact across their entire arms.
-img: assets/img/projects/whole_arm/whole_arm_manipulation.gif
+img: assets/img/projects/whole_arm/whole_arm_sensing2.gif
 importance: 1
 category: Intelligence
 research_area: physical-ai
@@ -17,7 +17,7 @@ related_publications: false
 
 <a class="publication-detail__back" href="{{ '/research/physical-ai/' | relative_url }}">&larr; Back to Physical AI</a>
 
-<p class="publication-detail__lead">Giving robots whole-arm physical intelligence: we develop robots that can sense, understand, and use contact across their entire arms.</p>
+<p class="publication-detail__lead"><strong>Giving robots whole-arm physical intelligence:</strong> we develop robots that can sense, understand, and use contact across their entire arms.</p>
 
 Humans often use the shoulder, elbow, forearm, and hand together when interacting with the environment. Contact across the arm helps us guide motion, distribute force, and adapt when the surroundings are uncertain. Most robot manipulation, however, still focuses primarily on positioning and controlling the end-effector.
 
