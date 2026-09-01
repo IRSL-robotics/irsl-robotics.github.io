@@ -11,7 +11,7 @@ horizontal: false
 <div class="research-intro">
   <p>
     We develop intelligent robotic systems that safely and autonomously interact with the physical world. Spanning
-    <strong>Ground &amp; Aerial Robotics</strong>, our research brings together <strong>Robot Control &amp; Safety</strong>,
+    <strong>Ground &amp; Aerial Robotics</strong>, our research brings together <strong>Control &amp; Safety</strong>,
     <strong>Physical AI</strong>, and <strong>Robotic Systems &amp; Hardware</strong> to create robots that are robust and capable
     in the real world.
   </p>
