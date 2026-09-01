@@ -11,6 +11,7 @@ nav_order: 1
 .member-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: start;
   gap: 1rem;
   margin-top: 1rem;
   margin-bottom: 2rem;
