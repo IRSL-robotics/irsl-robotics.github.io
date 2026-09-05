@@ -31,7 +31,7 @@ nav: False
 
 #### 2026
 - S. W. Han, and M. J. Kim, "Mixture of Flow Matching and Particle Filter for Proprioception-based Online Contact Estimation", <em>IEEE T-RO, accepted</em>
-- S. Kim<sup>\*</sup>, K. Kim<sup>\*</sup>, D. Ko, Y. J. Heo, and M. J. Kim, "Spatially Conditioned Diffusion Policy: Learning Precise and Robust Manipulation with a Single RGB Camera", <em>arXiv preprint</em>
+- S. Kim<sup>\*</sup>, K. Kim<sup>\*</sup>, D. Ko, Y. J. Heo, and M. J. Kim, "Spatially Conditioned Diffusion Policy: Learning Precise and Robust Manipulation with a Single RGB Camera", <em>CoRL 2026, accepted</em>
 - Y. B. Lee<sup>\*</sup>, T. H. Yun<sup>\*</sup>, and M. J. Kim, "Extreme High-Gain Friction Observer of Flexible Joint Robots With L1 Adaptive Framework", <em>IEEE T-RO, accepted</em>
 
 #### 2025
@@ -425,6 +425,7 @@ nav: False
     const venueRules = [
       ["T-RO", /\bT-RO\b/i],
       ["RA-L", /\bRA-L\b/i],
+      ["CoRL", /\bCoRL\b/i],
       ["T-MECH", /\bT-MECH\b/i],
       ["ICRA", /\bICRA\b/i],
       ["IROS", /\bIROS\b/i],

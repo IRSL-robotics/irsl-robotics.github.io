@@ -251,6 +251,7 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
+      <li>S. Kim<sup>*</sup>, <strong>K. Kim</strong><sup>*</sup>, D. Ko, Y. J. Heo, and M. J. Kim, "Spatially Conditioned Diffusion Policy: Learning Precise and Robust Manipulation with a Single RGB Camera", <em>CoRL 2026, accepted</em> (<sup>*</sup> Co-first authors)</li>
       <li><strong>K. Kim</strong>, J. Lee, and M. J. Kim, "Augmented SE(3)-diffusion models for Fingered Grasp Generation from Raw 3D Scenes with a Single Tabletop Object", <em>IEEE SII 2025</em></li>
       <li><strong>K. Kim</strong>, D. Park, and M. J. Kim, “A Reachability Tree-Based Algorithm for Robot Task and Motion Planning”, <em>IEEE ICRA 2023</em></li>
     </ul>
@@ -705,6 +706,9 @@ nav_order: 1
 
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
+    <ul class="pub-list">
+      <li><strong>S. Kim</strong><sup>*</sup>, K. Kim<sup>*</sup>, D. Ko, Y. J. Heo, and M. J. Kim, "Spatially Conditioned Diffusion Policy: Learning Precise and Robust Manipulation with a Single RGB Camera", <em>CoRL 2026, accepted</em> (<sup>*</sup> Co-first authors)</li>
+    </ul>
   </div>
 
 </div>

@@ -1,0 +1,3 @@
+{% if proceedings contains entry.type %}
+  {% assign entrytype = entrytype | replace_first: '<em>In ', '<em>' %}
+{% endif %}
