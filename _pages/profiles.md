@@ -435,6 +435,7 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
+      <li>J. Jeong, <strong>S. Park</strong>, and S. Lee, "RCM-Consistent Admittance Control with Inverse-Dynamics QP for Hands-On Robotic Manipulation", <em>ICCAS 2026, Accepted</em></li>
       <li><strong>S. Park</strong>, and M. J. Kim, "Design of a Fully Actuated Drone with Non-Isotropic Wrench Shape", <em>IEEE/RSJ IROS 2024</em></li>
       <li>J. Jeong, <strong>S. Park</strong>, S. Lee, D. Youn, and M. J. Kim, "Designing an End-to-End UAV System for Insulator Inspection under Transmission Tower Environments", <em>IEEE ICEIC 2024</em></li>
     </ul>
@@ -472,6 +473,7 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
+      <li>S. Shin and <strong>J. Kim</strong>, "Dual-Attachment Cable Suspension System for Zero-Gravity Emulation of Space Manipulators", <em>ICCAS 2026, Accepted</em></li>
       <li><strong>J. Kim</strong>, and M.J. Kim, "Disturbance-Aware Model Predictive Control of Underactuated Robotics Systems", <em>IEEE/RSJ IROS 2024</em></li>
     </ul>
   </div>
@@ -508,6 +510,7 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
+      <li>S. Lee, <strong>S. M. Kim</strong>, and J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em></li>
       <li><strong>S. M. Kim</strong>, and M. J. Kim, “Learning Reactive Motion Policies by Leveraging Latent Data Manifolds” <em>(poster presentation), IEEE ICCAS 2024</em></li>
     </ul>
   </div>
@@ -550,6 +553,9 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
+      <li><strong>S. Lee</strong>, S. M. Kim, and J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em></li>
+      <li>J. Jeong, S. Park, and <strong>S. Lee</strong>, "RCM-Consistent Admittance Control with Inverse-Dynamics QP for Hands-On Robotic Manipulation", <em>ICCAS 2026, Accepted</em></li>
+      <li><strong>S. Lee</strong>, J. Jeong, and S. Shin, "Motor-Side Friction Observer-based Hand Guiding with Joint Torque Measurements", <em>ICCAS 2026, Accepted</em></li>
       <li>J. Jeong, S. Park, <strong>S. Lee</strong>, D. Youn, and M. J. Kim, "Designing an End-to-End UAV System for Insulator Inspection under Transmission Tower Environments", <em>IEEE ICEIC 2024</em></li>
     </ul>
   </div>
@@ -670,6 +676,11 @@ nav_order: 1
 
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
+
+    <ul class="pub-list">
+      <li><strong>J. Jeong</strong>, S. Park, and S. Lee, "RCM-Consistent Admittance Control with Inverse-Dynamics QP for Hands-On Robotic Manipulation", <em>ICCAS 2026, Accepted</em></li>
+      <li>S. Lee, <strong>J. Jeong</strong>, and S. Shin, "Motor-Side Friction Observer-based Hand Guiding with Joint Torque Measurements", <em>ICCAS 2026, Accepted</em></li>
+    </ul>
   </div>
 
 </div>
@@ -738,6 +749,10 @@ nav_order: 1
 
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
+
+    <ul class="pub-list">
+      <li>S. Lee, S. M. Kim, and <strong>J. Kim</strong>, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em></li>
+    </ul>
   </div>
 
 </div>
@@ -767,6 +782,11 @@ nav_order: 1
 
   <div class="member-section">
     <div class="member-section-title">Publications (International)</div>
+
+    <ul class="pub-list">
+      <li><strong>S. Shin</strong> and J. Kim, "Dual-Attachment Cable Suspension System for Zero-Gravity Emulation of Space Manipulators", <em>ICCAS 2026, Accepted</em></li>
+      <li>S. Lee, J. Jeong, and <strong>S. Shin</strong>, "Motor-Side Friction Observer-based Hand Guiding with Joint Torque Measurements", <em>ICCAS 2026, Accepted</em></li>
+    </ul>
   </div>
 
 </div>

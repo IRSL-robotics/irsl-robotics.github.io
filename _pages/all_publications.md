@@ -30,6 +30,10 @@ nav: False
 <h2 id="international-publications" class="all-publications__section"><span>01</span> International Publications</h2>
 
 #### 2026
+- S. Lee, S. M. Kim, and J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em>
+- S. Shin and J. Kim, "Dual-Attachment Cable Suspension System for Zero-Gravity Emulation of Space Manipulators", <em>ICCAS 2026, Accepted</em>
+- J. Jeong, S. Park, and S. Lee, "RCM-Consistent Admittance Control with Inverse-Dynamics QP for Hands-On Robotic Manipulation", <em>ICCAS 2026, Accepted</em>
+- S. Lee, J. Jeong, and S. Shin, "Motor-Side Friction Observer-based Hand Guiding with Joint Torque Measurements", <em>ICCAS 2026, Accepted</em>
 - S. W. Han, and M. J. Kim, "Mixture of Flow Matching and Particle Filter for Proprioception-based Online Contact Estimation", <em>IEEE T-RO, accepted</em>
 - S. Kim<sup>\*</sup>, K. Kim<sup>\*</sup>, D. Ko, Y. J. Heo, and M. J. Kim, "Spatially Conditioned Diffusion Policy: Learning Precise and Robust Manipulation with a Single RGB Camera", <em>CoRL 2026, accepted</em>
 - Y. B. Lee<sup>\*</sup>, T. H. Yun<sup>\*</sup>, and M. J. Kim, "Extreme High-Gain Friction Observer of Flexible Joint Robots With L1 Adaptive Framework", <em>IEEE T-RO, accepted</em>
@@ -430,6 +434,7 @@ nav: False
       ["ICRA", /\bICRA\b/i],
       ["IROS", /\bIROS\b/i],
       ["ICML", /\bICML\b/i],
+      ["ICCAS", /\bICCAS\b/i],
       ["ICEIC", /\bICEIC\b/i],
       ["ANBRE", /\bANBRE\d*\b/i],
       ["SYROCO", /\bSYROCO\b/i],
