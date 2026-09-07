@@ -64,8 +64,8 @@ horizontal: false
   <article class="research-card research-card--featured">
     <div class="research-card__image-wrap">
       <img
-        src="{{ '/assets/img/projects/Hardware.png' | relative_url }}"
-        alt="Robotic systems and hardware research preview"
+        src="{{ '/assets/img/projects/sam2/sam2.png' | relative_url }}"
+        alt="SAM2 cable-suspended aerial manipulator"
         class="research-card__image research-card__image--hardware"
       >
       <span class="research-card__number" aria-hidden="true">03</span>
