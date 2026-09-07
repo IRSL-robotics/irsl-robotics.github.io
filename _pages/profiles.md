@@ -435,7 +435,7 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
-      <li>J. Jeong<sup>*</sup>, <strong>S. Park</strong><sup>*</sup>, S. Lee<sup>*</sup>, and M. J. Kim, "RCM-Consistent Admittance Control with Inverse-Dynamics QP for Hands-On Robotic Manipulation", <em>ICCAS 2026, Accepted</em> (<sup>*</sup> Co-first authors)</li>
+      <li>J. Jeong, <strong>S. Park</strong>, S. Lee, and M. J. Kim, "RCM-Consistent Admittance Control with Inverse-Dynamics QP for Hands-On Robotic Manipulation", <em>ICCAS 2026, Accepted</em></li>
       <li><strong>S. Park</strong>, and M. J. Kim, "Design of a Fully Actuated Drone with Non-Isotropic Wrench Shape", <em>IEEE/RSJ IROS 2024</em></li>
       <li>J. Jeong, <strong>S. Park</strong>, S. Lee, D. Youn, and M. J. Kim, "Designing an End-to-End UAV System for Insulator Inspection under Transmission Tower Environments", <em>IEEE ICEIC 2024</em></li>
     </ul>
@@ -473,7 +473,7 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
-      <li>S. Shin<sup>*</sup>, <strong>J. Kim</strong><sup>*</sup>, and M. J. Kim, "Dual-Attachment Cable Suspension System for Zero-Gravity Emulation of Space Manipulators", <em>ICCAS 2026, Accepted</em> (<sup>*</sup> Co-first authors)</li>
+      <li>S. Shin, <strong>J. Kim</strong>, and M. J. Kim, "Dual-Attachment Cable Suspension System for Zero-Gravity Emulation of Space Manipulators", <em>ICCAS 2026, Accepted</em></li>
       <li><strong>J. Kim</strong>, and M.J. Kim, "Disturbance-Aware Model Predictive Control of Underactuated Robotics Systems", <em>IEEE/RSJ IROS 2024</em></li>
     </ul>
   </div>
@@ -510,7 +510,7 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
-      <li>S. Lee<sup>*</sup>, <strong>S. M. Kim</strong><sup>*</sup>, J. Kim<sup>*</sup>, and M. J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em> (<sup>*</sup> Co-first authors)</li>
+      <li>S. Lee, <strong>S. M. Kim</strong>, J. Kim, and M. J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em></li>
       <li><strong>S. M. Kim</strong>, and M. J. Kim, “Learning Reactive Motion Policies by Leveraging Latent Data Manifolds” <em>(poster presentation), IEEE ICCAS 2024</em></li>
     </ul>
   </div>
@@ -553,9 +553,9 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
-      <li><strong>S. Lee</strong><sup>*</sup>, S. M. Kim<sup>*</sup>, J. Kim<sup>*</sup>, and M. J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em> (<sup>*</sup> Co-first authors)</li>
-      <li>J. Jeong<sup>*</sup>, S. Park<sup>*</sup>, <strong>S. Lee</strong><sup>*</sup>, and M. J. Kim, "RCM-Consistent Admittance Control with Inverse-Dynamics QP for Hands-On Robotic Manipulation", <em>ICCAS 2026, Accepted</em> (<sup>*</sup> Co-first authors)</li>
-      <li><strong>S. Lee</strong><sup>*</sup>, J. Jeong<sup>*</sup>, S. Shin<sup>*</sup>, and M. J. Kim, "Motor-Side Friction Observer-based Hand Guiding with Joint Torque Measurements", <em>ICCAS 2026, Accepted</em> (<sup>*</sup> Co-first authors)</li>
+      <li><strong>S. Lee</strong>, S. M. Kim, J. Kim, and M. J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em></li>
+      <li>J. Jeong, S. Park, <strong>S. Lee</strong>, and M. J. Kim, "RCM-Consistent Admittance Control with Inverse-Dynamics QP for Hands-On Robotic Manipulation", <em>ICCAS 2026, Accepted</em></li>
+      <li><strong>S. Lee</strong>, J. Jeong, S. Shin, and M. J. Kim, "Motor-Side Friction Observer-based Hand Guiding with Joint Torque Measurements", <em>ICCAS 2026, Accepted</em></li>
       <li>J. Jeong, S. Park, <strong>S. Lee</strong>, D. Youn, and M. J. Kim, "Designing an End-to-End UAV System for Insulator Inspection under Transmission Tower Environments", <em>IEEE ICEIC 2024</em></li>
     </ul>
   </div>
@@ -678,8 +678,8 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
-      <li><strong>J. Jeong</strong><sup>*</sup>, S. Park<sup>*</sup>, S. Lee<sup>*</sup>, and M. J. Kim, "RCM-Consistent Admittance Control with Inverse-Dynamics QP for Hands-On Robotic Manipulation", <em>ICCAS 2026, Accepted</em> (<sup>*</sup> Co-first authors)</li>
-      <li>S. Lee<sup>*</sup>, <strong>J. Jeong</strong><sup>*</sup>, S. Shin<sup>*</sup>, and M. J. Kim, "Motor-Side Friction Observer-based Hand Guiding with Joint Torque Measurements", <em>ICCAS 2026, Accepted</em> (<sup>*</sup> Co-first authors)</li>
+      <li><strong>J. Jeong</strong>, S. Park, S. Lee, and M. J. Kim, "RCM-Consistent Admittance Control with Inverse-Dynamics QP for Hands-On Robotic Manipulation", <em>ICCAS 2026, Accepted</em></li>
+      <li>S. Lee, <strong>J. Jeong</strong>, S. Shin, and M. J. Kim, "Motor-Side Friction Observer-based Hand Guiding with Joint Torque Measurements", <em>ICCAS 2026, Accepted</em></li>
     </ul>
   </div>
 
@@ -751,7 +751,7 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
-      <li>S. Lee<sup>*</sup>, S. M. Kim<sup>*</sup>, <strong>J. Kim</strong><sup>*</sup>, and M. J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em> (<sup>*</sup> Co-first authors)</li>
+      <li>S. Lee, S. M. Kim, <strong>J. Kim</strong>, and M. J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em></li>
     </ul>
   </div>
 
@@ -784,8 +784,8 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
-      <li><strong>S. Shin</strong><sup>*</sup>, J. Kim<sup>*</sup>, and M. J. Kim, "Dual-Attachment Cable Suspension System for Zero-Gravity Emulation of Space Manipulators", <em>ICCAS 2026, Accepted</em> (<sup>*</sup> Co-first authors)</li>
-      <li>S. Lee<sup>*</sup>, J. Jeong<sup>*</sup>, <strong>S. Shin</strong><sup>*</sup>, and M. J. Kim, "Motor-Side Friction Observer-based Hand Guiding with Joint Torque Measurements", <em>ICCAS 2026, Accepted</em> (<sup>*</sup> Co-first authors)</li>
+      <li><strong>S. Shin</strong>, J. Kim, and M. J. Kim, "Dual-Attachment Cable Suspension System for Zero-Gravity Emulation of Space Manipulators", <em>ICCAS 2026, Accepted</em></li>
+      <li>S. Lee, J. Jeong, <strong>S. Shin</strong>, and M. J. Kim, "Motor-Side Friction Observer-based Hand Guiding with Joint Torque Measurements", <em>ICCAS 2026, Accepted</em></li>
     </ul>
   </div>
 

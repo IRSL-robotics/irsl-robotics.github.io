@@ -31,12 +31,12 @@ nav: False
 
 #### 2026
 - S. W. Han, and M. J. Kim, "Mixture of Flow Matching and Particle Filter for Proprioception-based Online Contact Estimation", <em>IEEE T-RO, accepted</em>
-- S. Kim<sup>\*</sup>, K. Kim<sup>\*</sup>, D. Ko, Y. J. Heo, and M. J. Kim, "Spatially Conditioned Diffusion Policy: Learning Precise and Robust Manipulation with a Single RGB Camera", <em>CoRL 2026, accepted</em>
-- S. Lee<sup>\*</sup>, S. M. Kim<sup>\*</sup>, J. Kim<sup>\*</sup>, and M. J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em> (<sup>\*</sup> Co-first authors)
-- S. Shin<sup>\*</sup>, J. Kim<sup>\*</sup>, and M. J. Kim, "Dual-Attachment Cable Suspension System for Zero-Gravity Emulation of Space Manipulators", <em>ICCAS 2026, Accepted</em> (<sup>\*</sup> Co-first authors)
-- J. Jeong<sup>\*</sup>, S. Park<sup>\*</sup>, S. Lee<sup>\*</sup>, and M. J. Kim, "RCM-Consistent Admittance Control with Inverse-Dynamics QP for Hands-On Robotic Manipulation", <em>ICCAS 2026, Accepted</em> (<sup>\*</sup> Co-first authors)
-- S. Lee<sup>\*</sup>, J. Jeong<sup>\*</sup>, S. Shin<sup>\*</sup>, and M. J. Kim, "Motor-Side Friction Observer-based Hand Guiding with Joint Torque Measurements", <em>ICCAS 2026, Accepted</em> (<sup>\*</sup> Co-first authors)
-- Y. B. Lee<sup>\*</sup>, T. H. Yun<sup>\*</sup>, and M. J. Kim, "Extreme High-Gain Friction Observer of Flexible Joint Robots With L1 Adaptive Framework", <em>IEEE T-RO, accepted</em>
+- S. Kim<sup>\*</sup>, K. Kim<sup>\*</sup>, D. Ko, Y. J. Heo, and M. J. Kim, "Spatially Conditioned Diffusion Policy: Learning Precise and Robust Manipulation with a Single RGB Camera", <em>CoRL 2026, accepted</em> (\* Co-first authors)
+- S. Lee, S. M. Kim, J. Kim, and M. J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em>
+- S. Shin, J. Kim, and M. J. Kim, "Dual-Attachment Cable Suspension System for Zero-Gravity Emulation of Space Manipulators", <em>ICCAS 2026, Accepted</em>
+- J. Jeong, S. Park, S. Lee, and M. J. Kim, "RCM-Consistent Admittance Control with Inverse-Dynamics QP for Hands-On Robotic Manipulation", <em>ICCAS 2026, Accepted</em>
+- S. Lee, J. Jeong, S. Shin, and M. J. Kim, "Motor-Side Friction Observer-based Hand Guiding with Joint Torque Measurements", <em>ICCAS 2026, Accepted</em>
+- Y. B. Lee<sup>\*</sup>, T. H. Yun<sup>\*</sup>, and M. J. Kim, "Extreme High-Gain Friction Observer of Flexible Joint Robots With L1 Adaptive Framework", <em>IEEE T-RO, accepted</em> (\* Co-first authors)
 
 #### 2025
 - T. H. Yun, F. Beck, M. J. Kim<sup>†</sup> and J. Lee<sup>†</sup>, "Exact Fractional Order Impedance Rendering for Highly Flexible and Multi-Jointed Robots Using Time-Delay Estimation,” *IEEE RA-L*
