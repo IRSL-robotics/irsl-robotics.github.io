@@ -35,7 +35,7 @@ nav: False
 - Y. B. Lee<sup>\*</sup>, T. H. Yun<sup>\*</sup>, and M. J. Kim, "Extreme High-Gain Friction Observer of Flexible Joint Robots With L1 Adaptive Framework", <em>IEEE T-RO, accepted</em>
 
 #### 2025
-- T. H. Yun, F. Beck, M. J. Kim<sup>†</sup> and J. Lee<sup>†</sup>, "Exact Fractional Order Impedance Rendering for Highly Flexible and Multi-Jointed Robots Using Time-Delay Estimation,” *IEEE RA-L (will be presented at IROS 2026, Pittsburgh, USA)*
+- T. H. Yun, F. Beck, M. J. Kim<sup>†</sup> and J. Lee<sup>†</sup>, "Exact Fractional Order Impedance Rendering for Highly Flexible and Multi-Jointed Robots Using Time-Delay Estimation,” *IEEE RA-L*
 - F. C. Loeffl, F. Beck, J. Lee, M. J. Kim, and M. Keppler, "A Visco-Elastic Actuator with Linear Gas Spring and Variable Damping," *Mechatronics*
 - T. M. Luu, Y. Lee, D. Lee, S. Kim, M. J. Kim, and C. D. Yoo, "Enhancing Rating-Based Reinforcement Learning to Effectively Leverage Feedback from Large Vision-Language Models," *ICML 2025*
 - S. W. Han, and M. J. Kim, "CDM: Contact Diffusion Model for Multi-Contact Point Localization," *IEEE ICRA 2025*
@@ -71,13 +71,13 @@ nav: False
 - J. Lee, R. Balachandran, Y. Sarkisov, M. De Stefano, A. Coelho, K. Shinde, M. J. Kim, R. Triebel, and K. Kondak, "Visual-inertial telepresence for aerial manipulation", *IEEE ICRA 2020*
 
 #### 2019
-- M. J. Kim, F. Beck, C. Ott, and A. Albu-Schaeffer, "Model-free friction observers for flexible joint robots with torque measurements", *IEEE T-RO (with presentation at ICRA 2020)*
+- M. J. Kim, F. Beck, C. Ott, and A. Albu-Schaeffer, "Model-free friction observers for flexible joint robots with torque measurements", *IEEE T-RO*
 - Y. Sarkisov<sup>\*</sup>, M. J. Kim<sup>\*</sup>, D. Bicego, D. Tsetserukou, C. Ott, A. Franchi, and K. Kondak, "Development of SAM: cable-suspended aerial manipulator", *IEEE ICRA 2019*
 - M. J. Kim, W. Lee, J. Choi, G. Chung, K.-L. Han, I. S. Choi, C. Ott, and W. K. Chung, "A passivity-based nonlinear admittance control with application to powered upper-limb control under unknown environmental interactions", *IEEE/ASME T-MECH*
 
 #### 2018
 - M. J. Kim, R. Balachandran, M. De Stefano, K. Kondak, and C. Ott, "Passive compliance control of aerial manipulators", *IEEE/RSJ IROS 2018*
-- M. J. Kim, K. Kondak, and C. Ott, "A stabilizing controller for regulation of uav with manipulator", *IEEE RA-L (with presentation at ICRA 2018)*
+- M. J. Kim, K. Kondak, and C. Ott, "A stabilizing controller for regulation of uav with manipulator", *IEEE RA-L*
 - M. J. Kim, J. Lin, K. Kondak, D. Lee, and C. Ott, "Oscillation damping control of pendulum-like manipulation platform using moving masses", *IFAC SYROCO*
 
 #### 2017

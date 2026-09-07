@@ -58,7 +58,7 @@ The two directions address complementary parts of the same problem. Sensing make
 
 1. **Mixture of Flow Matching and Particle Filter for Proprioception-Based Online Contact Estimation**  
    *Seo Wook Han, Min Jun Kim*  
-   *IEEE Transactions on Robotics (T-RO), 2026 (to be presented at Humanoids 2026)*
+   *IEEE Transactions on Robotics (T-RO), 2026*
 
 2. **CDM: Contact Diffusion Model for Multi-Contact Point Localization**  
    *Seo Wook Han, Min Jun Kim*  

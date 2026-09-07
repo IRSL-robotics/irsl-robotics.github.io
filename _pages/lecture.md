@@ -3,7 +3,7 @@ layout: page
 permalink: /lecture/
 title: Lecture
 description:
-nav: true
+nav: false
 nav_order: 6
 calendar: false
 ---

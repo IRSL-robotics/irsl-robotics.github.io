@@ -593,9 +593,9 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
-      <li>Y. B. Lee*, <strong>T. H. Yun*</strong> and M. J. Kim, "Extreme High-Gain Friction Observer of Flexible Joint Robots With L1 Adaptive Framework," <em>in IEEE Transactions on Robotics (T-RO), 2026 (* = Co-first, will be presented @ Humanoids 2026, California, USA)</em></li>
-      <li><strong>T. H. Yun</strong>, F. Beck, M. J. Kim and J. Lee, "Exact Fractional Order Impedance Rendering for Highly Flexible and Multi-Jointed Robots Using Time-Delay Estimation,” <em>in IEEE Robotics and Automation Letters (RA-L), vol. 10, no. 12, pp. 12891-12898, Dec. 2025. (will be presented @ IROS 2026, Pittsburgh, USA)</em></li>
-      <li><strong>T. H. Yun</strong> and M. J. Kim, "Disturbance Observer With Constraints", <em>in IEEE Control Systems Letters, vol. 8, pp. 1949-1954, 2024. (presented in 63rd IEEE Conference on Decision and Control (CDC), Milano, Italy)</em></li>
+      <li>Y. B. Lee*, <strong>T. H. Yun*</strong> and M. J. Kim, "Extreme High-Gain Friction Observer of Flexible Joint Robots With L1 Adaptive Framework," <em>in IEEE Transactions on Robotics (T-RO), 2026 (* = Co-first)</em></li>
+      <li><strong>T. H. Yun</strong>, F. Beck, M. J. Kim and J. Lee, "Exact Fractional Order Impedance Rendering for Highly Flexible and Multi-Jointed Robots Using Time-Delay Estimation,” <em>in IEEE Robotics and Automation Letters (RA-L), vol. 10, no. 12, pp. 12891-12898, Dec. 2025.</em></li>
+      <li><strong>T. H. Yun</strong> and M. J. Kim, "Disturbance Observer With Constraints", <em>in IEEE Control Systems Letters, vol. 8, pp. 1949-1954, 2024.</em></li>
     </ul>
   </div>
   <div class="member-section">

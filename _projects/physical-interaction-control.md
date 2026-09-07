@@ -119,7 +119,7 @@ The publications below trace this direction across robust control, geometric con
 
 1. **Extreme High-Gain Friction Observer of Flexible Joint Robots With L1 Adaptive Framework**  
    *Young Bin Lee, Tae Ho Yun, Min Jun Kim*  
-   *IEEE Transactions on Robotics (T-RO), 2026 (to be presented at Humanoids 2026)*
+   *IEEE Transactions on Robotics (T-RO), 2026*
 
 2. **Exact Fractional Order Impedance Rendering for Highly Flexible and Multi-Jointed Robots Using Time-Delay Estimation**  
    *Tae Ho Yun, Fabian Beck, Min Jun Kim, Jinoh Lee*  
@@ -167,10 +167,10 @@ The publications below trace this direction across robust control, geometric con
 - **Compliance Control of Cable-Suspended Aerial Manipulator Using Hierarchical Control Framework** -- *IEEE/RSJ IROS, 2020*
 - **Optimal Oscillation Damping Control of cable-Suspended Aerial Manipulator with a Single IMU Sensor** -- *IEEE ICRA, 2020*
 - **Visual-Inertial Telepresence for Aerial Manipulation** -- *IEEE ICRA, 2020*
-- **Model-free friction observers for flexible joint robots with torque measurements** -- *IEEE T-RO, 2019; with presentation at ICRA 2020*
+- **Model-free friction observers for flexible joint robots with torque measurements** -- *IEEE T-RO, 2019*
 - **A Passivity-Based Nonlinear Admittance Control With Application to Powered Upper-Limb Control Under Unknown Environmental Interactions** -- *IEEE/ASME Transactions on Mechatronics, 2019*
 - **Passive Compliance Control of Aerial Manipulators** -- *IEEE/RSJ IROS, 2018*
-- **A Stabilizing Controller for Regulation of UAV With Manipulator** -- *IEEE RA-L, 2018; with presentation at ICRA 2018*
+- **A Stabilizing Controller for Regulation of UAV With Manipulator** -- *IEEE RA-L, 2018*
 - **Disturbance-observer-based PD control of electro-hydrostatically actuated flexible joint robots** -- *IEEE/RSJ IROS, 2017*
 - **Enhancing joint torque control of series elastic actuators with physical damping** -- *IEEE ICRA, 2017*
 
