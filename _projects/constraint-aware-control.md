@@ -85,11 +85,15 @@ Looking ahead, we aim to combine these model-based foundations with **data-drive
 
 ### Robust Control with Constraints
 
-1. **Disturbance Observer With Constraints**  
+1. **Contact-responsive high-gain robot motion controllers using a constrained disturbance observer**  
+   *Ji Wan Han, Min Jun Kim*  
+   *Intelligent Service Robotics, vol. 19, no. 5, article 89, 2026*
+
+2. **Disturbance Observer With Constraints**  
    *Tae Ho Yun, Min Jun Kim*  
    *IEEE Control Systems Letters (L-CSS), 2024*
 
-2. **Constrained Nonlinear Disturbance Observer for Robotic Systems**  
+3. **Constrained Nonlinear Disturbance Observer for Robotic Systems**  
    *Ji Wan Han, Daehyung Park, Min Jun Kim*  
    *IEEE International Conference on Robotics and Automation (ICRA), 2024*
 

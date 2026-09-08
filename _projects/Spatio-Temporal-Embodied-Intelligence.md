@@ -146,11 +146,11 @@ Such world models can allow embodied agents to understand dynamic 3D environment
 
 1. **Spatially Conditioned Diffusion Policy: Learning Precise and Robust Manipulation with a Single RGB Camera**<br>
    *Seoyoon Kim<sup>\*</sup>, Kanghyun Kim<sup>\*</sup>, Dongwoo Ko, Yeong Jin Heo, Min Jun Kim*<br>
-   *CoRL 2026, accepted* · [arXiv](https://arxiv.org/abs/2606.14535)<br>
+   *CoRL 2026, accepted*<br>
    <small><sup>\*</sup> Co-first authors</small>
 
 2. **SPLIT: SE(3)-diffusion via Local Geometry-based Score Prediction for 3D Scene-to-Pose-Set Matching Problems**<br>
    *Kanghyun Kim, Min Jun Kim*<br>
-   *arXiv preprint, 2024* · [arXiv](https://arxiv.org/abs/2411.10049) · [Video](https://youtu.be/4r8OO1CSu6w)
+   *arXiv preprint, 2024*
 
 </div>

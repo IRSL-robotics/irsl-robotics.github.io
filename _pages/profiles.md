@@ -337,6 +337,7 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
+      <li><strong>J. W. Han</strong>, and M. J. Kim, "Contact-responsive high-gain robot motion controllers using a constrained disturbance observer", <em>Intelligent Service Robotics, vol. 19, no. 5, article 89, 2026</em></li>
       <li>T. Kim, <strong>J. W. Han</strong>, and M. J. Kim, "Safe Robot Teleoperation with Constrained Nonlinear Disturbance Observer", <em>IEEE RiTA 2024</em></li>
       <li><strong>J. W. Han</strong>, and M. J. Kim, “Learning-based method for Estimating Free Motion Disturbances Using Historical Velocity Memory” <em>(poster presentation), IEEE ICCAS 2024</em></li>
       <li><strong>J. W. Han</strong>, D. Park, and M. J. Kim, "Constrained Nonlinear Disturbance Observer for Robotic Systems", <em>IEEE ICRA 2024</em></li>
