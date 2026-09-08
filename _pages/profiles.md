@@ -381,6 +381,7 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
+      <li>S. Lee<sup>*</sup>, S. M. Kim<sup>*</sup>, J. Kim<sup>*</sup>, <strong>S. W. Han</strong>, and M. J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em> (<sup>*</sup> Co-first authors)</li>
       <li><strong>S. W. Han</strong>, and M. J. Kim, “Mixture of Flow Matching and Particle Filter for Proprioception-based Online Contact Estimation,” <em>IEEE Transactions on Robotics (T-RO), accepted, 2026</em></li>
       <li><strong>S. W. Han</strong>, and M. J. Kim, “Learning Multi-Contact Localization via Diffusion Models with Proprioceptive Sensing,” <em>2025 RSS Workshop on Navigating Contact Dynamics in Robotics</em></li>
       <li><strong>S. W. Han</strong>, and M. J. Kim, “CDM: Contact Diffusion Model for Multi-Contact Point Localization”, <em>IEEE ICRA 2025</em></li>
@@ -511,7 +512,7 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
-      <li>S. Lee, <strong>S. M. Kim</strong>, J. Kim, and M. J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em></li>
+      <li>S. Lee<sup>*</sup>, <strong>S. M. Kim</strong><sup>*</sup>, J. Kim<sup>*</sup>, S. W. Han, and M. J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em> (<sup>*</sup> Co-first authors)</li>
       <li><strong>S. M. Kim</strong>, and M. J. Kim, “Learning Reactive Motion Policies by Leveraging Latent Data Manifolds” <em>(poster presentation), IEEE ICCAS 2024</em></li>
     </ul>
   </div>
@@ -554,7 +555,7 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
-      <li><strong>S. Lee</strong>, S. M. Kim, J. Kim, and M. J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em></li>
+      <li><strong>S. Lee</strong><sup>*</sup>, S. M. Kim<sup>*</sup>, J. Kim<sup>*</sup>, S. W. Han, and M. J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em> (<sup>*</sup> Co-first authors)</li>
       <li>J. Jeong, S. Park, <strong>S. Lee</strong>, and M. J. Kim, "RCM-Consistent Admittance Control with Inverse-Dynamics QP for Hands-On Robotic Manipulation", <em>ICCAS 2026, Accepted</em></li>
       <li><strong>S. Lee</strong>, J. Jeong, S. Shin, and M. J. Kim, "Motor-Side Friction Observer-based Hand Guiding with Joint Torque Measurements", <em>ICCAS 2026, Accepted</em></li>
       <li>J. Jeong, S. Park, <strong>S. Lee</strong>, D. Youn, and M. J. Kim, "Designing an End-to-End UAV System for Insulator Inspection under Transmission Tower Environments", <em>IEEE ICEIC 2024</em></li>
@@ -752,7 +753,7 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
-      <li>S. Lee, S. M. Kim, <strong>J. Kim</strong>, and M. J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em></li>
+      <li>S. Lee<sup>*</sup>, S. M. Kim<sup>*</sup>, <strong>J. Kim</strong><sup>*</sup>, S. W. Han, and M. J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em> (<sup>*</sup> Co-first authors)</li>
     </ul>
   </div>
 
