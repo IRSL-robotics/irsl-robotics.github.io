@@ -105,7 +105,7 @@ nav: false
         projectLink.href = projectUrl;
         projectLink.className = "project-link btn btn-sm z-depth-0";
         projectLink.setAttribute("role", "button");
-        projectLink.textContent = "Proj";
+        projectLink.textContent = "Project";
         links.prepend(projectLink);
       });
 
@@ -118,24 +118,38 @@ nav: false
           source = "project";
         } else if (href.includes("ieeexplore.ieee.org")) {
           source = "ieee";
-          link.textContent = "IEEE";
+          link.textContent = "Paper";
         } else if (href.includes("sciencedirect.com")) {
           source = "elsevier";
-          link.textContent = "Elsevier";
+          link.textContent = "Paper";
         } else if (href.includes("arxiv.org") || label === "arxiv") {
           source = "arxiv";
-          link.textContent = "arXiv";
+          link.textContent = "Paper";
         } else if (href.includes("youtube.com") || href.includes("youtu.be") || label === "video") {
           source = "youtube";
-          link.textContent = "YouTube";
+          link.textContent = "Youtube";
         } else if (label === "bib") {
           source = "bib";
-        } else if (label === "html") {
+        } else if (["html", "doi", "pdf"].includes(label) || href.includes("doi.org")) {
           source = "web";
-          link.textContent = "Website";
+          link.textContent = "Paper";
         }
 
         if (source) link.classList.add("publication-source-link", `publication-source-link--${source}`);
+      });
+
+      publications.querySelectorAll(".links").forEach((links) => {
+        const buttonOrder = ["paper", "bib", "youtube", "project"];
+        const buttons = [...links.querySelectorAll(":scope > a")];
+        const rank = (button) => {
+          const index = buttonOrder.indexOf(button.textContent.trim().toLowerCase());
+          return index === -1 ? buttonOrder.length : index;
+        };
+
+        buttons.forEach((button) => {
+          if (button.textContent.trim().toLowerCase() === "bib") button.textContent = "Bib";
+        });
+        buttons.sort((a, b) => rank(a) - rank(b)).forEach((button) => links.appendChild(button));
       });
 
     };
