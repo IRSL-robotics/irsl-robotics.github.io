@@ -300,6 +300,8 @@
       const publications = document.querySelector(".research-publications");
       const projectLinks = {
         
+          "han2026contactresponsive": "/projects/constraint-aware-control/",
+        
           "han2026mixture": "/projects/whole-arm-physical-intelligence/",
         
           "kim2026spatially": "/projects/spatio-temporal-embodied-intelligence/",
@@ -376,7 +378,7 @@
         projectLink.href = projectUrl;
         projectLink.className = "project-link btn btn-sm z-depth-0";
         projectLink.setAttribute("role", "button");
-        projectLink.textContent = "Proj";
+        projectLink.textContent = "Project";
         links.prepend(projectLink);
       });
 
@@ -384,9 +386,26 @@
         const href = link.getAttribute("href") || "";
         const label = link.textContent.trim().toLowerCase();
 
-        if (href.includes("ieeexplore.ieee.org")) link.textContent = "IEEE";
-        else if (href.includes("arxiv.org") || label === "arxiv") link.textContent = "arXiv";
-        else if (href.includes("youtube.com") || href.includes("youtu.be") || label === "video") link.textContent = "YouTube";
+        if (link.classList.contains("project-link")) return;
+        if (
+          ["html", "doi", "pdf", "arxiv"].includes(label) ||
+          ["ieeexplore.ieee.org", "sciencedirect.com", "arxiv.org", "doi.org"].some((domain) => href.includes(domain))
+        ) link.textContent = "Paper";
+        else if (href.includes("youtube.com") || href.includes("youtu.be") || label === "video") link.textContent = "Youtube";
+      });
+
+      publications.querySelectorAll(".links").forEach((links) => {
+        const buttonOrder = ["paper", "bib", "youtube", "project"];
+        const buttons = [...links.querySelectorAll(":scope > a")];
+        const rank = (button) => {
+          const index = buttonOrder.indexOf(button.textContent.trim().toLowerCase());
+          return index === -1 ? buttonOrder.length : index;
+        };
+
+        buttons.forEach((button) => {
+          if (button.textContent.trim().toLowerCase() === "bib") button.textContent = "Bib";
+        });
+        buttons.sort((a, b) => rank(a) - rank(b)).forEach((button) => links.appendChild(button));
       });
     };
 
