@@ -327,6 +327,23 @@
 
       if (!publications) return;
 
+      const githubLinks = {
+        kim2026spatially: "https://github.com/IRSL-robotics/SCDP",
+        lee2026extreme: "https://github.com/IRSL-robotics/L1AFO-Kinova",
+      };
+
+      Object.entries(githubLinks).forEach(([bibKey, githubUrl]) => {
+        const links = document.getElementById(bibKey)?.querySelector(".links");
+        if (!links || links.querySelector(".github-link")) return;
+
+        const githubLink = document.createElement("a");
+        githubLink.href = githubUrl;
+        githubLink.className = "github-link btn btn-sm z-depth-0";
+        githubLink.setAttribute("role", "button");
+        githubLink.textContent = "Github";
+        links.appendChild(githubLink);
+      });
+
       publications.querySelectorAll(".abbr img.preview").forEach((preview) => {
         const cropPortraitPreview = () => {
           if (preview.naturalHeight > preview.naturalWidth * 0.78) {
@@ -381,7 +398,7 @@
       });
 
       publications.querySelectorAll(".links").forEach((links) => {
-        const buttonOrder = ["paper", "bib", "youtube", "project"];
+        const buttonOrder = ["paper", "bib", "youtube", "project", "github"];
         const buttons = [...links.querySelectorAll(":scope > a")];
         const rank = (button) => {
           const index = buttonOrder.indexOf(button.textContent.trim().toLowerCase());
