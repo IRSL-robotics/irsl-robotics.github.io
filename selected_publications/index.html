@@ -267,63 +267,6 @@
   (() => {
     const initializePublicationEnhancements = () => {
       const publications = document.querySelector(".publications");
-      const projectLinks = {
-        
-          "han2026contactresponsive": "/projects/constraint-aware-control/",
-        
-          "han2026mixture": "/projects/whole-arm-physical-intelligence/",
-        
-          "kim2026spatially": "/projects/spatio-temporal-embodied-intelligence/",
-        
-          "lee2026extreme": "/projects/physical-interaction-control/",
-        
-          "yun2025exact": "/projects/physical-interaction-control/",
-        
-          "han2025cdm": "/projects/whole-arm-physical-intelligence/",
-        
-          "kim2024split": "/projects/spatio-temporal-embodied-intelligence/",
-        
-          "lee2024bidirectional": "/projects/physical-interaction-control/",
-        
-          "kim2024disturbanceaware": "/projects/constraint-aware-control/",
-        
-          "yun2024disturbance": "/projects/constraint-aware-control/",
-        
-          "han2024online": "/projects/whole-arm-physical-intelligence/",
-        
-          "han2024constrained": "/projects/constraint-aware-control/",
-        
-          "han2023proprioceptive": "/projects/whole-arm-physical-intelligence/",
-        
-          "jeong2023passivity": "/projects/physical-interaction-control/",
-        
-          "sarkisov2023hierarchical": "/projects/physical-interaction-control/",
-        
-          "jeong2022memory": "/projects/physical-interaction-control/",
-        
-          "kim2022passive": "/projects/physical-interaction-control/",
-        
-          "lee2020asymptotically": "/projects/physical-interaction-control/",
-        
-          "gabellieri2020compliance": "/projects/physical-interaction-control/",
-        
-          "sarkisov2020optimal": "/projects/physical-interaction-control/",
-        
-          "lee2020visual": "/projects/physical-interaction-control/",
-        
-          "kim2019modelfree": "/projects/physical-interaction-control/",
-        
-          "kim2019passivity": "/projects/physical-interaction-control/",
-        
-          "kim2018passive": "/projects/physical-interaction-control/",
-        
-          "kim2018stabilizing": "/projects/physical-interaction-control/",
-        
-          "lee2017disturbance": "/projects/physical-interaction-control/",
-        
-          "kim2017enhancing": "/projects/physical-interaction-control/"
-        
-      };
 
       if (!publications) return;
 
@@ -355,27 +298,12 @@
         else preview.addEventListener("load", cropPortraitPreview, { once: true });
       });
 
-      Object.entries(projectLinks).forEach(([bibKey, projectUrl]) => {
-        const publication = document.getElementById(bibKey);
-        const links = publication?.querySelector(".links");
-        if (!links || links.querySelector(".project-link")) return;
-
-        const projectLink = document.createElement("a");
-        projectLink.href = projectUrl;
-        projectLink.className = "project-link btn btn-sm z-depth-0";
-        projectLink.setAttribute("role", "button");
-        projectLink.textContent = "Project";
-        links.prepend(projectLink);
-      });
-
       publications.querySelectorAll(".links a").forEach((link) => {
         const href = link.getAttribute("href") || "";
         const label = link.textContent.trim().toLowerCase();
         let source = "";
 
-        if (link.classList.contains("project-link")) {
-          source = "project";
-        } else if (href.includes("ieeexplore.ieee.org")) {
+        if (href.includes("ieeexplore.ieee.org")) {
           source = "ieee";
           link.textContent = "Paper";
         } else if (href.includes("sciencedirect.com")) {
@@ -398,7 +326,7 @@
       });
 
       publications.querySelectorAll(".links").forEach((links) => {
-        const buttonOrder = ["paper", "bib", "youtube", "project", "github"];
+        const buttonOrder = ["paper", "bib", "youtube", "github"];
         const buttons = [...links.querySelectorAll(":scope > a")];
         const rank = (button) => {
           const index = buttonOrder.indexOf(button.textContent.trim().toLowerCase());
