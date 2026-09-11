@@ -77,11 +77,6 @@ nav: false
   (() => {
     const initializePublicationEnhancements = () => {
       const publications = document.querySelector(".publications");
-      const projectLinks = {
-        {% for project in site.data.publication_projects %}
-          "{{ project[0] }}": "{{ project[1] | relative_url }}"{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      };
 
       if (!publications) return;
 
@@ -113,27 +108,12 @@ nav: false
         else preview.addEventListener("load", cropPortraitPreview, { once: true });
       });
 
-      Object.entries(projectLinks).forEach(([bibKey, projectUrl]) => {
-        const publication = document.getElementById(bibKey);
-        const links = publication?.querySelector(".links");
-        if (!links || links.querySelector(".project-link")) return;
-
-        const projectLink = document.createElement("a");
-        projectLink.href = projectUrl;
-        projectLink.className = "project-link btn btn-sm z-depth-0";
-        projectLink.setAttribute("role", "button");
-        projectLink.textContent = "Project";
-        links.prepend(projectLink);
-      });
-
       publications.querySelectorAll(".links a").forEach((link) => {
         const href = link.getAttribute("href") || "";
         const label = link.textContent.trim().toLowerCase();
         let source = "";
 
-        if (link.classList.contains("project-link")) {
-          source = "project";
-        } else if (href.includes("ieeexplore.ieee.org")) {
+        if (href.includes("ieeexplore.ieee.org")) {
           source = "ieee";
           link.textContent = "Paper";
         } else if (href.includes("sciencedirect.com")) {
@@ -156,7 +136,7 @@ nav: false
       });
 
       publications.querySelectorAll(".links").forEach((links) => {
-        const buttonOrder = ["paper", "bib", "youtube", "project", "github"];
+        const buttonOrder = ["paper", "bib", "youtube", "github"];
         const buttons = [...links.querySelectorAll(":scope > a")];
         const rank = (button) => {
           const index = buttonOrder.indexOf(button.textContent.trim().toLowerCase());

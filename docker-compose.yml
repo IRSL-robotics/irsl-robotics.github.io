@@ -14,9 +14,10 @@ services:
     #     USERID: # id -u
     #     USERNAME: # echo $USER
     ports:
-      - 8080:8080
+      - 8083:8080
       - 35729:35729
     volumes:
       - .:/srv/jekyll
     environment:
       - JEKYLL_ENV=development
+      - JEKYLL_CONFIG=_config.yml,_config.docker.yml

@@ -34,7 +34,7 @@ horizontal: false
         Robust and safety-aware control methods that enable reliable physical interaction under uncertainty, disturbances, and dynamic
         environments.
       </p>
-      <a class="research-card__action" href="{{ '/research/robot-control/' | relative_url }}" aria-label="Explore Robot Control and Safety projects">
+      <a class="research-card__action" href="{{ '/research/robot-control/' | relative_url }}" aria-label="Explore Robot Control and Safety research topics">
         Learn More <span aria-hidden="true">&rarr;</span>
       </a>
     </div>
@@ -55,7 +55,7 @@ horizontal: false
       <p>
         We develop embodied intelligence that combines perception, learning, and reasoning to understand physical interactions and perform complex manipulation tasks.
       </p>
-      <a class="research-card__action" href="{{ '/research/physical-ai/' | relative_url }}" aria-label="Explore Physical AI projects">
+      <a class="research-card__action" href="{{ '/research/physical-ai/' | relative_url }}" aria-label="Explore Physical AI research topics">
         Learn More <span aria-hidden="true">&rarr;</span>
       </a>
     </div>
@@ -77,7 +77,7 @@ horizontal: false
         We design novel mechanisms and integrated robotic platforms that bring together actuation, sensing, and control for
         real-world operation.
       </p>
-      <a class="research-card__action" href="{{ '/research/hardware-design/' | relative_url }}" aria-label="Explore Robotic Systems and Hardware projects">
+      <a class="research-card__action" href="{{ '/research/hardware-design/' | relative_url }}" aria-label="Explore Robotic Systems and Hardware research topics">
         Learn More <span aria-hidden="true">&rarr;</span>
       </a>
     </div>

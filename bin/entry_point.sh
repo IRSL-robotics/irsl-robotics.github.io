@@ -4,6 +4,7 @@ set -euo pipefail
 echo "Entry point script running"
 
 CONFIG_FILE=_config.yml
+JEKYLL_CONFIG=${JEKYLL_CONFIG:-$CONFIG_FILE}
 DOCKER_DESTINATION=/tmp/_site
 
 # Function to manage Gemfile.lock
@@ -34,7 +35,7 @@ start_jekyll() {
     manage_gemfile_lock
     ensure_bundle_deps
     mkdir -p "$DOCKER_DESTINATION"
-    bundle exec jekyll serve --watch --port=8080 --host=0.0.0.0 --livereload --verbose --trace --force_polling --destination "$DOCKER_DESTINATION" --config "$CONFIG_FILE" &
+    bundle exec jekyll serve --watch --port=8080 --host=0.0.0.0 --livereload --verbose --trace --force_polling --destination "$DOCKER_DESTINATION" --config "$JEKYLL_CONFIG" &
 }
 
 start_jekyll

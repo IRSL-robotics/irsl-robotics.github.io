@@ -1,0 +1,4 @@
+# Skip responsive image generation for the local Docker preview.
+# Original images are still served; production uses _config.yml.
+imagemagick:
+  enabled: false

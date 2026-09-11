@@ -14,7 +14,7 @@
     <div class="research-projects__section-heading">
       <p class="research-projects__section-number" aria-hidden="true">01</p>
       <div>
-        <h2 id="research-project-heading">Projects</h2>
+        <h2 id="research-project-heading">Research Topic</h2>
         <p>Ongoing research platforms and integrated systems.</p>
       </div>
     </div>
@@ -32,11 +32,11 @@
             </a>
           {% endif %}
           <div class="research-project-tile__body">
-            <p class="research-project-tile__label">Project</p>
+            <p class="research-project-tile__label">Research Topic</p>
             <h3>{{ project.title }}</h3>
             {% if project.description %}<p>{{ project.description }}</p>{% endif %}
-            <a class="research-project-tile__action" href="{{ project.url | relative_url }}" aria-label="View the {{ project.title }} project">
-              View Project <span aria-hidden="true">&rarr;</span>
+            <a class="research-project-tile__action" href="{{ project.url | relative_url }}" aria-label="View the {{ project.title }} research topic">
+              View Research Topic <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
         </article>
@@ -319,7 +319,7 @@
         projectLink.href = projectUrl;
         projectLink.className = "project-link btn btn-sm z-depth-0";
         projectLink.setAttribute("role", "button");
-        projectLink.textContent = "Project";
+        projectLink.textContent = "Research Topic";
         links.prepend(projectLink);
       });
 
@@ -336,7 +336,7 @@
       });
 
       publications.querySelectorAll(".links").forEach((links) => {
-        const buttonOrder = ["paper", "bib", "youtube", "project"];
+        const buttonOrder = ["paper", "bib", "youtube", "research topic"];
         const buttons = [...links.querySelectorAll(":scope > a")];
         const rank = (button) => {
           const index = buttonOrder.indexOf(button.textContent.trim().toLowerCase());
