@@ -80,6 +80,16 @@ nav: false
 
       if (!publications) return;
 
+      const scdpLinks = publications.querySelector('[id="kim2026spatially"] .links');
+      if (scdpLinks && !scdpLinks.querySelector(".project-link")) {
+        const projectLink = document.createElement("a");
+        projectLink.href = "https://scdp-project.github.io/";
+        projectLink.className = "project-link btn btn-sm z-depth-0 publication-source-link publication-source-link--project";
+        projectLink.setAttribute("role", "button");
+        projectLink.textContent = "Project";
+        scdpLinks.appendChild(projectLink);
+      }
+
       const githubLinks = {
         kim2026spatially: "https://github.com/IRSL-robotics/SCDP",
         lee2026extreme: "https://github.com/IRSL-robotics/L1AFO-Kinova",
@@ -136,7 +146,7 @@ nav: false
       });
 
       publications.querySelectorAll(".links").forEach((links) => {
-        const buttonOrder = ["paper", "bib", "youtube", "github"];
+        const buttonOrder = ["paper", "bib", "youtube", "project", "github"];
         const buttons = [...links.querySelectorAll(":scope > a")];
         const rank = (button) => {
           const index = buttonOrder.indexOf(button.textContent.trim().toLowerCase());
