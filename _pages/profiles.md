@@ -382,12 +382,12 @@ nav_order: 1
 
     <ul class="pub-list">
       <li>S. Lee<sup>*</sup>, S. M. Kim<sup>*</sup>, J. Kim<sup>*</sup>, <strong>S. W. Han</strong>, and M. J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em> (<sup>*</sup> Co-first authors)</li>
-      <li><strong>S. W. Han</strong>, and M. J. Kim, “Mixture of Flow Matching and Particle Filter for Proprioception-based Online Contact Estimation,” <em>IEEE Transactions on Robotics (T-RO), accepted, 2026</em></li>
+      <li><strong>S. W. Han</strong>, and M. J. Kim, “Mixture of Flow Matching and Particle Filter for Proprioception-Based Online Contact Estimation,” <em>IEEE Transactions on Robotics (T-RO), 2026</em> · <a href="https://ieeexplore.ieee.org/abstract/document/11655857">Paper</a> · <a href="https://seowookhan.github.io/SeoWookHan/projects/1_contact_flow_filter/">Project</a></li>
       <li><strong>S. W. Han</strong>, and M. J. Kim, “Learning Multi-Contact Localization via Diffusion Models with Proprioceptive Sensing,” <em>2025 RSS Workshop on Navigating Contact Dynamics in Robotics</em></li>
-      <li><strong>S. W. Han</strong>, and M. J. Kim, “CDM: Contact Diffusion Model for Multi-Contact Point Localization”, <em>IEEE ICRA 2025</em></li>
+      <li><strong>S. W. Han</strong>, and M. J. Kim, “CDM: Contact Diffusion Model for Multi-Contact Point Localization”, <em>IEEE ICRA 2025</em> · <a href="https://seowookhan.github.io/SeoWookHan/projects/2_contact_diffusion_model/">Project</a></li>
       <li><strong>S. W. Han</strong>, and M. J. Kim, “Contact Estimation Diffusion Model for Collaborative Robots” <em>(poster presentation), IEEE ICCAS 2024</em></li>
-      <li><strong>S. W. Han</strong>, M. Iskandar, J. Lee and M. J. Kim, “Online Multi-Contact Feedback Model Predictive Control for Interactive Robotic Tasks", <em>IEEE ICRA 2024</em></li>
-      <li><strong>S. W. Han</strong>, and M. J. Kim, “Proprioceptive Sensor-Based Simultaneous Multi-Contact Point Localization and Force Identification for Robotic Arms”, <em>IEEE ICRA 2023</em></li>
+      <li><strong>S. W. Han</strong>, M. Iskandar, J. Lee and M. J. Kim, “Online Multi-Contact Feedback Model Predictive Control for Interactive Robotic Tasks", <em>IEEE ICRA 2024</em> · <a href="https://seowookhan.github.io/SeoWookHan/projects/3_multi_contact_mpc/">Project</a></li>
+      <li><strong>S. W. Han</strong>, and M. J. Kim, “Proprioceptive Sensor-Based Simultaneous Multi-Contact Point Localization and Force Identification for Robotic Arms”, <em>IEEE ICRA 2023</em> · <a href="https://seowookhan.github.io/SeoWookHan/projects/4_mcpep/">Project</a></li>
     </ul>
   </div>
   <div class="member-section">

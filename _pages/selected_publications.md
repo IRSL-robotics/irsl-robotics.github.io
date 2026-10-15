@@ -137,6 +137,9 @@ nav: false
           link.textContent = "Youtube";
         } else if (label === "bib") {
           source = "bib";
+        } else if (label === "website") {
+          source = "project";
+          link.textContent = "Project";
         } else if (["html", "doi", "pdf"].includes(label) || href.includes("doi.org")) {
           source = "web";
           link.textContent = "Paper";

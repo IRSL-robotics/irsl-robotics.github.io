@@ -31,7 +31,7 @@ nav: False
 
 #### 2026
 - J. W. Han, and M. J. Kim, "Contact-responsive high-gain robot motion controllers using a constrained disturbance observer", <em>Intelligent Service Robotics, vol. 19, no. 5, article 89, 2026</em>
-- S. W. Han, and M. J. Kim, "Mixture of Flow Matching and Particle Filter for Proprioception-based Online Contact Estimation", <em>IEEE T-RO, accepted</em>
+- S. W. Han, and M. J. Kim, "Mixture of Flow Matching and Particle Filter for Proprioception-Based Online Contact Estimation", <em>IEEE T-RO, 2026</em> · [Paper](https://ieeexplore.ieee.org/abstract/document/11655857) · [Project](https://seowookhan.github.io/SeoWookHan/projects/1_contact_flow_filter/)
 - S. Kim<sup>\*</sup>, K. Kim<sup>\*</sup>, D. Ko, Y. J. Heo, and M. J. Kim, "Spatially Conditioned Diffusion Policy: Learning Precise and Robust Manipulation with a Single RGB Camera", <em>CoRL 2026, accepted</em> (\* Co-first authors)
 - S. Lee<sup>\*</sup>, S. M. Kim<sup>\*</sup>, J. Kim<sup>\*</sup>, S. W. Han, and M. J. Kim, "A Unified Framework for Collision-Free Path Planning and Contact-Compliant Safety Control in Surgical Assistant Robots", <em>ICCAS 2026, Accepted</em> (<sup>\*</sup> Co-first authors)
 - S. Shin, J. Kim, and M. J. Kim, "Dual-Attachment Cable Suspension System for Zero-Gravity Emulation of Space Manipulators", <em>ICCAS 2026, Accepted</em>
@@ -43,7 +43,7 @@ nav: False
 - T. H. Yun, F. Beck, M. J. Kim<sup>†</sup> and J. Lee<sup>†</sup>, "Exact Fractional Order Impedance Rendering for Highly Flexible and Multi-Jointed Robots Using Time-Delay Estimation,” *IEEE RA-L*
 - F. C. Loeffl, F. Beck, J. Lee, M. J. Kim, and M. Keppler, "A Visco-Elastic Actuator with Linear Gas Spring and Variable Damping," *Mechatronics*
 - T. M. Luu, Y. Lee, D. Lee, S. Kim, M. J. Kim, and C. D. Yoo, "Enhancing Rating-Based Reinforcement Learning to Effectively Leverage Feedback from Large Vision-Language Models," *ICML 2025*
-- S. W. Han, and M. J. Kim, "CDM: Contact Diffusion Model for Multi-Contact Point Localization," *IEEE ICRA 2025*
+- S. W. Han, and M. J. Kim, "CDM: Contact Diffusion Model for Multi-Contact Point Localization," *IEEE ICRA 2025* · [Project](https://seowookhan.github.io/SeoWookHan/projects/2_contact_diffusion_model/)
 - W. Han, and M. J. Kim, "Tension Estimation in Cable Suspended Aerial Systems Using a Nonlinear Disturbance Observer", *IEEE ICCAS 2025*
 
 #### 2024
@@ -52,14 +52,14 @@ nav: False
 - J. Kim, and M. J. Kim, "Disturbance-Aware Model Predictive Control of Underactuated Robotics Systems", *IEEE/RSJ IROS 2024*
 - S. Park, and M. J. Kim, "Design of a Fully Actuated Drone with Non-Isotropic Wrench Shape", *IEEE/RSJ IROS 2024*
 - T. H. Yun, and M. J. Kim, "Disturbance Observer With Constraints", *IEEE L-CSS 2024*
-- S. W. Han, M. Iskandar, J. Lee and M. J. Kim, "Online Multi-Contact Feedback Model Predictive Control for Interactive Robotic Tasks", *IEEE ICRA 2024*
+- S. W. Han, M. Iskandar, J. Lee and M. J. Kim, "Online Multi-Contact Feedback Model Predictive Control for Interactive Robotic Tasks", *IEEE ICRA 2024* · [Project](https://seowookhan.github.io/SeoWookHan/projects/3_multi_contact_mpc/)
 - J. W. Han, D. Park, and M. J. Kim, "Constrained Nonlinear Disturbance Observer for Robotic Systems", *IEEE ICRA 2024*
 - M. Song, Y. Kim, M. J. Kim, and D. Park, "Graph-Based 3D Collision-Distance Estimation Network with Probabilistic Graph Rewiring", *IEEE ICRA 2024*
 - J. Jeong, S. Park, S. Lee, D. Youn, and M. J. Kim, "Designing an End-to-End UAV System for Insulator Inspection under Transmission Tower Environments", *IEEE ICEIC 2024*
 
 #### 2023
 - K. Kim, D. Park, and M. J. Kim, "A Reachability Tree-Based Algorithm for Robot Task and Motion Planning", *IEEE ICRA 2023*
-- S. W. Han, and M. J. Kim, "Proprioceptive Sensor-Based Simultaneous Multi-Contact Point Localization and Force Identification for Robotic Arms", *IEEE ICRA 2023*
+- S. W. Han, and M. J. Kim, "Proprioceptive Sensor-Based Simultaneous Multi-Contact Point Localization and Force Identification for Robotic Arms", *IEEE ICRA 2023* · [Project](https://seowookhan.github.io/SeoWookHan/projects/4_mcpep/)
 - J. Jeong, and M. J. Kim, "Passivity-based Decentralized Control for Collaborative Grasping of Under-Actuated Aerial Manipulators", *IEEE ICRA 2023*
 - Y. Sarkisov, A. Coelho, M. Santos, M. J. Kim, D. Tsetserukou, C. Ott, and K. Kondak, "Hierarchical Whole-body Control of the cable-Suspended Aerial Manipulator endowed with Winch-based actuation", *IEEE ICRA 2023*
 

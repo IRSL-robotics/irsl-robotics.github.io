@@ -333,10 +333,11 @@
           ["ieeexplore.ieee.org", "sciencedirect.com", "arxiv.org", "doi.org"].some((domain) => href.includes(domain))
         ) link.textContent = "Paper";
         else if (href.includes("youtube.com") || href.includes("youtu.be") || label === "video") link.textContent = "Youtube";
+        else if (label === "website") link.textContent = "Project";
       });
 
       publications.querySelectorAll(".links").forEach((links) => {
-        const buttonOrder = ["paper", "bib", "youtube", "research topic"];
+        const buttonOrder = ["paper", "bib", "youtube", "project", "research topic"];
         const buttons = [...links.querySelectorAll(":scope > a")];
         const rank = (button) => {
           const index = buttonOrder.indexOf(button.textContent.trim().toLowerCase());
