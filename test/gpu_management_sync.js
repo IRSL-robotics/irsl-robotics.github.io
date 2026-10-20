@@ -6,8 +6,8 @@ const pageSource = fs.readFileSync("_pages/gpu-management.md", "utf8");
 assert.match(pageSource, /irsl-gpu-management-pending-v1/);
 assert.match(pageSource, /action: "apply"/);
 assert.match(pageSource, /confirmation !== "CLEAR ALL"/);
-assert.match(pageSource, /\{ name: "New Server", count: 7, prefix: "NEW" \}/);
-assert.match(pageSource, /&nbsp;17 in use</);
+assert.match(pageSource, /\{ name: "New Server", count: 8, prefix: "NEW" \}/);
+assert.match(pageSource, /&nbsp;18 in use</);
 assert.doesNotMatch(pageSource, /form\.submit\(\)/);
 
 const rows = [];
@@ -79,7 +79,7 @@ assert.equal(context.lockDepth, 0);
 const emptyState = Object.fromEntries(
   [
     ...Array.from({ length: 8 }, (_, index) => `NRMK-${index}`),
-    ...Array.from({ length: 7 }, (_, index) => `NEW-${index}`),
+    ...Array.from({ length: 8 }, (_, index) => `NEW-${index}`),
     ...Array.from({ length: 2 }, (_, index) => `OLD-${index}`),
   ].map((id) => [id, { user: "", startDate: "", endDate: "" }])
 );
@@ -95,11 +95,12 @@ emptyState["NEW-0"] = {
   endDate: "2026-07-20",
 };
 context.writeState_(emptyState);
-assert.equal(rows.length, 18);
-assert.deepEqual(rows.slice(-5, -2).map((row) => row.slice(0, 3)), [
+assert.equal(rows.length, 19);
+assert.deepEqual(rows.slice(-6, -2).map((row) => row.slice(0, 3)), [
   ["NEW-4", "New Server", "GPU 4"],
   ["NEW-5", "New Server", "GPU 5"],
   ["NEW-6", "New Server", "GPU 6"],
+  ["NEW-7", "New Server", "GPU 7"],
 ]);
 
 context.doGet({
@@ -108,12 +109,14 @@ context.doGet({
     callback: "saveCallback",
     payload: JSON.stringify([
       { type: "patch", id: "OLD-0", fields: { user: "Saved User" } },
+      { type: "patch", id: "NEW-7", fields: { user: "New GPU User" } },
     ]),
   },
 });
 assert.match(getResponse, /^saveCallback\(/);
 assert.match(getResponse, /"protocolVersion":3/);
 assert.match(getResponse, /"Saved User"/);
+assert.equal(context.readState_()["NEW-7"].user, "New GPU User");
 
 context.applyOperations_([
   {

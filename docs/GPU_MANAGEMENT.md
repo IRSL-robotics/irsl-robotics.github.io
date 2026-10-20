@@ -16,7 +16,7 @@ Google Sheet and a small Google Apps Script web app.
 9. Paste that URL into `_data/gpu_management.yml`:
 
 ```yaml
-sync_endpoint: "https://script.google.com/macros/s/AKfycbzzlmuRip5GyytWWdjJmv_qouMh2pq1XBqP8x2LD8wAN0UzMFHAbm-0f8HicbbYC2xe/exec"
+sync_endpoint: "https://script.google.com/macros/s/AKfycbwrs62gOU8gCyrPYSinj8gHtN_Tj8WsL80cxTCrMFABsRNr95czJ7lHUGBEUwPEuvJ2rg/exec"
 ```
 
 After the endpoint is configured and the site is deployed, everyone using the
@@ -32,6 +32,11 @@ overwriting a reservation that another user extended.
 
 ## Notes
 
+- New Server has eight GPUs (`GPU 0` through `GPU 7`). When adding GPU 7 to an
+  existing deployment, update the New Server `count` to `8` in the connected
+  Apps Script and deploy a new version before deploying the site. No manual
+  sheet edits are needed: the next shared save adds the `NEW-7` row while
+  preserving existing assignments.
 - The page keeps a browser-local backup and falls back to it if the shared sheet
   cannot be reached.
 - Unsaved operations are also kept in the browser and retried after a temporary
