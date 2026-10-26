@@ -57,6 +57,8 @@ SCDP includes the architecture diagram, responsive Meta-World result charts, nin
 
 Jinyeong Jeong and Min Jun Kim's newly accepted RA-L paper is recorded in `_bibliography/papers.bib`, All Publications, Jinyeong's Members entry, and the Memory-based SO(3) representative publications. Selected Publications renders the bibliography and connects public project papers to the new internal project pages. No unconfirmed Youtube link or co-first-author marker is added.
 
+The RA-L entry `jeong2026direction` uses `assets/img/publication_preview/direction-preserving-so3-first-experiment.gif` for automatic looping in Selected Publications. It contains only the first comparison experiment from `assets/video/research/memory-based-so3.mp4` (0.50–7.75 seconds), encoded at 384 × 216 and 10 fps with a 96-color palette and infinite looping. The earlier JPG is retained as a still image, but is not the publication preview.
+
 Memory-based SO(3) groups its ICRA 2022 conference paper and RA-L 2026 journal version. C-NRIC groups its ICRA 2024 conference paper and Intelligent Service Robotics 2026 journal version. Each citation has a `version` label, its own author list, and its own resource links. Both publication keys link to the same project from Selected Publications; the latest publication continues to determine the project's position in the Research gallery.
 
 ## Original content and private drafts
