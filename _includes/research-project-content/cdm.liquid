@@ -1,0 +1,115 @@
+<section>
+  <h2>A Generative Model of Contact Locations</h2>
+  <p>
+    Different contact locations and forces can produce the same joint torque and base force/torque measurements. CDM models this ambiguity as a
+    distribution instead of selecting a single explanation. Its diffusion model generates contact-point samples conditioned on proprioceptive
+    measurements, previous estimates, and the geometry of the robot surface.
+  </p>
+  <figure>
+    <img
+      src="{{ '/assets/img/research/cdm/introduction.webp' | relative_url }}"
+      alt="Contact diffusion estimates a distribution of possible contact points from proprioceptive sensors"
+      loading="lazy"
+    >
+    <figcaption>Generated samples represent the possible locations of one or two contacts.</figcaption>
+  </figure>
+  {% include research-project-video.liquid path="cdm/cdm_singularity" caption="Representing multiple plausible contact configurations when sensor observations are ambiguous." %}
+</section>
+
+<section>
+  <h2>Temporal Context and Surface Geometry</h2>
+  <p>
+    A short observation window can lose information about an earlier contact once a second contact occurs. CDM conditions on an earlier single-contact
+    estimate to retain this context. A contact-state classifier controls when that historical estimate is updated, and the model can also run without
+    a historical estimate.
+  </p>
+  <figure>
+    <img
+      src="{{ '/assets/img/research/cdm/dataset.webp' | relative_url }}"
+      alt="Sequential single-contact, transition dual-contact, and steady dual-contact training observations"
+      loading="lazy"
+    >
+    <figcaption>Sequential contact scenarios provide the training data for historical conditioning.</figcaption>
+  </figure>
+  <p>
+    Signed distance fields describe the robot's link surfaces and guide generated points toward physically meaningful locations. The denoising network
+    uses these surface features alongside sensor measurements and historical diffusion outputs. Each sample uses 64 points to represent the contact
+    distribution.
+  </p>
+  <figure>
+    <img
+      src="{{ '/assets/img/research/cdm/network_structure.webp' | relative_url }}"
+      alt="CDM architecture showing the denoising loop, contact classifier, historical conditioning, and signed distance fields"
+      loading="lazy"
+    >
+    <figcaption>The model combines an iterative denoiser, surface constraints, and contact-state-dependent historical conditioning.</figcaption>
+  </figure>
+  <div class="research-content__figures">
+    <figure>
+      <img
+        src="{{ '/assets/img/research/cdm/exp1_all.webp' | relative_url }}"
+        alt="Generated contact distributions for single, ambiguous single, and sequential dual contacts"
+        loading="lazy"
+      >
+      <figcaption>Generated samples across different contact states.</figcaption>
+    </figure>
+    <figure>
+      <img
+        src="{{ '/assets/img/research/cdm/exp2_all.webp' | relative_url }}"
+        alt="Comparison of estimated contacts with and without historical diffusion conditioning"
+        loading="lazy"
+      >
+      <figcaption>Historical estimates help retain information about the first contact.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <h2>Direct Transfer to a Real Robot</h2>
+  <p>
+    Training data was collected in MuJoCo with noisy joint torque and base force/torque measurements. The model was then evaluated on a Kinova Gen3
+    with an ATI Mini85 base sensor. Each contact condition was tested 100 times, changing the robot configuration every 20 trials.
+  </p>
+  <div class="research-content__table-wrap" tabindex="0" role="region" aria-label="CDM real-world contact localization results">
+    <table>
+      <caption>
+        Real-world localization errors in cm (Table III).
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Contact state</th>
+          <th scope="col">Trials</th>
+          <th scope="col">M-RMSE</th>
+          <th scope="col">C-RMSE-1</th>
+          <th scope="col">C-RMSE-2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Single</th>
+          <td>100</td>
+          <td>0.44</td>
+          <td>0.68</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <th scope="row">Dual</th>
+          <td>100</td>
+          <td>1.24</td>
+          <td>2.61</td>
+          <td>2.85</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  {% include research-project-video.liquid path="cdm/cdm_realworld_single" caption="Single-contact localization on the real Kinova Gen3; the main demo above shows dual contacts." %}
+  <p>
+    In simulation ablations, historical conditioning reduces M-RMSE from 1.33 cm to 0.62 cm. Surface conditioning reduces the average distance from
+    generated points to the robot surface from 0.89 cm to 0.29 cm. These measure different effects and are separate from the real-world localization
+    results above.
+  </p>
+  <p>
+    The follow-up project, <a href="{{ '/research/projects/contactflowfilter/' | relative_url }}">ContactFlowFilter</a>, combines a generative
+    proposal with particle filtering to estimate forces and reason recursively about changing contacts.
+  </p>
+</section>

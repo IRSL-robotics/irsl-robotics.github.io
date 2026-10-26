@@ -1,0 +1,95 @@
+{% assign project = site.data.research_projects | where: 'id', page.project_id | first %}
+{% assign area = site.data.research_areas | where: 'id', project.area | first %}
+{% assign media_path = '/assets/video/research/' | append: project.id %}
+
+<link rel="stylesheet" href="{{ '/assets/css/research-projects.css' | relative_url }}">
+
+<div class="research-project-detail">
+  <a class="research-projects__back" href="{{ area.url | relative_url }}#{{ project.id }}">
+    <span aria-hidden="true">&larr;</span> {{ area.title | escape }}
+  </a>
+
+  <ul class="research-project-tags" aria-label="Research themes">
+    {% for tag in project.tags %}
+      <li>{{ tag | escape }}</li>
+    {% endfor %}
+  </ul>
+
+  <p class="research-project-detail__intro">{{ project.description | escape }}</p>
+  {% if project.publication_label %}
+    <p class="research-project-card__publication">{{ project.publication_label | escape }}</p>
+  {% endif %}
+
+  <figure class="research-project-detail__demo">
+    <video
+      width="960"
+      height="540"
+      controls
+      playsinline
+      preload="none"
+      poster="{{ media_path | append: '.jpg' | relative_url }}"
+      aria-label="{{ project.title | escape }} demonstration: {{ project.subtitle | escape }}"
+    >
+      <source src="{{ media_path | append: '.mp4' | relative_url }}" type="video/mp4">
+      <a href="{{ media_path | append: '.mp4' | relative_url }}">Watch the {{ project.title | escape }} demo</a>
+    </video>
+    <figcaption>{{ project.subtitle | escape }}</figcaption>
+  </figure>
+
+  {% if project.content_include %}
+    <div class="research-content">
+      {% include {{ project.content_include }} %}
+    </div>
+  {% endif %}
+
+  {% if project.publications %}
+    <section class="research-citations" aria-labelledby="representative-publications-heading">
+      <h2 id="representative-publications-heading">Representative Publications</h2>
+      {% if project.publication_intro %}
+        <p>{{ project.publication_intro | escape }}</p>
+      {% endif %}
+      {% for publication in project.publications %}
+        <article class="research-citation">
+          {% if publication.version %}
+            <p class="research-citation__version">{{ publication.version | escape }}</p>
+          {% endif %}
+          <h3>{{ publication.title | escape }}</h3>
+          <p>{{ publication.authors | escape }}</p>
+          <p>
+            <em>
+              {{- publication.venue | escape }}, {{ publication.year -}}
+              {%- if publication.status %}, {{ publication.status | escape }}{% endif -%}
+            </em>
+          </p>
+          <div class="research-citation__links" role="group" aria-label="Resources for {{ publication.title | escape }}">
+            {% if publication.paper_url -%}
+              <a href="{{ publication.paper_url }}" target="_blank" rel="noopener noreferrer">Paper</a>
+            {%- endif %}
+            <details class="research-citation__bib">
+              <summary>Bib</summary>
+              <pre><code>{{ publication.bibtex | escape }}</code></pre>
+            </details>
+            {% if publication.youtube_url -%}
+              <a href="{{ publication.youtube_url }}" target="_blank" rel="noopener noreferrer">Youtube</a>
+            {%- endif %}
+            {% if publication.project_url -%}
+              <a href="{{ publication.project_url }}" target="_blank" rel="noopener noreferrer">Project</a>
+            {%- endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </section>
+  {% endif %}
+
+  {% if project.source_url %}
+    <p class="research-content__source">
+      Figures, demonstrations, and research details:
+      <a href="{{ project.source_url }}" target="_blank" rel="noopener noreferrer">author's project page</a>.
+    </p>
+  {% endif %}
+
+  <a class="research-project-detail__footer" href="{{ area.url | relative_url }}"
+    >Explore more in {{ area.title | escape }}
+    <span aria-hidden="true">&rarr;</span></a
+  >
+</div>

@@ -80,15 +80,28 @@ nav: false
 
       if (!publications) return;
 
-      const scdpLinks = publications.querySelector('[id="kim2026spatially"] .links');
-      if (scdpLinks && !scdpLinks.querySelector(".project-link")) {
-        const projectLink = document.createElement("a");
-        projectLink.href = "https://scdp-project.github.io/";
+      const researchProjectLinks = {
+        {% assign public_projects = site.data.research_projects | where: "published", true %}
+        {% for project in public_projects %}
+          {% assign project_path = '/research/projects/' | append: project.id | append: '/' %}
+          {% for key in project.publication_keys %}
+            "{{ key }}": "{{ project_path | relative_url }}",
+          {% endfor %}
+        {% endfor %}
+      };
+
+      Object.entries(researchProjectLinks).forEach(([key, projectUrl]) => {
+        const links = document.getElementById(key)?.querySelector(".links");
+        if (!links) return;
+        const projectLink = [...links.querySelectorAll("a")].find((link) =>
+          ["website", "project"].includes(link.textContent.trim().toLowerCase())
+        ) || document.createElement("a");
+        projectLink.href = projectUrl;
         projectLink.className = "project-link btn btn-sm z-depth-0 publication-source-link publication-source-link--project";
         projectLink.setAttribute("role", "button");
         projectLink.textContent = "Project";
-        scdpLinks.appendChild(projectLink);
-      }
+        links.appendChild(projectLink);
+      });
 
       const githubLinks = {
         kim2026spatially: "https://github.com/IRSL-robotics/SCDP",

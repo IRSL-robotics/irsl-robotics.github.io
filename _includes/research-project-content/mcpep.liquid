@@ -1,0 +1,108 @@
+<section>
+  <h2>Locating Contacts and Identifying Forces</h2>
+  <p>
+    MCP-EP estimates contact positions and forces from joint torque sensors and a force/torque sensor at the robot base. The base measurement adds six
+    sensing degrees of freedom, helping distinguish contacts that joint torque measurements alone cannot identify, particularly on links near the
+    base. The method supports several simultaneous contacts without a tactile skin.
+  </p>
+  <figure>
+    <img
+      src="{{ '/assets/img/research/mcpep/graphical_abstract.webp' | relative_url }}"
+      alt="MCP-EP estimates contact locations and forces from joint torque and base force/torque measurements"
+      loading="lazy"
+    >
+    <figcaption>Multi-Contact Particle Filter with Exploration Particles.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>Fast Particle Updates on Robot Meshes</h2>
+  <p>
+    The robot mesh is preprocessed into nearly uniform faces, and geodesic distances between faces on each link are computed offline. A particle can
+    then move over the surface through a lookup and face-index update. For a proposed contact location, a convex quadratic program finds forces
+    consistent with the sensor measurements and a polyhedral friction cone. Its residual determines the particle weight.
+  </p>
+  <div class="research-content__figures">
+    <figure>
+      <img
+        src="{{ '/assets/img/research/mcpep/preprocessing.webp' | relative_url }}"
+        alt="Robot mesh preprocessing removes non-contact regions and creates nearly uniform surface faces"
+        loading="lazy"
+      >
+      <figcaption>Mesh preprocessing makes particle positions and surface updates inexpensive.</figcaption>
+    </figure>
+    <figure>
+      <img
+        src="{{ '/assets/img/research/mcpep/geodesic_distance.webp' | relative_url }}"
+        alt="Precomputed geodesic distances between faces on a robot link"
+        loading="lazy"
+      >
+      <figcaption>Distances within each link are stored before online estimation.</figcaption>
+    </figure>
+  </div>
+  <h3>Exploration Across Links</h3>
+  <p>
+    Distances between different links change as the robot moves and cannot use the same fixed lookup. Exploration particles search adjacent links,
+    allowing the estimate to move away from an incorrect link. Particle sets are added or removed when the current contact hypotheses no longer
+    explain the sensor measurements, or when a set becomes unnecessary.
+  </p>
+  <div class="research-content__videos">
+    {% include research-project-video.liquid path="mcpep/mcpep_motion_model" caption="Particle motion using precomputed surface geometry." %}
+    {% include research-project-video.liquid path="mcpep/mcpep_exploration" caption="Exploration particles search neighboring links." %}
+  </div>
+</section>
+
+<section>
+  <h2>Simulation Validation</h2>
+  <p>
+    Each contact condition was evaluated in 10,000 randomized trials using a seven-degree-of-freedom Franka Emika Panda in MuJoCo. A 20 N force was
+    applied at each sampled contact, with at most one contact per link. Success means localization error no greater than 2.25 cm. The reported RMSE
+    values include failed trials.
+  </p>
+  <div class="research-content__table-wrap" tabindex="0" role="region" aria-label="MCP-EP simulation results">
+    <table>
+      <caption>
+        Simulation results (Table I); these are not real-world success rates.
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Contacts</th>
+          <th scope="col">Success</th>
+          <th scope="col">Position RMSE</th>
+          <th scope="col">Force RMSE</th>
+          <th scope="col">Runtime</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>99.96%</td>
+          <td>0.16 cm</td>
+          <td>0.01 N</td>
+          <td>0.45 ms</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>96.70%</td>
+          <td>1.08 cm</td>
+          <td>2.00 N</td>
+          <td>1.66 ms</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>81.63%</td>
+          <td>3.50 cm</td>
+          <td>4.63 N</td>
+          <td>4.50 ms</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>Supplementary Real-World Demonstrations</h3>
+  <p>The videos show contact estimation on a Kinova Gen3. These demonstrations are separate from the simulation statistics reported above.</p>
+  {% include research-project-video.liquid path="mcpep/mcpep_realworld_triple_v2" caption="Supplementary triple-contact estimation on the Kinova Gen3." %}
+  <p>
+    MCP-EP supplies the contact estimator in <a href="{{ '/research/projects/multi-contact-mpc/' | relative_url }}">Multi-Contact Feedback MPC</a> and
+    serves as a comparison method for <a href="{{ '/research/projects/contactflowfilter/' | relative_url }}">ContactFlowFilter</a>.
+  </p>
+</section>

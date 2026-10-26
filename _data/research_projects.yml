@@ -1,0 +1,494 @@
+# Source provenance and chronological sorting rules: docs/RESEARCH_PROJECTS.md.
+- id: contactflowfilter
+  title: ContactFlowFilter
+  subtitle: Whole-Body Multi-Contact Sensing without Tactile Skin
+  area: physical-ai
+  slide: 2
+  platform: Franka Emika Panda
+  tags:
+    - Contact perception
+    - Generative state estimation
+  description: Proprioception-based contact estimation that senses where a human touches the robot, tracks simultaneous contacts,
+    and works while the arm is moving.
+  highlights:
+    - Senses where a human touches the robot in real time, without tactile skin.
+    - Tracks two sliding contacts at once.
+    - Estimates contact while the robot is moving.
+  metrics:
+    - value: 0.36 cm
+      label: Single-contact localization M-RMSE
+      comparison: "Real-world evaluation; MCP-EP: 0.77 cm"
+    - value: 0.88 cm
+      label: Dual-contact localization M-RMSE
+      comparison: "Real-world evaluation; MCP-EP: 2.44 cm"
+    - value: 0.69 / 2.69 ms
+      label: Execution time
+      comparison: Single-contact / dual-contact
+    - value: 0.75%
+      label: Particle-set management fault rate
+      comparison: "2,000 simulation trials; baseline: 16.50%"
+  published: true
+  publication_sort: 20260814
+  publication_label: IEEE T-RO · 2026
+  sort_source: "DOI registration: 2026-08-14; Crossref specifies publication year only"
+  publication_keys:
+    - han2026mixture
+  source_url: https://seowookhan.github.io/SeoWookHan/projects/1_contact_flow_filter/
+  content_include: research-project-content/contactflowfilter.liquid
+  publications:
+    - key: han2026mixture
+      title: Mixture of Flow Matching and Particle Filter for Proprioception-Based Online Contact Estimation
+      authors: Seo Wook Han and Min Jun Kim
+      venue: IEEE Transactions on Robotics
+      year: 2026
+      paper_url: https://doi.org/10.1109/TRO.2026.3723975
+      youtube_url: https://youtu.be/GPHvHIyXc74
+      project_url: https://seowookhan.github.io/SeoWookHan/projects/1_contact_flow_filter/
+      bibtex: "@article{han2026mixture,\n  author={Han, Seo Wook and Kim, Min Jun},\n  journal={IEEE Transactions on Robotics},\n\
+        \  title={Mixture of Flow Matching and Particle Filter for Proprioception-Based Online Contact Estimation},\n  year={2026},\n\
+        \  pages={1--20},\n  doi={10.1109/TRO.2026.3723975}\n}"
+- id: scdp
+  title: SCDP
+  subtitle: Precise Manipulation with a Single Camera
+  area: physical-ai
+  slide: 3
+  platform: Franka Emika Panda · dual-arm humanoid
+  tags:
+    - Imitation learning
+    - Single-camera manipulation
+  description: Spatially Conditioned Diffusion Policy learns precise manipulation from a single global-view RGB camera, with visual
+    anchors that reveal where the policy looks.
+  highlights:
+    - Uses one global-view camera, without a wrist camera.
+    - Visual anchors show where the policy looks during manipulation.
+    - Extends the same approach to dual-arm humanoid tasks.
+  metrics:
+    - value: 73.8%
+      label: Real-world task success
+      comparison: vs. 50.3% with Diffusion Policy
+    - value: 82.5%
+      label: Meta-World Hard success
+      comparison: vs. 16.7% with Diffusion Policy
+  published: true
+  publication_sort: 20260612
+  publication_label: CoRL · 2026 · Accepted
+  sort_source: "First arXiv submission: 2026-06-12 (arXiv 2606.14535 v1); CoRL 2026 acceptance recorded in the existing site"
+  publication_keys:
+    - kim2026spatially
+  source_url: https://scdp-project.github.io/
+  code_url: https://github.com/IRSL-robotics/SCDP
+  content_include: research-project-content/scdp.liquid
+  publications:
+    - key: kim2026spatially
+      title: "Spatially Conditioned Diffusion Policy: Learning Precise and Robust Manipulation with a Single RGB Camera"
+      authors: Seoyoon Kim, Kanghyun Kim, Dongwoo Ko, Yeong Jin Heo, and Min Jun Kim
+      venue: Conference on Robot Learning (CoRL)
+      year: 2026
+      status: Accepted
+      paper_url: https://arxiv.org/abs/2606.14535
+      youtube_url: https://youtu.be/PfSrRUp5z_k
+      project_url: https://scdp-project.github.io/
+      bibtex: "@inproceedings{kim2026spatially,\n  title={Spatially Conditioned Diffusion Policy: Learning Precise and Robust Manipulation\
+        \ with a Single RGB Camera},\n  author={Kim, Seoyoon and Kim, Kanghyun and Ko, Dongwoo and Heo, Yeong Jin and Kim, Min Jun},\n\
+        \  booktitle={Conference on Robot Learning (CoRL)},\n  year={2026},\n  note={Accepted},\n  eprint={2606.14535},\n  archivePrefix={arXiv},\n\
+        \  url={https://arxiv.org/abs/2606.14535}\n}"
+- id: scdm
+  title: SCDM
+  subtitle: Dexterous Grasping of Novel Objects
+  area: physical-ai
+  slide: 4
+  platform: DLR Agile Justin · multi-fingered hands
+  tags:
+    - Perception intelligence
+    - Dexterous grasping
+  description: Spatially-Conditioned Diffusion Models generate collision-aware, multi-finger grasps for unseen objects in cluttered
+    scenes and transfer across different robot hands.
+  highlights:
+    - Clears a cluttered table one object at a time.
+    - Generates multi-finger grasps for unseen objects live.
+    - Demonstrates collision-aware grasping in a real kitchen.
+    - Runs the same model on different robot hands.
+  metrics:
+    - value: 91.1%
+      label: Declutter rate
+      comparison: vs. 82.9% with DexGraspNet 2.0
+    - value: 93.7%
+      label: Grasp success rate
+      comparison: vs. 82.0% with DexGraspNet 2.0
+  published: false
+  publication_sort: 0
+- id: tire-stacking
+  title: Tire Stacking
+  subtitle: Contact-Aware RL for Stacking Mixed-Type Tires
+  area: physical-ai
+  slide: 5
+  platform: 6-DoF industrial arm · tire gripper
+  tags:
+    - Reinforcement learning
+    - Robotic packing
+  description: Contact-aware reinforcement learning enables dense, stable tire stacking, from simulation to single- and mixed-type
+    sequences in a real packing cell.
+  highlights:
+    - Builds dense, stable stacks in simulation where the compared baselines fail.
+    - Demonstrates single-type tire packing in a real robotic cell.
+    - Handles mixed-type tire sequences with an industrial arm and tire gripper.
+  published: true
+  publication_sort: 0
+- id: saram-h
+  title: SARAM-H
+  subtitle: Surgical-Assistant Humanoid for Solo Surgery
+  area: hardware-design
+  slide: 6
+  platform: Surgical-assistant humanoid · pre-clinical porcine trial
+  tags:
+    - Humanoid systems
+    - Physical HRI
+  description: A surgical-assistant humanoid integrates whole-body control and voice interaction to hand over instruments, demonstrated
+    in a live pre-clinical surgery.
+  highlights:
+    - Understands the surgeon's voice commands in the operating room.
+    - Uses whole-body humanoid control to hand over the requested instrument.
+    - Demonstrated in a live pre-clinical surgery with a porcine model.
+  metrics:
+    - value: "3"
+      label: Built-in robot safety functions
+      comparison: Integrated into the surgical-assistant platform
+    - value: 90%
+      label: Voice recognition accuracy
+      comparison: In the operating room
+  published: true
+  publication_sort: 0
+- id: c-nric
+  title: C-NRIC
+  subtitle: Precise yet Compliant Control without Torque Sensors
+  area: robot-control
+  slide: 7
+  platform: Neuromeka Indy7
+  tags:
+    - Motion control
+    - Compliant interaction
+  description: Optimization-based motion control combines precise free-space tracking with compliant contact response, using joint
+    encoders without torque sensors.
+  highlights:
+    - Matches high-gain baseline accuracy during free-space motion.
+    - Yields on contact while the high-gain baseline stops.
+    - Demonstrates compliant interaction that keeps an egg intact.
+  metrics:
+    - value: 4 kHz
+      label: Optimization-based control loop
+      comparison: Joint encoders only
+    - value: ±0.002 rad
+      label: Free-space tracking error
+      comparison: On par with high-gain control
+  published: true
+  publication_sort: 20260818
+  publication_label: Intelligent Service Robotics · 2026 / ICRA · 2024
+  sort_source: "Published online: 2026-08-18"
+  publication_keys:
+    - han2026contactresponsive
+    - han2024constrained
+  publication_intro: This project includes the ICRA 2024 conference paper and the 2026 journal version in Intelligent Service Robotics.
+  publications:
+    - key: han2026contactresponsive
+      version: Journal version · 2026
+      title: Contact-responsive high-gain robot motion controllers using a constrained disturbance observer
+      authors: Ji Wan Han and Min Jun Kim
+      venue: Intelligent Service Robotics
+      year: 2026
+      paper_url: https://doi.org/10.1007/s11370-026-00744-z
+      youtube_url: https://youtu.be/Y9OnjaAnnJQ
+      bibtex: "@article{han2026contactresponsive,\n  title={Contact-responsive high-gain robot motion controllers using a constrained\
+        \ disturbance observer},\n  author={Han, Ji Wan and Kim, Min Jun},\n  journal={Intelligent Service Robotics},\n  volume={19},\n\
+        \  number={5},\n  eid={89},\n  year={2026},\n  doi={10.1007/s11370-026-00744-z}\n}"
+    - key: han2024constrained
+      version: Conference version · 2024
+      title: Constrained Nonlinear Disturbance Observer for Robotic Systems
+      authors: Ji Wan Han, Daehyung Park, and Min Jun Kim
+      venue: IEEE International Conference on Robotics and Automation (ICRA)
+      year: 2024
+      paper_url: https://ieeexplore.ieee.org/abstract/document/10611091
+      bibtex: "@inproceedings{han2024constrained,\n  title={Constrained Nonlinear Disturbance Observer for Robotic Systems},\n  author={Han,\
+        \ Ji Wan and Park, Daehyung and Kim, Min Jun},\n  booktitle={IEEE International Conference on Robotics and Automation (ICRA)},\n\
+        \  year={2024}\n}"
+- id: memory-based-so3
+  title: Memory-based SO(3)
+  subtitle: 6D Compliant Control beyond 180° Rotation
+  area: robot-control
+  slide: 8
+  platform: Franka Emika Panda
+  tags:
+    - Impedance control
+    - Physical HRI
+  description: Direction-preserving 6D impedance control maintains the restoring torque direction through large rotations, allowing
+    natural physical interaction beyond a half-turn.
+  highlights:
+    - Preserves the restoring torque direction beyond 180°, where conventional control reverses it.
+    - Allows a human to guide the end-effector through complex, large rotations.
+    - Returns the robot to its initial pose when released.
+  metrics:
+    - value: "> 180°"
+      label: Rotation range of 6D impedance control
+      comparison: vs. ≤ 180° with exponential coordinates
+  published: true
+  publication_sort: 20261023
+  publication_label: IEEE RA-L · 2026 · Accepted / ICRA · 2022
+  sort_source: "DOI registration: 2026-10-23; Crossref specifies publication year only"
+  publication_keys:
+    - jeong2026direction
+    - jeong2022memory
+  publications:
+    - key: jeong2026direction
+      title: Direction-Preserving 6D Impedance Control Using Observer-Based Extended Unit Quaternion
+      authors: Jinyeong Jeong and Min Jun Kim
+      venue: IEEE Robotics and Automation Letters (RA-L)
+      year: 2026
+      status: Accepted
+      paper_url: https://doi.org/10.1109/LRA.2026.3746072
+      bibtex: "@article{jeong2026direction,\n  title={Direction-Preserving 6D Impedance Control Using Observer-Based Extended Unit\
+        \ Quaternion},\n  author={Jeong, Jinyeong and Kim, Min Jun},\n  journal={IEEE Robotics and Automation Letters},\n  year={2026},\n\
+        \  note={Accepted},\n  doi={10.1109/LRA.2026.3746072}\n}"
+      version: Journal version · 2026
+    - key: jeong2022memory
+      title: "A Memory-based SO(3) Parameterization: Theory and Application to 6D Impedance Control with Radially Unbounded Potential
+        Function"
+      authors: Jinyeong Jeong, Hrishik Mishra, Christian Ott, and Min Jun Kim
+      venue: IEEE International Conference on Robotics and Automation (ICRA)
+      year: 2022
+      paper_url: https://ieeexplore.ieee.org/document/9812268
+      bibtex: "@inproceedings{jeong2022memory,\n  title={A Memory-based SO(3) Parameterization: Theory and Application to 6D Impedance\
+        \ Control with Radially Unbounded Potential Function},\n  author={Jeong, Jinyeong and Mishra, Hrishik and Ott, Christian\
+        \ and Kim, Min Jun},\n  booktitle={IEEE International Conference on Robotics and Automation (ICRA)},\n  year={2022}\n}"
+      version: Conference version · 2022
+      youtube_url: https://youtu.be/rYX7vmhB0m8
+  publication_intro: This project includes the ICRA 2022 conference paper and the 2026 journal version accepted to IEEE Robotics
+    and Automation Letters.
+- id: l1afo
+  title: L1AFO
+  subtitle: Real-Time Joint Friction Compensation
+  area: robot-control
+  slide: 9
+  platform: Kinova Gen3
+  tags:
+    - Precision actuation
+    - Friction compensation
+  description: An extreme high-gain friction observer with an L1 adaptive framework improves tracking accuracy while preserving
+    natural interaction with humans and stiff objects.
+  highlights:
+    - Maintains stable contact during pencil drawing without breaking the tip.
+    - Draws an accurate rectangle while keeping the pencil intact.
+    - Supports safe, natural interaction with humans and stiff objects.
+  metrics:
+    - value: 91%
+      label: Lower steady-state error along z
+      comparison: Compared with PDFO
+    - value: 0.48 mm
+      label: Tracking RMSE along y
+      comparison: 76% lower than PDFO
+  published: true
+  publication_sort: 20260421
+  publication_label: IEEE T-RO · 2026
+  sort_source: "DOI registration: 2026-04-21; Crossref specifies publication year only"
+  publication_keys:
+    - lee2026extreme
+- id: multi-contact-mpc
+  title: Multi-Contact Feedback MPC
+  subtitle: Safe Predictive Control under Unexpected Contacts
+  area: robot-control
+  slide: 10
+  platform: DLR-KUKA LWR IV+
+  tags:
+    - Model predictive control
+    - Physical HRI
+  description: Real-time model predictive control uses multi-contact feedback to regulate contact forces during interactive tasks,
+    including unexpected pushes and unknown loads.
+  highlights:
+    - Regulates contact force back to the 15 N limit when a human pushes the robot mid-task.
+    - Carries an unknown load while limiting contact force.
+    - Runs real-time MPC with full seven-degree-of-freedom dynamics.
+  metrics:
+    - value: 1.9 kHz
+      label: Real-time MPC
+      comparison: Full 7-DoF dynamics
+    - value: 14.74 N
+      label: Peak contact force with a 15 N limit
+      comparison: 78% lower than without contact feedback
+  published: true
+  publication_sort: 20240513
+  publication_label: IEEE ICRA · 2024
+  sort_source: "Conference publication date: 2024-05-13"
+  publication_keys:
+    - han2024online
+  source_url: https://seowookhan.github.io/SeoWookHan/projects/3_multi_contact_mpc/
+  content_include: research-project-content/multi-contact-mpc.liquid
+  publications:
+    - key: han2024online
+      title: Online Multi-Contact Feedback Model Predictive Control for Interactive Robotic Tasks
+      authors: Seo Wook Han, Maged Iskandar, Jinoh Lee, and Min Jun Kim
+      venue: IEEE International Conference on Robotics and Automation (ICRA)
+      year: 2024
+      paper_url: https://ieeexplore.ieee.org/document/10611151
+      youtube_url: https://youtu.be/pZbkHaxT1ao
+      project_url: https://seowookhan.github.io/SeoWookHan/projects/3_multi_contact_mpc/
+      bibtex: "@inproceedings{han2024online,\n  title={Online Multi-Contact Feedback Model Predictive Control for Interactive Robotic\
+        \ Tasks},\n  author={Han, Seo Wook and Iskandar, Maged and Lee, Jinoh and Kim, Min Jun},\n  booktitle={IEEE International\
+        \ Conference on Robotics and Automation (ICRA)},\n  pages={11556--11562},\n  year={2024}\n}"
+- id: fault-tolerant-flight
+  title: Fault-Tolerant Flight
+  subtitle: Obstacle Avoidance after Motor Failure
+  area: robot-control
+  slide: 11
+  platform: Quadrotor · real flight
+  tags:
+    - Fault tolerance
+    - Aerial robots
+  description: A quadrotor navigates an unknown environment, avoids obstacles after a complete motor failure, and lands safely
+    while spinning at high angular velocity.
+  highlights:
+    - Flies through an unknown environment before a motor completely fails.
+    - Avoids walls while spinning at 24 rad/s.
+    - Lands in the safe area after the failure.
+  metrics:
+    - value: 23.28 mm
+      label: Point-cloud reconstruction error (P95)
+      comparison: 46% lower than direct accumulation
+    - value: "0"
+      label: Collisions in the demonstrated experiment
+      comparison: Minimum obstacle distance of 0.50 m, including complete motor failure
+  published: false
+  publication_sort: 0
+- id: sam2
+  title: SAM2
+  subtitle: Tethered Aerial Robot for Long-Duration Contact Work
+  area: hardware-design
+  slide: 12
+  platform: SAM2 · power-line insulator
+  tags:
+    - Aerial manipulation
+    - Tethered systems
+  description: A cable-supported aerial robot combines tethered power with independent position and attitude control for sustained,
+    stable contact work on power-line insulators.
+  highlights:
+    - Uses cables to carry the load and supply power.
+    - Maintains stable aerial contact with full 6-DoF control.
+    - Demonstrates contact work on power-line insulators.
+  metrics:
+    - value: 6-DoF
+      label: Independent position and attitude control
+      comparison: vs. 4-DoF multirotors
+    - value: Tethered power
+      label: Continuous operation
+      comparison: Power is supplied through the tether
+  published: true
+  publication_sort: 0
+- id: go-ampc
+  title: gO-AMPC
+  subtitle: Certifiable MPC for Safe Flight under Strong Disturbances
+  area: robot-control
+  slide: 13
+  platform: Quadrotor · real flight
+  tags:
+    - Adaptive control
+    - Safe aerial navigation
+  description: Certifiable adaptive MPC with a geometric disturbance observer compensates for strong wind in real time, enabling
+    robust quadrotor flight near obstacles.
+  highlights:
+    - Demonstrates robust flight near walls and the ground under strong wind.
+    - Compensates in real time for a 5 m/s crosswind pushing the drone toward an obstacle.
+    - Reaches the goal without collision in the demonstrated comparison with three MPC baselines.
+  metrics:
+    - value: 7.6 cm
+      label: Tracking RMSE under disturbance
+      comparison: 35% lower than the best compared baseline
+    - value: 100%
+      label: Collision avoidance success
+      comparison: vs. 0–53% with three MPC baselines
+  published: false
+  publication_sort: 0
+- id: cdm
+  title: Contact Diffusion Model (CDM)
+  subtitle: Generative Multi-Contact Point Localization
+  area: physical-ai
+  platform: Kinova Gen3 · joint torque sensors and a base F/T sensor
+  tags:
+    - Generative perception
+    - Contact localization
+  description: A diffusion model represents multiple contact locations consistent with proprioceptive measurements, using historical
+    estimates and robot-surface geometry to localize single and dual contacts.
+  highlights:
+    - Represents ambiguous contact configurations as a distribution of possible locations.
+    - Conditions on previous diffusion outputs to retain information about earlier contacts.
+    - Transfers directly from simulation to single- and dual-contact experiments on a real robot.
+  metrics:
+    - value: 0.44 cm
+      label: Single-contact localization M-RMSE
+      comparison: 100 real-world trials
+    - value: 1.24 cm
+      label: Dual-contact localization M-RMSE
+      comparison: 100 real-world trials
+    - value: 15.97 ms
+      label: Inference time
+      comparison: Reported for the proposed Contact Diffusion Model
+  published: true
+  publication_sort: 20250519
+  publication_label: IEEE ICRA · 2025
+  sort_source: ICRA 2025 conference publication date
+  publication_keys:
+    - han2025cdm
+  source_url: https://seowookhan.github.io/SeoWookHan/projects/2_contact_diffusion_model/
+  content_include: research-project-content/cdm.liquid
+  publications:
+    - key: han2025cdm
+      title: "CDM: Contact Diffusion Model for Multi-Contact Point Localization"
+      authors: Seo Wook Han and Min Jun Kim
+      venue: IEEE International Conference on Robotics and Automation (ICRA)
+      year: 2025
+      paper_url: https://ieeexplore.ieee.org/document/11127780
+      youtube_url: https://youtu.be/6kDZrnkFvp4
+      project_url: https://seowookhan.github.io/SeoWookHan/projects/2_contact_diffusion_model/
+      bibtex: "@inproceedings{han2025cdm,\n  title={CDM: Contact Diffusion Model for Multi-Contact Point Localization},\n  author={Han,\
+        \ Seo Wook and Kim, Min Jun},\n  booktitle={IEEE International Conference on Robotics and Automation (ICRA)},\n  pages={4702--4708},\n\
+        \  year={2025}\n}"
+- id: mcpep
+  title: MCP-EP
+  subtitle: Simultaneous Multi-Contact Localization and Force Identification
+  area: physical-ai
+  platform: Franka Emika Panda (simulation) · Kinova Gen3 (real-world demonstrations)
+  tags:
+    - Proprioceptive sensing
+    - Particle filtering
+  description: A multi-contact particle filter combines preprocessed robot meshes, exploration particles, and a base force/torque
+    sensor to estimate contact locations and forces without tactile skin.
+  highlights:
+    - Estimates contact location and force from joint torque and base force/torque measurements.
+    - Uses exploration particles to discover contacts on adjacent links.
+    - Includes single-, dual-, and triple-contact simulation studies and supplementary real-robot demonstrations.
+  metrics:
+    - value: 2,200 Hz
+      label: Single-contact update rate
+      comparison: 0.45 ms in simulation on a 7-DoF robot
+    - value: 99.96%
+      label: Single-contact success rate
+      comparison: 10,000 simulation trials; success threshold ≤ 2.25 cm
+    - value: ≥ 3.5×
+      label: Faster computation
+      comparison: Compared with the methods evaluated in the paper
+  published: true
+  publication_sort: 20230529
+  publication_label: IEEE ICRA · 2023
+  sort_source: ICRA 2023 conference publication date
+  publication_keys:
+    - han2023proprioceptive
+  source_url: https://seowookhan.github.io/SeoWookHan/projects/4_mcpep/
+  content_include: research-project-content/mcpep.liquid
+  publications:
+    - key: han2023proprioceptive
+      title: Proprioceptive Sensor-Based Simultaneous Multi-Contact Point Localization and Force Identification for Robotic Arms
+      authors: Seo Wook Han and Min Jun Kim
+      venue: IEEE International Conference on Robotics and Automation (ICRA)
+      year: 2023
+      paper_url: https://ieeexplore.ieee.org/document/10161173
+      youtube_url: https://youtu.be/PgLwQNeAgYs
+      project_url: https://seowookhan.github.io/SeoWookHan/projects/4_mcpep/
+      bibtex: "@inproceedings{han2023proprioceptive,\n  title={Proprioceptive Sensor-Based Simultaneous Multi-Contact Point Localization\
+        \ and Force Identification for Robotic Arms},\n  author={Han, Seo Wook and Kim, Min Jun},\n  booktitle={IEEE International\
+        \ Conference on Robotics and Automation (ICRA)},\n  pages={12099--12105},\n  year={2023}\n}"

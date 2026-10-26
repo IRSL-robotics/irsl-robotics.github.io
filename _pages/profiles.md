@@ -292,6 +292,7 @@ nav_order: 1
     <div class="member-section-title">Publications (International)</div>
 
     <ul class="pub-list">
+      <li><strong>J. Jeong</strong>, and M. J. Kim, "Direction-Preserving 6D Impedance Control Using Observer-Based Extended Unit Quaternion", <em>IEEE RA-L, 2026, Accepted</em> · <a href="https://doi.org/10.1109/LRA.2026.3746072">Paper</a> · <a href="{{ '/research/projects/memory-based-so3/' | relative_url }}">Project</a></li>
       <li><strong>J. Jeong</strong>, S. Park, S. Lee, D. Youn, and M. J. Kim, "Designing an End-to-End UAV System for Insulator Inspection under Transmission Tower Environments", <em>IEEE ICEIC 2024</em></li>
       <li><strong>J. Jeong</strong>, and M. J. Kim, “Passivity-based Decentralized Control for Collaborative Grasping of Under-Actuated Aerial Manipulators”, <em>IEEE ICRA 2023</em></li>
       <li><strong>J. Jeong</strong>, H. Mishra, C.Ott, and M. J. Kim, "A Memory-based SO(3) Parameterization: Theory and Application to 6D Impedance Control with Radially Unbounded Potential Function", <em>IEEE ICRA 2022</em></li>

@@ -1,0 +1,109 @@
+<section>
+  <h2>Interactive Tasks with Unexpected Contacts</h2>
+  <p>
+    A robot performing a contact task may also be pushed by a person or encounter an obstacle elsewhere on its arm. Multi-Contact Feedback MPC
+    accounts for these contacts explicitly, rather than assuming that interaction occurs only at a known end-effector location. It combines motion and
+    force objectives with limits on unwanted contact forces.
+  </p>
+  <figure>
+    <img
+      src="{{ '/assets/img/research/multi-contact-mpc/fig1_photo.webp' | relative_url }}"
+      alt="DLR-KUKA robot performing end-effector force control while a person contacts another link"
+      loading="lazy"
+    >
+    <figcaption>End-effector motion and force control continue while the robot responds to an additional human contact.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>An Explicit Contact Feedback Loop</h2>
+  <p>
+    <a href="{{ '/research/projects/mcpep/' | relative_url }}">MCP-EP</a> estimates contact locations and forces from joint torque and base
+    force/torque measurements. The controller incorporates this information into a spring contact model and predicts its effect on the full
+    seven-degree-of-freedom robot dynamics. Other estimators can also supply the feedback if they provide multi-contact information in real time.
+  </p>
+  <figure>
+    <img
+      src="{{ '/assets/img/research/multi-contact-mpc/control_structure.webp' | relative_url }}"
+      alt="Control architecture connecting MCP-EP, contact-feedback MPC, and the torque-controlled robot"
+      loading="lazy"
+    >
+    <figcaption>Contact estimation closes the feedback loop around the predictive controller.</figcaption>
+  </figure>
+  <h3>Contact Modeling and Optimization</h3>
+  <p>
+    The spring model predicts force along the estimated contact direction while leaving tangential motion unconstrained. The optimization combines
+    end-effector pose tracking, contact-force regulation, and a force barrier that penalizes approaching or exceeding the permitted force.
+  </p>
+  <figure>
+    <img
+      src="{{ '/assets/img/research/multi-contact-mpc/spring_contact_model.webp' | relative_url }}"
+      alt="Estimated contact frame, spring stiffness, and predicted contact force"
+      loading="lazy"
+    >
+    <figcaption>The spring contact model connects estimated contact locations to predicted interaction forces.</figcaption>
+  </figure>
+  <p>
+    Box-FDDP solves the optimal control problem with analytic derivatives and a 125 ms prediction horizon. Reported update rates are 6.8 kHz without
+    contact, 1.9 kHz with one contact, and 1.8 kHz with two contacts. The implementation retains the full robot dynamics without the simplifying
+    assumptions discussed in the source paper.
+  </p>
+</section>
+
+<section>
+  <h2>Experiments on the DLR-KUKA LWR IV+</h2>
+  <h3>Limiting an Unexpected Contact</h3>
+  <p>
+    When an unknown obstacle prevents the arm from reaching its target, MPC without contact feedback produces a peak force of 65.87 N. With contact
+    feedback and a 15 N force limit, the peak is 14.74 N.
+  </p>
+  {% include research-project-video.liquid path="multi-contact-mpc/mpc_scenario1" caption="Comparison with and without contact feedback near an unknown obstacle." %}
+  <h3>Hybrid Motion–Force Control</h3>
+  <p>
+    The robot tracks a circular end-effector trajectory while regulating contact force to 20 N. An additional human contact on the third link is
+    limited to 15 N. The table reports tracking performance during the three phases of this experiment.
+  </p>
+  <figure>
+    <img
+      src="{{ '/assets/img/research/multi-contact-mpc/scenario2_sequence.webp' | relative_url }}"
+      alt="Four stages from initial free motion to hybrid control and an additional human contact"
+      loading="lazy"
+    >
+    <figcaption>Scenario 2: approaching the environment, establishing contact, and responding to an additional contact.</figcaption>
+  </figure>
+  <div class="research-content__table-wrap" tabindex="0" role="region" aria-label="Multi-contact control tracking errors">
+    <table>
+      <caption>
+        Scenario 2 tracking RMSE.
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Phase</th>
+          <th scope="col">Position</th>
+          <th scope="col">Force</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Hybrid motion–force control</th>
+          <td>0.86 cm</td>
+          <td>0.58 N</td>
+        </tr>
+        <tr>
+          <th scope="row">Additional human contact</th>
+          <td>1.14 cm</td>
+          <td>0.89 N</td>
+        </tr>
+        <tr>
+          <th scope="row">Constant desired pose</th>
+          <td>0.20 cm</td>
+          <td>0.10 N</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="research-content__videos">
+    {% include research-project-video.liquid path="multi-contact-mpc/mpc_scenario2" caption="Hybrid motion–force control with an additional human contact." %}
+    {% include research-project-video.liquid path="multi-contact-mpc/mpc_transfer" caption="Supplementary demonstration: transferring an object of unknown weight while limiting a second contact force." %}
+  </div>
+</section>

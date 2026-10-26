@@ -1,0 +1,144 @@
+<section aria-labelledby="scdp-method-heading">
+  <h2 id="scdp-method-heading">Spatial Conditioning with Visual Attention Anchors</h2>
+  <p>
+    A single global camera must capture both the workspace and the small visual details needed for precise manipulation. SCDP addresses this challenge
+    by using intermediate end-effector trajectories as visual attention anchors. At each diffusion step, these trajectories identify locations in the
+    image where the policy can gather task-relevant features.
+  </p>
+  <figure>
+    <a href="{{ '/assets/img/research/scdp/architecture.webp' | relative_url }}" aria-label="Open the full SCDP architecture diagram">
+      <img
+        src="{{ '/assets/img/research/scdp/architecture.webp' | relative_url }}"
+        alt="SCDP architecture: multi-scale image features are sampled along reconstructed end-effector trajectories and condition successive action denoising steps."
+        loading="lazy"
+      >
+    </a>
+    <figcaption>A single RGB observation supplies global context and local features throughout action denoising.</figcaption>
+  </figure>
+  <ol>
+    <li>
+      <strong>Multi-scale image encoding.</strong> The visual encoder produces feature maps at several scales, retaining both broad scene context and
+      fine visual detail.
+    </li>
+    <li>
+      <strong>Spatial conditioning.</strong> Reconstructed end-effector trajectories are projected into the image. The model samples point-wise
+      features from the multi-scale maps at these visual attention anchors.
+    </li>
+    <li>
+      <strong>Conditional action denoising.</strong> The sampled spatial context conditions the action denoising network through FiLM and is updated
+      at each denoising step.
+    </li>
+  </ol>
+  <p>The implementation is available in the <a href="{{ project.code_url }}" target="_blank" rel="noopener noreferrer">SCDP code repository</a>.</p>
+</section>
+
+<section aria-labelledby="scdp-simulation-heading">
+  <h2 id="scdp-simulation-heading">Simulation Results</h2>
+  <p>
+    SCDP achieves more than 80% success in each Meta-World difficulty group using a single RGB camera. The comparison below reports the success rates
+    shown on the official project page: DP uses RGB observations, while DP3 uses depth observations.
+  </p>
+  <figure>
+    <picture>
+      <source
+        media="(max-width: 520px)"
+        srcset="{{ '/assets/img/research/scdp/simulation-success-mobile.svg' | relative_url }}"
+        width="380"
+        height="280"
+      >
+      <img
+        src="{{ '/assets/img/research/scdp/simulation-success.svg' | relative_url }}"
+        width="620"
+        height="280"
+        loading="lazy"
+        alt="Meta-World success rates for Easy, Medium, Hard, and Very Hard: DP 79.9, 36.1, 16.7, 46.0%; DP3 92.3, 78.5, 60.3, 82.7%; SCDP 91.5, 83.0, 82.5, 89.7%."
+      >
+    </picture>
+    <figcaption>Meta-World success across four task-difficulty groups. Higher is better.</figcaption>
+  </figure>
+  <h3>Single-View Performance on Hard Tasks</h3>
+  <div class="research-content__table-wrap" tabindex="0" role="region" aria-label="SCDP comparison on six Meta-World Hard tasks">
+    <table>
+      <caption>
+        Success rates on the six Meta-World Hard tasks, reported as mean ± standard deviation across tasks.
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Method</th>
+          <th scope="col">Camera setting</th>
+          <th scope="col">Success (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">DP + Wrist</th>
+          <td>RGB with a wrist view</td>
+          <td>74.2 ± 29.4</td>
+        </tr>
+        <tr>
+          <th scope="row">DP3</th>
+          <td>Depth</td>
+          <td>60.3 ± 38.0</td>
+        </tr>
+        <tr>
+          <th scope="row">SCDP</th>
+          <td>Single RGB</td>
+          <td><strong>82.5 ± 11.5</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="scdp-experiments-heading">
+  <h2 id="scdp-experiments-heading">Real-World Manipulation</h2>
+  <p>
+    The following autonomous demonstrations use a single global-view RGB camera. They cover precise insertion, visual distractors, sequential
+    manipulation, and different grasp geometries. Captions retain the playback speeds of the original demonstrations.
+  </p>
+
+  <h3>Precise Manipulation</h3>
+  <p>
+    USB insertion requires grasping the drive, aligning it with the hub port, and pushing it into place. Battery insertion additionally requires
+    overcoming spring resistance to seat the battery in its slot.
+  </p>
+  <div class="research-content__videos">
+    {% include research-project-video.liquid path="scdp/USB_4x" caption="USB insertion: grasp, align, and insert the drive (4× speed)." %}
+    {% include research-project-video.liquid path="scdp/Battery_2x" caption="Battery insertion: align the battery and push against spring resistance (2× speed)." %}
+  </div>
+
+  <h3>Robustness to Visual Distractors</h3>
+  <p>The insertion tasks are repeated with additional objects in the workspace, testing whether the policy attends to the relevant interaction.</p>
+  <div class="research-content__videos">
+    {% include research-project-video.liquid path="scdp/USB_Distractor_4x" caption="USB insertion with surrounding visual distractors (4× speed)." %}
+    {% include research-project-video.liquid path="scdp/Battery_Distractor_2x" caption="Battery insertion with surrounding visual distractors (2× speed)." %}
+  </div>
+
+  <h3>Long-Horizon Manipulation</h3>
+  <p>The drawer task links four stages: open the drawer, pick up a banana, place it inside, and close the drawer.</p>
+  {% include research-project-video.liquid path="scdp/Long_Horizon_2x" caption="A four-stage drawer manipulation sequence (2× speed)." %}
+
+  <h3>Cup Grasping and Cube Pushing</h3>
+  <p>
+    Further tasks require adapting a grasp to the cup handle, placing one finger inside a cup to grasp its wall without hitting the rim or handle, and
+    pushing a target cube among distractors.
+  </p>
+  <div class="research-content__videos">
+    {% include research-project-video.liquid path="scdp/Grasp_Cup_Handle_Ours_4x" caption="Grasping a cup by its handle across different handle orientations (4× speed)." %}
+    {% include research-project-video.liquid path="scdp/Cup_Distractor_2x" caption="Grasping the cup handle among distracting objects (2× speed)." %}
+    {% include research-project-video.liquid path="scdp/Cup_Wall_Grasping_4x" caption="Grasping the cup wall with one finger inside the cup (4× speed)." %}
+    {% include research-project-video.liquid path="scdp/Push_Cube_2x_distractor" caption="Pushing the target red cube in the presence of distractors (2× speed)." %}
+  </div>
+</section>
+
+<section aria-labelledby="scdp-humanoid-heading">
+  <h2 id="scdp-humanoid-heading">Humanoid Demonstrations</h2>
+  <p>
+    Additional demonstrations apply the same approach to a humanoid using a single head-mounted camera for egocentric visual observation. The robot
+    separates paper cups on a tabletop and uses an eraser to wipe a whiteboard.
+  </p>
+  <div class="research-content__videos">
+    {% include research-project-video.liquid path="scdp/Humanoid_Paper_Cups_2x" caption="Separating paper cups with a humanoid robot (2× speed)." %}
+    {% include research-project-video.liquid path="scdp/Humanoid_Erasing_White_Board_2x" caption="Erasing a whiteboard with a humanoid robot (2× speed)." %}
+  </div>
+</section>

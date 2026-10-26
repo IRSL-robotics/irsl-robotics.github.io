@@ -1,0 +1,16 @@
+{% assign clip_path = '/assets/video/research/' | append: include.path %}
+<figure>
+  <video
+    controls
+    playsinline
+    preload="none"
+    width="960"
+    height="540"
+    poster="{{ clip_path | append: '.jpg' | relative_url }}"
+    aria-label="{{ include.caption | escape }}"
+  >
+    <source src="{{ clip_path | append: '.mp4' | relative_url }}" type="video/mp4">
+    <a href="{{ clip_path | append: '.mp4' | relative_url }}">Watch the demonstration</a>
+  </video>
+  <figcaption>{{ include.caption | escape }}</figcaption>
+</figure>

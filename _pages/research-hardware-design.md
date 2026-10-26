@@ -9,4 +9,4 @@ research_kicker: Mechanisms · Robot Design · System Integration
 research_intro: We design novel mechanisms and integrated robotic platforms that bring together actuation, sensing, computation, and control for real-world operation.
 ---
 
-{% include research-project-list.liquid %}
+{% include research-project-gallery.liquid %}

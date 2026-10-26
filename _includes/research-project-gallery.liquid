@@ -1,0 +1,74 @@
+{% assign research_projects = site.data.research_projects
+  | where: 'published', true
+  | where: 'area', page.research_area
+  | sort: 'publication_sort'
+  | reverse
+%}
+
+<link rel="stylesheet" href="{{ '/assets/css/research-projects.css' | relative_url }}">
+
+<div class="research-projects">
+  <a class="research-projects__back" href="{{ '/research/' | relative_url }}"> <span aria-hidden="true">&larr;</span> All research areas </a>
+
+  <section aria-labelledby="research-project-heading">
+    <div class="research-projects__heading">
+      <div>
+        <p class="research-projects__kicker">{{ page.research_kicker }}</p>
+        <h2 id="research-project-heading">
+          Projects <span>{{ research_projects.size }}</span>
+        </h2>
+      </div>
+    </div>
+
+    <div class="research-projects__grid">
+      {% for project in research_projects %}
+        {% assign project_url = '/research/projects/' | append: project.id | append: '/' %}
+        {% assign media_path = '/assets/video/research/' | append: project.id %}
+        <article class="research-project-card" id="{{ project.id }}" aria-labelledby="{{ project.id }}-title">
+          <div class="research-project-card__media" data-research-preview>
+            <video
+              width="960"
+              height="540"
+              poster="{{ media_path | append: '.jpg' | relative_url }}"
+              preload="none"
+              muted
+              loop
+              playsinline
+              controls
+              aria-label="{{ project.title | escape }} demonstration: {{ project.subtitle | escape }}"
+            >
+              <source src="{{ media_path | append: '.mp4' | relative_url }}" type="video/mp4">
+              <a href="{{ media_path | append: '.mp4' | relative_url }}">Watch the {{ project.title | escape }} demo</a>
+            </video>
+            <button
+              class="research-project-card__playback"
+              type="button"
+              aria-label="Play preview of {{ project.title | escape }}"
+              data-project-title="{{ project.title | escape }}"
+              hidden
+            >
+              <span data-preview-icon aria-hidden="true">&#9654;</span>
+              <span data-preview-label>Play preview</span>
+            </button>
+          </div>
+          <div class="research-project-card__body">
+            <p class="research-project-card__publication">{{ project.publication_label | default: 'Ongoing project' | escape }}</p>
+            <ul class="research-project-tags" aria-label="Research themes">
+              {% for tag in project.tags %}
+                <li>{{ tag | escape }}</li>
+              {% endfor %}
+            </ul>
+            <h3 id="{{ project.id }}-title">{{ project.title | escape }}</h3>
+            <p class="research-project-card__subtitle">{{ project.subtitle | escape }}</p>
+            <p class="research-project-card__description">{{ project.description | escape }}</p>
+            <a class="research-project-card__action" href="{{ project_url | relative_url }}" aria-label="View {{ project.title | escape }} project">
+              View Project <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+<script src="{{ '/assets/js/research-projects.js' | relative_url }}" defer></script>

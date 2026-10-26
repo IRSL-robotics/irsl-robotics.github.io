@@ -9,4 +9,4 @@ research_kicker: Perception · Learning · Manipulation
 research_intro: We develop embodied intelligence that combines perception, learning, and reasoning to understand physical interactions, adapt to changing environments, and perform complex manipulation tasks.
 ---
 
-{% include research-project-list.liquid %}
+{% include research-project-gallery.liquid %}
