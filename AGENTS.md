@@ -64,10 +64,11 @@ Docker note: v1 uses `/srv/jekyll/bin/entry_point.sh` and serves from container-
 
 1. 논문 추가 시
 - 논문 추가 시 All Publications와 해당 저자의 Members 목록을 함께 업데이트한다. 
+- All Publications (`_pages/all_publications.md`)의 논문 항목은 저자·제목·학회/저널·연도·게재 상태 등 서지정보만 있는 텍스트 목록으로 유지한다. Paper, Bib, Youtube, Project, DOI 등의 링크나 버튼을 추가하지 않는다. 새 논문 추가 시에도 적용하며, 페이지 내 분류 이동 링크는 유지한다.
 - Selected Publications의 경우 Major 학회인 경우만 업데이트한다. 
 - 공동 제1저자는 사용자가 지정한 경우에만 표시한다.
-- 논문 버튼 이름과 순서는 Paper, Bib, Youtube, Project로 한다.
-- 프로젝트의 Representative Publications에 추가하고, Project 버튼을 연결한다.
+- 논문 버튼을 사용하는 페이지(All Publications 제외)에서는 버튼 이름과 순서를 Paper, Bib, Youtube, Project로 한다.
+- 프로젝트의 Representative Publications에 추가하고, Selected Publications의 Project 버튼을 해당 프로젝트 페이지에 연결한다.
 - 업데이트 시 버튼, 논문 이름, 학회 명 등은 해당 페이지의 규칙에 따른다.
 
 
