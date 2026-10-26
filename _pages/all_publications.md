@@ -25,12 +25,13 @@ nav: False
   <p class="all-publications__filter-status" aria-live="polite"></p>
 </section>
 
+<!-- Keep publication entries as bibliography text only, without resource links or buttons. See AGENTS.md. -->
 <div class="all-publications" markdown="1">
 
 <h2 id="international-publications" class="all-publications__section"><span>01</span> International Publications</h2>
 
 #### 2026
-- J. Jeong, and M. J. Kim, "Direction-Preserving 6D Impedance Control Using Observer-Based Extended Unit Quaternion", <em>IEEE RA-L, 2026, Accepted</em> · <a href="https://doi.org/10.1109/LRA.2026.3746072">Paper</a> · <a href="{{ '/research/projects/memory-based-so3/' | relative_url }}">Project</a>
+- J. Jeong, and M. J. Kim, "Direction-Preserving 6D Impedance Control Using Observer-Based Extended Unit Quaternion", <em>IEEE RA-L, 2026, Accepted</em>
 - J. W. Han, and M. J. Kim, "Contact-responsive high-gain robot motion controllers using a constrained disturbance observer", <em>Intelligent Service Robotics</em>
 - S. W. Han, and M. J. Kim, "Mixture of Flow Matching and Particle Filter for Proprioception-Based Online Contact Estimation", <em>IEEE T-RO, 2026</em>
 - S. Kim<sup>\*</sup>, K. Kim<sup>\*</sup>, D. Ko, Y. J. Heo, and M. J. Kim, "Spatially Conditioned Diffusion Policy: Learning Precise and Robust Manipulation with a Single RGB Camera", <em>CoRL 2026</em> (\* Co-first authors)
