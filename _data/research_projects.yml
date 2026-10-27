@@ -290,6 +290,16 @@
   sort_source: "DOI registration: 2026-04-21; Crossref specifies publication year only"
   publication_keys:
     - lee2026extreme
+  publications:
+    - key: lee2026extreme
+      title: Extreme High-Gain Friction Observer of Flexible Joint Robots With L1 Adaptive Framework
+      authors: Young Bin Lee, Tae Ho Yun, and Min Jun Kim
+      venue: IEEE Transactions on Robotics (T-RO)
+      year: 2026
+      status: Accepted
+      paper_url: https://ieeexplore.ieee.org/document/11488895/
+      youtube_url: https://youtu.be/hDSziWYDr94
+      bibtex: "@article{lee2026extreme,\n  title={Extreme High-Gain Friction Observer of Flexible Joint Robots With L1 Adaptive Framework},\n  author={Lee, Young Bin and Yun, Tae Ho and Kim, Min Jun},\n  journal={IEEE Transactions on Robotics},\n  year={2026},\n  note={Accepted},\n  doi={10.1109/TRO.2026.3686177}\n}"
 - id: multi-contact-mpc
   title: Multi-Contact Feedback MPC
   subtitle: Safe Predictive Control under Unexpected Contacts

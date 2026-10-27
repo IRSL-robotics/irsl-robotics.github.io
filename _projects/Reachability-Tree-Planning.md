@@ -38,6 +38,4 @@ Results from low level motion planning are returned to the high level planner. T
 
 K. Kim, D. Park, and M. J. Kim, “A Reachability Tree-Based Algorithm for Robot Task and Motion Planning,” *IEEE ICRA*, 2023. [arXiv](https://arxiv.org/abs/2303.03825) · [IEEE](https://ieeexplore.ieee.org/document/10160294)
 
-<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/mobile-manipulation/mobile_research-topic-1">Original Project Page ↗</a></div>
-
 </div>

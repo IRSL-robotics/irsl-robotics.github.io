@@ -33,6 +33,4 @@ When no constraint is active, CDOB behaves like a conventional disturbance obser
 
 T. H. Yun and M. J. Kim, “Disturbance Observer With Constraints,” *IEEE Control Systems Letters*, 2024. [IEEE](https://ieeexplore.ieee.org/abstract/document/10571557)
 
-<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/mobile-manipulation/mobile_research-topic-6">Original Project Page ↗</a></div>
-
 </div>

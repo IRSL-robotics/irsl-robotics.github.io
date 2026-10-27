@@ -38,6 +38,4 @@ The method runs in real time and was validated in simulation and on a physical r
 
 S. W. Han and M. J. Kim, “CDM: Contact Diffusion Model for Multi-Contact Point Localization,” *IEEE ICRA*, 2025. [arXiv](https://arxiv.org/abs/2502.06109) · [IEEE](https://ieeexplore.ieee.org/document/11127780)
 
-<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/mobile-manipulation/cdm">Original Project Page ↗</a></div>
-
 </div>

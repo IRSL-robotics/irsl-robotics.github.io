@@ -17,6 +17,8 @@ SCDM, Fault-Tolerant Flight, and gO-AMPC are private. Tire Stacking, SAM2, and S
 ## Content and sorting
 
 - `_data/research_projects.yml` contains project descriptions, visibility, chronological keys, source references, metrics, and representative publications.
+- Detail pages with representative publications use a centered project header: the latest paper's title is the main heading, authors appear as individual names, and the venue, year, and status sit on a separate highlighted line. Earlier versions retain their own title, authors, and venue below the main paper. The full Representative Publications section remains below the project content. Projects without recorded publications keep the standard page heading.
+- The project header links to the Original Project Page when a public `source_url` is recorded. Links that redirect to a sign-in page are omitted.
 - The former Selected Results, In the Demo, and Platform sections are hidden on every project page. Their source metrics, highlights, and platform details remain in the data for reference; method and experiment content is rendered through the project's content include.
 - `_data/research_areas.yml` defines category names and URLs. Change a project's `area` to move it; counts and return links update automatically.
 - Public cards are filtered with `published: true` and sorted by `publication_sort` descending. Zero is reserved for projects without confirmed publication chronology.
@@ -61,9 +63,11 @@ The RA-L entry `jeong2026direction` uses `assets/img/publication_preview/directi
 
 Memory-based SO(3) groups its ICRA 2022 conference paper and RA-L 2026 journal version. C-NRIC groups its ICRA 2024 conference paper and Intelligent Service Robotics 2026 journal version. Each citation has a `version` label, its own author list, and its own resource links. Both publication keys link to the same project from Selected Publications; the latest publication continues to determine the project's position in the Research gallery.
 
+The former Google Sites project links, including Memory-based SO(3), C-NRIC, and L1AFO, redirected to Google sign-in when checked on 2026-10-27. They are omitted from the Research pages and the legacy `_projects/` documents. L1AFO's representative publication reuses the title, authors, venue, year, acceptance status, and resources already recorded in `_bibliography/papers.bib` and `_projects/L1AFO.md`.
+
 ## Original content and private drafts
 
-All original `_projects/` documents and `_includes/research-project-list.liquid` remain intact. The three category pages now use the new gallery, so the old Research Topic and Publications sections no longer appear there. Existing project URLs remain available. Changing those category includes back to `research-project-list.liquid` restores the former layout.
+The original `_projects/` documents and `_includes/research-project-list.liquid` remain available; inaccessible Google Sites links have been removed. The three category pages now use the new gallery, so the old Research Topic and Publications sections no longer appear there. Existing project URLs remain available. Changing those category includes back to `research-project-list.liquid` restores the former layout.
 
 For each private draft, visibility is disabled in both the data (`published: false`) and page front matter (`published: false`, `sitemap: false`). Its MP4 and poster are retained in `_private/research-media/`, which Jekyll does not publish. Private draft pages, their former public media URLs, and the `_private/` paths should all return 404 in the built site. This is website visibility control, not access control on the Git repository.
 

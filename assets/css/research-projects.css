@@ -133,7 +133,9 @@
 }
 
 .research-project-card__playback span,
-.research-project-card__action span {
+.research-project-card__action span,
+.research-project-hero__source span,
+.research-project-hero__venue span {
   color: inherit;
 }
 
@@ -258,6 +260,116 @@
   font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: -0.02em;
+}
+
+.post:has(.research-project-hero) > .post-header {
+  display: none;
+}
+
+.research-project-hero {
+  padding: 1rem 0 2.75rem;
+  margin-bottom: 2.25rem;
+  border-bottom: 1px solid var(--research-border);
+  text-align: center;
+}
+
+.research-project-hero__name {
+  margin: 0 0 1rem;
+  color: var(--research-accent);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+}
+
+.research-project-hero .research-project-hero__title {
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+  color: var(--global-text-color, #111827);
+  font-size: clamp(1.8rem, 3.8vw, 2.7rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.22;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+.research-project-hero__authors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1.4rem;
+  padding: 0;
+  margin: 0 auto 1.15rem;
+  color: var(--global-text-color, #111827);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  font-weight: 500;
+  line-height: 1.6;
+  list-style: none;
+}
+
+.research-project-hero__venue {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0;
+  color: var(--research-accent);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.6;
+  text-wrap: balance;
+}
+
+.research-project-hero__status {
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: var(--research-tint);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.research-project-hero__publication + .research-project-hero__publication {
+  max-width: 760px;
+  padding-top: 1.75rem;
+  margin: 2rem auto 0;
+  border-top: 1px solid var(--research-border);
+}
+
+.research-project-hero__publication + .research-project-hero__publication .research-project-hero__title {
+  margin-bottom: 1rem;
+  font-size: clamp(1.25rem, 2.4vw, 1.65rem);
+  line-height: 1.35;
+}
+
+.research-project-hero__version {
+  margin: 0 0 0.8rem;
+  color: var(--research-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.research-project-hero__source {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.15rem;
+  margin-top: 1.75rem;
+  border: 1px solid var(--research-accent);
+  border-radius: 999px;
+  color: var(--research-accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.research-project-hero__source:hover {
+  background: var(--research-tint);
+  color: var(--research-accent);
+  text-decoration: none;
 }
 
 .research-project-detail__footer {

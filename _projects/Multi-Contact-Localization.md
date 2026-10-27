@@ -36,6 +36,4 @@ Robot mesh preprocessing supports fast computation, while a modified particle fi
 
 S. W. Han and M. J. Kim, “Proprioceptive Sensor-Based Simultaneous Multi-Contact Point Localization and Force Identification for Robotic Arms,” *IEEE ICRA*, 2023. [arXiv](https://arxiv.org/abs/2303.03903) · [IEEE](https://ieeexplore.ieee.org/document/10161173)
 
-<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/mobile-manipulation/mobile_research-topic-2">Original Project Page ↗</a></div>
-
 </div>

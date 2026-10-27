@@ -38,6 +38,4 @@ The approach works with standard optimal control solvers and is suitable for rea
 
 J. Kim and M. J. Kim, “Disturbance-Aware Model Predictive Control of Underactuated Robotics Systems,” *IEEE/RSJ IROS*, 2024. [IEEE](https://ieeexplore.ieee.org/abstract/document/10801851)
 
-<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/aerial-manipulation/da_mpc">Original Project Page ↗</a></div>
-
 </div>

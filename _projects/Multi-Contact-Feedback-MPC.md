@@ -40,6 +40,4 @@ Using differential dynamic programming, the controller operates a seven degree o
 
 S. W. Han, M. Iskandar, J. Lee, and M. J. Kim, “Online Multi-Contact Feedback Model Predictive Control for Interactive Robotic Tasks,” *IEEE ICRA*, 2024. [arXiv](https://arxiv.org/abs/2403.08302) · [IEEE](https://ieeexplore.ieee.org/document/10611151)
 
-<div class="publication-detail__footer"><a class="publication-detail__source" href="https://sites.google.com/view/kaist-roboticslab/research/mobile-manipulation/mobile_research-topic-5">Original Project Page ↗</a></div>
-
 </div>
