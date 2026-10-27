@@ -1,8 +1,8 @@
 # Research projects
 
-The Research landing page keeps its three original areas. Category pages display project cards with compressed demonstration videos and link to individual project pages.
+The Research landing page keeps its three original areas. Category pages display project cards with compressed demonstration videos and link to individual project pages. The gallery uses three columns on desktop, two at viewport widths of 701–1024px, and one at 700px or below.
 
-The category pages omit the three-area navigation strip and its project counts. The All research areas link returns to the Research landing page.
+The category pages omit the three-area navigation strip, the category kicker (such as “Perception · Learning · Manipulation”), and the “Projects” heading with its count. The All research areas link returns to the Research landing page, followed directly by the project cards. Keep `research_kicker` in page front matter for the retained legacy layout only.
 
 There are 14 retained project records: 11 public projects and three private drafts.
 
@@ -17,10 +17,16 @@ SCDM, Fault-Tolerant Flight, and gO-AMPC are private. Tire Stacking, SAM2, and S
 ## Content and sorting
 
 - `_data/research_projects.yml` contains project descriptions, visibility, chronological keys, source references, metrics, and representative publications.
-- Detail pages with representative publications use a centered project header: the latest paper's title is the main heading, authors appear as individual names, and the venue, year, and status sit on a separate highlighted line. Earlier versions retain their own title, authors, and venue below the main paper. The full Representative Publications section remains below the project content. Projects without recorded publications keep the standard page heading.
+- Detail pages with one representative publication use a centered header with the paper title, individual author names, and venue, year, and status. Projects with multiple publications use the project name as the main heading and equally sized cards for each version, with matching title typography and explicit Journal/Conference version labels. These cards sit side by side above 700px and stack on smaller screens, preserving newest-first order. Projects without recorded publications keep the standard page heading.
+- Omit the lower Representative Publications section on every detail page. Publication records, BibTeX, resource URLs, and version information remain in the data; the publication header and the separate Publications pages remain available.
 - The project header links to the Original Project Page when a public `source_url` is recorded. Links that redirect to a sign-in page are omitted.
+- Detail pages omit the shared opening demonstration video, including clips extracted from the PPT. Keep these media files for category-card previews; experiment videos embedded in project content and Selected Publications previews remain in place.
+- Detail pages also omit the research-theme tags and short project introduction beneath the header. Category cards omit the research-theme badges as well. Keep `tags` in the project data for reference and `description` for category cards.
+- Each category card is one link to its project page, including the preview, text, and empty space. Only hovering the title adds an accent color and underline; keyboard focus also highlights the title and outlines the card. Do not add a separate View Project button or nested interactive controls inside the card link.
+- The detail-page header and the first content section have no separating horizontal rules; separators between later content sections remain.
+- Detail-page media keep the original vertical reading order: text first, then the associated image. Do not place explanatory text and images side by side. Adjust image sizes and spacing while keeping this structure. Media use centered, bounded widths: 640px by default, 768px for wide diagrams and existing media pairs, and 480px for compact figures. Images retain their aspect ratio without cropping and link to the full asset for closer inspection. Existing pairs contain media only and stack on mobile; an unpaired video in a two-column group is centered.
 - The former Selected Results, In the Demo, and Platform sections are hidden on every project page. Their source metrics, highlights, and platform details remain in the data for reference; method and experiment content is rendered through the project's content include.
-- `_data/research_areas.yml` defines category names and URLs. Change a project's `area` to move it; counts and return links update automatically.
+- `_data/research_areas.yml` defines category names and URLs. Change a project's `area` to move it; gallery membership and return links update automatically.
 - Public cards are filtered with `published: true` and sorted by `publication_sort` descending. Zero is reserved for projects without confirmed publication chronology.
 - `_pages/research-projects/` provides stable URLs. Keep page titles/descriptions aligned with the corresponding data record.
 - `_includes/research-project-gallery.liquid`, `research-project-detail.liquid`, and `research-project-video.liquid` are site-specific content templates. Longer content lives in `_includes/research-project-content/`.
@@ -86,4 +92,4 @@ ffmpeg -i source.mp4 -map_metadata -1 -an \
   -movflags +faststart -threads 2 project.mp4
 ```
 
-Gallery previews play only while visible. Each has a play/pause control; leaving the viewport or switching browser tabs pauses it. Reduced-motion and data-saver preferences disable automatic playback. Native video controls remain available without JavaScript. Detail pages use manual playback.
+Gallery previews play only while visible. They have no play/pause controls, labels, or icons covering the video; clicking the preview opens the project just like the rest of the card. Leaving the viewport or switching browser tabs pauses playback. Reduced-motion and data-saver preferences disable automatic playback. Poster images remain available without JavaScript. Experiment videos within detail-page content use manual playback.

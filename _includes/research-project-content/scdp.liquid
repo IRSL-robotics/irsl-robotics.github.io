@@ -5,7 +5,7 @@
     by using intermediate end-effector trajectories as visual attention anchors. At each diffusion step, these trajectories identify locations in the
     image where the policy can gather task-relevant features.
   </p>
-  <figure>
+  <figure class="research-figure--wide">
     <a href="{{ '/assets/img/research/scdp/architecture.webp' | relative_url }}" aria-label="Open the full SCDP architecture diagram">
       <img
         src="{{ '/assets/img/research/scdp/architecture.webp' | relative_url }}"
@@ -39,21 +39,23 @@
     shown on the official project page: DP uses RGB observations, while DP3 uses depth observations.
   </p>
   <figure>
-    <picture>
-      <source
-        media="(max-width: 520px)"
-        srcset="{{ '/assets/img/research/scdp/simulation-success-mobile.svg' | relative_url }}"
-        width="380"
-        height="280"
-      >
-      <img
-        src="{{ '/assets/img/research/scdp/simulation-success.svg' | relative_url }}"
-        width="620"
-        height="280"
-        loading="lazy"
-        alt="Meta-World success rates for Easy, Medium, Hard, and Very Hard: DP 79.9, 36.1, 16.7, 46.0%; DP3 92.3, 78.5, 60.3, 82.7%; SCDP 91.5, 83.0, 82.5, 89.7%."
-      >
-    </picture>
+    <a href="{{ '/assets/img/research/scdp/simulation-success.svg' | relative_url }}">
+      <picture>
+        <source
+          media="(max-width: 520px)"
+          srcset="{{ '/assets/img/research/scdp/simulation-success-mobile.svg' | relative_url }}"
+          width="380"
+          height="280"
+        >
+        <img
+          src="{{ '/assets/img/research/scdp/simulation-success.svg' | relative_url }}"
+          width="620"
+          height="280"
+          loading="lazy"
+          alt="Meta-World success rates for Easy, Medium, Hard, and Very Hard: DP 79.9, 36.1, 16.7, 46.0%; DP3 92.3, 78.5, 60.3, 82.7%; SCDP 91.5, 83.0, 82.5, 89.7%."
+        >
+      </picture>
+    </a>
     <figcaption>Meta-World success across four task-difficulty groups. Higher is better.</figcaption>
   </figure>
   <h3>Single-View Performance on Hard Tasks</h3>

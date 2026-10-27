@@ -5,12 +5,14 @@
     accounts for these contacts explicitly, rather than assuming that interaction occurs only at a known end-effector location. It combines motion and
     force objectives with limits on unwanted contact forces.
   </p>
-  <figure>
-    <img
-      src="{{ '/assets/img/research/multi-contact-mpc/fig1_photo.webp' | relative_url }}"
-      alt="DLR-KUKA robot performing end-effector force control while a person contacts another link"
-      loading="lazy"
-    >
+  <figure class="research-figure--compact">
+    <a href="{{ '/assets/img/research/multi-contact-mpc/fig1_photo.webp' | relative_url }}">
+      <img
+        src="{{ '/assets/img/research/multi-contact-mpc/fig1_photo.webp' | relative_url }}"
+        alt="DLR-KUKA robot performing end-effector force control while a person contacts another link"
+        loading="lazy"
+      >
+    </a>
     <figcaption>End-effector motion and force control continue while the robot responds to an additional human contact.</figcaption>
   </figure>
 </section>
@@ -22,12 +24,14 @@
     force/torque measurements. The controller incorporates this information into a spring contact model and predicts its effect on the full
     seven-degree-of-freedom robot dynamics. Other estimators can also supply the feedback if they provide multi-contact information in real time.
   </p>
-  <figure>
-    <img
-      src="{{ '/assets/img/research/multi-contact-mpc/control_structure.webp' | relative_url }}"
-      alt="Control architecture connecting MCP-EP, contact-feedback MPC, and the torque-controlled robot"
-      loading="lazy"
-    >
+  <figure class="research-figure--wide">
+    <a href="{{ '/assets/img/research/multi-contact-mpc/control_structure.webp' | relative_url }}">
+      <img
+        src="{{ '/assets/img/research/multi-contact-mpc/control_structure.webp' | relative_url }}"
+        alt="Control architecture connecting MCP-EP, contact-feedback MPC, and the torque-controlled robot"
+        loading="lazy"
+      >
+    </a>
     <figcaption>Contact estimation closes the feedback loop around the predictive controller.</figcaption>
   </figure>
   <h3>Contact Modeling and Optimization</h3>
@@ -36,11 +40,13 @@
     end-effector pose tracking, contact-force regulation, and a force barrier that penalizes approaching or exceeding the permitted force.
   </p>
   <figure>
-    <img
-      src="{{ '/assets/img/research/multi-contact-mpc/spring_contact_model.webp' | relative_url }}"
-      alt="Estimated contact frame, spring stiffness, and predicted contact force"
-      loading="lazy"
-    >
+    <a href="{{ '/assets/img/research/multi-contact-mpc/spring_contact_model.webp' | relative_url }}">
+      <img
+        src="{{ '/assets/img/research/multi-contact-mpc/spring_contact_model.webp' | relative_url }}"
+        alt="Estimated contact frame, spring stiffness, and predicted contact force"
+        loading="lazy"
+      >
+    </a>
     <figcaption>The spring contact model connects estimated contact locations to predicted interaction forces.</figcaption>
   </figure>
   <p>
@@ -63,12 +69,14 @@
     The robot tracks a circular end-effector trajectory while regulating contact force to 20 N. An additional human contact on the third link is
     limited to 15 N. The table reports tracking performance during the three phases of this experiment.
   </p>
-  <figure>
-    <img
-      src="{{ '/assets/img/research/multi-contact-mpc/scenario2_sequence.webp' | relative_url }}"
-      alt="Four stages from initial free motion to hybrid control and an additional human contact"
-      loading="lazy"
-    >
+  <figure class="research-figure--compact">
+    <a href="{{ '/assets/img/research/multi-contact-mpc/scenario2_sequence.webp' | relative_url }}">
+      <img
+        src="{{ '/assets/img/research/multi-contact-mpc/scenario2_sequence.webp' | relative_url }}"
+        alt="Four stages from initial free motion to hybrid control and an additional human contact"
+        loading="lazy"
+      >
+    </a>
     <figcaption>Scenario 2: approaching the environment, establishing contact, and responding to an additional contact.</figcaption>
   </figure>
   <div class="research-content__table-wrap" tabindex="0" role="region" aria-label="Multi-contact control tracking errors">

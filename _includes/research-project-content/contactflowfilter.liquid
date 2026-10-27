@@ -5,12 +5,14 @@
     force/torque sensor at the robot base. These measurements do not always identify a unique contact configuration. A useful estimator must retain
     multiple plausible explanations while following sliding contacts and detecting when contacts appear or disappear.
   </p>
-  <figure>
-    <img
-      src="{{ '/assets/img/research/contactflowfilter/fig2_challenges.webp' | relative_url }}"
-      alt="Ambiguous contact configurations, temporal changes, and contact addition or removal"
-      loading="lazy"
-    >
+  <figure class="research-figure--wide">
+    <a href="{{ '/assets/img/research/contactflowfilter/fig2_challenges.webp' | relative_url }}">
+      <img
+        src="{{ '/assets/img/research/contactflowfilter/fig2_challenges.webp' | relative_url }}"
+        alt="Ambiguous contact configurations, temporal changes, and contact addition or removal"
+        loading="lazy"
+      >
+    </a>
     <figcaption>The three challenges: multiple possible solutions, temporal dependence, and discrete contact events.</figcaption>
   </figure>
 </section>
@@ -22,12 +24,14 @@
     place particles in plausible regions that ordinary resampling has missed. The particle filter then weighs those proposals against the previous
     estimate, retaining a recursive representation of the contact state.
   </p>
-  <figure>
-    <img
-      src="{{ '/assets/img/research/contactflowfilter/fig3_overview.webp' | relative_url }}"
-      alt="Flow matching and temporal particle-filter proposals merged into a recursive contact estimate"
-      loading="lazy"
-    >
+  <figure class="research-figure--wide">
+    <a href="{{ '/assets/img/research/contactflowfilter/fig3_overview.webp' | relative_url }}">
+      <img
+        src="{{ '/assets/img/research/contactflowfilter/fig3_overview.webp' | relative_url }}"
+        alt="Flow matching and temporal particle-filter proposals merged into a recursive contact estimate"
+        loading="lazy"
+      >
+    </a>
     <figcaption>Dual sampling combines the particle filter's temporal context with the generative model's multimodal proposals.</figcaption>
   </figure>
   <h3>What Makes the Estimator Work</h3>
@@ -48,19 +52,23 @@
   </ul>
   <div class="research-content__figures">
     <figure>
-      <img
-        src="{{ '/assets/img/research/contactflowfilter/fig10_observation.webp' | relative_url }}"
-        alt="Link pose and virtual-wrench observation tokens for the transformer"
-        loading="lazy"
-      >
+      <a href="{{ '/assets/img/research/contactflowfilter/fig10_observation.webp' | relative_url }}">
+        <img
+          src="{{ '/assets/img/research/contactflowfilter/fig10_observation.webp' | relative_url }}"
+          alt="Link pose and virtual-wrench observation tokens for the transformer"
+          loading="lazy"
+        >
+      </a>
       <figcaption>Observations combine geometry and force information across robot links.</figcaption>
     </figure>
     <figure>
-      <img
-        src="{{ '/assets/img/research/contactflowfilter/fig5_motion_model.webp' | relative_url }}"
-        alt="Particle motion sampled using a geodesic distance lookup table"
-        loading="lazy"
-      >
+      <a href="{{ '/assets/img/research/contactflowfilter/fig5_motion_model.webp' | relative_url }}">
+        <img
+          src="{{ '/assets/img/research/contactflowfilter/fig5_motion_model.webp' | relative_url }}"
+          alt="Particle motion sampled using a geodesic distance lookup table"
+          loading="lazy"
+        >
+      </a>
       <figcaption>Geodesic lookup tables make surface-based particle updates efficient.</figcaption>
     </figure>
   </div>
