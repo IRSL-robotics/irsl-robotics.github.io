@@ -800,20 +800,20 @@ nav_order: 1
 
 ## Alumni
 
-- Jiwan Han (M.S. 2023, continuing as a Ph.D. student)
-- Seo Wook Han  (M.S. 2024, continuing as a Ph.D. student)
-- Hyojun Lee (M.S. 2024)
-- Seongsu Park (M.S. 2024, continuing as a Ph.D. student)
-- Suhwan Sung (M.S. 2024)
-- Jiwon Kim (M.S. 2025, continuing as a Ph.D. student)
-- Sungmin Kim (M.S. 2025, continuing as a Ph.D. student)
-- Sanghoon Lee (M.S. 2025, continuing as a Ph.D. student)
-- Taeho Yun (M.S. 2025, continuing as a Ph.D. student)
-- Young Bin Lee (M.S. 2025)
-- Seung Min Yang (M.S. 2025)
-- Sunho Kim (M.S. 2026, continuing as a Ph.D. student)
-- Wonjun Han (M.S. 2026)
-- Jaehun Jeong (M.S. 2026, continuing as a Ph.D. student)
+- Jiwan Han (M.S., Feb. 2023; continuing as a Ph.D. student)
+- Seo Wook Han (M.S., Feb. 2024; continuing as a Ph.D. student)
+- Hyojun Lee (M.S., Feb. 2024)
+- Seongsu Park (M.S., Aug. 2024; continuing as a Ph.D. student)
+- Suhwan Sung (M.S., Aug. 2024)
+- Jiwon Kim (M.S., Feb. 2025; continuing as a Ph.D. student)
+- Sungmin Kim (M.S., Feb. 2025; continuing as a Ph.D. student)
+- Sanghoon Lee (M.S., Feb. 2025; continuing as a Ph.D. student)
+- Taeho Yun (M.S., Aug. 2025; continuing as a Ph.D. student)
+- Young Bin Lee (M.S., Aug. 2025)
+- Seung Min Yang (M.S., Aug. 2025)
+- Sunho Kim (M.S., Aug. 2026; continuing as a Ph.D. student)
+- Wonjun Han (M.S., Aug. 2026)
+- Jaehun Jeong (M.S., Aug. 2026; continuing as a Ph.D. student)
 
 
 
