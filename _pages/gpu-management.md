@@ -284,11 +284,12 @@ nav: false
       "Sanghoon Lee",
       "Taeho Yun",
       "Sunho Kim",
-      "Wonjun Han",
       "Jaehun Jeong",
       "Seoyoon Kim",
       "Jinyeol Kim",
       "Seungmin Shin",
+      "Sungjoon Hwang",
+      "Taewoo Kim",
     ];
 
     const servers = [
