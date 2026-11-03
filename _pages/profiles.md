@@ -709,7 +709,7 @@ nav_order: 1
     <strong>Email:</strong> student.email (at) kaist.ac.kr
   </div> -->
   <div class="member-links">
-    <a class="member-button" href="{{ '/assets/pdf/cv/CV_Seoyoon_Kim.pdf' | relative_url }}" target="_blank">
+    <a class="member-button" href="https://seoyoonkims.github.io" target="_blank">
       CV
     </a>
   </div>
