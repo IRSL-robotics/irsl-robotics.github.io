@@ -7,7 +7,7 @@ assert.match(pageSource, /irsl-gpu-management-pending-v1/);
 assert.match(pageSource, /action: "apply"/);
 assert.match(pageSource, /confirmation !== "CLEAR ALL"/);
 assert.match(pageSource, /\{ name: "New Server", count: 8, prefix: "NEW" \}/);
-assert.match(pageSource, /&nbsp;18 in use</);
+assert.match(pageSource, /&nbsp;22 in use</);
 assert.doesNotMatch(pageSource, /form\.submit\(\)/);
 
 const rows = [];
@@ -95,13 +95,25 @@ emptyState["NEW-0"] = {
   endDate: "2026-07-20",
 };
 context.writeState_(emptyState);
-assert.equal(rows.length, 19);
-assert.deepEqual(rows.slice(-6, -2).map((row) => row.slice(0, 3)), [
-  ["NEW-4", "New Server", "GPU 4"],
-  ["NEW-5", "New Server", "GPU 5"],
-  ["NEW-6", "New Server", "GPU 6"],
-  ["NEW-7", "New Server", "GPU 7"],
-]);
+assert.equal(rows.length, 23);
+assert.deepEqual(
+  rows.slice(13, 17).map((row) => row.slice(0, 3)),
+  [
+    ["NEW-4", "New Server", "GPU 4"],
+    ["NEW-5", "New Server", "GPU 5"],
+    ["NEW-6", "New Server", "GPU 6"],
+    ["NEW-7", "New Server", "GPU 7"],
+  ]
+);
+assert.deepEqual(
+  rows.slice(-6, -2).map((row) => row.slice(0, 3)),
+  [
+    ["NEW2-0", "New Server 2", "GPU 0"],
+    ["NEW2-1", "New Server 2", "GPU 1"],
+    ["NEW2-2", "New Server 2", "GPU 2"],
+    ["NEW2-3", "New Server 2", "GPU 3"],
+  ]
+);
 
 context.doGet({
   parameter: {
@@ -110,6 +122,7 @@ context.doGet({
     payload: JSON.stringify([
       { type: "patch", id: "OLD-0", fields: { user: "Saved User" } },
       { type: "patch", id: "NEW-7", fields: { user: "New GPU User" } },
+      { type: "patch", id: "NEW2-3", fields: { user: "New Server 2 User" } },
     ]),
   },
 });
@@ -117,6 +130,7 @@ assert.match(getResponse, /^saveCallback\(/);
 assert.match(getResponse, /"protocolVersion":3/);
 assert.match(getResponse, /"Saved User"/);
 assert.equal(context.readState_()["NEW-7"].user, "New GPU User");
+assert.equal(context.readState_()["NEW2-3"].user, "New Server 2 User");
 
 context.applyOperations_([
   {
@@ -140,10 +154,7 @@ context.applyOperations_([
 
 state = context.readState_();
 assert.equal(state["NRMK-0"].endDate, "2026-07-18");
-assert.deepEqual(
-  { ...state["NEW-0"] },
-  { user: "Other User", startDate: "2026-07-02", endDate: "2026-07-20" }
-);
+assert.deepEqual({ ...state["NEW-0"] }, { user: "Other User", startDate: "2026-07-02", endDate: "2026-07-20" });
 
 context.applyOperations_([
   {
@@ -159,9 +170,6 @@ context.applyOperations_([
 ]);
 
 state = context.readState_();
-assert.deepEqual(
-  { ...state["NRMK-0"] },
-  { user: "", startDate: "", endDate: "" }
-);
+assert.deepEqual({ ...state["NRMK-0"] }, { user: "", startDate: "", endDate: "" });
 
 console.log("GPU management sync tests passed.");

@@ -106,7 +106,8 @@ nav: false
     --server-text: #1d5d42;
   }
 
-  .gpu-server-new {
+  .gpu-server-new,
+  .gpu-server-new2 {
     --server-accent: #2c6fb8;
     --server-soft: #eef6ff;
     --server-text: #1f5a99;
@@ -250,8 +251,8 @@ nav: false
 
   <div class="gpu-toolbar" aria-label="GPU management tools">
     <div class="gpu-summary">
-      <span class="gpu-pill"><span id="gpu-used-count">0</span>&nbsp;/&nbsp;18 in use</span>
-      <span class="gpu-pill"><span id="gpu-free-count">18</span>&nbsp;available</span>
+      <span class="gpu-pill"><span id="gpu-used-count">0</span>&nbsp;/&nbsp;22 in use</span>
+      <span class="gpu-pill"><span id="gpu-free-count">22</span>&nbsp;available</span>
       <span class="gpu-pill" id="gpu-sync-status">Local only</span>
     </div>
     <div class="gpu-actions">
@@ -293,6 +294,7 @@ nav: false
     const servers = [
       { name: "NRMK Server", count: 8, prefix: "NRMK" },
       { name: "New Server", count: 8, prefix: "NEW" },
+      { name: "New Server 2", count: 4, prefix: "NEW2" },
       { name: "Old Server", count: 2, prefix: "OLD" },
     ];
 

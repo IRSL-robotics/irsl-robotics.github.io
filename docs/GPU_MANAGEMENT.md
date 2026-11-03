@@ -16,7 +16,7 @@ Google Sheet and a small Google Apps Script web app.
 9. Paste that URL into `_data/gpu_management.yml`:
 
 ```yaml
-sync_endpoint: "https://script.google.com/macros/s/AKfycbwrs62gOU8gCyrPYSinj8gHtN_Tj8WsL80cxTCrMFABsRNr95czJ7lHUGBEUwPEuvJ2rg/exec"
+sync_endpoint: "https://script.google.com/macros/s/AKfycbxi8iYZr4uPSRwE4XAatul73mjOoNiYZwTRnR5MRPVx5kw3xXlyNEs9hH7GW1JMx_A-8w/exec"
 ```
 
 After the endpoint is configured and the site is deployed, everyone using the
@@ -32,6 +32,11 @@ overwriting a reservation that another user extended.
 
 ## Notes
 
+- New Server 2 has four GPUs (`GPU 0` through `GPU 3`), bringing the board total
+  to 22 GPUs. Add `{ name: "New Server 2", count: 4, prefix: "NEW2" }` to
+  `SERVERS` in the connected Apps Script and deploy a new version before
+  deploying the site. The next shared save adds the `NEW2-0` through `NEW2-3`
+  rows while preserving existing assignments; no manual sheet edits are needed.
 - New Server has eight GPUs (`GPU 0` through `GPU 7`). When adding GPU 7 to an
   existing deployment, update the New Server `count` to `8` in the connected
   Apps Script and deploy a new version before deploying the site. No manual

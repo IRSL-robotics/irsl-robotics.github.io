@@ -1,3 +1,3 @@
 # Paste the deployed Google Apps Script Web app URL here to enable shared sync.
 # Example: "https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec"
-sync_endpoint: "https://script.google.com/macros/s/AKfycbwrs62gOU8gCyrPYSinj8gHtN_Tj8WsL80cxTCrMFABsRNr95czJ7lHUGBEUwPEuvJ2rg/exec"
+sync_endpoint: "https://script.google.com/macros/s/AKfycbxi8iYZr4uPSRwE4XAatul73mjOoNiYZwTRnR5MRPVx5kw3xXlyNEs9hH7GW1JMx_A-8w/exec"

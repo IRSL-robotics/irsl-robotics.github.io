@@ -3,6 +3,7 @@ const SHEET_NAME = "GPU Management";
 const SERVERS = [
   { name: "NRMK Server", count: 8, prefix: "NRMK" },
   { name: "New Server", count: 8, prefix: "NEW" },
+  { name: "New Server 2", count: 4, prefix: "NEW2" },
   { name: "Old Server", count: 2, prefix: "OLD" },
 ];
 
@@ -31,9 +32,7 @@ function doGet(event) {
 
   const payload = JSON.stringify(response);
 
-  return ContentService.createTextOutput(`${callback}(${payload});`).setMimeType(
-    ContentService.MimeType.JAVASCRIPT
-  );
+  return ContentService.createTextOutput(`${callback}(${payload});`).setMimeType(ContentService.MimeType.JAVASCRIPT);
 }
 
 function responsePayload_() {
@@ -58,9 +57,9 @@ function doPost(event) {
       writeState_(payload.state || {});
     }
 
-    return ContentService.createTextOutput(
-      JSON.stringify({ ok: true, updatedAt: new Date().toISOString() })
-    ).setMimeType(ContentService.MimeType.JSON);
+    return ContentService.createTextOutput(JSON.stringify({ ok: true, updatedAt: new Date().toISOString() })).setMimeType(
+      ContentService.MimeType.JSON
+    );
   } finally {
     lock.releaseLock();
   }
@@ -155,15 +154,7 @@ function writeState_(state) {
     for (let index = 0; index < server.count; index += 1) {
       const id = `${server.prefix}-${index}`;
       const item = state[id] || {};
-      rows.push([
-        id,
-        server.name,
-        `GPU ${index}`,
-        item.user || "",
-        item.startDate || "",
-        item.endDate || "",
-        updatedAt,
-      ]);
+      rows.push([id, server.name, `GPU ${index}`, item.user || "", item.startDate || "", item.endDate || "", updatedAt]);
     }
   });
 
