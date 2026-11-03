@@ -1,8 +1,8 @@
 # Research projects
 
-The Research landing page keeps its three original areas. Category pages display project cards with compressed demonstration videos and link to individual project pages. The gallery uses three columns on desktop, two at viewport widths of 701–1024px, and one at 700px or below.
+The Research landing page keeps its three original areas. Each category page shows two sections: **Research Areas** restores the original broader research topics, followed by **Research Highlights** with the current project cards and compressed demonstration videos. Research topic cards use two columns above 700px and one on smaller screens. The Research Highlights gallery uses three columns on desktop, two at viewport widths of 701–1024px, and one at 700px or below. Both sets of cards use the same title size.
 
-The category pages omit the three-area navigation strip, the category kicker (such as “Perception · Learning · Manipulation”), and the “Projects” heading with its count. The All research areas link returns to the Research landing page, followed directly by the project cards. Keep `research_kicker` in page front matter for the retained legacy layout only.
+The category pages omit the three-area navigation strip and the category kicker (such as “Perception · Learning · Manipulation”). The All research areas link returns to the Research landing page. Numbered Research Areas and Research Highlights headings separate the two levels without displaying counts. Keep `research_kicker` in page front matter for the retained legacy layout only.
 
 There are 14 retained project records: 11 public projects and three private drafts.
 
@@ -16,7 +16,9 @@ SCDM, Fault-Tolerant Flight, and gO-AMPC are private. Tire Stacking, SAM2, and S
 
 ## Content and sorting
 
+- Research topics come from `_projects/` documents matching the category's `research_area` and `research_item_type: project`, ordered by `importance`. Documents with `published: false` stay hidden. Cards reuse their original titles, descriptions, images, image-fit settings, and detail URLs; edit those documents to update a broader topic.
 - `_data/research_projects.yml` contains project descriptions, visibility, chronological keys, source references, metrics, and representative publications.
+- The five pages imported from public original project websites set `original_project_content: true`. Their content includes preserve the original paper header, affiliations, abstract, section order, full prose, equations, figures, captions, comparison tables, demonstrations, full-video embeds, and citation section. Their layouts follow the original websites; do not replace these with short summaries or apply the generic detail-page omissions below to them. The four contact/control pages also set `math: true` for MathJax.
 - Detail pages with one representative publication use a centered header with the paper title, individual author names, and venue, year, and status. Projects with multiple publications use the project name as the main heading and equally sized cards for each version, with matching title typography and explicit Journal/Conference version labels. These cards sit side by side above 700px and stack on smaller screens, preserving newest-first order. Projects without recorded publications keep the standard page heading.
 - Omit the lower Representative Publications section on every detail page. Publication records, BibTeX, resource URLs, and version information remain in the data; the publication header and the separate Publications pages remain available.
 - The project header links to the Original Project Page when a public `source_url` is recorded. Links that redirect to a sign-in page are omitted.
@@ -31,6 +33,7 @@ SCDM, Fault-Tolerant Flight, and gO-AMPC are private. Tire Stacking, SAM2, and S
 - `_pages/research-projects/` provides stable URLs. Keep page titles/descriptions aligned with the corresponding data record.
 - `_includes/research-project-gallery.liquid`, `research-project-detail.liquid`, and `research-project-video.liquid` are site-specific content templates. Longer content lives in `_includes/research-project-content/`.
 - Page styles and preview behavior live in `assets/css/research-projects.css` and `assets/js/research-projects.js`.
+- Imported originals use `assets/css/research-original-projects.css` and `assets/js/research-original-projects.js`. All source styles are scoped to `.research-original--author` or `.research-original--scdp`, retaining the lab navigation and themes. The shared detail template skips its generic hero for these pages to avoid duplicating the title.
 
 ### Chronology sources
 
@@ -59,9 +62,21 @@ The following author pages supply the expanded method descriptions, diagrams, ex
 - [MCP-EP](https://seowookhan.github.io/SeoWookHan/projects/4_mcpep/)
 - [SCDP](https://scdp-project.github.io/)
 
-Descriptions are adapted to this site's format. Each detail page credits its source. `docs/research-media-sources.yml` records the source URL and local destination of each imported media asset. CDM's citation pages use the publisher's Crossref record (4702–4708), correcting the differing page range on the source project page.
+These five original pages were restored in full on 2026-11-03. Their research prose, headings, tables, and captions are retained instead of paraphrased. Every source image and demonstration is represented locally, including the opening ContactFlowFilter video, its multi-modality/local-minima comparisons, MPC's unknown-object stacking experiment, MCP-EP's particle-set management and dual-contact videos, and CDM's dual-contact video. Each detail page credits its source. `docs/research-media-sources.yml` records the source URL and local destination of each imported media asset.
 
-SCDP includes the architecture diagram, responsive Meta-World result charts, nine manipulation demonstrations, and two humanoid demonstrations from the official project page. Video captions retain the source's 2× or 4× playback speeds. The paper and code links point to arXiv and the IRSL-robotics/SCDP repository. The author spelling “Yeong Jin Heo” follows arXiv and the existing bibliography; the project website spells the name differently.
+| Imported original          | Images | Local videos | Tables | Full-video embeds |
+| -------------------------- | ------ | ------------ | ------ | ----------------- |
+| ContactFlowFilter          | 9      | 6            | 3      | 1                 |
+| CDM                        | 5      | 3            | 1      | 1                 |
+| Multi-Contact Feedback MPC | 4      | 4            | 1      | 1                 |
+| MCP-EP                     | 4      | 5            | 1      | 1                 |
+| SCDP                       | 2      | 11           | 1      | 0                 |
+
+The SCDP image count includes the responsive simulation chart, whose mobile SVG is retained as an additional source. The four contact/control pages retain all six displayed equations and their inline math. Original related-project navigation points to the corresponding internal pages. Paper resources follow the lab's Paper, Bib, Youtube, Project naming and order; Project opens the original website. Alternate paper URLs and SCDP's code link remain available. Bib buttons jump to the complete citation, rendered from the verified project data. CDM's citation uses the publisher's Crossref page range (4702–4708), correcting the source website's page range.
+
+Layout sources are [the author's project stylesheet](https://seowookhan.github.io/SeoWookHan/assets/css/site-theme.css), [SCDP's stylesheet](https://scdp-project.github.io/static/css/index.css), and [SCDP's playback/citation script](https://scdp-project.github.io/static/js/index.js). Source cards, abstract callouts, statistics, method steps, simulation panels, and experiment groupings are preserved, with scoped theme and mobile adjustments.
+
+SCDP includes the complete abstract, architecture diagram, three method cards, responsive Meta-World result charts, nine manipulation demonstrations, and two humanoid demonstrations from the official project page. Video captions retain the source's 2× or 4× playback speeds and task steps. The paper and code links point to arXiv and the IRSL-robotics/SCDP repository. The author spelling “Yeong Jin Heo” follows arXiv and the existing bibliography; the project website spells the name differently. Equal-contribution markers are not imported without the user's explicit designation, following `AGENTS.md`.
 
 Jinyeong Jeong and Min Jun Kim's newly accepted RA-L paper is recorded in `_bibliography/papers.bib`, All Publications, Jinyeong's Members entry, and the Memory-based SO(3) representative publications. Selected Publications renders the bibliography and connects public project papers to the new internal project pages. No unconfirmed Youtube link or co-first-author marker is added.
 
@@ -73,7 +88,7 @@ The former Google Sites project links, including Memory-based SO(3), C-NRIC, and
 
 ## Original content and private drafts
 
-The original `_projects/` documents and `_includes/research-project-list.liquid` remain available; inaccessible Google Sites links have been removed. The three category pages now use the new gallery, so the old Research Topic and Publications sections no longer appear there. Existing project URLs remain available. Changing those category includes back to `research-project-list.liquid` restores the former layout.
+The original `_projects/` documents and `_includes/research-project-list.liquid` remain available; inaccessible Google Sites links have been removed. The three category pages use `research-project-gallery.liquid` to show Research Areas above Research Highlights. Existing topic and project URLs remain available. The legacy bibliography-based Publications section is retained only in `research-project-list.liquid`.
 
 For each private draft, visibility is disabled in both the data (`published: false`) and page front matter (`published: false`, `sitemap: false`). Its MP4 and poster are retained in `_private/research-media/`, which Jekyll does not publish. Private draft pages, their former public media URLs, and the `_private/` paths should all return 404 in the built site. This is website visibility control, not access control on the Git repository.
 
@@ -92,4 +107,6 @@ ffmpeg -i source.mp4 -map_metadata -1 -an \
   -movflags +faststart -threads 2 project.mp4
 ```
 
-Gallery previews play only while visible. They have no play/pause controls, labels, or icons covering the video; clicking the preview opens the project just like the rest of the card. Leaving the viewport or switching browser tabs pauses playback. Reduced-motion and data-saver preferences disable automatic playback. Poster images remain available without JavaScript. Experiment videos within detail-page content use manual playback.
+Gallery previews play only while visible. They have no play/pause controls, labels, or icons covering the video; clicking the preview opens the project just like the rest of the card. Leaving the viewport or switching browser tabs pauses playback. Reduced-motion and data-saver preferences disable automatic playback. Poster images remain available without JavaScript.
+
+Restored original pages retain looping demonstrations with native controls, visibility-aware playback, and a Pause autoplay / Enable autoplay toggle. Reduced-motion and data-saver preferences initially disable autoplay; manual playback remains available. Pausing an individual clip prevents automatic restarts. Without JavaScript, videos use native controls and autoplay/copy buttons stay hidden. SCDP retains its Copy BibTeX button and status message. Other detail pages continue to use manual playback through `research-project-video.liquid`. Newly restored media retain their source bytes and full duration; previously imported complete clips and optimized images are reused.

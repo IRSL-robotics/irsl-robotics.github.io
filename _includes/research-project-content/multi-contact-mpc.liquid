@@ -1,117 +1,347 @@
-<section>
-  <h2>Interactive Tasks with Unexpected Contacts</h2>
-  <p>
-    A robot performing a contact task may also be pushed by a person or encounter an obstacle elsewhere on its arm. Multi-Contact Feedback MPC
-    accounts for these contacts explicitly, rather than assuming that interaction occurs only at a known end-effector location. It combines motion and
-    force objectives with limits on unwanted contact forces.
-  </p>
-  <figure class="research-figure--compact">
-    <a href="{{ '/assets/img/research/multi-contact-mpc/fig1_photo.webp' | relative_url }}">
-      <img
-        src="{{ '/assets/img/research/multi-contact-mpc/fig1_photo.webp' | relative_url }}"
-        alt="DLR-KUKA robot performing end-effector force control while a person contacts another link"
-        loading="lazy"
+<!-- Content and layout restored from https://seowookhan.github.io/SeoWookHan/projects/3_multi_contact_mpc/; see docs/RESEARCH_PROJECTS.md. -->
+<div class="research-original research-original--author">
+  <div class="project-page-header">
+    <h1 class="project-page-title">Online Multi-Contact Feedback Model Predictive Control for Interactive Robotic Tasks</h1>
+    <div class="project-page-authors">
+      <strong><a href="https://seowookhan.github.io/SeoWookHan/">Seo Wook Han</a></strong
+      ><sup>1</sup>,<strong>Maged Iskandar</strong><sup>2</sup>,<strong>Jinoh Lee</strong><sup>2,3,†</sup>, and <strong>Min Jun Kim</strong
+      ><sup>1,†</sup>
+    </div>
+    <div class="project-page-affiliations">
+      <sup>1</sup>Intelligent Robotic Systems Laboratory, Korea Advanced Institute of Science and Technology (KAIST)<br>
+      <sup>2</sup>Institute of Robotics and Mechatronics, German Aerospace Center (DLR)<br>
+      <sup>3</sup>Department of Mechanical Engineering, Korea Advanced Institute of Science and Technology (KAIST)<br>
+      <small><sup>†</sup>Co-corresponding authors</small>
+    </div>
+    <div class="project-page-venue">
+      <i aria-hidden="true" class="fa-solid fa-award me-1"></i> IEEE International Conference on Robotics and Automation (ICRA), 2024
+    </div>
+    <div class="project-btn-group">
+      <a class="project-btn" href="https://ieeexplore.ieee.org/document/10611151" rel="noopener noreferrer" target="_blank">Paper</a
+      ><a class="project-btn" href="#bibtex">Bib</a
+      ><a class="project-btn" href="https://youtu.be/pZbkHaxT1ao" rel="noopener noreferrer" target="_blank">Youtube</a
+      ><a
+        class="project-btn"
+        href="https://seowookhan.github.io/SeoWookHan/projects/3_multi_contact_mpc/"
+        title="Original project page"
+        rel="noopener noreferrer"
+        target="_blank"
+        >Project</a
       >
-    </a>
-    <figcaption>End-effector motion and force control continue while the robot responds to an additional human contact.</figcaption>
-  </figure>
-</section>
-
-<section>
-  <h2>An Explicit Contact Feedback Loop</h2>
+    </div>
+    <p class="project-resource-alternates">
+      <a href="https://arxiv.org/abs/2403.08302" rel="noopener noreferrer" target="_blank">arXiv</a> ·
+      <a href="https://ieeexplore.ieee.org/document/10611151" rel="noopener noreferrer" target="_blank">IEEE Xplore</a>
+    </p>
+  </div>
+  <div class="research-original__playback">
+    <button class="playback-toggle" type="button" hidden aria-pressed="false">
+      <span class="playback-symbol" aria-hidden="true">Ⅱ</span>
+      <span class="playback-label">Pause autoplay</span>
+    </button>
+  </div>
+  <div class="project-callout-box">
+    <h2>Abstract</h2>
+    <p>
+      In this paper, we propose a model predictive control (MPC) that accomplishes interactive robotic tasks, in which multiple contacts may occur at
+      unknown locations. To address such scenarios, we made an explicit contact feedback loop in the MPC framework. An algorithm called Multi-Contact
+      Particle Filter with Exploration Particle (MCP-EP) is employed to establish real-time feedback of multi-contact information. Then the
+      interaction locations and forces are accommodated in the MPC framework via a spring contact model. Moreover, we achieved real-time control for a
+      7 degrees of freedom robot without any simplifying assumptions by employing a Differential-Dynamic-Programming algorithm. We achieved 6.8kHz,
+      1.9kHz, and 1.8kHz update rates of the MPC for 0, 1, and 2 contacts, respectively. This allows the robot to handle unexpected contacts in real
+      time. Real-world experiments show the effectiveness of the proposed method in various scenarios.
+    </p>
+  </div>
+  <div class="project-grid project-grid-2">
+    <div class="project-media-card">
+      <a
+        aria-label="Open full image: Hybrid motion-force control and safe handling of unexpected contact"
+        href="{{ '/assets/img/research/multi-contact-mpc/fig1_photo.webp' | relative_url }}"
+        ><img
+          alt="Hybrid motion-force control and safe handling of unexpected contact"
+          decoding="async"
+          loading="lazy"
+          src="{{ '/assets/img/research/multi-contact-mpc/fig1_photo.webp' | relative_url }}"
+      ></a>
+      <div class="card-caption">
+        The simultaneous accomplishment of hybrid motion-force control at the end-effector (yellow and magenta colored arrows) and safe handling of
+        unexpected contact caused by human interaction (blue colored arrow).
+      </div>
+    </div>
+    <div class="project-media-card">
+      <video
+        aria-label="Scenario #2: Hybrid motion-force control under multi-contact (DLR-KUKA LWR IV+)."
+        controls=""
+        loop=""
+        muted=""
+        playsinline=""
+        poster="{{ '/assets/video/research/multi-contact-mpc/mpc_scenario2.jpg' | relative_url }}"
+        preload="none"
+        src="{{ '/assets/video/research/multi-contact-mpc/mpc_scenario2.mp4' | relative_url }}"
+      ></video>
+      <div class="card-caption"><strong>Scenario #2: Hybrid motion-force control under multi-contact</strong> (DLR-KUKA LWR IV+).</div>
+    </div>
+  </div>
+  <div class="project-stat-row">
+    <div class="project-stat-item">
+      <div class="project-stat-value">6.8 kHz</div>
+      <div class="project-stat-label">MPC update rate, 0 contacts</div>
+    </div>
+    <div class="project-stat-item">
+      <div class="project-stat-value">1.9 kHz</div>
+      <div class="project-stat-label">MPC update rate, 1 contact</div>
+    </div>
+    <div class="project-stat-item">
+      <div class="project-stat-value">1.8 kHz</div>
+      <div class="project-stat-label">MPC update rate, 2 contacts</div>
+    </div>
+    <div class="project-stat-item">
+      <div class="project-stat-value">65.87 → 14.74 N</div>
+      <div class="project-stat-label">Max. contact force in Scenario #1 (without / with contact feedback)</div>
+    </div>
+  </div>
+  <h2 class="project-section-title">Challenges</h2>
+  <ul class="project-list">
+    <li>
+      <strong>Unknown multiple contacts:</strong> MPC-based methods for interaction tasks are valid based on a common assumption that the contact
+      occurs at a single and known location, typically at the end-effector where a force/torque (F/T) sensor is installed. In an unstructured
+      workspace, such as scenarios that involve physical interaction with humans or with unknown obstacles, unexpected contact may occur at multiple
+      locations on the robot. The safe handling of multiple contacts has been demonstrated using tactile sensors; however, it is not straightforward
+      how to handle unknown multiple contacts occurring outside the tactile sensor.
+    </li>
+    <li>
+      <strong>Real-time control without simplifying assumptions:</strong> simplifying assumptions on the robot model are common in the literature;
+      e.g., some of the time derivatives are assumed to be constant over the prediction horizon, a quasi-static robot or a linearized robot model is
+      employed, or the robot joints are assumed to be perfectly velocity or position controlled.
+    </li>
+  </ul>
+  <h2 class="project-section-title">Key idea: explicit multi-contact feedback loop in the MPC</h2>
   <p>
-    <a href="{{ '/research/projects/mcpep/' | relative_url }}">MCP-EP</a> estimates contact locations and forces from joint torque and base
-    force/torque measurements. The controller incorporates this information into a spring contact model and predicts its effect on the full
-    seven-degree-of-freedom robot dynamics. Other estimators can also supply the feedback if they provide multi-contact information in real time.
+    This work proposes a contact-feedback MPC framework that addresses complex interaction tasks in which multiple contacts may occur at arbitrary
+    locations. To the best of our knowledge, this is the first attempt that embeds multiple unknown contacts in the MPC framework.
   </p>
-  <figure class="research-figure--wide">
-    <a href="{{ '/assets/img/research/multi-contact-mpc/control_structure.webp' | relative_url }}">
-      <img
+  <ul class="project-list">
+    <li>
+      By making an explicit contact feedback loop using MCP-EP, force control can be accomplished even in scenarios with multiple contacts regardless
+      of contact locations.
+    </li>
+    <li>
+      By employing the Differential Dynamic Programming (DDP) algorithm, the proposed MPC operates in real-time for a 7-DOF manipulator without any
+      simplifying assumptions on the robot model.
+    </li>
+  </ul>
+  <div class="project-media-card">
+    <a
+      aria-label="Open full image: Contact-feedback MPC framework"
+      href="{{ '/assets/img/research/multi-contact-mpc/control_structure.webp' | relative_url }}"
+      ><img
+        alt="Contact-feedback MPC framework"
+        decoding="async"
+        loading="lazy"
         src="{{ '/assets/img/research/multi-contact-mpc/control_structure.webp' | relative_url }}"
-        alt="Control architecture connecting MCP-EP, contact-feedback MPC, and the torque-controlled robot"
-        loading="lazy"
-      >
-    </a>
-    <figcaption>Contact estimation closes the feedback loop around the predictive controller.</figcaption>
-  </figure>
-  <h3>Contact Modeling and Optimization</h3>
+    ></a>
+    <div class="card-caption">
+      $\boldsymbol{\tau}_j$ and $\mathbf{W}_b$ are the JTSs and base F/T sensor measurements, respectively. Utilizing the robot states
+      ($\tilde{\mathbf{x}}$) and contact information ($\tilde{\mathbf{r}}_{c,i}$ and $\tilde{\boldsymbol{\lambda}}_i$), the contact-feedback MPC
+      calculates $\mathbf{X}^*$ and $\mathbf{U}^*$. Then, $\mathbf{u}^{[0]*}$ is commanded to the torque-controlled robot.
+    </div>
+  </div>
   <p>
-    The spring model predicts force along the estimated contact direction while leaving tangential motion unconstrained. The optimization combines
-    end-effector pose tracking, contact-force regulation, and a force barrier that penalizes approaching or exceeding the permitted force.
+    The multi-contact feedback is provided through <a href="{{ '/research/projects/mcpep/' | relative_url }}">MCP-EP</a>, which estimates multiple
+    contact locations and forces using an F/T sensor mounted at the base and JTSs. The proposed MPC does not strictly rely on MCP-EP, while one can
+    employ any method as long as multi-contact information is provided in real time. Since the contact-feedback MPC, MCP-EP, and the low-level torque
+    controller (3 kHz) operate at different rates, each program is run with the latest available data.
   </p>
-  <figure>
-    <a href="{{ '/assets/img/research/multi-contact-mpc/spring_contact_model.webp' | relative_url }}">
-      <img
+  <h2 class="project-section-title">Technical components</h2>
+  <h3 class="project-subsection-title">1. Spring contact model</h3>
+  <div class="project-media-card">
+    <a
+      aria-label="Open full image: Spring contact model"
+      href="{{ '/assets/img/research/multi-contact-mpc/spring_contact_model.webp' | relative_url }}"
+      ><img
+        alt="Spring contact model"
+        decoding="async"
+        loading="lazy"
         src="{{ '/assets/img/research/multi-contact-mpc/spring_contact_model.webp' | relative_url }}"
-        alt="Estimated contact frame, spring stiffness, and predicted contact force"
+    ></a>
+    <div class="card-caption">
+      <strong>Left:</strong> ${}^{\{C_i\}}\mathbf{r}_{env,i}$ is computed within the contact frame $\{C_i\}$, whose origin coincides with
+      $\tilde{\mathbf{r}}_{c,i}$ and whose z-axis aligns with $\tilde{\boldsymbol{\lambda}}_i$. <strong>Middle:</strong> $\mathbf{r}_{env,i}$ and
+      $\mathbf{K}_{env,i}$ are calculated by transforming coordinates from $\{C_i\}$ to $\{W\}$. <strong>Right:</strong> $\mathbf{r}_{c,i}$ is fixed
+      on the robot surface, and the predictive contact force is derived from $\boldsymbol{\lambda}_i = g(\mathbf{x}; \boldsymbol{\theta}_i)$.
+    </div>
+  </div>
+  <div aria-label="Equation 1" class="project-equation" role="region" tabindex="0">
+    $$ \boldsymbol{\lambda}_i = \mathbf{K}_{env,i}\,\Delta\mathbf{r}_i = \mathbf{K}_{env,i}\,(\mathbf{r}_{env,i} - \mathbf{r}_{c,i}), \qquad
+    {}^{\{C_i\}}\mathbf{K}_{env,i} = \mathrm{diag}(0,\,0,\,k_{env,i}) $$
+  </div>
+  <p>
+    Since only z-directional stiffness exists, any movement of the contact point within the xy-plane of the contact frame does not change the force.
+    This implies that an unconstrained motion can be achieved in the tangential direction of the contact force. The contact model does not depend on
+    the control input, which allows the MPC framework to incorporate contact force feedback by avoiding an algebraic loop between
+    $\boldsymbol{\lambda}_i$ and $\mathbf{u}$.
+  </p>
+  <h3 class="project-subsection-title">2. Optimal control problem and cost function design</h3>
+  <p>The MPC iteratively solves a discretized optimal control problem (OCP) with the contact-involved robot dynamics:</p>
+  <div aria-label="Equation 2" class="project-equation" role="region" tabindex="0">
+    $$ \mathbf{M}(\mathbf{q})\ddot{\mathbf{q}} + \mathbf{C}(\mathbf{q},\dot{\mathbf{q}})\dot{\mathbf{q}} + \mathbf{g}(\mathbf{q}) =
+    \boldsymbol{\tau}_c + \sum_{i=1}^{k} \mathbf{J}_i^{\top}(\mathbf{q}, \mathbf{r}_{c,i})\boldsymbol{\lambda}_i $$
+  </div>
+  <p>
+    The running and terminal costs consist of the costs for motion control and contact force control, where the cost for contact is designed to allow
+    for defining different tasks on different links:
+  </p>
+  <ul class="project-list">
+    <li>
+      <strong>Motion control:</strong> regulates the end-effector to the desired position and orientation, with a joint velocity penalization term.
+    </li>
+    <li>
+      <strong>Contact force regulation:</strong> regulates the $i$th contact force to the desired value $\boldsymbol{\lambda}_{i,des}$ in the
+      direction determined by $\mathbf{A}_d$.
+    </li>
+    <li>
+      <strong>Force barrier:</strong> for safe handling of unexpected contacts, the allowed contact force is limited by a force barrier with a
+      quadratic function, $c_\lambda(\|\boldsymbol{\lambda}_i\| - \lambda_{i,max})^2$, which is activated if $\|\boldsymbol{\lambda}_i\| &gt;
+      b\,\lambda_{i,max}$ with $b \in (0, 1)$.
+    </li>
+  </ul>
+  <h3 class="project-subsection-title">3. Numerical solution of the OCP</h3>
+  <p>
+    The OCP is solved with the Differential Dynamic Programming (DDP) algorithm, specifically Box-FDDP, which allows box-constraints on the control
+    input. The joint angle and velocity limits are handled by a penalization approach, and the partial derivatives of the cost functions and the
+    contact-involved robot dynamics are derived analytically, e.g., $\partial\boldsymbol{\lambda}_i / \partial\mathbf{q} =
+    -\mathbf{K}_{env,i}\mathbf{J}_i(\mathbf{q}, \mathbf{r}_{c,i})$. As a result, the MPC operates in real-time for a 7-DOF manipulator without any
+    simplifying assumptions on the robot model. A planning horizon of 125 ms ($T = 5$, $\Delta t = 25$ ms) and $k_{env,i} = 3500$ N/m are used in all
+    experiments.
+  </p>
+  <h2 class="project-section-title">Results</h2>
+  <p>
+    The proposed multi-contact feedback MPC is validated in experiments on the DLR-KUKA LWR IV+ torque-controlled robot, with an ATI Omega F/T sensor
+    mounted at the base. There is no pre-knowledge about the contacts; instead, the proposed MPC handles the unexpected contacts in real-time.
+  </p>
+  <h3 class="project-subsection-title">Scenario #1: Safe handling of unexpected contact (with and without contact feedback)</h3>
+  <div class="project-media-card">
+    <video
+      aria-label="The robot tracks a desired end-effector position trajectory ($\mathbf{p}_{des}$) in an environment where an unknown obstacle is located close to the robot; $\mathbf{p}_{des}$ is set in such a way that the robot cannot reach it due to the obstacle, and a contact occurs on the 3rd link. When there is no contact feedback, the magnitude of the contact force increases as the end-effector position error increases (maximum 65.87 N). With the contact feedback and the force barrier ($\lambda_{i,max}$ = 15 N), the maximum contact force was 14.74 N."
+      controls=""
+      loop=""
+      muted=""
+      playsinline=""
+      poster="{{ '/assets/video/research/multi-contact-mpc/mpc_scenario1.jpg' | relative_url }}"
+      preload="none"
+      src="{{ '/assets/video/research/multi-contact-mpc/mpc_scenario1.mp4' | relative_url }}"
+    ></video>
+    <div class="card-caption">
+      The robot tracks a desired end-effector position trajectory ($\mathbf{p}_{des}$) in an environment where an unknown obstacle is located close to
+      the robot; $\mathbf{p}_{des}$ is set in such a way that the robot cannot reach it due to the obstacle, and a contact occurs on the 3rd link.
+      When there is no contact feedback, the magnitude of the contact force increases as the end-effector position error increases (maximum 65.87 N).
+      With the contact feedback and the force barrier ($\lambda_{i,max}$ = 15 N), the maximum contact force was 14.74 N.
+    </div>
+  </div>
+  <h3 class="project-subsection-title">Scenario #2: Hybrid motion-force control under multi-contact</h3>
+  <div class="project-media-card">
+    <a aria-label="Open full image: Scenario 2 sequence" href="{{ '/assets/img/research/multi-contact-mpc/scenario2_sequence.webp' | relative_url }}"
+      ><img
+        alt="Scenario 2 sequence"
+        decoding="async"
         loading="lazy"
-      >
-    </a>
-    <figcaption>The spring contact model connects estimated contact locations to predicted interaction forces.</figcaption>
-  </figure>
-  <p>
-    Box-FDDP solves the optimal control problem with analytic derivatives and a 125 ms prediction horizon. Reported update rates are 6.8 kHz without
-    contact, 1.9 kHz with one contact, and 1.8 kHz with two contacts. The implementation retains the full robot dynamics without the simplifying
-    assumptions discussed in the source paper.
-  </p>
-</section>
-
-<section>
-  <h2>Experiments on the DLR-KUKA LWR IV+</h2>
-  <h3>Limiting an Unexpected Contact</h3>
-  <p>
-    When an unknown obstacle prevents the arm from reaching its target, MPC without contact feedback produces a peak force of 65.87 N. With contact
-    feedback and a 15 N force limit, the peak is 14.74 N.
-  </p>
-  {% include research-project-video.liquid path="multi-contact-mpc/mpc_scenario1" caption="Comparison with and without contact feedback near an unknown obstacle." %}
-  <h3>Hybrid Motion–Force Control</h3>
-  <p>
-    The robot tracks a circular end-effector trajectory while regulating contact force to 20 N. An additional human contact on the third link is
-    limited to 15 N. The table reports tracking performance during the three phases of this experiment.
-  </p>
-  <figure class="research-figure--compact">
-    <a href="{{ '/assets/img/research/multi-contact-mpc/scenario2_sequence.webp' | relative_url }}">
-      <img
         src="{{ '/assets/img/research/multi-contact-mpc/scenario2_sequence.webp' | relative_url }}"
-        alt="Four stages from initial free motion to hybrid control and an additional human contact"
-        loading="lazy"
-      >
-    </a>
-    <figcaption>Scenario 2: approaching the environment, establishing contact, and responding to an additional contact.</figcaption>
-  </figure>
-  <div class="research-content__table-wrap" tabindex="0" role="region" aria-label="Multi-contact control tracking errors">
-    <table>
-      <caption>
-        Scenario 2 tracking RMSE.
-      </caption>
+    ></a>
+    <div class="card-caption">
+      (a) The initial configuration of the robot, not in contact. (b) The robot moves in the x-direction and makes contact with the environment. (c)
+      Hybrid motion-force control is performed at the end-effector. (d) While performing hybrid motion-force control, an additional contact is applied
+      by a human.
+    </div>
+  </div>
+  <p>
+    The contact force in the x-direction is regulated to 20 N while tracking a circular trajectory in the yz-plane, and the contact force on the other
+    links is limited to 15 N.
+  </p>
+  <div aria-label="Research results table 3" class="project-table-wrap" role="region" tabindex="0">
+    <table class="project-table">
       <thead>
         <tr>
-          <th scope="col">Phase</th>
-          <th scope="col">Position</th>
-          <th scope="col">Force</th>
+          <th scope="col">Period</th>
+          <th scope="col">RMSE, end-effector position</th>
+          <th scope="col">RMSE, contact force</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th scope="row">Hybrid motion–force control</th>
+          <td>Hybrid motion-force control only (5.9 s – 18.4 s)</td>
           <td>0.86 cm</td>
           <td>0.58 N</td>
         </tr>
         <tr>
-          <th scope="row">Additional human contact</th>
+          <td>With additional contact on the 3rd link by a human (19.4 s – 31.9 s)</td>
           <td>1.14 cm</td>
           <td>0.89 N</td>
         </tr>
         <tr>
-          <th scope="row">Constant desired pose</th>
+          <td>Force regulation with a constant desired pose (33.5 s – end)</td>
           <td>0.20 cm</td>
           <td>0.10 N</td>
         </tr>
       </tbody>
     </table>
+    <div class="project-table-note">
+      When the human applies the additional contact, the robot immediately reacts to maintain the contact force below 15 N.
+    </div>
   </div>
-  <div class="research-content__videos">
-    {% include research-project-video.liquid path="multi-contact-mpc/mpc_scenario2" caption="Hybrid motion–force control with an additional human contact." %}
-    {% include research-project-video.liquid path="multi-contact-mpc/mpc_transfer" caption="Supplementary demonstration: transferring an object of unknown weight while limiting a second contact force." %}
+  <h3 class="project-subsection-title">Additional experiments (not shown in the paper)</h3>
+  <div class="project-grid project-grid-2">
+    <div class="project-media-card">
+      <video
+        aria-label="Stacking unknown objects (comparative study). The objects of unknown weight are sequentially stacked on the robot's end-effector. The robot maintains the initial end-effector position $\mathbf{p}_{des}$ with a low cost gain; the proposed contact-feedback MPC exerts force to keep the end-effector position by utilizing contact feedback in the robot dynamics."
+        controls=""
+        loop=""
+        muted=""
+        playsinline=""
+        poster="{{ '/assets/video/research/multi-contact-mpc/mpc_stacking.jpg' | relative_url }}"
+        preload="none"
+        src="{{ '/assets/video/research/multi-contact-mpc/mpc_stacking.mp4' | relative_url }}"
+      ></video>
+      <div class="card-caption">
+        <strong>Stacking unknown objects (comparative study).</strong> The objects of unknown weight are sequentially stacked on the robot's
+        end-effector. The robot maintains the initial end-effector position $\mathbf{p}_{des}$ with a low cost gain; the proposed contact-feedback MPC
+        exerts force to keep the end-effector position by utilizing contact feedback in the robot dynamics.
+      </div>
+    </div>
+    <div class="project-media-card">
+      <video
+        aria-label="Unknown object transfer under multi-contact. The objects of unknown weight are placed on the robot's end-effector. The robot maintains the initial end-effector orientation and tracks $\mathbf{p}_{des}$, while the 2nd contact force is maintained below 15 N."
+        controls=""
+        loop=""
+        muted=""
+        playsinline=""
+        poster="{{ '/assets/video/research/multi-contact-mpc/mpc_transfer.jpg' | relative_url }}"
+        preload="none"
+        src="{{ '/assets/video/research/multi-contact-mpc/mpc_transfer.mp4' | relative_url }}"
+      ></video>
+      <div class="card-caption">
+        <strong>Unknown object transfer under multi-contact.</strong> The objects of unknown weight are placed on the robot's end-effector. The robot
+        maintains the initial end-effector orientation and tracks $\mathbf{p}_{des}$, while the 2nd contact force is maintained below 15 N.
+      </div>
+    </div>
   </div>
-</section>
+  <h2 class="project-section-title">Full video</h2>
+  <div class="project-hero-video">
+    <iframe
+      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen=""
+      loading="lazy"
+      src="https://www.youtube-nocookie.com/embed/pZbkHaxT1ao"
+      title="Multi-Contact Feedback MPC — full research video"
+    ></iframe>
+  </div>
+  <h2 class="project-section-title" id="bibtex">BibTeX</h2>
+  <div aria-label="BibTeX citation 4" class="project-bibtex-block" role="region" tabindex="0">
+    <pre><code>{{ project.publications.first.bibtex | escape }}</code></pre>
+  </div>
+  <div class="project-nav">
+    <a href="{{ '/research/projects/cdm/' | relative_url }}"
+      ><i aria-hidden="true" class="fa-solid fa-arrow-left"></i> Previous: Contact Diffusion Model (ICRA 2025)</a
+    >
+    <a href="{{ '/research/projects/mcpep/' | relative_url }}">Next: MCP-EP (ICRA 2023) <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</div>

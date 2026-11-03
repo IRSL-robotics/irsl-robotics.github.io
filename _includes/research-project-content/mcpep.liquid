@@ -1,114 +1,353 @@
-<section>
-  <h2>Locating Contacts and Identifying Forces</h2>
-  <p>
-    MCP-EP estimates contact positions and forces from joint torque sensors and a force/torque sensor at the robot base. The base measurement adds six
-    sensing degrees of freedom, helping distinguish contacts that joint torque measurements alone cannot identify, particularly on links near the
-    base. The method supports several simultaneous contacts without a tactile skin.
-  </p>
-  <figure>
-    <a href="{{ '/assets/img/research/mcpep/graphical_abstract.webp' | relative_url }}">
-      <img
-        src="{{ '/assets/img/research/mcpep/graphical_abstract.webp' | relative_url }}"
-        alt="MCP-EP estimates contact locations and forces from joint torque and base force/torque measurements"
-        loading="lazy"
+<!-- Content and layout restored from https://seowookhan.github.io/SeoWookHan/projects/4_mcpep/; see docs/RESEARCH_PROJECTS.md. -->
+<div class="research-original research-original--author">
+  <div class="project-page-header">
+    <h1 class="project-page-title">
+      Proprioceptive Sensor-Based Simultaneous Multi-Contact Point Localization and Force Identification for Robotic Arms
+    </h1>
+    <div class="project-page-authors">
+      <strong><a href="https://seowookhan.github.io/SeoWookHan/">Seo Wook Han</a></strong> and <strong>Min Jun Kim</strong>
+    </div>
+    <div class="project-page-affiliations">Intelligent Robotic Systems Laboratory, Korea Advanced Institute of Science and Technology (KAIST)</div>
+    <div class="project-page-venue">
+      <i aria-hidden="true" class="fa-solid fa-award me-1"></i> IEEE International Conference on Robotics and Automation (ICRA), 2023
+    </div>
+    <div class="project-btn-group">
+      <a class="project-btn" href="https://ieeexplore.ieee.org/document/10161173" rel="noopener noreferrer" target="_blank">Paper</a
+      ><a class="project-btn" href="#bibtex">Bib</a
+      ><a class="project-btn" href="https://youtu.be/PgLwQNeAgYs" rel="noopener noreferrer" target="_blank">Youtube</a
+      ><a
+        class="project-btn"
+        href="https://seowookhan.github.io/SeoWookHan/projects/4_mcpep/"
+        rel="noopener noreferrer"
+        target="_blank"
+        title="Original project page"
+        >Project</a
       >
-    </a>
-    <figcaption>Multi-Contact Particle Filter with Exploration Particles.</figcaption>
-  </figure>
-</section>
-
-<section>
-  <h2>Fast Particle Updates on Robot Meshes</h2>
+    </div>
+    <p class="project-resource-alternates">
+      <a href="https://arxiv.org/abs/2303.03903" rel="noopener noreferrer" target="_blank">arXiv</a> ·
+      <a href="https://ieeexplore.ieee.org/document/10161173" rel="noopener noreferrer" target="_blank">IEEE Xplore</a>
+    </p>
+  </div>
+  <div class="research-original__playback">
+    <button class="playback-toggle" type="button" hidden aria-pressed="false">
+      <span class="playback-symbol" aria-hidden="true">Ⅱ</span>
+      <span class="playback-label">Pause autoplay</span>
+    </button>
+  </div>
+  <div class="project-callout-box">
+    <h2>Abstract</h2>
+    <p>
+      In this paper, we propose an algorithm that estimates contact point and force simultaneously. We consider a collaborative robot equipped with
+      proprioceptive sensors, in particular, joint torque sensors (JTSs) and a base force/torque (F/T) sensor. The proposed method has the following
+      advantages. First, fast computation is achieved by proper preprocessing of robot meshes. Second, multi-contact can be identified with the aid of
+      the base F/T sensor, while this is challenging when the robot is equipped with only JTSs. The proposed method is a modification of the standard
+      particle filter to cope with mesh preprocessing and with available sensor data. In simulation validation, for a 7 degree-of-freedom robot, the
+      algorithm runs at 2200Hz with 99.96% success rate for the single-contact case. In terms of the run-time, the proposed method was ≥3.5X faster
+      compared to the existing methods. Dual and triple contacts are also reported in the manuscript.
+    </p>
+  </div>
+  <div class="project-media-card">
+    <a aria-label="Open full image: MCP-EP graphical abstract" href="{{ '/assets/img/research/mcpep/graphical_abstract.webp' | relative_url }}"
+      ><img
+        alt="MCP-EP graphical abstract"
+        decoding="async"
+        loading="lazy"
+        src="{{ '/assets/img/research/mcpep/graphical_abstract.webp' | relative_url }}"
+    ></a>
+    <div class="card-caption">
+      <strong>Multi-Contact Particle Filter with Exploration Particles (MCP-EP).</strong> Contact locations ($\mathbf{r}_{c,i}$) and forces
+      ($\mathbf{F}_{ext,i}$) are estimated using proprioceptive sensors (JTS, base F/T sensor), with a motion-model using preprocessed mesh data and a
+      measurement-model with the base F/T sensor.
+    </div>
+  </div>
+  <div class="project-stat-row">
+    <div class="project-stat-item">
+      <div class="project-stat-value">2200 Hz</div>
+      <div class="project-stat-label">Run-time, single-contact (0.45 ms)</div>
+    </div>
+    <div class="project-stat-item">
+      <div class="project-stat-value">99.96 %</div>
+      <div class="project-stat-label">Success rate, single-contact</div>
+    </div>
+    <div class="project-stat-item">
+      <div class="project-stat-value">≥ 3.5×</div>
+      <div class="project-stat-label">Faster than existing methods</div>
+    </div>
+    <div class="project-stat-item">
+      <div class="project-stat-value">up to 3</div>
+      <div class="project-stat-label">Contacts (single, dual, triple)</div>
+    </div>
+  </div>
+  <h2 class="project-section-title">Challenges</h2>
   <p>
-    The robot mesh is preprocessed into nearly uniform faces, and geodesic distances between faces on each link are computed offline. A particle can
-    then move over the surface through a lookup and face-index update. For a proposed contact location, a convex quadratic program finds forces
-    consistent with the sensor measurements and a polyhedral friction cone. Its residual determines the particle weight.
+    The goal is to estimate contact locations ($\mathbf{r}_{c,i} \in \mathbb{R}^3$) and forces ($\mathbf{F}_{ext,i} \in \mathbb{R}^3$) using
+    proprioceptive sensors, the joint torque sensors (JTSs) and a base F/T sensor. The external joint torque and the wrench at the base caused by the
+    contact forces are
   </p>
-  <div class="research-content__figures">
-    <figure>
-      <a href="{{ '/assets/img/research/mcpep/preprocessing.webp' | relative_url }}">
-        <img
-          src="{{ '/assets/img/research/mcpep/preprocessing.webp' | relative_url }}"
-          alt="Robot mesh preprocessing removes non-contact regions and creates nearly uniform surface faces"
+  <div aria-label="Equation 1" class="project-equation" role="region" tabindex="0">
+    $$ \hat{\mathbf{W}} = \begin{bmatrix} \hat{\boldsymbol{\tau}}_{ext} \\ \hat{\mathbf{W}}_{ext,b} \end{bmatrix}, \qquad \boldsymbol{\tau}_{ext} =
+    \sum_{i=1}^{k} \mathbf{J}_i^{\top}(\mathbf{q}, \mathbf{r}_{c,i})\,\mathbf{F}_{ext,i}, \qquad \mathbf{W}_{ext,b} = \sum_{i=1}^{k}
+    \underbrace{\begin{bmatrix} \mathbf{I}_{3\times3} \\ \mathrm{skew}(\mathbf{r}_{c,i}) \end{bmatrix}}_{\mathbf{X}_{c,i}(\mathbf{r}_{c,i})}
+    \mathbf{F}_{ext,i} $$
+  </div>
+  <p>
+    Finding the contact locations and forces that best explain $\hat{\mathbf{W}}$ is a nonlinear optimization problem, since $\mathbf{r}_c$ and
+    $\mathbf{F}_c$ appear as a cross product. Particle filter (PF)-based approaches have been proposed for this problem, but two challenges remain:
+  </p>
+  <ul class="project-list">
+    <li>
+      <strong>Run-time:</strong> the run-time is typically slow, mainly due to the computation time in the motion model of the PF (e.g., about 10 Hz
+      for a 30-DOF humanoid robot, and about 200 Hz for a 7-DOF robot arm).
+    </li>
+    <li>
+      <strong>Singularity:</strong> multiple solutions that explain all sensor measurements may exist. Such singularities may appear quite frequently
+      when only JTSs are considered. For example, if a contact is on link 1 and the robot is equipped with only JTSs, the sensing DOF is 1, and the
+      contact force and location cannot be estimated.
+    </li>
+  </ul>
+  <h2 class="project-section-title">Key idea: Multi-Contact Particle Filter with Exploration Particles (MCP-EP)</h2>
+  <ul class="project-list">
+    <li>
+      <strong>Run-time:</strong> we improve the run-time of the PF with a mesh preprocessing that computes mesh data offline (e.g., distance between
+      all face pairs). This can only be done for each link separately, and consequently, particles cannot be updated across links. Therefore, we
+      modified the PF by introducing exploration particles, which are forced to investigate adjacent links.
+    </li>
+    <li>
+      <strong>Singularity:</strong> we mitigate the singularity by introducing an F/T sensor at the base of the robot. With this setup, we can
+      estimate a contact at any link including links 1 and 2, and can estimate multiple contacts even for a collaborative robot which has only a few
+      DOF.
+    </li>
+  </ul>
+  <h2 class="project-section-title">Technical components</h2>
+  <h3 class="project-subsection-title">1. QP-based contact force identification</h3>
+  <div class="project-grid project-grid-2">
+    <div class="project-callout-box">
+      <p>
+        Assuming a point contact, the $i$th contact force is constrained to lie inside a friction cone, which is approximated as a polyhedral cone,
+        $\mathbf{F}_{c,i} = \mathbf{A}_{c,i}\mathbf{f}_{c,i}$. If, in addition, $\mathbf{r}_c$ is fixed, the problem becomes a convex QP in which the
+        contact force is the only decision variable:
+      </p>
+      <div aria-label="Equation 2" class="project-equation" role="region" tabindex="0">
+        $$\min_{\mathbf{f}_c} \big\| \hat{\mathbf{W}} - \mathbf{Q}^{\top}\mathbf{f}_c \big\|^2 \;\; \text{s.t. } f_{c,i,1}, \ldots, f_{c,i,4} \le 0$$
+      </div>
+      <p>By virtue of the base F/T sensor, 6 sensing DOFs are added to the QP regardless of the contact location.</p>
+    </div>
+    <div class="project-media-card">
+      <a aria-label="Open full image: Polyhedral friction cone" href="{{ '/assets/img/research/mcpep/fig_friction_cone.png' | relative_url }}"
+        ><img
+          alt="Polyhedral friction cone"
+          decoding="async"
           loading="lazy"
-        >
-      </a>
-      <figcaption>Mesh preprocessing makes particle positions and surface updates inexpensive.</figcaption>
-    </figure>
-    <figure>
-      <a href="{{ '/assets/img/research/mcpep/geodesic_distance.webp' | relative_url }}">
-        <img
+          src="{{ '/assets/img/research/mcpep/fig_friction_cone.png' | relative_url }}"
+      ></a>
+      <div class="card-caption">
+        <strong>Point contact assumption</strong> realized by the friction cone formulation, approximated as a polyhedral cone with support vectors
+        $\mathbf{a}_{c,i,j}$.
+      </div>
+    </div>
+  </div>
+  <h3 class="project-subsection-title">2. Motion-model with mesh preprocessing</h3>
+  <div class="project-grid project-grid-2">
+    <div class="project-media-card">
+      <a aria-label="Open full image: Mesh preprocessing" href="{{ '/assets/img/research/mcpep/preprocessing.webp' | relative_url }}"
+        ><img alt="Mesh preprocessing" decoding="async" loading="lazy" src="{{ '/assets/img/research/mcpep/preprocessing.webp' | relative_url }}"
+      ></a>
+      <div class="card-caption">
+        <strong>Mesh preprocessing.</strong> Non-contact parts are eliminated, and an isotropic remesh algorithm makes the size of the faces almost
+        uniform. The position of a particle is represented using the link and face index number, <code>(link#, face#)</code>.
+      </div>
+    </div>
+    <div class="project-media-card">
+      <video
+        aria-label="Motion-model with preprocessed mesh data. The geodesic distances for all face pairs are computed offline and stored in ascending order. Using this data structure, the random walk is applied simply by changing the face index of a particle (about 0.06 µs to update one particle)."
+        controls=""
+        loop=""
+        muted=""
+        playsinline=""
+        poster="{{ '/assets/video/research/mcpep/mcpep_motion_model.jpg' | relative_url }}"
+        preload="none"
+        src="{{ '/assets/video/research/mcpep/mcpep_motion_model.mp4' | relative_url }}"
+      ></video>
+      <div class="card-caption">
+        <strong>Motion-model with preprocessed mesh data.</strong> The geodesic distances for all face pairs are computed offline and stored in
+        ascending order. Using this data structure, the random walk is applied simply by changing the face index of a particle (about 0.06 µs to
+        update one particle).
+      </div>
+    </div>
+  </div>
+  <h3 class="project-subsection-title">3. Measurement-model</h3>
+  <p>
+    A smaller QP error implies that the particle well-explains the sensor measurements, so the weight of a particle is defined using the QP error,
+    $w^{[m]}_i \propto \exp\!\big(-\alpha\,\mathrm{QP}(\hat{\mathbf{W}} \mid \mathbf{x}^{[m]}_i, \mathbf{x}^{*})\big)$. In the multi-contact case,
+    instead of evaluating all possible pairs of particles, particles $\mathbf{x}^{*}$ are sampled from the other particle sets considering the
+    associated weights.
+  </p>
+  <h3 class="project-subsection-title">4. Exploration particles</h3>
+  <div class="project-grid project-grid-2">
+    <div class="project-media-card">
+      <a
+        aria-label="Open full image: Distance between faces in different links"
+        href="{{ '/assets/img/research/mcpep/geodesic_distance.webp' | relative_url }}"
+        ><img
+          alt="Distance between faces in different links"
+          decoding="async"
+          loading="lazy"
           src="{{ '/assets/img/research/mcpep/geodesic_distance.webp' | relative_url }}"
-          alt="Precomputed geodesic distances between faces on a robot link"
-          loading="lazy"
-        >
-      </a>
-      <figcaption>Distances within each link are stored before online estimation.</figcaption>
-    </figure>
+      ></a>
+      <div class="card-caption">
+        While the distance between faces in the same link is constant, the distance between faces in different links changes as the joint rotates, so
+        it cannot be precomputed. Consequently, the motion model changes face#, but not link#.
+      </div>
+    </div>
+    <div class="project-media-card">
+      <video
+        aria-label="Exploration particles (yellow) are forced to investigate adjacent links. If the maximum weight of a particle set is lower than a threshold, one particle is randomly discarded from the basic set (pink), and a new particle with an adjacent link# is added to the explore set. Exploration particles do not undergo resampling, so basic particles can be resampled around them on the correct link."
+        controls=""
+        loop=""
+        muted=""
+        playsinline=""
+        poster="{{ '/assets/video/research/mcpep/mcpep_exploration.jpg' | relative_url }}"
+        preload="none"
+        src="{{ '/assets/video/research/mcpep/mcpep_exploration.mp4' | relative_url }}"
+      ></video>
+      <div class="card-caption">
+        <strong>Exploration particles (yellow)</strong> are forced to investigate adjacent links. If the maximum weight of a particle set is lower
+        than a threshold, one particle is randomly discarded from the basic set (pink), and a new particle with an adjacent link# is added to the
+        explore set. Exploration particles do not undergo resampling, so basic particles can be resampled around them on the correct link.
+      </div>
+    </div>
   </div>
-  <h3>Exploration Across Links</h3>
-  <p>
-    Distances between different links change as the robot moves and cannot use the same fixed lookup. Exploration particles search adjacent links,
-    allowing the estimate to move away from an incorrect link. Particle sets are added or removed when the current contact hypotheses no longer
-    explain the sensor measurements, or when a set becomes unnecessary.
-  </p>
-  <div class="research-content__videos">
-    {% include research-project-video.liquid path="mcpep/mcpep_motion_model" caption="Particle motion using precomputed surface geometry." %}
-    {% include research-project-video.liquid path="mcpep/mcpep_exploration" caption="Exploration particles search neighboring links." %}
+  <h3 class="project-subsection-title">5. Manage-particle-set</h3>
+  <div class="project-media-card">
+    <video
+      aria-label="Manage-Particle-Set (dual- and triple-contact). If the current particle set does not explain the sensor measurements, a new particle set is added. If the sensor measurements can be well-explained without a certain particle set, it is discarded."
+      controls=""
+      loop=""
+      muted=""
+      playsinline=""
+      poster="{{ '/assets/video/research/mcpep/mcpep_manage_sets.jpg' | relative_url }}"
+      preload="none"
+      src="{{ '/assets/video/research/mcpep/mcpep_manage_sets.mp4' | relative_url }}"
+    ></video>
+    <div class="card-caption">
+      <strong>Manage-Particle-Set (dual- and triple-contact).</strong> If the current particle set does not explain the sensor measurements, a new
+      particle set is added. If the sensor measurements can be well-explained without a certain particle set, it is discarded.
+    </div>
   </div>
-</section>
-
-<section>
-  <h2>Simulation Validation</h2>
+  <h2 class="project-section-title">Results</h2>
+  <h3 class="project-subsection-title">Simulation validation</h3>
   <p>
-    Each contact condition was evaluated in 10,000 randomized trials using a seven-degree-of-freedom Franka Emika Panda in MuJoCo. A 20 N force was
-    applied at each sampled contact, with at most one contact per link. Success means localization error no greater than 2.25 cm. The reported RMSE
-    values include failed trials.
+    The algorithm is implemented in the MuJoCo simulator with a 7-DOF Franka Emika Panda robot arm equipped with JTSs, and tested as a single-thread
+    C++ program. Single, dual, and triple contact scenarios are simulated 10000 times each. At each run, the robot configuration was initialized
+    randomly, and a 20 N force in the friction cone was applied at a random position (up to 1 contact per link). A case with ≤ 2.25 cm localization
+    error (roughly 5 faces) is classified as a success.
   </p>
-  <div class="research-content__table-wrap" tabindex="0" role="region" aria-label="MCP-EP simulation results">
-    <table>
-      <caption>
-        Simulation results (Table I); these are not real-world success rates.
-      </caption>
+  <div aria-label="Research results table 3" class="project-table-wrap" role="region" tabindex="0">
+    <table class="project-table">
       <thead>
         <tr>
-          <th scope="col">Contacts</th>
-          <th scope="col">Success</th>
-          <th scope="col">Position RMSE</th>
-          <th scope="col">Force RMSE</th>
-          <th scope="col">Runtime</th>
+          <th scope="col"># of contact</th>
+          <th scope="col"># of particle</th>
+          <th scope="col">Succ. rate (%)</th>
+          <th scope="col">Conv. step</th>
+          <th scope="col">RMSE position (cm)</th>
+          <th scope="col">RMSE force (N)</th>
+          <th scope="col">Run-time (ms)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th scope="row">1</th>
-          <td>99.96%</td>
-          <td>0.16 cm</td>
-          <td>0.01 N</td>
-          <td>0.45 ms</td>
+          <td>1</td>
+          <td>100</td>
+          <td>99.96</td>
+          <td>18.25</td>
+          <td>0.16</td>
+          <td>0.01</td>
+          <td>0.45</td>
         </tr>
         <tr>
-          <th scope="row">2</th>
-          <td>96.70%</td>
-          <td>1.08 cm</td>
-          <td>2.00 N</td>
-          <td>1.66 ms</td>
+          <td>2</td>
+          <td>200</td>
+          <td>96.70</td>
+          <td>11.00</td>
+          <td>1.08</td>
+          <td>2.00</td>
+          <td>1.66</td>
         </tr>
         <tr>
-          <th scope="row">3</th>
-          <td>81.63%</td>
-          <td>3.50 cm</td>
-          <td>4.63 N</td>
-          <td>4.50 ms</td>
+          <td>3</td>
+          <td>300</td>
+          <td>81.63</td>
+          <td>14.37</td>
+          <td>3.50</td>
+          <td>4.63</td>
+          <td>4.50</td>
         </tr>
       </tbody>
     </table>
+    <div class="project-table-note">
+      Table I of the paper. The RMSE is evaluated including fail cases. The algorithm estimates the contact in 8.21 ms on average after the force is
+      applied (single-contact), and the second contact in 18.26 ms on average after the second force is applied (dual-contact). Out of 10000
+      single-contact trials, localization failed only 4 times, all due to singularities.
+    </div>
   </div>
-  <h3>Supplementary Real-World Demonstrations</h3>
-  <p>The videos show contact estimation on a Kinova Gen3. These demonstrations are separate from the simulation statistics reported above.</p>
-  {% include research-project-video.liquid path="mcpep/mcpep_realworld_triple_v2" caption="Supplementary triple-contact estimation on the Kinova Gen3." %}
+  <h3 class="project-subsection-title">Real-world experiments (supplementary)</h3>
   <p>
-    MCP-EP supplies the contact estimator in <a href="{{ '/research/projects/multi-contact-mpc/' | relative_url }}">Multi-Contact Feedback MPC</a> and
-    serves as a comparison method for <a href="{{ '/research/projects/contactflowfilter/' | relative_url }}">ContactFlowFilter</a>.
+    Real-world single, dual, and triple contact experiments on a Kinova Gen3 robot arm. These are not part of the simulation validation reported in
+    the paper.
   </p>
-</section>
+  <div class="project-grid project-grid-2">
+    <div class="project-media-card">
+      <video
+        aria-label="Real-world experiment: dual-contact."
+        controls=""
+        loop=""
+        muted=""
+        playsinline=""
+        poster="{{ '/assets/video/research/mcpep.jpg' | relative_url }}"
+        preload="none"
+        src="{{ '/assets/video/research/mcpep.mp4' | relative_url }}"
+      ></video>
+      <div class="card-caption"><strong>Real-world experiment: dual-contact.</strong></div>
+    </div>
+    <div class="project-media-card">
+      <video
+        aria-label="Real-world experiment: triple-contact."
+        controls=""
+        loop=""
+        muted=""
+        playsinline=""
+        poster="{{ '/assets/video/research/mcpep/mcpep_realworld_triple_v2.jpg' | relative_url }}"
+        preload="none"
+        src="{{ '/assets/video/research/mcpep/mcpep_realworld_triple_v2.mp4' | relative_url }}"
+      ></video>
+      <div class="card-caption"><strong>Real-world experiment: triple-contact.</strong></div>
+    </div>
+  </div>
+  <p>
+    MCP-EP was later employed to establish real-time multi-contact feedback in
+    <a href="{{ '/research/projects/multi-contact-mpc/' | relative_url }}">Multi-Contact Feedback MPC (ICRA 2024)</a>, and used as a baseline in
+    <a href="{{ '/research/projects/contactflowfilter/' | relative_url }}">ContactFlowFilter (T-RO 2026)</a>.
+  </p>
+  <h2 class="project-section-title">Full video</h2>
+  <div class="project-hero-video">
+    <iframe
+      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen=""
+      loading="lazy"
+      src="https://www.youtube-nocookie.com/embed/PgLwQNeAgYs"
+      title="MCP-EP — full research video"
+    ></iframe>
+  </div>
+  <h2 class="project-section-title" id="bibtex">BibTeX</h2>
+  <div aria-label="BibTeX citation 4" class="project-bibtex-block" role="region" tabindex="0">
+    <pre><code>{{ project.publications.first.bibtex | escape }}</code></pre>
+  </div>
+  <div class="project-nav">
+    <a href="{{ '/research/projects/multi-contact-mpc/' | relative_url }}"
+      ><i aria-hidden="true" class="fa-solid fa-arrow-left"></i> Previous: Multi-Contact Feedback MPC (ICRA 2024)</a
+    >
+    <a href="{{ '/research/' | relative_url }}">All Projects <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</div>

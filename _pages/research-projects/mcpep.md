@@ -6,6 +6,8 @@ permalink: /research/projects/mcpep/
 nav: false
 project_id: mcpep
 related_publications: false
+original_project_content: true
+math: true
 ---
 
 {% include research-project-detail.liquid %}

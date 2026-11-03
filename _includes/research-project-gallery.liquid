@@ -1,3 +1,9 @@
+{% assign research_topics = site.projects
+  | where: 'research_area', page.research_area
+  | where: 'research_item_type', 'project'
+  | where_exp: 'topic', 'topic.published != false'
+  | sort: 'importance'
+%}
 {% assign research_projects = site.data.research_projects
   | where: 'published', true
   | where: 'area', page.research_area
@@ -10,7 +16,51 @@
 <div class="research-projects">
   <a class="research-projects__back" href="{{ '/research/' | relative_url }}"> <span aria-hidden="true">&larr;</span> All research areas </a>
 
-  <section aria-label="Research projects">
+  {% if research_topics.size > 0 %}
+    <section class="research-projects__section" aria-labelledby="research-topics-heading">
+      <div class="research-projects__section-heading">
+        <span class="research-projects__section-number" aria-hidden="true">01</span>
+        <h2 id="research-topics-heading">Research Areas</h2>
+      </div>
+
+      <div class="research-projects__grid research-projects__grid--topics">
+        {% for topic in research_topics %}
+          {% assign topic_heading_id = 'research-topic-' | append: forloop.index | append: '-title' %}
+          <article class="research-project-card research-project-card--topic" aria-labelledby="{{ topic_heading_id }}">
+            <a class="research-project-card__link" href="{{ topic.url | relative_url }}" aria-labelledby="{{ topic_heading_id }}">
+              {% if topic.img %}
+                <div class="research-project-card__media">
+                  <img
+                    class="research-project-card__image{% if topic.image_fit == 'contain' %} research-project-card__image--contain{% endif %}"
+                    src="{{ topic.img | relative_url }}"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </div>
+              {% endif %}
+              <div class="research-project-card__body">
+                <h3 id="{{ topic_heading_id }}">{{ topic.title | escape }}</h3>
+                {% if topic.description %}
+                  <p class="research-project-card__description">{{ topic.description | escape }}</p>
+                {% endif %}
+                <span class="research-project-card__action">View Research Topic <span aria-hidden="true">&rarr;</span></span>
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  <section class="research-projects__section" aria-labelledby="research-projects-heading">
+    <div class="research-projects__section-heading">
+      <span class="research-projects__section-number" aria-hidden="true">
+        {%- if research_topics.size > 0 %}02{% else %}01{% endif -%}
+      </span>
+      <h2 id="research-projects-heading">Research Highlights</h2>
+    </div>
+
     <div class="research-projects__grid">
       {% for project in research_projects %}
         {% assign project_url = '/research/projects/' | append: project.id | append: '/' %}
@@ -33,7 +83,7 @@
             </div>
             <div class="research-project-card__body">
               <p class="research-project-card__publication">{{ project.publication_label | default: 'Ongoing project' | escape }}</p>
-              <h2 id="{{ project.id }}-title">{{ project.title | escape }}</h2>
+              <h3 id="{{ project.id }}-title">{{ project.title | escape }}</h3>
               <p class="research-project-card__subtitle">{{ project.subtitle | escape }}</p>
               <p class="research-project-card__description">{{ project.description | escape }}</p>
             </div>

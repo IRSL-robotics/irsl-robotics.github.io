@@ -1,0 +1,90 @@
+<section>
+  <h2>Impedance Behavior beyond a Half-Turn</h2>
+  <p>
+    Exponential coordinates and unit quaternions are widely used to define the orientation error in 6D impedance control. However, the angular
+    deflections they represent cannot exceed a half-turn, and consequently, the spring torque reverses its direction beyond that range. A memory-based
+    SO(3) representation overcomes this limitation and preserves the spring torque direction.
+  </p>
+  <figure>
+    <a href="{{ '/assets/img/research/memory-based-so3/fig1_teaser.png' | relative_url }}">
+      <img
+        src="{{ '/assets/img/research/memory-based-so3/fig1_teaser.png' | relative_url }}"
+        alt="Conventional and proposed impedance control beyond a half-turn, showing reversed and preserved spring torque directions"
+        loading="lazy"
+      >
+    </a>
+    <figcaption>
+      Beyond a π-turn, the spring torque reverses its direction under the conventional impedance controller, whereas it maintains its direction under
+      the proposed impedance controller.
+    </figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>Extending the Representation through Integration</h2>
+  <p>
+    The key idea is to extend the representation through integration, leveraging past state information. In the simple SO(2) case, the conventional
+    representation becomes discontinuous at ±π, whereas the extended one preserves the actual rotation angle. In SO(3), an observer ensures that the
+    observer error between the represented and true rotations converges to zero.
+  </p>
+  <figure class="research-figure--compact">
+    <a href="{{ '/assets/img/research/memory-based-so3/fig2_extended_angle_so2.png' | relative_url }}">
+      <img
+        src="{{ '/assets/img/research/memory-based-so3/fig2_extended_angle_so2.png' | relative_url }}"
+        alt="Conventional SO(2) representation discontinuous at ±π compared with the continuous extended rotation angle"
+        loading="lazy"
+      >
+    </a>
+    <figcaption>Comparison of the conventional and extended SO(2) representations.</figcaption>
+  </figure>
+  <h3>EEC and EUQ</h3>
+  <ul>
+    <li>
+      <strong>Extended exponential coordinates (EEC), ICRA 2022.</strong> EEC extends exponential coordinates from the open π-ball to the entire R³ to
+      represent rotations over multiple turns. However, a computational singularity near 2π requires switching among update methods, and the observer
+      error increases in that region.
+    </li>
+    <li>
+      <strong>Extended unit quaternion (EUQ), RA-L 2026.</strong> EUQ utilizes the entire unit quaternion space to represent rotations up to a full
+      turn without computational singularities.
+    </li>
+  </ul>
+  <figure>
+    <a href="{{ '/assets/img/research/memory-based-so3/fig3_sim_euq_vs_eec.png' | relative_url }}">
+      <img
+        src="{{ '/assets/img/research/memory-based-so3/fig3_sim_euq_vs_eec.png' | relative_url }}"
+        alt="EUQ and EEC simulation results near a 2π rotation, with increased EEC observer error in gray shaded regions"
+        loading="lazy"
+      >
+    </a>
+    <figcaption>EUQ (left) and EEC (right) near a 2π rotation. The EEC observer error increases in the gray shaded regions.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>Experimental Evaluation</h2>
+  <p>Two experiments are conducted using a 7-DoF Franka Emika Panda robot with a torque controller operating at 1 kHz.</p>
+  <h3>Comparison with the Conventional Controller</h3>
+  <p>
+    An external torque is applied to the end-effector about its body z-axis until the angular deflection exceeds π. The conventional controller
+    reverses the spring torque direction, whereas the EUQ-based controller preserves it and the end-effector converges to its initial orientation
+    through the return motion.
+  </p>
+  <figure>
+    <a href="{{ '/assets/img/research/memory-based-so3/fig4_exp1_results.png' | relative_url }}">
+      <img
+        src="{{ '/assets/img/research/memory-based-so3/fig4_exp1_results.png' | relative_url }}"
+        alt="Experiment 1 results comparing conventional and EUQ-based impedance control, with angular deflections beyond π shaded gray"
+        loading="lazy"
+      >
+    </a>
+    <figcaption>Gray shaded regions indicate angular deflections beyond π.</figcaption>
+  </figure>
+  {% include research-project-video.liquid path="memory-based-so3/exp1_conventional_vs_proposed" caption="Impedance behavior beyond a half-turn: conventional (left) and proposed (right) (1.5× speed)." %}
+  <h3>6D Impedance Behavior</h3>
+  <p>
+    An external wrench generates translation and orientation errors with the angular deflection exceeding π. After the external wrench is removed, the
+    end-effector approaches its initial pose via the return motion.
+  </p>
+  {% include research-project-video.liquid path="memory-based-so3/exp2_6d_impedance" caption="Complicated motion with the proposed controller (1.5× speed)." %}
+</section>

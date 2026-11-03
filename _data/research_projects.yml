@@ -219,8 +219,9 @@
   tags:
     - Impedance control
     - Physical HRI
-  description: Direction-preserving 6D impedance control maintains the restoring torque direction through large rotations, allowing
-    natural physical interaction beyond a half-turn.
+  description: Direction-preserving 6D impedance control uses a memory-based SO(3) representation to express angular deflections
+    beyond a half-turn, allowing natural physical interaction.
+  content_include: research-project-content/memory-based-so3.liquid
   highlights:
     - Preserves the restoring torque direction beyond 180°, where conventional control reverses it.
     - Allows a human to guide the end-effector through complex, large rotations.

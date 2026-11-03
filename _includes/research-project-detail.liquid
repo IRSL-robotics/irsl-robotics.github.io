@@ -3,13 +3,17 @@
 {% assign publication_count = project.publications | size %}
 
 <link rel="stylesheet" href="{{ '/assets/css/research-projects.css' | relative_url }}">
+{% if page.original_project_content %}
+  <link rel="stylesheet" href="{{ '/assets/css/research-original-projects.css' | relative_url }}">
+  <script src="{{ '/assets/js/research-original-projects.js' | relative_url }}" defer></script>
+{% endif %}
 
 <div class="research-project-detail">
   <a class="research-projects__back" href="{{ area.url | relative_url }}#{{ project.id }}">
     <span aria-hidden="true">&larr;</span> {{ area.title | escape }}
   </a>
 
-  {% if project.publications %}
+  {% if project.publications and page.original_project_content != true %}
     <header class="research-project-hero{% if publication_count > 1 %} research-project-hero--versions{% endif %}">
       {% if publication_count > 1 %}
         <h1 class="research-project-hero__name">{{ project.title | escape }}</h1>
@@ -55,7 +59,7 @@
   {% endif %}
 
   {% if project.content_include %}
-    <div class="research-content">
+    <div class="{% if page.original_project_content %}research-original-content{% else %}research-content{% endif %}">
       {% include {{ project.content_include }} %}
     </div>
   {% endif %}
