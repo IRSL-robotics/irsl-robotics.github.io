@@ -211,7 +211,7 @@
         \ Ji Wan and Park, Daehyung and Kim, Min Jun},\n  booktitle={IEEE International Conference on Robotics and Automation (ICRA)},\n\
         \  year={2024}\n}"
 - id: memory-based-so3
-  title: Memory-based SO(3)
+  title: Memory-based SO(3) Representation
   subtitle: 6D Compliant Control beyond 180° Rotation
   area: robot-control
   slide: 8

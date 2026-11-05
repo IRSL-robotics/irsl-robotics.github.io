@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Memory-based SO(3)
+title: Memory-based SO(3) Representation
 description: 6D Compliant Control beyond 180° Rotation
 permalink: /research/projects/memory-based-so3/
 nav: false
