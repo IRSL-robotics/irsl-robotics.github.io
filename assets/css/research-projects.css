@@ -435,6 +435,19 @@
   max-width: 30rem;
 }
 
+.research-content figure.research-figure--full {
+  max-width: none;
+}
+
+.research-content figure.research-figure--full > a,
+.research-content figure.research-figure--full img {
+  width: 100%;
+}
+
+.research-content figure.research-figure--full img {
+  max-height: none;
+}
+
 .research-content figure > a {
   display: block;
   width: fit-content;
