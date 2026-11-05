@@ -2,8 +2,11 @@
 <figure>
   <video
     controls
+    autoplay
+    muted
+    loop
     playsinline
-    preload="none"
+    preload="metadata"
     width="960"
     height="540"
     poster="{{ clip_path | append: '.jpg' | relative_url }}"
